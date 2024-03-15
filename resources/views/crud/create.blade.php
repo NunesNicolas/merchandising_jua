@@ -23,7 +23,7 @@
                     <input type="text" class ="form-control" name="telefone" placeholder="digite um Telefone">
                 </div>
                 <br>
-                <div lass ="form-group">
+                <div class ="form-group">
                     <input type="submit" nome="submit" class="btn btn-primary">
                 </div>
 
