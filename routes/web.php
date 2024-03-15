@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-route::prefix('user')->group(function(){
+route::prefix('crud')->group(function(){
 Route::get('/', [UsuarioController::class , 'home'])->name('Usuario-home');
 Route::get('/create', [UsuarioController::class , 'create'])->name('Usuario-create');
 } ); 

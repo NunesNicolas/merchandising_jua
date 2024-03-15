@@ -8,10 +8,10 @@ class UsuarioController extends Controller
 {
     public function home(){
     $users = Usuario::all();
-return view('user.home', ['users'=>$users]);
+return view('crud.home', ['users'=>$users]);
     }
     
     public function create(){
-        return view('user.create');
+        return view('crud.create');
     }
 }
