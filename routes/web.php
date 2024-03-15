@@ -1,7 +1,6 @@
 <?php
 
-use App\Http\Controllers\BookController;
-use App\Http\Controllers\UserController;
+use App\Http\Controllers\UsuarioController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,6 +13,7 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
-Route::get('/', [UserController::class , 'index']
-);
+route::prefix('user')->group(function(){
+Route::get('/', [UsuarioController::class , 'home'])->name('Usuario-home');
+Route::get('/create', [UsuarioController::class , 'create'])->name('Usuario-create');
+} ); 
