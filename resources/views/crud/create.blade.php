@@ -1,27 +1,26 @@
 @extends('layouts.app')
 
-    @section('title')
-        create
-    @endsection
+@section('title','create')
 
     @section('content')
   <div class="conteiner mt-4  ml-5 mr-5 ">
         <h1>novo usuario</h1>
         <hr>
-            <form action="" method="POST">
-                <div class ="form-group ml-5 mr-5">
+            <form action="{{ route('Usuario-store') }}" method="POST">
+            @csrf
+                <div class ="form-group">
                     <label for="nome">Nome:</label>
-                    <input type="text" class ="form-control" name="nome" placeholder="digite um nome">
+                    <input type="text" class ="form-control" name="nome" placeholder="digite um Nome">
                 </div>
                 <br>
-                <div class ="form-group ml-5 mr-5">
-                    <label for="nome">Email:</label>
-                    <input type="text" class ="form-control" name="Email" placeholder="digite um Email">
+                <div class ="form-group">
+                    <label for="email">Email:</label>
+                    <input type="text" class ="form-control" name="email" placeholder="digite um Email">
                 </div>
                 <br>
-                <div class ="form-group ml-5 mr-5">
-                    <label for="nome">Telefone:</label>
-                    <input type="text" class ="form-control" name="Telefone" placeholder="digite um Telefone">
+                <div class ="form-group">
+                    <label for="telefone">Telefone:</label>
+                    <input type="text" class ="form-control" name="telefone" placeholder="digite um Telefone">
                 </div>
                 <br>
                 <div lass ="form-group">

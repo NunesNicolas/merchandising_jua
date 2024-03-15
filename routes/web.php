@@ -16,4 +16,5 @@ use Illuminate\Support\Facades\Route;
 route::prefix('crud')->group(function(){
 Route::get('/', [UsuarioController::class , 'home'])->name('Usuario-home');
 Route::get('/create', [UsuarioController::class , 'create'])->name('Usuario-create');
+Route::post('/', [UsuarioController::class , 'store'])->name('Usuario-store');
 } ); 
