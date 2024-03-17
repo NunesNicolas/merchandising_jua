@@ -10,6 +10,7 @@
       <th>{{ $user->nome }}</th>
       <th>{{ $user->email }}</th>
       <th>{{ $user->telefone }}</th>
+      
     </tr>
     @endforeach
   <tbody>

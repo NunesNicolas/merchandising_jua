@@ -29,4 +29,28 @@ class UsuarioController extends Controller
         Usuario::create($request->all());
         return redirect()->route('Usuario-home');
     }
+    public function edit($id){
+        $users = Usuario::where('id',$id)->first();
+        if(!empty($users)){
+            return view('crud.edit', ['users'=>$users]);
+        }
+        else{
+            return redirect()->route('Usuario-home');
+        }
+    }
+    public function update(Request $request, $id)
+    {
+        $date = [
+            'nome' => $request->nome,
+            'email' => $request->email,
+            'telefone' => $request->telefone,
+        ];
+        Usuario::where('id',$id)->update($date);
+        return redirect()->route('Usuario-home');
+    }
+    public function destroy($id){
+        Usuario::where('id',$id)->delete();
+        return redirect()->route('Usuario-home');
+    }
+    
 }
