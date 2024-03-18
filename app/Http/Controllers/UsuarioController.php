@@ -7,6 +7,7 @@ use Illuminate\Validation\Validator;
 use Illuminate\Validation\ValidationException;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
 use Illuminate\Support\MessageBag;
+use App\Http\Requests\UsuarioStore;
 
 class UsuarioController extends Controller
 {
@@ -19,13 +20,7 @@ class UsuarioController extends Controller
         return view('crud.create');
     }
     
-    public function store(Request  $request){
-        $validator = $request->validate([
-        'nome'     =>  'required|min:10',
-        'email'    =>  'sometimes|required|email',
-        'telefone' =>  'required|min:10',
-        ]);
-        
+    public function store(UsuarioStore $request){
         Usuario::create($request->all());
         return redirect()->route('Usuario-home');
     }
@@ -38,13 +33,13 @@ class UsuarioController extends Controller
             return redirect()->route('Usuario-home');
         }
     }
-    public function update(Request $request, $id)
+    public function update(UsuarioStore $request, $id)
     {
         $date = [
             'nome' => $request->nome,
             'email' => $request->email,
             'telefone' => $request->telefone,
-        ];
+         ];
         Usuario::where('id',$id)->update($date);
         return redirect()->route('Usuario-home');
     }
