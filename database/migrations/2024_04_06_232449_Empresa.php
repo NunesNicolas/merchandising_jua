@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('empresas', function(blueprint $table){
+        Schema::create('Empresa', function(blueprint $table){
             $table -> id();
             $table -> string("nome", 100) -> nullabel();
             $table -> string("cnpj", 100) -> nullabel();
