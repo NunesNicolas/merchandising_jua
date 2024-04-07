@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\PromotorController;
 use App\Http\Controllers\UsuarioController;
+use App\Http\Controllers\ProdutoController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -25,4 +26,5 @@ Route::delete('/{id}', [UsuarioController::class , 'destroy'])->where('id','[0-9
 
 route::prefix('forms')->group(function(){
 Route::get('/', [PromotorController::class , 'promo'])->name('Promotor-forms');
+Route::get('/produtos', [ProdutoController::class , 'produtos'])->name('Produtos-forms');
 } );
