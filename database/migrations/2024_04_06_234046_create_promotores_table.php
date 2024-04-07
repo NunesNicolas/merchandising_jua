@@ -6,14 +6,13 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-
-    public function up():void
+    /**
+     * Run the migrations.
+     */
+    public function up(): void
     {
-        Schema::create('usuarios', function(blueprint $table){
+        Schema::create('promotores', function (Blueprint $table) {
             $table->id();
-            $table->string("nome", 100)->nullable();
-            $table->string("email", 100)->nullable();
-            $table->string("telefone", 15);
             $table->timestamps();
         });
     }
@@ -23,6 +22,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        //
+        Schema::dropIfExists('promotores');
     }
 };
