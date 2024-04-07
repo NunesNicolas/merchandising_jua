@@ -13,7 +13,10 @@ return new class extends Migration
     {
         Schema::create('promotores', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->string("nome", 100)->nullable();
+            $table->string("email", 100)->nullable();
+            $table->string("status", 50)->nullable();
+            $table->string("telefone", 15)->nullable();
         });
     }
 

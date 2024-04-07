@@ -13,12 +13,12 @@ return new class extends Migration
     {
         Schema::create('Empresa', function(blueprint $table){
             $table -> id();
-            $table -> string("nome", 100) -> nullabel();
-            $table -> string("cnpj", 100) -> nullabel();
-            $table -> string("latitude", 100) -> nullabel();
-            $table -> string("longitude", 100) -> nullabel();
-            $table -> bigInteger("empresa_id") -> nullabel();
-            
+            $table -> string("nome", 100) -> nullable();
+            $table -> string("cnpj", 100) -> nullable();
+            $table -> string("latitude", 100) -> nullable();
+            $table -> string("longitude", 100) -> nullable();
+            $table -> bigInteger("empresa_id") -> nullable();
+            $table -> string("descricao", 2000) -> nullable();
         });
     }
 
