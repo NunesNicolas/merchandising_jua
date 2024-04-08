@@ -3,7 +3,11 @@
 use App\Http\Controllers\PromotorController;
 use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\ProdutoController;
+<<<<<<< HEAD
 use App\Http\Controllers\EmpresaController;
+=======
+use App\Http\Controllers\ProdutosController;
+>>>>>>> 777a5468fd78a867588e2a137e0351a6e9188fc6
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,6 +31,17 @@ Route::delete('/{id}', [UsuarioController::class , 'destroy'])->where('id','[0-9
 
 route::prefix('forms')->group(function(){
 Route::get('/', [PromotorController::class , 'promo'])->name('Promotor-forms');
+
+
+<<<<<<< HEAD
 Route::get('/produtos', [ProdutoController::class , 'produtos'])->name('Produtos-forms');
 Route::post('/empresas', [EmpresaController::class , 'empresas'])->name('Empresas-forms');
+=======
+>>>>>>> 777a5468fd78a867588e2a137e0351a6e9188fc6
 } );
+
+route::prefix('produtos')->group (function(){
+    Route::get('/', [ProdutosController::class , 'index'])->name('Produtos-index');
+    Route::get('/create', [ProdutosController::class , 'create'])->name('Produtos-create');
+    Route::post('/', [ProdutosController::class , 'store'])->name('Produtos-store');
+});
