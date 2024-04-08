@@ -2,12 +2,8 @@
 
 use App\Http\Controllers\PromotorController;
 use App\Http\Controllers\UsuarioController;
-use App\Http\Controllers\ProdutoController;
-<<<<<<< HEAD
-use App\Http\Controllers\EmpresaController;
-=======
 use App\Http\Controllers\ProdutosController;
->>>>>>> 777a5468fd78a867588e2a137e0351a6e9188fc6
+use App\Http\Controllers\EmpresaController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -33,11 +29,8 @@ route::prefix('forms')->group(function(){
 Route::get('/', [PromotorController::class , 'promo'])->name('Promotor-forms');
 
 
-<<<<<<< HEAD
-Route::get('/produtos', [ProdutoController::class , 'produtos'])->name('Produtos-forms');
+Route::get('/produtos', [ProdutosController::class , 'produtos'])->name('Produtos-forms');
 Route::post('/empresas', [EmpresaController::class , 'empresas'])->name('Empresas-forms');
-=======
->>>>>>> 777a5468fd78a867588e2a137e0351a6e9188fc6
 } );
 
 route::prefix('produtos')->group (function(){
