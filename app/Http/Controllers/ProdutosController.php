@@ -19,6 +19,6 @@ class ProdutosController extends Controller
     public function store(Request $request)
     {
         Produto::create($request->all());
-        return redirect()->route('produtos.index');
+        return redirect()->route('Produtos-index');
     }
 }
