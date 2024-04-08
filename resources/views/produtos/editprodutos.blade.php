@@ -1,34 +1,45 @@
 @extends('layouts.app')
 
-@section('title','Edição')
+@section('title','edição')
 
     @section('content')
   <div class="conteiner mt-4  ml-5 mr-5 ">
-        <h1>Editar Produto <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-person-fill-gear" viewBox="0 0 16 16">
-  <path d="M11 5a3 3 0 1 1-6 0 3 3 0 0 1 6 0m-9 8c0 1 1 1 1 1h5.256A4.5 4.5 0 0 1 8 12.5a4.5 4.5 0 0 1 1.544-3.393Q8.844 9.002 8 9c-5 0-6 3-6 4m9.886-3.54c.18-.613 1.048-.613 1.229 0l.043.148a.64.64 0 0 0 .921.382l.136-.074c.561-.306 1.175.308.87.869l-.075.136a.64.64 0 0 0 .382.92l.149.045c.612.18.612 1.048 0 1.229l-.15.043a.64.64 0 0 0-.38.921l.074.136c.305.561-.309 1.175-.87.87l-.136-.075a.64.64 0 0 0-.92.382l-.045.149c-.18.612-1.048.612-1.229 0l-.043-.15a.64.64 0 0 0-.921-.38l-.136.074c-.561.305-1.175-.309-.87-.87l.075-.136a.64.64 0 0 0-.382-.92l-.148-.045c-.613-.18-.613-1.048 0-1.229l.148-.043a.64.64 0 0 0 .382-.921l-.074-.136c-.306-.561.308-1.175.869-.87l.136.075a.64.64 0 0 0 .92-.382zM14 12.5a1.5 1.5 0 1 0-3 0 1.5 1.5 0 0 0 3 0"/>
+        <h1>Editar produto
+        <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-person-fill-add" viewBox="0 0 16 16">
+  <path d="M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7m.5-5v1h1a.5.5 0 0 1 0 1h-1v1a.5.5 0 0 1-1 0v-1h-1a.5.5 0 0 1 0-1h1v-1a.5.5 0 0 1 1 0m-2-6a3 3 0 1 1-6 0 3 3 0 0 1 6 0"/>
+  <path d="M2 13c0 1 1 1 1 1h5.256A4.5 4.5 0 0 1 8 12.5a4.5 4.5 0 0 1 1.544-3.393Q8.844 9.002 8 9c-5 0-6 3-6 4"/>
 </svg></h1>
-        
         <hr>
-            <form action="{{ route('Usuario-update',['id'=>$users->id]) }}" method="POST">
+            <form action="{{ route('Produtos-update', ['id'=>$produtos->id]) }}" method="POST">
             @csrf
             @method('PUT')
                 <div class ="form-group">
-                    <label for="nome">Nome:</label>
-                    <input type="text" class ="form-control" name="nome" value="{{ $users->nome }}" placeholder="digite um Nome">
+                    <label for="nomeproduto">Nome do Produto:</label>
+                    <input type="text" class ="form-control" name="nomeproduto" value=" {{$produtos->nomeproduto}} " placeholder="Digite um Nome">
                 </div>
                 <br>
                 <div class ="form-group">
-                    <label for="email">Email:</label>
-                    <input type="text" class ="form-control" name="email" value="{{ $users->email }}" placeholder="digite um Email">
+                    <label for="precoproduto">Preço do Produto:</label>
+                    <input type="text" class ="form-control" name="precoproduto" value=" {{$produtos->precoproduto}} " placeholder="Digite um Preço">
                 </div>
                 <br>
                 <div class ="form-group">
-                    <label for="telefone">Telefone:</label>
-                    <input type="text" class ="form-control" name="telefone" value="{{ $users->telefone }}" placeholder="digite um Telefone">
+                    <label for="marcaproduto">Marca do Produto:</label>
+                    <input type="text" class ="form-control" name="marcaproduto" value=" {{$produtos->marcaproduto}} " placeholder="Digite uma Marca">
                 </div>
                 <br>
                 <div class ="form-group">
-                    <input type="submit" nome="submit" class="btn btn-success" value="Atualizar dados">
+                    <label for="tipoproduto">Tipo do Produto:</label>
+                    <input type="text" class ="form-control" name="tipoproduto" value=" {{$produtos->tipoproduto}} " placeholder="Digite um Tipo">
+                </div>
+                <br>
+                <div class ="form-group">
+                    <label for="numerovendas">Número de vendas do Produto:</label>
+                    <input type="text" class ="form-control" name="numerovendas" value=" {{$produtos->numerovendas}} " placeholder="Digite as Vendas">
+                </div>
+                <br>
+                <div class ="form-group">
+                    <input type="submit" nome="submit" class="btn btn-success" value="Atualizar">
                 </div>
 
             </form>

@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title','create')
+@section('title','criação')
 
     @section('content')
   <div class="conteiner mt-4  ml-5 mr-5 ">
@@ -14,27 +14,27 @@
             @csrf
                 <div class ="form-group">
                     <label for="nomeproduto">Nome do Produto:</label>
-                    <input type="text" class ="form-control" name="nomeproduto" placeholder="digite um Nome">
+                    <input type="text" class ="form-control" name="nomeproduto" placeholder="Digite um Nome">
                 </div>
                 <br>
                 <div class ="form-group">
                     <label for="precoproduto">Preço do Produto:</label>
-                    <input type="text" class ="form-control" name="precoproduto" placeholder="digite um Email">
+                    <input type="text" class ="form-control" name="precoproduto" placeholder="Digite um Preço">
                 </div>
                 <br>
                 <div class ="form-group">
                     <label for="marcaproduto">Marca do Produto:</label>
-                    <input type="text" class ="form-control" name="marcaproduto" placeholder="digite um Telefone">
+                    <input type="text" class ="form-control" name="marcaproduto" placeholder="Digite uma Marca">
                 </div>
                 <br>
                 <div class ="form-group">
                     <label for="tipoproduto">Tipo do Produto:</label>
-                    <input type="text" class ="form-control" name="tipoproduto" placeholder="digite um Telefone">
+                    <input type="text" class ="form-control" name="tipoproduto" placeholder="Digite um Tipo">
                 </div>
                 <br>
                 <div class ="form-group">
                     <label for="numerovendas">Número de vendas do Produto:</label>
-                    <input type="text" class ="form-control" name="numerovendas" placeholder="digite um Telefone">
+                    <input type="text" class ="form-control" name="numerovendas" placeholder="Digite as Vendas">
                 </div>
                 <br>
                 <div class ="form-group">
