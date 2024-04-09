@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\FormsController;
+use App\Http\Controllers\HomesController;
 use App\Http\Controllers\PromotorController;
 use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\ProdutoController;
@@ -36,4 +38,9 @@ route::prefix('produtos')->group (function(){
     Route::get('/{id}/edit', [ProdutosController::class , 'edit'])->where('id','[0-9]+')->name('Produtos-edit');
     Route::put('/{id}', [ProdutosController::class , 'update'])->where('id','[0-9]+')->name('Produtos-update');
     Route::delete('/{id}', [ProdutosController::class , 'destroy'])->where('id','[0-9]+')->name('Produtos-destroy');
+});
+
+route::prefix('forms')->group(function(){
+    Route::get('/', [FormsController::class , 'index'])->name('Forms-index');
+
 });
