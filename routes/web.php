@@ -25,8 +25,9 @@ Route::put('/{id}', [UsuarioController::class , 'update'])->where('id','[0-9]')-
 Route::delete('/{id}', [UsuarioController::class , 'destroy'])->where('id','[0-9]')->name('Usuario-destroy');
 } ); 
 
-route::prefix('forms')->group(function(){
+route::prefix('promotores')->group(function(){
 Route::get('/', [PromotorController::class , 'promo'])->name('Promotor-forms');
+Route::post('/', [PromotorController::class , 'store'])->name('Promotor-store');
 } );
 
 route::prefix('produtos')->group (function(){
