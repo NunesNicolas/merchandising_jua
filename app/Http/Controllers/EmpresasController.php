@@ -10,7 +10,7 @@ class EmpresasController extends Controller
 {
     public function index(){
         $empresa = Empresa::all();
-        return view('empresa.homeempresas', ['empresas' => $empresa]);
+        return view('forms.home', ['empresas' => $empresa]);
     }
 
     public function create()
@@ -21,7 +21,7 @@ class EmpresasController extends Controller
     public function store(Request $request)
     {
         Empresa::create($request->all());
-        return redirect()->route('Empresas-index');
+        return redirect()->route('Forms-index');
     }
 
     public function edit($id)
@@ -33,7 +33,7 @@ class EmpresasController extends Controller
         }
         else
         {
-            return redirect()->route('Empresas-index');
+            return redirect()->route('Forms-index');
         }
     }
 
@@ -47,12 +47,12 @@ class EmpresasController extends Controller
             'descricao' => $request->descricao,
         ];
         Empresa::where('id', $id)->update($data);
-        return redirect()->route('Empresas-index');
+        return redirect()->route('Forms-index');
     }
 
     public function destroy($id)
     {
         Empresa::where('id', $id)->delete();
-        return redirect()->route('Empresas-index');
+        return redirect()->route('Forms-index');
     }
 }
