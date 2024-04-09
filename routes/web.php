@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\FormsController;
 use App\Http\Controllers\HomesController;
-use App\Http\Controllers\PromotorController;
+use App\Http\Controllers\PromotoresController;
 use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\ProdutosController;
 use App\Http\Controllers\EmpresasController;
@@ -29,12 +29,12 @@ Route::delete('/{id}', [UsuarioController::class , 'destroy'])->where('id','[0-9
 } ); 
 
 route::prefix('promotores')->group(function(){
-Route::get('/', [PromotorController::class , 'index'])->name('Promotor-index');
-Route::get('/create', [PromotorController::class , 'create'])->name('Promotor-create');
-Route::post('/', [PromotorController::class , 'store'])->name('Promotor-store');
-Route::get('/{id}/edit', [PromotorController::class , 'edit'])->where('id','[0-9]')->name('Promotor-edit');
-Route::put('/{id}', [PromotorController::class , 'update'])->where('id','[0-9]')->name('Promotor-update');
-Route::delete('/{id}', [PromotorController::class, 'destroy'])-> where('id', '[0-9]') -> name('Promotor-destroy');
+Route::get('/', [PromotoresController::class , 'index'])->name('Promotor-index');
+Route::get('/create', [PromotoresController::class , 'create'])->name('Promotor-create');
+Route::post('/', [PromotoresController::class , 'store'])->name('Promotor-store');
+Route::get('/{id}/edit', [PromotoresController::class , 'edit'])->where('id','[0-9]')->name('Promotor-edit');
+Route::put('/{id}', [PromotoresController::class , 'update'])->where('id','[0-9]')->name('Promotor-update');
+Route::delete('/{id}', [PromotoresController::class, 'destroy'])-> where('id', '[0-9]') -> name('Promotor-destroy');
 
 } );
 

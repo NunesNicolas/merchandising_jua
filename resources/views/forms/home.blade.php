@@ -14,7 +14,7 @@
         <div style='text-align:right' class="mr-2" >
             <a href="{{route('Empresas-create')}}"><button class="btn btn-success">Adicionar Empresa</button></a>
             </div>
-    </div>
+    </div>  
 
     <h1 style="text-align:justify">Listagens Produtos:</h1>
 
