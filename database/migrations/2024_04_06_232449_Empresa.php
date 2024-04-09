@@ -17,8 +17,8 @@ return new class extends Migration
             $table -> string("cnpj", 100) -> nullable();
             $table -> string("latitude", 100) -> nullable();
             $table -> string("longitude", 100) -> nullable();
-            $table -> bigInteger("empresa_id") -> nullable();
             $table -> string("descricao", 2000) -> nullable();
+            $table -> timestamps();
         });
     }
 
