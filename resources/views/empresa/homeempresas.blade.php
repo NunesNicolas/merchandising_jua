@@ -21,10 +21,10 @@
       <tr>
       <th scope="col">#</th>
       <th scope="col">Nome</th>
-      <th scope="col">cnpj</th>
-      <th scope="col">latitude</th>
-      <th scope="col">longitude</th>
-      <th scope="col">descrição</th>
+      <th scope="col">CNPJ</th>
+      <th scope="col">Latitude</th>
+      <th scope="col">Longitude</th>
+      <th scope="col">Descrição</th>
       <th scope="col">...</th>
       </tr>
   </thead>
