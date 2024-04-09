@@ -4,8 +4,9 @@ use App\Http\Controllers\FormsController;
 use App\Http\Controllers\HomesController;
 use App\Http\Controllers\PromotorController;
 use App\Http\Controllers\UsuarioController;
-use App\Http\Controllers\ProdutoController;
 use App\Http\Controllers\ProdutosController;
+use App\Http\Controllers\EmpresasController;
+use App\Models\Empresa;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -29,7 +30,18 @@ Route::delete('/{id}', [UsuarioController::class , 'destroy'])->where('id','[0-9
 
 route::prefix('forms')->group(function(){
 Route::get('/', [PromotorController::class , 'promo'])->name('Promotor-forms');
+Route::get('/produtos', [ProdutosController::class , 'produtos'])->name('Produtos-forms');
+
 } );
+
+Route::prefix('empresa')->group(function(){
+    Route::get('/', [EmpresasController::class , 'index'])->name('Empresas-index');
+    Route::get('/create', [EmpresasController::class , 'create'])->name('Empresas-create');
+    Route::post('/', [EmpresasController::class , 'store'])->name('Empresas-store');
+    Route::get('/{id}/edit', [EmpresasController::class , 'edit'])->where('id','[0-9]')->name('Empresas-edit');
+    Route::put('/{id}', [EmpresasController::class , 'update'])->where('id','[0-9]')->name('Empresas-update');
+    Route::delete('/{id}', [EmpresasController::class, 'destroy'])-> where('id', '[0-9]') -> name('Empresas-destroy');
+});
 
 route::prefix('produtos')->group (function(){
     Route::get('/', [ProdutosController::class , 'index'])->name('Produtos-index');
