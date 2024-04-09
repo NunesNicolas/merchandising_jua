@@ -33,7 +33,7 @@ class EmpresasController extends Controller
         }
         else
         {
-            return redirect()->route('Empresa-index');
+            return redirect()->route('Empresas-index');
         }
     }
 
@@ -47,12 +47,12 @@ class EmpresasController extends Controller
             'descricao' => $request->descricao,
         ];
         Empresa::where('id', $id)->update($data);
-        return redirect()->route('Empresa-index');
+        return redirect()->route('Empresas-index');
     }
 
     public function destroy($id)
     {
         Empresa::where('id', $id)->delete();
-        return redirect()->route('homeempresa');
+        return redirect()->route('Empresas-index');
     }
 }
