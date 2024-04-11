@@ -8,10 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Promotor extends Model
 {
     use HasFactory;
+
     protected $fillable = [
-        'nome',
-        'email',
-        'telefone',
-        'status',
+        'nomepromotor',
+        'emailpromotor',
+        'statuspromotor',
+        'telefonepromotor',
     ];
 }

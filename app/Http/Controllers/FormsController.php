@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Empresa;
 use App\Models\Produto;
+use App\Models\Promotor;
 use Illuminate\Http\Request;
 
 class FormsController extends Controller
@@ -12,7 +13,14 @@ class FormsController extends Controller
     {
     $produtos = Produto::all();
     $empresa = Empresa::all();
-    return view('forms.home', ['produtos'=>$produtos], ['empresas' => $empresa]);
+    $promotor = Promotor::all();
+
+    // print_r($promotor);die;
+    return view('forms.home', [
+        'produtos'=>$produtos, 
+        'empresas' => $empresa,
+        'promotors'=>$promotor
+    ]);
     }
 }
 
