@@ -19,7 +19,7 @@ class ProdutosController extends Controller
     public function store(Request $request)
     {
         Produto::create($request->all());
-        return redirect()->route('Produtos-index');
+        return redirect()->route('Forms-index');
     }
     public function edit($id)
     {
@@ -30,7 +30,7 @@ class ProdutosController extends Controller
         }
         else
         {
-            return redirect()->route('Produtos-index');
+            return redirect()->route('Forms-index');
         }
     }
     public function update(Request $request, $id)
@@ -44,11 +44,11 @@ class ProdutosController extends Controller
 
         ];
         Produto::where('id', $id)->update($data);
-        return redirect()->route('Produtos-index');
+        return redirect()->route('Forms-index');
     }
     public function destroy($id)
     {
         Produto::where('id', $id)->delete();
-        return redirect()->route('Produtos-index');
+        return redirect()->route('Forms-index');
     }
 }
