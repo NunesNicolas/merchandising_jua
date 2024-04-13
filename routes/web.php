@@ -6,6 +6,7 @@ use App\Http\Controllers\PromotorController;
 use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\ProdutosController;
 use App\Http\Controllers\EmpresasController;
+use App\Http\Controllers\TestesController;
 use App\Models\Empresa;
 use Illuminate\Support\Facades\Route;
 
@@ -55,4 +56,8 @@ route::prefix('produtos')->group (function(){
 route::prefix('forms')->group(function(){
     Route::get('/', [FormsController::class , 'index'])->name('Forms-index');
 
+});
+
+route::prefix('testes')->group (function(){
+    Route::get('/', [TestesController::class , 'index'])->name('Testes-index');
 });
