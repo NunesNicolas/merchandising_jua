@@ -1,20 +1,20 @@
 <?php
 namespace App\Http\Controllers;
 
-use App\Models\Usuario;
+use App\Models\Promotores;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Validator;
 use Illuminate\Validation\ValidationException;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
 use Illuminate\Support\MessageBag;
-use App\Http\Requests\UsuarioStore;
+use App\Http\Requests\PromotoreStore;
 
-class UsuarioController extends Controller
+class PromotoresController extends Controller
 {
-    // public function home(){
-    // $users = Usuario::all();
-    // return view('crud.home', ['users'=>$users]);
-    // }
+    public function home(){
+    $promotores = Promotores::all();
+    return view('test.homepromotores', ['promotores'=>$promotores]);
+    }
     
     // public function create(){
     //     return view('crud.create');
