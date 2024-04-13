@@ -16,6 +16,14 @@ class PromotoresController extends Controller
     return view('test.homepromotores', ['promotores'=>$promotores]);
     }
     
+    public function create(){
+        return view('test.criarpromotores');
+    }
+
+    public function store(PromotoreStore $request){
+        Promotores::create($request->all());
+        return redirect()->route('Promotores-home');
+    }
     // public function create(){
     //     return view('crud.create');
     // }

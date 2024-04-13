@@ -43,7 +43,7 @@
     @endforeach
         </div>
             <div style='text-align:right' class="mr-5 ml-auto" >
-                <a href="{{route('Testes-index')}}"><button class="btn btn-primary" style="background-color: #2c9aff; border-radius: 30px; text-align: right; border: none"><font color="#ffffff">Adicionar Promotor</font></button></a>
+                <a href="{{route('Promotores-create')}}"><button class="btn btn-primary" style="background-color: #2c9aff; border-radius: 30px; text-align: right; border: none"><font color="#ffffff">Adicionar Promotor</font></button></a>
             </div>
         </nav>
        
