@@ -23,7 +23,7 @@ class PromotoreStore extends FormRequest
     {
         return [
             'nome'     =>  'required',
-            'email'    =>  'sometimes|required|email',
+            'email'    =>  'sometimes|required|email|unique:promotores,email',
             'senha'    =>  'required',
             'telefone' =>  'required|min:10',];
     }

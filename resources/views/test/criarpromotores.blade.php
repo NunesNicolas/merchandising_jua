@@ -3,15 +3,19 @@
 @section('title','Cadastrar')
 
     @section('content')
-    <div class= "container mt-2">
-    @if($errors->any())
+   
+    <!-- <div class= "container mt-2">
+      
+    @if($errors->any('email'))
       @foreach ($errors->all() as $error)
         <div class="alert alert-danger" role="alert">
           {{$error}}
         </div>
       @endforeach
     @endif
-  </div>
+
+  </div> -->
+
   <div class="conteiner mt-4  ml-5 mr-5 ">
         <h1>Novo Promotor
         <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-person-fill-add" viewBox="0 0 16 16">
@@ -23,26 +27,39 @@
             @csrf
                 <div class ="form-group">
                     <label for="nome">Nome:</label>
-                    <input type="text" class ="form-control" name="nome" placeholder="digite um Nome">
+                    <input type="text" class ="form-control @error('nome') is-invalid @enderror" name="nome" placeholder="digite um Nome">
                 </div>
+                @error('nome')
+                 <div class="alert alert-danger">{{ $message }}</div>
+                @enderror
+              
                 <br>
                 <div class ="form-group">
                     <label for="email">Email:</label>
-                    <input type="text" class ="form-control" name="email" placeholder="digite um Email">
+                  <input type="text" class ="form-control @error('email') is-invalid @enderror" name="email" placeholder="digite um Email">
                 </div>
+                @error('email')
+                 <div class="alert alert-danger">{{ $message }}</div>
+                @enderror
                 <br>
                 <div class ="form-group">
                     <label for="senha">Senha:</label>
-                    <input type="text" class ="form-control" name="senha" placeholder="digite sua senha">
+                    <input type="text" class ="form-control @error('senha') is-invalid @enderror" name="senha" placeholder="digite sua senha">
                 </div>
+                @error('senha')
+                 <div class="alert alert-danger">{{ $message }}</div>
+                @enderror
                 <br>
                 <div class ="form-group">
                     <label for="telefone">Telefone:</label>
-                    <input type="text" class ="form-control" name="telefone" placeholder="digite um Telefone">
+                    <input type="text" class ="form-control @error('telefone') is-invalid @enderror" name="telefone" placeholder="digite um Telefone">
                 </div>
+                @error('telefone')
+                 <div class="alert alert-danger">{{ $message }}</div>
+                @enderror
                 <br>
                 <div class ="form-group">
-                    <input type="submit" nome="submit" class="btn btn-primary">
+                    <input type="submit" nome="submit" class="btn btn-lg btn-primary" style="background-color: #2c9aff; border: none">
                 </div>
 
             </form>
