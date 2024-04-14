@@ -13,18 +13,29 @@
     padding-top:20vh;
 " >
     <div class="d-flex flex-row flex-wrap" style="width: 5vw; height:50vh; justify-content: center;">
-        <a href="" class="bg-primary border-collapse-" style="display: flex;justify-content: center; width: 4vw;  height: 8vh; padding-top: 1vh; border-radius: 1vh;">
-            <img src="https://cdn-icons-png.flaticon.com/512/1077/1077979.png" style="width: 3vw; height: 5vh;">
+        <a href="" class="bg-primary border-collapse- " style="display: flex;justify-content: center; width: 4vw;  height: 8vh; padding-top: 1vh; border-radius: 1vh;">
+        <svg xmlns="http://www.w3.org/2000/svg"fill="#ffffff" height ="6vh" width="5vw" class="bi bi-basket2-fill" viewBox="0 0 16 16">
+  <path d="M5.929 1.757a.5.5 0 1 0-.858-.514L2.217 6H.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h.623l1.844 6.456A.75.75 0 0 0 3.69 15h8.622a.75.75 0 0 0 .722-.544L14.877 8h.623a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1.717L10.93 1.243a.5.5 0 1 0-.858.514L12.617 6H3.383zM4 10a1 1 0 0 1 2 0v2a1 1 0 1 1-2 0zm3 0a1 1 0 0 1 2 0v2a1 1 0 1 1-2 0zm4-1a1 1 0 0 1 1 1v2a1 1 0 1 1-2 0v-2a1 1 0 0 1 1-1"></path>
+        </svg>        
         </a>
+        
         <a href="" class="bg-primary border-collapse-" style="display: flex;justify-content: center; width: 4vw;  height: 8vh; padding-top: 1vh; border-radius: 1vh;">
-            <img src="https://cdn-icons-png.flaticon.com/512/1077/1077979.png" style="width: 3vw; height: 5vh;">
+        <svg xmlns="http://www.w3.org/2000/svg"fill="#ffffff" height ="6vh" width="5vw" class="bi bi-basket2-fill" viewBox="0 0 16 16">
+  <path d="M5.929 1.757a.5.5 0 1 0-.858-.514L2.217 6H.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h.623l1.844 6.456A.75.75 0 0 0 3.69 15h8.622a.75.75 0 0 0 .722-.544L14.877 8h.623a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1.717L10.93 1.243a.5.5 0 1 0-.858.514L12.617 6H3.383zM4 10a1 1 0 0 1 2 0v2a1 1 0 1 1-2 0zm3 0a1 1 0 0 1 2 0v2a1 1 0 1 1-2 0zm4-1a1 1 0 0 1 1 1v2a1 1 0 1 1-2 0v-2a1 1 0 0 1 1-1"></path>
+        </svg>          
         </a>
+
         <a href="" class="bg-primary border-collapse-" style="display: flex;justify-content: center; width: 4vw;  height: 8vh; padding-top: 1vh; border-radius: 1vh;">
-            <img src="https://cdn-icons-png.flaticon.com/512/1077/1077979.png" style="width: 3vw; height: 5vh;">
+        <svg xmlns="http://www.w3.org/2000/svg"fill="#ffffff" height ="6vh" width="5vw" class="bi bi-basket2-fill" viewBox="0 0 16 16">
+  <path d="M5.929 1.757a.5.5 0 1 0-.858-.514L2.217 6H.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h.623l1.844 6.456A.75.75 0 0 0 3.69 15h8.622a.75.75 0 0 0 .722-.544L14.877 8h.623a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1.717L10.93 1.243a.5.5 0 1 0-.858.514L12.617 6H3.383zM4 10a1 1 0 0 1 2 0v2a1 1 0 1 1-2 0zm3 0a1 1 0 0 1 2 0v2a1 1 0 1 1-2 0zm4-1a1 1 0 0 1 1 1v2a1 1 0 1 1-2 0v-2a1 1 0 0 1 1-1"></path>
+        </svg>           
         </a>
+
         <a href="" class="bg-primary border-collapse-" style="display: flex;justify-content: center; width: 4vw;  height: 8vh; padding-top: 1vh; border-radius: 1vh;">
-            <img src="https://cdn-icons-png.flaticon.com/512/1077/1077979.png" style="width: 3vw; height: 5vh;">
-        </a>
+        <svg xmlns="http://www.w3.org/2000/svg"fill="#ffffff" height ="6vh" width="5vw" class="bi bi-basket2-fill" viewBox="0 0 16 16">
+  <path d="M5.929 1.757a.5.5 0 1 0-.858-.514L2.217 6H.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h.623l1.844 6.456A.75.75 0 0 0 3.69 15h8.622a.75.75 0 0 0 .722-.544L14.877 8h.623a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1.717L10.93 1.243a.5.5 0 1 0-.858.514L12.617 6H3.383zM4 10a1 1 0 0 1 2 0v2a1 1 0 1 1-2 0zm3 0a1 1 0 0 1 2 0v2a1 1 0 1 1-2 0zm4-1a1 1 0 0 1 1 1v2a1 1 0 1 1-2 0v-2a1 1 0 0 1 1-1"></path>
+        </svg>           
+    </a>
     </div>
 </nav>
 <main  style="
@@ -75,8 +86,8 @@
         </div>
     @endforeach
         </div>
-            <div style='text-align:right' class="mr-5 ml-auto" >
-                <a href="{{route('Promotores-create')}}"><button class="btn btn-primary" style="background-color: #2c9aff; border-radius: 30px; text-align: right; border: none"><font color="#ffffff">Adicionar Promotor</font></button></a>
+            <div style='text-align:right' class="mt-2 ml-auto" >
+                <a href="{{route('Promotores-create')}}"><button class="btn btn-lg btn-primary" style="background-color: #2c9aff; border-radius: 30px; text-align: right; border: none"><font color="#ffffff">Adicionar Promotor</font></button></a>
             </div>
         </nav>
        
