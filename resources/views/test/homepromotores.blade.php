@@ -2,8 +2,41 @@
 @section('title','promotores')
 
 @section( 'content' )
+<nav class="bg-primary fixed-left" style="
+    width: 5vw;
+    height: 100vh;
+    position: fixed;
+    z-index: 2;
+    display: flex;
+    justify-content: spacy-evenly;
+    flex-wrap: wrap;
+    padding-top:20vh;
+" >
+    <div class="d-flex flex-row flex-wrap" style="width: 5vw; height:50vh; justify-content: center;">
+        <a href="" class="bg-primary border-collapse-" style="display: flex;justify-content: center; width: 4vw;  height: 8vh; padding-top: 1vh; border-radius: 1vh;">
+            <img src="https://cdn-icons-png.flaticon.com/512/1077/1077979.png" style="width: 3vw; height: 5vh;">
+        </a>
+        <a href="" class="bg-primary border-collapse-" style="display: flex;justify-content: center; width: 4vw;  height: 8vh; padding-top: 1vh; border-radius: 1vh;">
+            <img src="https://cdn-icons-png.flaticon.com/512/1077/1077979.png" style="width: 3vw; height: 5vh;">
+        </a>
+        <a href="" class="bg-primary border-collapse-" style="display: flex;justify-content: center; width: 4vw;  height: 8vh; padding-top: 1vh; border-radius: 1vh;">
+            <img src="https://cdn-icons-png.flaticon.com/512/1077/1077979.png" style="width: 3vw; height: 5vh;">
+        </a>
+        <a href="" class="bg-primary border-collapse-" style="display: flex;justify-content: center; width: 4vw;  height: 8vh; padding-top: 1vh; border-radius: 1vh;">
+            <img src="https://cdn-icons-png.flaticon.com/512/1077/1077979.png" style="width: 3vw; height: 5vh;">
+        </a>
+    </div>
+</nav>
+<main  style="
+    widht:95vw;
+    height:200vh;
+    margin-left: 5vw;
+"><!-- Copie esse main de cima quando for copiar a navbar-->
+<nav class="navbar bg-body-tertiary" style="
+        background-color: #ffffff;
+        width: 100%; 
 
-<nav class="navbar bg-body-tertiary" style="background-color: #ffffff">
+    ">
     <div class="container-fluid">
       <a class="navbar-brand ml-auto">
         <img src="https://www.pngall.com/wp-content/uploads/5/Profile-PNG-Pic.png" alt="Perfil" width="30" height="35">
@@ -15,9 +48,9 @@
       </a>
     </div>
 </nav>
-    
 
-    <div class="dash mt-2">
+
+    <div class="dash mt-2" style="width: 90vw;">
  
         <nav id="container" style="display: flex; text-aling: center">
         
@@ -48,4 +81,5 @@
         </nav>
        
     </div>
+</main>
 @endsection
