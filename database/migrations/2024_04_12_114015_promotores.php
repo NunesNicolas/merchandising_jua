@@ -11,20 +11,20 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('promotores', function (Blueprint $table) {
+        Schema::create('promotores', function(blueprint $table){
             $table->id();
             $table->string("nome", 100)->nullable();
             $table->string("email", 100)->nullable();
-            $table->string("status", 50)->nullable();
-            $table->string("telefone", 15)->nullable();
-            $table->timestamps();
+            $table->string("senha", 100)->nullable();
+            $table->string("telefone", 15);
+            $table->timestamps();    
         });
     }
-
     /**
      * Reverse the migrations.
      */
     public function down(): void
     {
+        //
     }
 };

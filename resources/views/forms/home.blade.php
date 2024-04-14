@@ -14,6 +14,9 @@
         <div style='text-align:right' class="mr-2" >
             <a href="{{route('Empresas-create')}}"><button class="btn btn-success">Adicionar Empresa</button></a>
             </div>
+            <div style='text-align:right' class="mr-4" >
+              <a href="{{route('Promotor-create')}}"><button class="btn btn-success">Adicionar Promotor</button></a>
+              </div>
     </div>  
 
     <h1 style="text-align:justify">Listagens Produtos:</h1>
@@ -110,46 +113,4 @@
             @endforeach
               </tbody>
             </table>
-          <h1 style="text-align:justify">Listagens promotores:</h1>
-        <table class="table">
-          <thead>
-              <tr>
-              <th scope="col">Nome</th>
-              <th scope="col">EMAIL</th>
-              <th scope="col">TELEFONE</th>
-              <th scope="col">STATUS</th>
-              </tr>
-          </thead>
-          <tbody>
-          @foreach ($Pormotores as $Pormotor)
-                <tr>
-                  <th>{{ $Pormotor->nome }}</th>
-                  <th>{{ $Pormotor->email }}</th>
-                  <th>{{ $Pormotor->telefone }}</th>
-                  <th>{{ $Pormotor->status }}</th>
-                <th class="d-flex">
-                  <div>
-                    <a href="{{ route('Empresas-edit', ['id'=>$empresa->id]) }}" class="btn btn-primary mr-2" style="heigh:;">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
-                        <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
-                        <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z"/>
-                      </svg>
-                    </a>
-                  </div>
-                    
-                    <form action="{{ route('Empresas-destroy', ['id'=>$empresa->id]) }}" method="POST">
-                      @csrf
-                      @method('DELETE')
-                      <button type="submit" class="btn btn-danger">
-                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">
-                          <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5M8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5m3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0"/>
-                        </svg>
-                      </button>
-                    </form>
-                  </th>
-                </tr>
-          @endforeach
-            </tbody>
-          </table>
-
-
+          

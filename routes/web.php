@@ -2,10 +2,12 @@
 
 use App\Http\Controllers\FormsController;
 use App\Http\Controllers\HomesController;
-use App\Http\Controllers\PromotoresController;
 use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\ProdutosController;
 use App\Http\Controllers\EmpresasController;
+use App\Http\Controllers\TestesController;
+use App\Http\Controllers\PromotorsController;
+use App\Http\Controllers\PromotoresController;
 use App\Models\Empresa;
 use Illuminate\Support\Facades\Route;
 
@@ -19,6 +21,14 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+route::prefix('promotores')->group(function(){
+    Route::get('/', [PromotoresController::class , 'home'])->name('Promotores-home');
+    Route::get('/create', [PromotoresController::class , 'create'])->name('Promotores-create');
+    Route::post('/', [PromotoresController::class , 'store'])->name('Promotores-store');
+
+});
+
+
 route::prefix('crud')->group(function(){
 Route::get('/', [UsuarioController::class , 'home'])->name('Usuario-home');
 Route::get('/create', [UsuarioController::class , 'create'])->name('Usuario-create');
@@ -28,13 +38,13 @@ Route::put('/{id}', [UsuarioController::class , 'update'])->where('id','[0-9]')-
 Route::delete('/{id}', [UsuarioController::class , 'destroy'])->where('id','[0-9]')->name('Usuario-destroy');
 } ); 
 
-route::prefix('promotores')->group(function(){
-Route::get('/', [PromotoresController::class , 'index'])->name('Promotor-index');
-Route::get('/create', [PromotoresController::class , 'create'])->name('Promotor-create');
-Route::post('/', [PromotoresController::class , 'store'])->name('Promotor-store');
-Route::get('/{id}/edit', [PromotoresController::class , 'edit'])->where('id','[0-9]')->name('Promotor-edit');
-Route::put('/{id}', [PromotoresController::class , 'update'])->where('id','[0-9]')->name('Promotor-update');
-Route::delete('/{id}', [PromotoresController::class, 'destroy'])-> where('id', '[0-9]') -> name('Promotor-destroy');
+route::prefix('promotor')->group(function(){
+Route::get('/', [PromotorsController::class , 'index'])->name('Promotor-index');
+Route::get('/create', [PromotorsController::class , 'create'])->name('Promotor-create');
+Route::post('/', [PromotorsController::class , 'store'])->name('Promotor-store');
+Route::get('/{id}/edit', [PromotorsController::class , 'edit'])->where('id','[0-9]')->name('Promotor-edit');
+Route::put('/{id}', [PromotorsController::class , 'update'])->where('id','[0-9]')->name('Promotor-update');
+Route::delete('/{id}', [PromotorsController::class, 'destroy'])-> where('id', '[0-9]') -> name('Promotor-destroy');
 
 } );
 
@@ -59,4 +69,8 @@ route::prefix('produtos')->group (function(){
 route::prefix('forms')->group(function(){
     Route::get('/', [FormsController::class , 'index'])->name('Forms-index');
 
+});
+
+route::prefix('testes')->group (function(){
+    Route::get('/', [TestesController::class , 'index'])->name('Testes-index');
 });

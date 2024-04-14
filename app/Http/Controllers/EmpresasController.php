@@ -29,7 +29,7 @@ class EmpresasController extends Controller
         $empresa = Empresa::where('id', $id)->first();
         if(!empty($empresa))
         {
-            return view('empresa.editempresas', ['empresa'=>$empresa]);        
+            return view('empresa.editempresas', ['empresas'=>$empresa]);        
         }
         else
         {

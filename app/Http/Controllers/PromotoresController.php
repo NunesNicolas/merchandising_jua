@@ -1,54 +1,60 @@
 <?php
-
 namespace App\Http\Controllers;
 
-use App\Models\Promotor;
+use App\Models\Promotores;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Validator;
+use Illuminate\Validation\ValidationException;
+use Illuminate\View\Middleware\ShareErrorsFromSession;
+use Illuminate\Support\MessageBag;
+use App\Http\Requests\PromotoreStore;
 
 class PromotoresController extends Controller
 {
-    public function index()
-    {
-        $promotores = Promotor::all();
-        return view('promotores.homepromotor', ['promotores'=>$promotores]);
-    } 
-    public function create()
-    {
-        return view('promotores.criarpromotor');
-    }      
-    public function store(Request $request)
-    {
-        Promotor::create($request->all());
-        return redirect()->route('Forms-index');
+    public function home(){
+    $promotores = Promotores::all();
+    return view('test.homepromotores', ['promotores'=>$promotores]);
     }
-    public function edit($id)
-    {
-        $promotores = Promotor::where('id', $id)->first();
-        if(!empty($promotores))
-        {
-            return view('forms.home', ['promotores'=>$promotores]);        
-        }
-        else
-        {
-            return redirect()->route('Forms-index');
-        }
+    
+    public function create(){
+        return view('test.criarpromotores');
     }
-    public function update(Request $request, $id)
+
+    public function store(PromotoreStore $request){
+        Promotores::create($request->all());
+        return redirect()->route('Promotores-home');
+    }
+    // public function create(){
+    //     return view('crud.create');
+    // }
+    
+    // public function store(UsuarioStore $request){
+    //     Usuario::create($request->all());
+    //     return redirect()->route('Usuario-home');
+    // }
+    // public function edit($id){
+    //     $users = Usuario::where('id',$id)->first();
+    //     if(!empty($users)){
+    //         return view('crud.edit', ['users'=>$users]);
+    //     }
+    //     else{
+    //         return redirect()->route('Usuario-home');
+    //     }
+    // }
+    public function update(PromotoreStore $request, $id)
     {
-        $data = [
+        $date = [
             'nome' => $request->nome,
             'email' => $request->email,
+            'senha' => bcrypt($request->senha),  
             'telefone' => $request->telefone,
-            'status' => $request->status,
-
-        ];
-        Promotor::where('id', $id)->update($data);
-        return redirect()->route('Forms-index');
+         ];
+        Promotore::where('id',$id)->update($date);
+        return redirect()->route(/*'Usuario-home'*/);
     }
-    public function destroy($id)
-    {
-        Promotor::where('id', $id)->delete();
-        return redirect()->route('Forms-index');
+    public function destroy($id){
+        Promotore::where('id',$id)->delete();
+        return redirect()->route(/*'Usuario-home'*/);
     }
     
 }

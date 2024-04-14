@@ -5,14 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Promotor extends Model
+class Promotores extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'nomepromotor',
-        'emailpromotor',
-        'statuspromotor',
-        'telefonepromotor',
+        'nome',
+        'email',
+        'senha',
+        'telefone',
     ];
+
 }
