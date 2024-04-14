@@ -50,11 +50,11 @@ class PromotoresController extends Controller
             'telefone' => $request->telefone,
          ];
         Promotore::where('id',$id)->update($date);
-        return redirect()->route(/*'Usuario-home'*/);
+        return redirect()->route('Usuario-home');
     }
     public function destroy($id){
         Promotore::where('id',$id)->delete();
-        return redirect()->route(/*'Usuario-home'*/);
+        return redirect()->route('Usuario-home');
     }
     
 }
