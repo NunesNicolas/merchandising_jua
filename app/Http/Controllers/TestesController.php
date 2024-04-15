@@ -9,7 +9,7 @@ class TestesController extends Controller
 {
     public function index (){
         $testes = Teste::all();
-        return view("Jo_testes.joindex", ['testes'=>$testes]);
+        return view("promotores.promotorinfo", ['testes'=>$testes]);
 
     } 
 }

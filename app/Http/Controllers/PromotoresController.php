@@ -20,6 +20,12 @@ class PromotoresController extends Controller
         return view('promotores.criarpromotores');
     }
 
+    public function info (){
+        $promotores = Promotores::all();
+        return view("promotores.promotorinfo", ['promotores'=>$promotores]);
+
+    } 
+
     public function store(PromotoreStore $request){
         Promotores::create($request->all());
         return redirect()->route('Promotores-home');
