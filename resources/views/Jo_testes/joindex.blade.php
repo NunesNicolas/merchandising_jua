@@ -79,7 +79,7 @@
 
 
   <div class="d-flex" style="width: 100%; height: 4vh; justify-content:end; padding:35px">
-      <a type="button" class="btn btn-light align-self-center" style="
+      <a href="{{route('Promotores-home')}}" type="button" class="btn btn-light align-self-center" style="
       border-radius: 20px;
       border:solid #858585 0.2vh;
       color:#858585;
