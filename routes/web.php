@@ -7,6 +7,7 @@ use App\Http\Controllers\ProdutosController;
 use App\Http\Controllers\EmpresasController;
 use App\Http\Controllers\TestesController;
 use App\Http\Controllers\PromotorsController;
+use App\Http\Controllers\PromotoresController;
 use App\Models\Empresa;
 use Illuminate\Support\Facades\Route;
 
