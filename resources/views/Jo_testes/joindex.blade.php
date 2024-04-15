@@ -4,25 +4,148 @@
 
 @section('content')
 
+<style>
 
+</style>
+<nav class="bg-primary fixed-left" style="
+    width: 5vw;
+    height: 100vh;
+    position: fixed;
+    z-index: 2;
+    display: flex;
+    justify-content: spacy-evenly;
+    flex-wrap: wrap;
+    padding-top:20vh;
+">
+    <div class="d-flex flex-row flex-wrap" style="width: 5vw; height:50vh; justify-content: center;">
+        <a href="" class="bg-primary border-collapse" style="display: flex; justify-content: center; width: 4vw;  height: 8vh; padding-top: 1vh; border-radius: 1vh;">
+            <svg xmlns="http://www.w3.org/2000/svg" style="color: white; width: 3vw;  height: 6vh;" fill="currentColor" class="bi bi-grid-1x2-fill" viewBox="0 0 16 16">
+              <path d="M0 1a1 1 0 0 1 1-1h5a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1zm9 0a1 1 0 0 1 1-1h5a1 1 0 0 1 1 1v5a1 1 0 0 1-1 1h-5a1 1 0 0 1-1-1zm0 9a1 1 0 0 1 1-1h5a1 1 0 0 1 1 1v5a1 1 0 0 1-1 1h-5a1 1 0 0 1-1-1z"/>
+            </svg>        
+</a>
+        <a href="" class="bg-primary border-collapse-" style="display: flex;justify-content: center; width: 4vw;  height: 8vh; padding-top: 1vh; border-radius: 1vh;">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-basket2-fill" style="color: white; width: 3vw; height: 6vh;" viewBox="0 0 16 16">
+              <path d="M5.929 1.757a.5.5 0 1 0-.858-.514L2.217 6H.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h.623l1.844 6.456A.75.75 0 0 0 3.69 15h8.622a.75.75 0 0 0 .722-.544L14.877 8h.623a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1.717L10.93 1.243a.5.5 0 1 0-.858.514L12.617 6H3.383zM4 10a1 1 0 0 1 2 0v2a1 1 0 1 1-2 0zm3 0a1 1 0 0 1 2 0v2a1 1 0 1 1-2 0zm4-1a1 1 0 0 1 1 1v2a1 1 0 1 1-2 0v-2a1 1 0 0 1 1-1"/>
+            </svg>
+        </a>
+        <a href="" class="bg-primary border-collapse-" style="display: flex;justify-content: center; width: 4vw;  height: 8vh; padding-top: 1vh; border-radius: 1vh;">
+            <svg xmlns="http://www.w3.org/2000/svg" style="color: white; width: 3vw;  height: 6vh;" fill="currentColor" class="bi bi-people-fill" viewBox="0 0 16 16">
+              <path d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6m-5.784 6A2.24 2.24 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.3 6.3 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1zM4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5"/>
+            </svg>
+        </a>
+        <a href="" class="bg-primary border-collapse-" style="display: flex;justify-content: center; width: 4vw;  height: 8vh; padding-top: 1vh; border-radius: 1vh;">
+            <svg xmlns="http://www.w3.org/2000/svg" style="color: white; width: 3vw;  height: 6vh;" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
+              <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6"/>
+            </svg>
 
-<div class="card"  style="width: 18rem; display: flex"  >
-  <div class="card-body">
-    <svg width="200" height="200">
-        <clipPath id="clipCircle">
-            <circle cx="100" cy="100" r="70" />
-        </clipPath>
-        <circle cx="100" cy="100" r="70" width="200" height="200" fill="none" stroke="grey" stroke-width="3"/>
-        <image xlink:href="data:image/jpeg;base64,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" width="200" height="200" clip-path="url(#clipCircle)" />
-    </svg>
+        </a>
+
+        <a href="" class="bg-primary border-collapse-" style="display: flex;justify-content: center; width: 4vw;  height: 8vh; padding-top: 1vh; border-radius: 1vh;">
+            <svg xmlns="http://www.w3.org/2000/svg" style="color: white; width: 3vw;  height: 6vh;" fill="currentColor" class="bi bi-gear-fill" viewBox="0 0 16 16">
+              <path d="M9.405 1.05c-.413-1.4-2.397-1.4-2.81 0l-.1.34a1.464 1.464 0 0 1-2.105.872l-.31-.17c-1.283-.698-2.686.705-1.987 1.987l.169.311c.446.82.023 1.841-.872 2.105l-.34.1c-1.4.413-1.4 2.397 0 2.81l.34.1a1.464 1.464 0 0 1 .872 2.105l-.17.31c-.698 1.283.705 2.686 1.987 1.987l.311-.169a1.464 1.464 0 0 1 2.105.872l.1.34c.413 1.4 2.397 1.4 2.81 0l.1-.34a1.464 1.464 0 0 1 2.105-.872l.31.17c1.283.698 2.686-.705 1.987-1.987l-.169-.311a1.464 1.464 0 0 1 .872-2.105l.34-.1c1.4-.413 1.4-2.397 0-2.81l-.34-.1a1.464 1.464 0 0 1-.872-2.105l.17-.31c.698-1.283-.705-2.686-1.987-1.987l-.311.169a1.464 1.464 0 0 1-2.105-.872zM8 10.93a2.929 2.929 0 1 1 0-5.86 2.929 2.929 0 0 1 0 5.858z"/>
+            </svg>
+        </a>
+
+    </div>
+</nav>
+<main  style="
+    widht:95vw;
+    margin-left: 5vw;
+">
+  <nav class="navbar bg-body-tertiary" style="background-color: #ffffff; height: 8vh;">
+      <a class="ml-auto" style="">
+        <img src="https://www.pngall.com/wp-content/uploads/5/Profile-PNG-Pic.png" alt="Perfil" style="width:2vw; height: 4vh;">
+        Olá, Selso soares!
+      </a>
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check" viewBox="0 0 16 16">
+        <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425z"/>
+      </svg>
+  </nav>
+  <section style="
+      display: flex;
+      flex-wrap: wrap;
+      width: 100%;
+      justify-content: space-evenly;
+      padding-top: 1vh;
+  ">
+  <div class="d-flex" style="width: 100%; height: 5vh; justify-content:end; padding:20px">
+      <p class="mr-auto" style="color:#858585; font-weight: bold; font-size: 2.2vh;" > Promotores   </p>
+      <p class="" style="color:#858585; font-weight: bold; font-size: 2.2vh;"> Dashboard / Promotores  </p>
   </div>
-    <ul class="list-group list-group-flush">
-      <li class="list-group-item">Nome do Promotor:</li>
-      <li class="list-group-item">Email do Promotor:</li>
-      <li class="list-group-item">Status do Promotor:</li>
-    </ul>
-</div>
-    
-     
 
+
+  <div class="d-flex" style="width: 100%; height: 4vh; justify-content:end; padding:35px">
+      <a type="button" class="btn btn-light align-self-center" style="
+      border-radius: 20px;
+      border:solid #858585 0.2vh;
+      color:#858585;
+      font-weight: bold;
+      "> VOLTAR </a>
+  </div>
+    <div class="card" style="width: 20rem; display: flex; border-radius:20px; height: 65vh;">
+      <div class="card-body" style="width: 20rem; display: flex; justify-content: center;">
+        <svg width="200" height="200">
+            <clipPath id="clipCircle">
+                <circle cx="100" cy="100" r="70"/>
+            </clipPath>
+            <circle cx="100" cy="100" r="70" width="200" height="200" fill="none" stroke="grey" stroke-width="3"/>
+            <image xlink:href="https://www.pngall.com/wp-content/uploads/5/Profile-PNG-Pic.png" width="200" height="200" clip-path="url(#clipCircle)" />
+        </svg>
+      </div>
+        <ul class="list-group list-group-flush" style="border-radius:20px">
+          <li class="list-group-item" style="border: none">Nome do Promotor:</li>
+          <li class="list-group-item" style="border: none">Email do Promotor:</li>
+          <li class="list-group-item" style="border: none; border-radius:20px">Status do Promotor:</li>
+        </ul> 
+    </div>
+    <div class="d-flex" style="
+      width: 41vw; 
+      height: 50vh; 
+      justify-content: space-evenly;
+      flex-wrap: wrap;
+      padding-top: 2vh;
+    ">
+      <div class="bg-white d-flex" style=" justify-content: space-evenly; flex-wrap: wrap; width: 20vw; height:20vh; border-radius: 1vh; padding: 1vh; box-shadow: 0vh 0vh 0.1vh 0.1vh #c0c0c0;">
+        <h6 style=" width: 15vw; height: 9vh;">Tempo médio de atendimento:</h6>
+        <img src="https://cdn.discordapp.com/attachments/1145841372402819143/1229234582977515530/image.png?ex=662ef0ea&is=661c7bea&hm=cbba8302d8813fb5400af32d50008f33a783042805293df5727532541708fda6&" style="width: 4vw; height: 8vh;">
+        <div style="height: 6vh; width: 20vw;"></div>
+        <p style="font-size: 1.5vh; width: 20vw; height:3vh;">Tempo medio de atendimento 14/04/2024</p>
+      </div>
+      <div class="bg-white d-flex" style=" justify-content: space-evenly; flex-wrap: wrap; width: 20vw; height:20vh; border-radius: 1vh; padding: 1vh; box-shadow: 0vh 0vh 0.1vh 0.1vh #c0c0c0;">
+        <h6 style=" width: 15vw; height: 9vh;">Quantidades de atendimentos no mês:</h6>
+        <img src="https://cdn.discordapp.com/attachments/1145841372402819143/1229234815551934635/image.png?ex=662ef122&is=661c7c22&hm=04b32a8707e33c5a32cdef66ab9d12d100e785b90b523bb46d21a160a39b3159&" style="width: 4vw; height: 8vh;">
+          <div style="height: 6vh; width: 20vw;"></div>
+        <p style="font-size: 1.5vh; width: 20vw; height:3vh;">Tempo medio de atendimento 14/04/2024</p>
+      </div>
+      <div class="bg-white d-flex" style=" justify-content: space-evenly; flex-wrap: wrap; width: 20vw; height:20vh; border-radius: 1vh; padding: 1vh; box-shadow: 0vh 0vh 0.1vh 0.1vh #c0c0c0;">
+        <h6 style=" width: 15vw; height: 9vh;">Pesquisas feitas:</h6>
+        <img src="https://cdn.discordapp.com/attachments/1145841372402819143/1229234734639353867/image.png?ex=662ef10e&is=661c7c0e&hm=9d4ccb18d89e5895a2b98f2e54a68942ea38d497bc4cfef505e17dbc197f28a5&" style="width: 4vw; height: 8vh;">
+        <div style="height: 6vh; width: 20vw;"></div>
+        <p style="font-size: 1.5vh; width: 20vw; height:3vh;">Tempo medio de atendimento 14/04/2024</p>
+      </div>
+      <div class="bg-white d-flex" style=" justify-content: space-evenly; flex-wrap: wrap; width: 20vw; height:20vh; border-radius: 1vh; padding: 1vh; box-shadow: 0vh 0vh 0.1vh 0.1vh #c0c0c0;">
+
+      </div>
+    </div>
+    <div class="d-flex bg-white " style="
+        flex-wrap: wrap;
+        width: 25vw;
+        height: 50vh;
+        border-radius: 2vh;
+        padding: 1vh;
+        box-shadow: 0vh 0vh 0.1vh 0.1vh #c0c0c0;
+    ">
+      <p>Atendimento dos ultimos 30 dias</p>
+      <div class="d-flex" style="
+          width: 23vw;
+          height: 50vh;
+          padding: 10vw;
+      "> <p>Grafico</p></div>
+        <div class="ml-auto">
+          <button type="button" class="btn btn-primary" style="border-radius: 20px">Adicionar Cliente</button>
+        </div>
+      </div>
+  </section>
+</main>
+    
 @endsection

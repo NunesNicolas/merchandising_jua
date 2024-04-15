@@ -5,11 +5,11 @@ use App\Http\Controllers\HomesController;
 use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\ProdutosController;
 use App\Http\Controllers\EmpresasController;
-<<<<<<< HEAD
+
 use App\Http\Controllers\TestesController;
-=======
+
 use App\Http\Controllers\PromotorsController;
->>>>>>> e4a239504bd9fea07a7abe0cfbc4bf77b4960b82
+
 use App\Models\Empresa;
 use Illuminate\Support\Facades\Route;
 
