@@ -7,8 +7,8 @@
   <title>Choose Title</title>
 </head>
 
-<body>
-  <div class= "container mt-2">
+<body style="background-color:#f0f6fb;">
+  
     @if($errors->any())
       @foreach ($errors->all() as $error)
         <div class="alert alert-danger" role="alert">
@@ -16,7 +16,6 @@
         </div>
       @endforeach
     @endif
-  </div>
 
   @yield('content') 
 </body>
