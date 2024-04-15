@@ -5,11 +5,8 @@ use App\Http\Controllers\HomesController;
 use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\ProdutosController;
 use App\Http\Controllers\EmpresasController;
-
 use App\Http\Controllers\TestesController;
-
 use App\Http\Controllers\PromotorsController;
-
 use App\Models\Empresa;
 use Illuminate\Support\Facades\Route;
 
@@ -23,6 +20,14 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+route::prefix('promotores')->group(function(){
+    Route::get('/', [PromotoresController::class , 'home'])->name('Promotores-home');
+    Route::get('/create', [PromotoresController::class , 'create'])->name('Promotores-create');
+    Route::post('/', [PromotoresController::class , 'store'])->name('Promotores-store');
+
+});
+
+
 route::prefix('crud')->group(function(){
 Route::get('/', [UsuarioController::class , 'home'])->name('Usuario-home');
 Route::get('/create', [UsuarioController::class , 'create'])->name('Usuario-create');
