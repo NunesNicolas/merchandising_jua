@@ -88,10 +88,16 @@
                 </svg>
                 </div>    
             <ul class="list-group list-group-flush">
-            <li class="list-group-item" style="background-color:#d3d6db; border: none; border-top-left-radius: 10px;border-top-right-radius: 10px"><h6>Nome do Promotor:</h6> {{ $promotor->nome }} </li>
-            <li class="list-group-item" style="background-color:#d3d6db; border: none"><h6>Email do Promotor:</h6>  {{ $promotor->email}}</li>
-            <li class="list-group-item"  style="background-color:#d3d6db; border: none"><h6>Status do Promotor:</h6></li>
-            <a href="" style="text-align: center;   background-color: #2c9aff;border-bottom-left-radius: 10px;border-bottom-right-radius: 10px"><li button type="button" class="btn" ><font color="#ffffff">Detalhes</font></li></button></a>
+
+                <li class="list-group-item" style="background-color:#e7e7e7; border: none; border-top-left-radius: 10px;border-top-right-radius: 10px">
+                    <h6 style="color:#858585">Nome do Promotor:</h6> <p style="color:#8d8d8d; margin-bottom: -10px">{{ $promotor->nome }} </p></li>
+                <li class="list-group-item" style="background-color:#e7e7e7; border: none">
+                    <h6 style="color:#858585">Email do Promotor:</h6>  <p style="color:#8d8d8d; margin-bottom: -10px">{{ $promotor->email}}</p></li>
+                <li class="list-group-item"  style="background-color:#e7e7e7; border: none">
+                    <h6 style="color:#858585">Status do Promotor:</h6></li>
+                
+                <a href="{{route('Promotores-info',['id'=>$promotor->id])}}" style="text-align: center;   background: #2c9aff;border-bottom-left-radius: 10px;border-bottom-right-radius: 10px">
+                <li button type="button" class="btn" ><font color="#ffffff">Detalhes</font></li></button></a>
             </ul>
             </div>
     @endforeach

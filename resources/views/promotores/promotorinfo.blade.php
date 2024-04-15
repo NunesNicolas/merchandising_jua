@@ -49,8 +49,8 @@
 
     </div>
 </nav>
-
-<main  style="
+  
+  <main  style="
     widht:95vw;
     margin-left: 5vw;
 ">
@@ -99,9 +99,15 @@
         </svg>
       </div>
         <ul class="list-group list-group-flush" style="border-radius:20px">
-          <li class="list-group-item" style="border: none">Nome do Promotor:</li>
-          <li class="list-group-item" style="border: none">Email do Promotor:</li>
-          <li class="list-group-item" style="border: none; border-radius:20px">Status do Promotor:</li>
+          <li class="list-group-item" style="background: none;border: none">Nome do Promotor:</li>
+            <li class="list-group-item" style="background: none;border: none; margin-top:-20px; color:#9FA4ADFF">
+              <?php echo $promotor->nome; ?> </li>
+          <li class="list-group-item" style="background: none;border: none">Email do Promotor:</li>
+            <li class="list-group-item" style="background: none;border: none; margin-top:-20px; color:#9FA4ADFF">
+              <?php echo $promotor->email; ?> </li>
+          <li class="list-group-item" style="background: none;border: none; border-radius:20px">Status do Promotor:</li>
+            <li class="list-group-item" style="background: none;border: none; border-radius:20px; margin-top:-20px; color:#9FA4ADFF">
+              <p style="color:red">A DEFINIR</p></li>
         </ul> 
     </div>
     <div class="d-flex" style="
@@ -148,7 +154,7 @@
           padding: 10vw;
       "> <p>Grafico</p></div>
         <div class="ml-auto">
-          <button type="button" class="btn btn-primary" style="border-radius: 20px; background:#2C9AFF">Adicionar Cliente</button>
+          <button type="button" class="btn btn-primary" style="border: none;border-radius: 20px; background:#2C9AFF">Adicionar Cliente</button>
         </div>
       </div>
 

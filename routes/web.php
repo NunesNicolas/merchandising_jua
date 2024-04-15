@@ -25,7 +25,7 @@ route::prefix('promotores')->group(function(){
     Route::get('/', [PromotoresController::class , 'home'])->name('Promotores-home');
     Route::get('/create', [PromotoresController::class , 'create'])->name('Promotores-create');
     Route::post('/', [PromotoresController::class , 'store'])->name('Promotores-store');
-    Route::get('/info', [PromotoresController::class , 'info'])->name('Promotores-info');
+    Route::get('/{id?}', [PromotoresController::class , 'info'])->name('Promotores-info');
 
 });
 

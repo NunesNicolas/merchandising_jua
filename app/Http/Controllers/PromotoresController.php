@@ -20,11 +20,19 @@ class PromotoresController extends Controller
         return view('promotores.criarpromotores');
     }
 
-    public function info (){
-        $promotores = Promotores::all();
-        return view("promotores.promotorinfo", ['promotores'=>$promotores]);
+    public function info ($id){
 
-    } 
+        $promotor = Promotores::find($id);
+
+        if ($promotor) {
+            // O promotor foi encontrado, faça algo com as informações
+            return view("promotores.promotorinfo", ['promotor'=>$promotor]);
+        } else {
+            // O promotor não foi encontrado, trate o erro
+            abort(404);
+        }
+    }
+ 
 
     public function store(PromotoreStore $request){
         Promotores::create($request->all());
