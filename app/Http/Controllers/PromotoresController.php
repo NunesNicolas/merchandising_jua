@@ -13,12 +13,26 @@ class PromotoresController extends Controller
 {
     public function home(){
     $promotores = Promotores::all();
-    return view('test.homepromotores', ['promotores'=>$promotores]);
+    return view('promotores.homepromotores', ['promotores'=>$promotores]);
     }
     
     public function create(){
-        return view('test.criarpromotores');
+        return view('promotores.criarpromotores');
     }
+
+    public function info ($id){
+
+        $promotor = Promotores::find($id);
+
+        if ($promotor) {
+            // O promotor foi encontrado, faça algo com as informações
+            return view("promotores.promotorinfo", ['promotor'=>$promotor]);
+        } else {
+            // O promotor não foi encontrado, trate o erro
+            abort(404);
+        }
+    }
+ 
 
     public function store(PromotoreStore $request){
         Promotores::create($request->all());
