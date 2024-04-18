@@ -169,6 +169,7 @@
           
           " >
 
+<div class="d-flex">
           <div style="width: 90vh; height:50vh; background:#ffffff; border-radius:10px; margin-right: 30px; border:darkgray solid 1px; text-align: left;">
             <ul class="list" style="list-style-type:none; padding:5px">
               <li class="list-item"> <p>VISITAS DO PROMOTOR</p> </li>
@@ -219,7 +220,7 @@
                 </div>
             </ul>
           </div>
-
+        </div>
       </div>
 
   </section>
