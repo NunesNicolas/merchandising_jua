@@ -59,9 +59,8 @@ class PromotoresController extends Controller
     {
         $date = [
             'nome' => $request->nome,
-            'email' => $request->email,
-            'senha' => bcrypt($request->senha),  
-            'telefone' => $request->telefone,
+            'img' => $request->email,
+            'weight' => $request->weight,  
          ];
         Promotores::where('id',$id)->update($date);
         return redirect()->route(/*'Usuario-home'*/);
