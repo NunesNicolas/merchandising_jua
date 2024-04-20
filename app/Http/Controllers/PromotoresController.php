@@ -11,6 +11,7 @@ use App\Http\Requests\PromotoreStore;
 
 class PromotoresController extends Controller
 {
+    //tava comentado po
     public function home(){
     $promotores = Promotores::all();
     return view('promotores.homepromotores', ['promotores'=>$promotores]);
@@ -34,10 +35,10 @@ class PromotoresController extends Controller
     }
  
 
-    public function store(PromotoreStore $request){
-        Promotores::create($request->all());
-        return redirect()->route('Promotores-home');
-    }
+    // public function store(PromotoreStore $request){
+    //     Promotores::create($request->all());
+    //     return redirect()->route('Promotores-home');
+    // }
     // public function create(){
     //     return view('crud.create');
     // }
