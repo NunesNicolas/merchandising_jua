@@ -16,6 +16,6 @@
 @include('components.header.topheader')
 <!-- end of navbar -->
 
-  @yield('content') 
+  @yield('content')
 </body>
 </html>
