@@ -13,12 +13,10 @@ return new class extends Migration
     {
         Schema::create('produtos', function(blueprint $table){
             $table->id();
-            $table->string("nomeproduto", 100)->nullable();
-            $table->string("precoproduto", 15);
-            $table->string("marcaproduto", 15);
-            $table->string("tipoproduto", 15);
-            $table->string("numerovendas", 15);
-            $table->timestamps();
+            $table->string("nome", 100)->nullable();
+            $table->string("img", 100)->nullable();
+            $table->float("weight", 100)->nullable();
+            $table->timestamps();    
         });
     }
 
@@ -27,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-
+        //
     }
 };

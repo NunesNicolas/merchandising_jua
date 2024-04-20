@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Produto;
 use Illuminate\Http\Request;
+use  App\Requests\ProdutoStore;
 
 class ProdutosController extends Controller
 {
@@ -36,11 +37,9 @@ class ProdutosController extends Controller
     public function update(Request $request, $id)
     {
         $data = [
-            'nomeproduto' => $request->nomeproduto,
-            'precoproduto' => $request->precoproduto,
-            'marcaproduto' => $request->marcaproduto,
-            'tipoproduto' => $request->tipoproduto,
-            'numerovendas' => $request->numerovendas,
+            'nome' => $request->nome,
+            'img' => $request->email,
+            'weight' => $request->weight,  
 
         ];
         Produto::where('id', $id)->update($data);
