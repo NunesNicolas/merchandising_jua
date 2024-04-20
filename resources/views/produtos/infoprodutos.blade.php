@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-<title> Testes </title>
+<title> infoprodutos </title>
 
 @section('content')
 
@@ -73,13 +73,13 @@
       font-weight: bold;
   ">
   <div class="d-flex" style="width: 100%; height: 5vh; justify-content:end; padding:20px">
-      <p class="mr-auto" style="color:#858585; font-weight: bold; font-size: 2.2vh;" > Promotores   </p>
+      <p class="mr-auto" style="color:#858585; font-weight: bold; font-size: 2.2vh;" > Produto  </p>
       <p class="" style="color:#858585; font-weight: bold; font-size: 2.2vh;"> Dashboard / Promotores  </p>
   </div>
 
 
   <div class="d-flex" style="width: 100%; height: 4vh; justify-content:end; padding:35px">
-      <a href="{{route('Promotores-home')}}" type="button" class="btn btn-light align-self-center" style="
+      <a href="{{route('index-home')}}" type="button" class="btn btn-light align-self-center" style="
       border-radius: 20px;
       border:solid #858585 0.2vh;
       color:#858585;
@@ -88,7 +88,7 @@
       "> VOLTAR </a>
   </div>
 
-    <div class="card" style="width: 20rem; display: flex; border-radius:20px; height: 85vh;">
+    <div class="card" style="width: 20rem; display: flex; border-radius:20px; height: 75vh;">
       <div class="card-body" style="width: 20rem; display: flex; justify-content: center;">
         <svg width="200" height="200">
             <clipPath id="clipCircle">

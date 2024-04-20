@@ -63,12 +63,12 @@ class PromotoresController extends Controller
             'senha' => bcrypt($request->senha),  
             'telefone' => $request->telefone,
          ];
-        Promotores::where('id',$id)->update($date);
-        return redirect()->route('Usuario-home');
+        Promotore::where('id',$id)->update($date);
+        return redirect()->route(/*'Usuario-home'*/);
     }
     public function destroy($id){
-        Promotores::where('id',$id)->delete();
-        return redirect()->route('Usuario-home');
+        Promotore::where('id',$id)->delete();
+        return redirect()->route(/*'Usuario-home'*/);
     }
     
 }
