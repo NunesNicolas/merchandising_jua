@@ -33,7 +33,7 @@
       "> VOLTAR </a>
   </div>
 
-    <div class="card" style="width: 20rem; display: flex; border-radius:20px; height: 75vh;">
+    <div class="card" style="width: 20rem; display: flex; border-radius:20px; height: 85vh;">
       <div class="card-body" style="width: 20rem; display: flex; justify-content: center;">
         <svg width="200" height="200">
             <clipPath id="clipCircle">
@@ -114,7 +114,6 @@
           
           " >
 
-<div class="d-flex">
           <div style="width: 90vh; height:50vh; background:#ffffff; border-radius:10px; margin-right: 30px; border:darkgray solid 1px; text-align: left;">
             <ul class="list" style="list-style-type:none; padding:5px">
               <li class="list-item"> <p>VISITAS DO PROMOTOR</p> </li>
