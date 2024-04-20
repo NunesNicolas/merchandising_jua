@@ -4,22 +4,23 @@ namespace App\Http\Controllers;
 
 use App\Models\Produto;
 use Illuminate\Http\Request;
+use  App\Requests\ProdutoStore;
 
 class ProdutosController extends Controller
 {
     public function index()
     {
         $produtos = Produto::all();
-        return view('produtos.index', ['produtos'=>$produtos]);
+        return view('produtos.homeprodutos', ['produtos'=>$produtos]);
     }
     public function create()
     {
-        return view('produtos.createprodutos');
+        return view('produtos.criarprodutos');
     }
     public function store(Request $request)
     {
         Produto::create($request->all());
-        return redirect()->route('Forms-index');
+        return redirect()->route('Produtos-index');
     }
     public function edit($id)
     {
@@ -36,15 +37,13 @@ class ProdutosController extends Controller
     public function update(Request $request, $id)
     {
         $data = [
-            'nomeproduto' => $request->nomeproduto,
-            'precoproduto' => $request->precoproduto,
-            'marcaproduto' => $request->marcaproduto,
-            'tipoproduto' => $request->tipoproduto,
-            'numerovendas' => $request->numerovendas,
+            'nome' => $request->nome,
+            'img' => $request->email,
+            'weight' => $request->weight,  
 
         ];
         Produto::where('id', $id)->update($data);
-        return redirect()->route('Forms-index');
+        return redirect()->route('Produtos-index');
     }
     public function destroy($id)
     {

@@ -1,3 +1,6 @@
+@extends('components.header.navbar')
+@extends('components.header.topheader')
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,18 +11,11 @@
   <title>@yield('title')</title>
 </head>
 <body style="background-color: #f0f6fb">
+<!-- navbar -->
+@include('components.header.navbar')
+@include('components.header.topheader')
+<!-- end of navbar -->
 
-                      <!-- mensagem de erro -->
-  <!-- <div class= "container mt-2">
-    @if($errors->any())
-      @foreach ($errors->all() as $error)
-        <div class="alert alert-danger" role="alert">
-          {{$error}}
-        </div>
-      @endforeach
-    @endif
-  </div> -->
-
-  @yield('content') 
+  @yield('content')
 </body>
 </html>
