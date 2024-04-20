@@ -17,6 +17,25 @@ class ProdutosController extends Controller
     {
         return view('produtos.criarprodutos');
     }
+
+    public function info ($id){
+
+        $produto = Produtos::find($id);
+
+        if ($produto) {
+            // O promotor foi encontrado, faça algo com as informações
+            return view("produtos.produtoinfo", ['produto'=>$produto]);
+        } else {
+            // O promotor não foi encontrado, trate o erro
+            abort(404);
+        }
+    }
+
+
+
+
+
+
     public function store(Request $request)
     {
         Produto::create($request->all());
