@@ -20,7 +20,7 @@ class ProdutosController extends Controller
 
     public function info ($id){
 
-        $produto = Produtos::find($id);
+        $produto = Produto::find($id);
 
         if ($produto) {
             // O promotor foi encontrado, faça algo com as informações
