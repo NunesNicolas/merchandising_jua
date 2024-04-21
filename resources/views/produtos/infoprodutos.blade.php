@@ -7,7 +7,7 @@
 <style>
 
 </style>
-<nav class="fixed-left" style="
+<nav class="fixed-left bg-danger" style="
     width: 5vw;
     height: 100vh;
     position: fixed;
@@ -16,7 +16,7 @@
     justify-content: spacy-evenly;
     flex-wrap: wrap;
     padding-top:20vh;
-    background-color: #2C9AFF;
+    
 ">
     <div class="d-flex flex-row flex-wrap" style="width: 5vw; height:50vh; justify-content: center;">
         <a href="" class="border-collapse" style="display: flex; justify-content: center; width: 4vw;  height: 8vh; padding-top: 1vh; border-radius: 1vh;">
@@ -139,7 +139,7 @@
 
       </div>
     </div>
-    <div class="d-flex bg-white " style="
+    <div class="d-flex bg-dark " style="
         flex-wrap: wrap;
         width: 25vw;
         height: 50vh;

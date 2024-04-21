@@ -2,7 +2,7 @@
 
 @section('title','criação')
 
-    @section('content')
+@section('content')
   <div class="conteiner mt-4  ml-5 mr-5 ">
         <h1>Novo Produto
         <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-person-fill-add" viewBox="0 0 16 16">
@@ -42,5 +42,5 @@
                 </div>
 
             </form>
-  </div>
-    @endsection
+    </div>
+@endsection
