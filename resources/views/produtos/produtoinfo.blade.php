@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title','1')
+@section('title', "{$produto->nome}")
 
 @section( 'content' )   
 
@@ -77,7 +77,7 @@
 
 
   <div class="d-flex" style="width: 100%; height: 4vh; justify-content:end; padding:35px">
-      <a href="" type="button" class="btn btn-light align-self-center" style="
+      <a href="{{route('Produtos-index')}}" type="button" class="btn btn-light align-self-center" style="
       border-radius: 20px;
       border:solid #858585 0.2vh;
       color:#858585;
@@ -108,10 +108,10 @@
           </svg>
         </a>
       </div>
-        <img src="" style="width: 15vw; height: 29vh;">
+        <img src="<?php echo $produto->img; ?>" style="width: 15vw; height: 29vh;">
         <div style="display: flex; width: 68vw; height: 30vh; flex-wrap: wrap; align-items: center; justify-content: space-between; padding: 1vh;">
-          <label>Nome do Produto</label>
-          <p class="inputFachada" style="width: 67vw;"> Produto</p>
+          <label> nome do produto:</label>
+          <p class="inputFachada" style="width: 67vw;"> <?php echo $produto->nome; ?> </p>
           <label>Preço medio</label>
           <label>Quantidade do concorrente</label>
           <p class="inputFachada" style="width: 32vw;"></p>

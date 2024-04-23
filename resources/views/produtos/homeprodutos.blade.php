@@ -41,10 +41,11 @@
 
         @foreach($produtos as $produto)
 
-        <div class="card" style="justify-content: center; align-items: center; border-radius: 10px; width: 280px; height: 280px; display: flex; margin: 10px;">
+        <div class="card" style="justify-content: center; align-items: center; border-radius: 10px; width: 280px; height: 300px; display: flex; margin: 10px;">
             <img class="" style="height: 33vh; width: 33vh;" src="<?php echo $produto->img; ?>" alt="..." >
+            <h5 style="color:#8d8d8d"><?php echo $produto->nome; ?></h5>
             <div class="mt-2" style="text-align: center">
-                <a href="{{route('Produtos-info',['id'=>$produto->id])}}" class="btn btn-primary" style="text-align: center; background: #2c9aff; width: 250px">Detalhes</a>                 
+                <a href="{{route('Produtos-info',['id'=>$produto->id])}}" class="btn btn-primary" style="border:none;text-align: center; background: #2c9aff; width: 250px">Detalhes</a>                 
             </div>
         </div>
         @endforeach
