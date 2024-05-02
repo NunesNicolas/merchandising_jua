@@ -20,7 +20,7 @@
 
     <!-- BOX 1 -->
 
-        <!-- LINHA 1 -->
+        <!-- BX1: LINHA 1 -->
     <div class="bg-white ml-3 mr-3" style="margin-top:-1vh; height:40vh; border-radius: 1vh; padding: 1vh; box-shadow: 0vh 0vh 0.1vh 0.1vh #c0c0c0;">
           <div class= "d-flex">
             
@@ -47,7 +47,7 @@
                
         </div>
         <br>
-        <!-- LINHA 2 -->
+        <!-- BX1: LINHA 2 -->
         <div class= "d-flex" style="height: 10%">
             <li class="list-group-item ml-0 mr-2" style="width: 100%; border: none; border-radius: 10px">
                 <p style="font-size:15px; color:#858585;font-weight: bold; margin-top:-10px">Endereço do cliente</p>
@@ -61,7 +61,7 @@
                
         </div>
         <br>
-        <!-- LINHA 3 -->
+        <!-- BX1: LINHA 3 -->
         
         <div class= "d-flex" style="height: 10%">
             <li class="list-group-item ml-0 mr-2" style="width: 25%; border: none; border-radius: 10px">
@@ -95,5 +95,30 @@
         </div>
       
     </div>
+
+    <!-- filtro -->
+    <div class="d-flex" style="justify-content: end">
+    <li class="list-group-item ml-0 mr-" style="background: none;border: none; border-radius: 10px; text-align: end">
+                <p style="font-size:15px; color:#858585;font-weight: bold">Filtro:</p>
+            </li>
+
+                <style>
+                    .select{
+                        background: #e7e7e7;
+                        color: #8d8d8d;
+                        border-color:#8d8d8d;
+                    }   
+
+                </style>
+            <select class="select mt-2 mr-3" aria-label="Default select example" style="height: 5vh; border-radius: 10px">
+                <option class="option" selected>Periodo de tempo</option>
+                <option class="option" value="1">One</option>
+                <option class="option" value="2">Two</option>
+                <option class="option" value="3">Three</option>
+            </select>
+    </div>
+  
+
+
 </main>
     @endsection
