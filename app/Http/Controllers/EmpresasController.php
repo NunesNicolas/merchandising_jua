@@ -10,7 +10,7 @@ class EmpresasController extends Controller
 {
     public function index(){
         $empresa = Empresa::all();
-        return view('forms.home', ['empresas' => $empresa]);
+        return view('empresa.home', ['empresas' => $empresa]);
     }
 
     public function create()
@@ -21,20 +21,15 @@ class EmpresasController extends Controller
     public function store(Request $request)
     {
         Empresa::create($request->all());
-        return redirect()->route('Forms-index');
+        return redirect()->route('Empresas-index');
     }
 
-    public function edit($id)
+    public function info($id)
     {
         $empresa = Empresa::where('id', $id)->first();
-        if(!empty($empresa))
-        {
-            return view('empresa.editempresas', ['empresas'=>$empresa]);        
-        }
-        else
-        {
-            return redirect()->route('Forms-index');
-        }
+    
+            return view('empresa.info', ['empresas'=>$empresa]);        
+
     }
 
     public function update(Request $request, $id)

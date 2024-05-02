@@ -2,7 +2,7 @@
 
 @section('title','criação')
 
-    @section('content')
+@section('content')
   <div class="conteiner mt-4  ml-5 mr-5 ">
         <h1>Novo Produto
         <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-person-fill-add" viewBox="0 0 16 16">
@@ -14,33 +14,29 @@
             @csrf
                 <div class ="form-group">
                     <label for="nomeproduto">Nome do Produto:</label>
-                    <input type="text" class ="form-control" name="nomeproduto" placeholder="Digite um Nome">
+                    <input type="text" class ="form-control" name="nome" placeholder="Digite um Nome">
                 </div>
+                @error('nome')
+                 <div class="alert alert-danger">{{ $message }}</div>
+                @enderror
                 <br>
                 <div class ="form-group">
-                    <label for="precoproduto">Preço do Produto:</label>
-                    <input type="text" class ="form-control" name="precoproduto" placeholder="Digite um Preço">
+                    <label for="precoproduto">adicione o link da imagem do seu produto:</label>
+                    <input type="text" class ="form-control" name="img" placeholder="Digite um Preço">
                 </div>
+                @error('img')
+                 <div class="alert alert-danger">{{ $message }}</div>
+                @enderror
                 <br>
-                <div class ="form-group">
-                    <label for="marcaproduto">Marca do Produto:</label>
-                    <input type="text" class ="form-control" name="marcaproduto" placeholder="Digite uma Marca">
-                </div>
+                <label for="marcaproduto">Peso do Produto:</label>
+                <select id="weight" name="weight" class="custom-select my-1">
+                    <option value="500">500g</option>
+                    <option value="1000">1kg</option>
+                    <option value="5000">5kg</option>
+                </select>
                 <br>
-                <div class ="form-group">
-                    <label for="tipoproduto">Tipo do Produto:</label>
-                    <input type="text" class ="form-control" name="tipoproduto" placeholder="Digite um Tipo">
-                </div>
-                <br>
-                <div class ="form-group">
-                    <label for="numerovendas">Número de vendas do Produto:</label>
-                    <input type="text" class ="form-control" name="numerovendas" placeholder="Digite as Vendas">
-                </div>
-                <br>
-                <div class ="form-group">
-                    <input type="submit" nome="submit" class="btn btn-primary">
-                </div>
-
+                <button type="submit" class="btn btn-primary">Criar Produto</button>
+            
             </form>
-  </div>
-    @endsection
+    </div>
+@endsection
