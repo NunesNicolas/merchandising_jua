@@ -1,5 +1,71 @@
 @extends('layouts.app')
 
+<style>
+    .divSearch{
+      display: flex;
+      flex-wrap: wrap;
+      width: 100%;
+      height: 10vh;
+      justify-content: end;
+      align-items: center;
+      padding-inline: 1vw;
+    }
+    .divSearch input, select{
+      height: 5vh;
+      border-radius: 1vh;
+      font-size: 2.2vh;
+      border: none;
+      margin-inline: 1vw;
+    }
+    .divSearch input{
+      background-color: #9EDCFF;
+      width: 15vw;
+    }
+    .divSearch input:focus{
+      background-color: #fff;
+    }
+    .divSearch select{
+      width: 12vw;
+      font-size: 2vh;
+    }
+    .divSearch p{
+      margin-top: 2.5vh;
+      font-weight: bold;
+      font-size: 2.2vh;
+      color:#858585;
+    }
+    .divSearch select option{
+      font-size: 2.2vh;
+    }
+    
+    .divSearch select:after{
+      background-color: #c4c4c4;
+    }
+    table{
+      width: 75%;
+    }
+    table tr th{
+      font-size: 2vh;
+      color: #858585;
+    }
+    .indicadores th{
+        font-size: 2.2vh;
+        color: #000;
+        font-weight: bold;
+    }
+    #infos a{
+      font-size: 2.2vh;
+      justify-content: center;
+      align-items: center;
+      text-decoration: none;
+      color: #858585;
+    }
+    #infos a:hover{
+      color: #2C9AFF;
+    }
+
+</style>
+
 @section('title','criação')
 
     @section('content')
@@ -74,7 +140,7 @@
                 <p style="font-size:15px; color:#858585;font-weight: bold; margin-top:-10px">Nome promotor</p>
             </li>
             <li class="list-group-item ml-0 mr-2" style="width: 25%; border: none; border-radius: 10px">
-                <p style="font-size:15px; color:#858585;font-weight: bold; margin-top:-10px">Tempo dp último atendimento</p>
+                <p style="font-size:15px; color:#858585;font-weight: bold; margin-top:-10px">Tempo do último atendimento</p>
             </li>
                
         </div>
@@ -117,6 +183,42 @@
                 <option class="option" value="3">Three</option>
             </select>
     </div>
+
+    {{-- Data Visita --}}
+    <section class="ml-3" style="width: 100%; justify-content: space-evenly; align-items: center;">
+            <div class="d-flex flex-wrap content-normal bg-light" id="infos" style="
+              width: 95%;
+              height: 8vh;
+              border-left:
+              solid 0.3vw #2C9AFF;
+              border-radius: 0.5vh;
+              align-items: center;
+              justify-content:space-evenly;
+              box-shadow: 0vh 0.1vh 0.3vh 0vh #858585;
+              ">
+              <table>
+                <tr class="indicadores">
+                  <th>DATA VISITA</th>
+                </tr>
+                <tr>
+                  <th>06/12/2022</th>
+                </tr>
+              </table>
+              <a href="" class="d-flex">Ver Pesquisas 
+                <svg xmlns="http://www.w3.org/2000/svg" style="width: 2vw; height: 4vh;" fill="currentColor" class="bi bi-file-earmark-text ml-1" viewBox="0 0 16 16">
+                  <path d="M5.5 7a.5.5 0 0 0 0 1h5a.5.5 0 0 0 0-1zM5 9.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5m0 2a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5"/>
+                  <path d="M9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4.5zm0 1v2A1.5 1.5 0 0 0 11 4.5h2V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1z"/>
+                </svg>
+              </a>
+              <a href="" class="d-flex">Ver Registros  
+                <svg xmlns="http://www.w3.org/2000/svg" style="width: 2vw; height: 4vh;" fill="currentColor" class="bi bi-camera ml-1" viewBox="0 0 16 16">
+                    <path d="M15 12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h1.172a3 3 0 0 0 2.12-.879l.83-.828A1 1 0 0 1 6.827 3h2.344a1 1 0 0 1 .707.293l.828.828A3 3 0 0 0 12.828 5H14a1 1 0 0 1 1 1zM2 4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-1.172a2 2 0 0 1-1.414-.586l-.828-.828A2 2 0 0 0 9.172 2H6.828a2 2 0 0 0-1.414.586l-.828.828A2 2 0 0 1 3.172 4z"/>
+                    <path d="M8 11a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5m0 1a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7M3 6.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0"/>
+                  </svg>
+              </a>
+            </div>
+
+      </section>
   
 
 
