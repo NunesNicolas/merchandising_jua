@@ -4,8 +4,6 @@
 
 <style>
   .inputFachada{
-     height: 7vh; border: 0.1vh solid #c0c0c0; background-color: #d3d3d3; color: #808080; border-radius: 0.5vh; padding: 1vh;
-  }
      height: 7vh; border:none solid #c0c0c0; background-color: #e7e7e7; color: #808080; border-radius: 1vh; padding: 1vh; text-align:justify;
   } 
   label{
@@ -22,7 +20,6 @@
     flex-wrap: wrap;
     justify-content: space-between;
     align-items: end;
-    border-top: 0.2vh solid #808080;
     border-top: 0.2vh solid #d3d6db;
   }
   .btnPeso{
@@ -91,7 +88,6 @@
 
   <div>
     <div class="d-flex" style="
-      border: 0.2vh solid #000;
       border: 0.2vh solid #d3d6db;
       width: 85vw;
       height: 50vh;
@@ -129,7 +125,6 @@
             </div>
             <div class="btnPeso" style="display:flex; flex-wrap: wrap; justify-content: end; align-items: center; padding-right: 1vw;">
               <button class="addButton">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-lg" viewBox="0 0 16 16">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill=" " class="bi bi-plus-lg" viewBox="0 0 16 16">
                   <path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2"/>
                   </svg>
