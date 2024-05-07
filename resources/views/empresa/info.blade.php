@@ -156,11 +156,10 @@
             </li>
             <li class="list-group-item ml-3 mr-3" style="width: 25%; background-color:#e7e7e7; border: none; border-radius: 10px">
                 <p style="font-size:15px;color:#8d8d8d; margin-top:-10px"> Tempo</p>
-            </li>
-               
+            </li>  
         </div>
-      
-    </div>
+
+  </div>
 
     <!-- filtro -->
     <div class="d-flex" style="justify-content: end">
@@ -197,7 +196,7 @@
               justify-content:space-evenly;
               box-shadow: 0vh 0.1vh 0.3vh 0vh #858585;
               ">
-              <table>
+              <table style="margin-top:5px">
                 <tr class="indicadores">
                   <th>DATA VISITA</th>
                 </tr>
@@ -205,13 +204,13 @@
                   <th>06/12/2022</th>
                 </tr>
               </table>
-              <a href="" class="d-flex">Ver Pesquisas 
+              <a href="" class="d-flex" style="margin-top:5px">Ver Pesquisas 
                 <svg xmlns="http://www.w3.org/2000/svg" style="width: 2vw; height: 4vh;" fill="currentColor" class="bi bi-file-earmark-text ml-1" viewBox="0 0 16 16">
                   <path d="M5.5 7a.5.5 0 0 0 0 1h5a.5.5 0 0 0 0-1zM5 9.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5m0 2a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5"/>
                   <path d="M9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4.5zm0 1v2A1.5 1.5 0 0 0 11 4.5h2V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1z"/>
                 </svg>
               </a>
-              <a href="" class="d-flex">Ver Registros  
+              <a href="" class="d-flex" style="margin-top:-45px">Ver Registros  
                 <svg xmlns="http://www.w3.org/2000/svg" style="width: 2vw; height: 4vh;" fill="currentColor" class="bi bi-camera ml-1" viewBox="0 0 16 16">
                     <path d="M15 12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h1.172a3 3 0 0 0 2.12-.879l.83-.828A1 1 0 0 1 6.827 3h2.344a1 1 0 0 1 .707.293l.828.828A3 3 0 0 0 12.828 5H14a1 1 0 0 1 1 1zM2 4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-1.172a2 2 0 0 1-1.414-.586l-.828-.828A2 2 0 0 0 9.172 2H6.828a2 2 0 0 0-1.414.586l-.828.828A2 2 0 0 1 3.172 4z"/>
                     <path d="M8 11a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5m0 1a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7M3 6.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0"/>
@@ -220,37 +219,38 @@
             </div>
 
       </section>
-      <div class="d-flex flex-wrap content-normal bg-light justify-content-start ml-3" style="
+    <div class="d-flex flex-wrap content-normal bg-light justify-content-start ml-3" style="
     width: 35%;
     height: 95vh;
     border-radius: 0.5vh;
     align-items: flex-start;
     box-shadow: 0vh 0.1vh 0.3vh 0vh #858585;
     padding: 20px;
-">
-    <table style="width: 100%;">
-        <tr class="indicadores"> 
-            <th style="text-align: left; font-size: 15px;">Preço Médio dos Produtos JUA</th>
-        </tr>
-        <tr>
-            <td style="text-align: left; font-size: 13px;">Pesquisa Atualizada em 12/06/2023</td>
-        </tr>
-    </table>
-    <div style=" display: flex; align-items: right;">
-        <img src="https://phygital-files.mercafacil.com/catalogo/uploads/produto/desinfetante_1l_jua_herbal_e5fca3b1-3444-4700-afeb-1912ba8b8dfa.png" alt="Desinfetante Herbal 2L" style="max-width: 50px; height: auto; margin-right: 15px;">
-        <div>
-        <th style="text-align: left;">Desinfetante herbal 2L</th>
-        <p> R$ 11,50 </p>
-        </div>
-    </div>
-    <div style=" display: flex; align-items: right;">
-        <img src="https://sabaojua.com.br/Upload/Products/Louca/Prancheta%203_6553c1ab98e9a.png" alt="Desinfetante Herbal 2L" style="max-width: 50px; height: auto; margin-right: 15px;">
-        <div>   
-        <th style="text-align: left;">Detergente maça 500ml</th>
-        <p> R$ 11,50 </p>
-        </div>
-    </div>
-</div>
+    margin-right:18px;
+    ">  
+          <table style="width: 100%; margin-bottom: -10px;  margin-left:10px">
+              <tr class="indicadores" > 
+                  <th style="text-align: left; font-size: 15px;">Preço Médio dos Produtos JUA</th>
+              </tr>
+              <tr>
+                  <td style="text-align: left; font-size: 13px;">Pesquisa Atualizada em 12/06/2023</td>
+              </tr>
+          </table>
+          <div style=" display: flex; align-items: right;margin-top:-130px; margin-bottom:-100px">
+              <img src="https://phygital-files.mercafacil.com/catalogo/uploads/produto/desinfetante_1l_jua_herbal_e5fca3b1-3444-4700-afeb-1912ba8b8dfa.png" alt="Desinfetante Herbal 2L" style="max-width: 50px; height: auto; margin-right: 15px;">
+              <div>
+              <th style="text-align: left;">Desinfetante herbal 2L</th>
+              <p> R$ 11,50 </p>
+              </div>
+          </div>
+          <div style=" display: flex; align-items: right;margin-top:-240px">
+              <img src="https://sabaojua.com.br/Upload/Products/Louca/Prancheta%203_6553c1ab98e9a.png" alt="Desinfetante Herbal 2L" style="max-width: 50px; height: auto; margin-right: 15px;">
+              <div>   
+              <th style="text-align: left;">Detergente maça 500ml</th>
+              <p> R$ 11,50 </p>
+              </div>
+          </div>
+      </div>
     </div>
 </main>
     @endsection
