@@ -120,5 +120,6 @@
           </div>
       {{-- @endforeach --}}
     </section>
+<script src="script.js"></script>
 </main>
     @endsection

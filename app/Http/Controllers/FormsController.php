@@ -19,7 +19,7 @@ class FormsController extends Controller
     return view('forms.home', [
         'produtos'=>$produtos, 
         'empresas' => $empresa,
-        'promotors'=>$promotor
+        'promotors'=>$promotor,
     ]);
     }
 }

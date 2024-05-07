@@ -185,6 +185,7 @@
     </div>
 
     {{-- Data Visita --}}
+    <div class="d-flex">
     <section class="ml-3" style="width: 100%; justify-content: space-evenly; align-items: center;">
             <div class="d-flex flex-wrap content-normal bg-light" id="infos" style="
               width: 95%;
@@ -219,8 +220,37 @@
             </div>
 
       </section>
-  
-
-
+      <div class="d-flex flex-wrap content-normal bg-light justify-content-start ml-3" style="
+    width: 35%;
+    height: 95vh;
+    border-radius: 0.5vh;
+    align-items: flex-start;
+    box-shadow: 0vh 0.1vh 0.3vh 0vh #858585;
+    padding: 20px;
+">
+    <table style="width: 100%;">
+        <tr class="indicadores"> 
+            <th style="text-align: left; font-size: 15px;">Preço Médio dos Produtos JUA</th>
+        </tr>
+        <tr>
+            <td style="text-align: left; font-size: 13px;">Pesquisa Atualizada em 12/06/2023</td>
+        </tr>
+    </table>
+    <div style=" display: flex; align-items: right;">
+        <img src="https://phygital-files.mercafacil.com/catalogo/uploads/produto/desinfetante_1l_jua_herbal_e5fca3b1-3444-4700-afeb-1912ba8b8dfa.png" alt="Desinfetante Herbal 2L" style="max-width: 50px; height: auto; margin-right: 15px;">
+        <div>
+        <th style="text-align: left;">Desinfetante herbal 2L</th>
+        <p> R$ 11,50 </p>
+        </div>
+    </div>
+    <div style=" display: flex; align-items: right;">
+        <img src="https://sabaojua.com.br/Upload/Products/Louca/Prancheta%203_6553c1ab98e9a.png" alt="Desinfetante Herbal 2L" style="max-width: 50px; height: auto; margin-right: 15px;">
+        <div>   
+        <th style="text-align: left;">Detergente maça 500ml</th>
+        <p> R$ 11,50 </p>
+        </div>
+    </div>
+</div>
+    </div>
 </main>
     @endsection
