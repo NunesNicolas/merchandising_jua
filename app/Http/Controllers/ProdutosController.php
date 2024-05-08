@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Competitor;
 use App\Models\Produto;
 use Illuminate\Http\Request;
 use  App\Requests\ProdutoStore;
@@ -17,6 +18,7 @@ class ProdutosController extends Controller
     {
         return view('produtos.criarprodutos');
     }
+    
 
     public function info ($id){
 
@@ -31,10 +33,10 @@ class ProdutosController extends Controller
         }
     }
 
-
-
-
-
+    public function create_competitors()
+    {
+        return view('produtos.adicionarcompetitors');
+    }
 
     public function store(Request $request)
     {
@@ -69,4 +71,17 @@ class ProdutosController extends Controller
         Produto::where('id', $id)->delete();
         return redirect()->route('Forms-index');
     }
+
+    // COMPETITORS ROUTES :c
+
+
+    public function store_competitors (Request $request)
+    {
+        Competitor::create($request->all());
+        return redirect()-route('Produtos-index');
+    }
+
+    // FALTA COISA 
+
+
 }

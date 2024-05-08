@@ -110,10 +110,10 @@
       </div>
         <img src="<?php echo $produto->img; ?>" style="width: 15vw; height: 29vh;">
         <div style="display: flex; width: 68vw; height: 30vh; flex-wrap: wrap; align-items: center; justify-content: space-between; padding: 1vh;">
-          <label> nome do produto:</label>
+          <label>Nome do produto:</label>
           <p class="inputFachada" style="width: 67vw;"> <?php echo $produto->nome; ?> </p>
-          <label>Preço medio</label>
-          <label>Quantidade do concorrente</label>
+          <label>Preço médio:</label>
+          <label>Quantidade do concorrente:</label>
           <p class="inputFachada" style="width: 32vw;"></p>
           <p class="inputFachada" style="width: 32vw;"></p>
         </div>
@@ -133,9 +133,18 @@
         </div>
     </div>
    </div>
+
+    <div style="width:100%; align-items:left; padding:1%; margin-left:8vh">
+    <a href="{{route('Competitors-create')}}" class="btn btn-primary" style="color:#ffffff; font-weight: bold; border-radius:15px">ADICIONAR CONCORRENTE
+    </a>
+    </div>
+
+    {{-- FALTA FAZER O IF ELSE ENTRE ESSAS 2 DIVS --}}
+
     <div class="d-flex" style="width: 100%; height: 5vh; justify-content:end; padding:20px">
       <p class="mr-auto" style=" margin-left: 3vw; color:#858585; font-weight: bold;"> Sem produtos concorrentes cadastrados  </p>
     </div>
+    
   </section>
 </main>
 @endsection

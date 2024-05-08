@@ -40,17 +40,21 @@ Route::prefix('produtos')->group (function(){
         Route::get('/{id}/edit', [ProdutosController::class , 'edit'])->where('id','[0-9]+')->name('Produtos-edit');
         Route::put('/{id}', [ProdutosController::class , 'update'])->where('id','[0-9]+')->name('Produtos-update');
         Route::delete('/{id}', [ProdutosController::class , 'destroy'])->where('id','[0-9]+')->name('Produtos-destroy');
+        //----------------------------------------------------------------------------------------
+        Route::get('/createcm', [ProdutosController::class , 'create_competitors'])->name('Competitors-create');
+        Route::post('/', [ProdutosController::class , 'store_competitors'])->name('Competitors-store');
+        
 });
 
 
-route::prefix('crud')->group(function(){
-Route::get('/', [UsuarioController::class , 'home'])->name('Usuario-home');
-Route::get('/create', [UsuarioController::class , 'create'])->name('Usuario-create');
-Route::post('/', [UsuarioController::class , 'store'])->name('Usuario-store');
-Route::get('/{id}/edit', [UsuarioController::class , 'edit'])->where('id','[0-9]')->name('Usuario-edit');
-Route::put('/{id}', [UsuarioController::class , 'update'])->where('id','[0-9]')->name('Usuario-update');
-Route::delete('/{id}', [UsuarioController::class , 'destroy'])->where('id','[0-9]')->name('Usuario-destroy');
-} ); 
+// route::prefix('crud')->group(function(){
+// Route::get('/', [UsuarioController::class , 'home'])->name('Usuario-home');
+// Route::get('/create', [UsuarioController::class , 'create'])->name('Usuario-create');
+// Route::post('/', [UsuarioController::class , 'store'])->name('Usuario-store');
+// Route::get('/{id}/edit', [UsuarioController::class , 'edit'])->where('id','[0-9]')->name('Usuario-edit');
+// Route::put('/{id}', [UsuarioController::class , 'update'])->where('id','[0-9]')->name('Usuario-update');
+// Route::delete('/{id}', [UsuarioController::class , 'destroy'])->where('id','[0-9]')->name('Usuario-destroy');
+// } ); 
 
 Route::prefix('empresa')->group(function(){
     Route::get('/', [EmpresasController::class , 'index'])->name('Empresas-index');
