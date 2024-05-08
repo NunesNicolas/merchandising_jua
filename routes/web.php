@@ -41,11 +41,13 @@ Route::prefix('produtos')->group (function(){
         Route::put('/{id}', [ProdutosController::class , 'update'])->where('id','[0-9]+')->name('Produtos-update');
         Route::delete('/{id}', [ProdutosController::class , 'destroy'])->where('id','[0-9]+')->name('Produtos-destroy');
         //----------------------------------------------------------------------------------------
-        Route::get('/createcm', [ProdutosController::class , 'create_competitors'])->name('Competitors-create');
-        Route::post('/', [ProdutosController::class , 'store_competitors'])->name('Competitors-store');
         
 });
 
+Route::prefix('competitors')->group (function(){
+        Route::get('/create', [ProdutosController::class , 'create_competitors'])->name('Competitors-create');
+        Route::post('/', [ProdutosController::class , 'store_competitors'])->name('Competitors-store');  
+});
 
 // route::prefix('crud')->group(function(){
 // Route::get('/', [UsuarioController::class , 'home'])->name('Usuario-home');
