@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ClientesController;
 use App\Http\Controllers\FormsController;
 use App\Http\Controllers\HomesController;
 use App\Http\Controllers\UsuarioController;
@@ -10,6 +11,7 @@ use App\Http\Controllers\PromotorsController;
 use App\Http\Controllers\PromotoresController;
 use App\Models\Empresa;
 use Illuminate\Support\Facades\Route;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -29,6 +31,7 @@ route::prefix('promotores')->group(function(){
 
 });
 
+
     route::prefix('produtos')->group (function(){
         Route::get('/', [ProdutosController::class , 'index'])->name('Produtos-index');
         Route::get('/create', [ProdutosController::class , 'create'])->name('Produtos-create');
@@ -40,14 +43,14 @@ route::prefix('promotores')->group(function(){
     });
 
 
-route::prefix('crud')->group(function(){
-Route::get('/', [UsuarioController::class , 'home'])->name('Usuario-home');
-Route::get('/create', [UsuarioController::class , 'create'])->name('Usuario-create');
-Route::post('/', [UsuarioController::class , 'store'])->name('Usuario-store');
-Route::get('/{id}/edit', [UsuarioController::class , 'edit'])->where('id','[0-9]')->name('Usuario-edit');
-Route::put('/{id}', [UsuarioController::class , 'update'])->where('id','[0-9]')->name('Usuario-update');
-Route::delete('/{id}', [UsuarioController::class , 'destroy'])->where('id','[0-9]')->name('Usuario-destroy');
-} ); 
+// route::prefix('crud')->group(function(){
+// Route::get('/', [UsuarioController::class , 'home'])->name('Usuario-home');
+// Route::get('/create', [UsuarioController::class , 'create'])->name('Usuario-create');
+// Route::post('/', [UsuarioController::class , 'store'])->name('Usuario-store');
+// Route::get('/{id}/edit', [UsuarioController::class , 'edit'])->where('id','[0-9]')->name('Usuario-edit');
+// Route::put('/{id}', [UsuarioController::class , 'update'])->where('id','[0-9]')->name('Usuario-update');
+// Route::delete('/{id}', [UsuarioController::class , 'destroy'])->where('id','[0-9]')->name('Usuario-destroy');
+// } ); 
 
 Route::prefix('empresa')->group(function(){
     Route::get('/', [EmpresasController::class , 'index'])->name('Empresas-index');
