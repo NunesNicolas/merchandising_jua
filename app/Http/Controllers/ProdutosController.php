@@ -11,7 +11,24 @@ class ProdutosController extends Controller
 {
     public function index()
     {
-        $produtos = Produto::all();
+        // $produtos = Produto::all();
+
+        // $produtos = Produto::select('nome', 'id', 'img')
+        // ->distinct()
+        // ->orderBy('nome')
+        // ->groupBy('nome')
+        // ->get();
+
+        $produtos = Produto::select('nome', 'id', 'img')
+                ->whereIn('id', function ($query) {
+                    $query->select(Produto::raw('MIN(id)'))
+                          ->from('produtos')
+                          ->groupBy('nome');
+                })
+                ->get();
+
+        // $produtos = Produto::select('nome','id','img')->distinct()->get();
+        
         return view('produtos.homeprodutos', ['produtos'=>$produtos]);
     }
     public function create()
