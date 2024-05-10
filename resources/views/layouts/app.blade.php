@@ -9,6 +9,7 @@
   @yield('link')
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   <title>@yield('title')</title>
+  <link rel="website icon" href="https://nossomeio.com.br/wp-content/uploads/2023/05/WhatsApp-Image-2023-05-16-at-16.13.20.jpeg">
 </head>
 <body style="background-color: #f0f6fb">
 
