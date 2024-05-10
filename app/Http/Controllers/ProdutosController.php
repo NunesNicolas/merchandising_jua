@@ -52,7 +52,10 @@ class ProdutosController extends Controller
 
     public function create_competitors()
     {
-        return view('produtos.adicionarcompetitors');
+        
+        $produtos = Produto::all();
+
+        return view('produtos.adicionarcompetitors',['produtos'=>$produtos]);
     }
 
     public function store(Request $request)
@@ -95,7 +98,7 @@ class ProdutosController extends Controller
     public function store_competitors (Request $request)
     {
         Competitor::create($request->all());
-        return redirect()-route('Produtos-index');
+        return redirect()->route('Produtos-index');
     }
 
     // FALTA COISA 

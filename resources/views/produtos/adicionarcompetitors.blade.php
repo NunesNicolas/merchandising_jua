@@ -10,7 +10,7 @@
   <path d="M2 13c0 1 1 1 1 1h5.256A4.5 4.5 0 0 1 8 12.5a4.5 4.5 0 0 1 1.544-3.393Q8.844 9.002 8 9c-5 0-6 3-6 4"/>
 </svg></h1>
         <hr>
-            <form action="{{ route('Produtos-store') }}" method="POST">
+            <form action="{{ route('Competitors-store') }}" method="POST">
             @csrf
                 <div class ="form-group">
                     <label for="nomeproduto">Nome produto concorrente:</label>
@@ -23,10 +23,10 @@
                 <div class ="form-group" style="">
                     <label for="marcaconcorrente">Selecione a marca do concorrente:</label>
 
-                    <select class="custom-select my-1" name="competitor" style="color: rgba(70, 70, 70, 0.749)">
+                    <select class="custom-select my-1" name="brand" id="brand" style="color: rgba(70, 70, 70, 0.749)">
                         <option selected disabled>Escolha a marca</option>
-                        <option value="1">Ypê</option>
-                        <option value="2">Downy</option>
+                        <option text="ype">Ypê</option>
+                        <option text="downy">Downy</option>
                     </select>
                     
                     {{-- <label for="precoproduto">adicione o link da imagem do seu produto:</label>
@@ -36,12 +36,14 @@
                  <div class="alert alert-danger">{{ $message }}</div>
                 @enderror --}}
                 <br>
+                
                 <label for="marcaproduto">Selecione a variação do produto da juá:</label>
-                <select class="custom-select my-1" name="variacaojua" style="color: rgba(70, 70, 70, 0.749)">
+                <select class="custom-select my-1" name="product_id" id="product_id" style="color: rgba(70, 70, 70, 0.749)">
                     <option selected disabled>Escolha a variação</option>
-                    <option value="1">sla</option>
-                    <option value="2">sei n man</option>
-                    <option value="3">5kg da tua mae</option>
+                    @foreach ($produtos as $produto)
+                    
+                    <option value="{{$produto->id}}"><?php echo $produto->nome , $produto->weight; ?></option>
+                    @endforeach
                 </select>
                 <br><br>
                 <button type="submit" class="btn btn-primary">Adicionar concorrente</button>

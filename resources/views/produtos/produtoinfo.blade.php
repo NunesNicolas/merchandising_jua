@@ -142,7 +142,7 @@
     {{-- FALTA FAZER O IF ELSE ENTRE ESSAS 2 DIVS --}}
 
     <div class="d-flex" style="width: 100%; height: 5vh; justify-content:end; padding:20px">
-      <p class="mr-auto" style=" margin-left: 3vw; color:#858585; font-weight: bold;"> Sem produtos concorrentes cadastrados  </p>
+      <p class="mr-auto" style=" margin-left: 3vw; color:#858585; font-weight: bold;"> SEM PRODUTOS CONCORRENTES CADASTRADOS </p>
     </div>
     
   </section>
