@@ -113,9 +113,9 @@
           <label>Nome do produto:</label>
           <p class="inputFachada" style="width: 67vw;"> <?php echo $produto->nome; ?> </p>
           <label>Preço médio:</label>
-          <label>Quantidade do concorrente:</label>
+          <label>Quantidade do concorrente:  </label>
           <p class="inputFachada" style="width: 32vw;"></p>
-          <p class="inputFachada" style="width: 32vw;"></p>
+          <p class="inputFachada" style="width: 32vw;"> {{ count($competitorsthis) }} </p>
         </div>
         <div class="divFooter">
             <div class="btnPeso">
@@ -139,13 +139,15 @@
     </a>
     </div>
 
-    {{-- FALTA FAZER O IF ELSE ENTRE ESSAS 2 DIVS --}}
+   
 
     {{-- <div class="d-flex" style="width: 100%; height: 5vh; justify-content:end; padding:20px">
       <p class="mr-auto" style=" margin-left: 3vw; color:#858585; font-weight: bold;"> SEM PRODUTOS CONCORRENTES CADASTRADOS </p>
     </div> --}}
 
     {{--------------------------------------------------------------------------------}}
+
+    @if (count($competitorsthis) > 0)
 
     <div class="d-flex" style="width: 100%; height: 10vh; display:flex; ">
       <p class="d-flex" style=" margin-left: 4.5vw; font-weight: bold; display: flex"> 
@@ -158,7 +160,9 @@
       </p>
     </div>
 
-    <div class="d-flex" style="
+    @foreach ($competitorsthis as $competitor)    
+
+    <div class="d-flex mb-2" style="
     width: 90%;
     height:10vh;
     display: flex;
@@ -167,14 +171,13 @@
     align-items: center;
     background-color:#ffffff;
     border-radius:15px;
-    ">
+    "> 
 
-      
           <table class="" style="text-align: center; color:#858585; width:100% ">
-            
-            <th style="width: 20% ; border-radius:15px 0 0 15px;">Desinfetante</th>
-            <th style="width: 20%">Ypê</th>
-            
+                
+            <th style="width: 20% ; border-radius:15px 0 0 15px;"> {{$competitor->nome}} </th>
+            <th style="width: 20%"> {{$competitor->brand}} </th>
+
             <th style="width:20%">Editar produto <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
               <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
               <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z"/>
@@ -187,7 +190,13 @@
             
           </table>
         </p>
-    </div>
+    </div> 
+    @endforeach
+    @else
+    <p>SEM PRODUTOS CONCORRENTES CADASTRADOS</p>
+    @endif
+    
+    
     {{--------------------------------------------------------------------------------}}
     
     
