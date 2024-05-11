@@ -63,6 +63,20 @@
     cursor: pointer;
   }
 </style>
+
+<?php
+$variant2 = $produto;
+$variant3 = $produto;
+$variant4 = $produto;
+foreach ($produtovariants as $variant) {
+                if ($variant->weight == 5000) {
+                 $variant4 = $variant;
+                } elseif ($variant->weight == 1000) {
+                  $variant3 = $variant;
+                } elseif ($variant->weight == 500) {
+                  $variant2 = $variant;
+                }
+              } ?>
 <section style="
       display: flex;
       flex-wrap: wrap;  
@@ -112,16 +126,24 @@
         <div style="display: flex; width: 68vw; height: 30vh; flex-wrap: wrap; align-items: center; justify-content: space-between; padding: 1vh;">
           <label>Nome do produto:</label>
           <p class="inputFachada" style="width: 67vw;"> <?php echo $produto->nome; ?> </p>
-          <label>Preço médio:</label>
+          <label>
+            Preço médio: 
+          </label>
           <label>Quantidade do concorrente:  </label>
           <p class="inputFachada" style="width: 32vw;"></p>
           <p class="inputFachada" style="width: 32vw;"> {{ count($competitorsthis) }} </p>
         </div>
         <div class="divFooter">
             <div class="btnPeso">
-              <button class="peso" ac value="" style="border-radius: 0vh 0vh 0vh 1vh;">500g</button>
-              <button class="peso" value="">1kg</button>
-              <button class="peso" value="">5kg</button>
+
+              <a type="button" class="peso" name="500" ac value="" style="border-radius: 0vh 0vh 0vh 1vh;" href="{{route('Produtos-info',['id'=> $variant2->id ])}}">500g</button>
+              
+              <a type="button" class="peso" name="1000" value="" href="{{route('Produtos-info',['id'=> $variant3->id ])}}">1kg</button>
+              
+              <a type="button" class="peso" name="5000" value="" href="{{route('Produtos-info',['id'=> $variant4->id ])}}">5kg</a>
+
+                
+
             </div>
             <div class="btnPeso" style="display:flex; flex-wrap: wrap; justify-content: end; align-items: center; padding-right: 1vw;">
               <button class="addButton">
@@ -147,6 +169,8 @@
 
     {{--------------------------------------------------------------------------------}}
 
+       
+    
     @if (count($competitorsthis) > 0)
 
     <div class="d-flex" style="width: 100%; height: 10vh; display:flex; ">
@@ -201,5 +225,16 @@
     
     
   </section>
+
+  <!-- <?php 
+  // if($pesobutton== 5000){
+  //   foreach ($produtovariants as $variant) {
+  //   if ($variant['weight'] == $pesobutton) {
+  //    return redirect()->route('Produtos-info',$variant->id);
+  //     break; 
+  //       }
+  //     }
+  //   }
+               ?> -->
 </main>
 @endsection
