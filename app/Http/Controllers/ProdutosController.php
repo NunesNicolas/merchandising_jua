@@ -44,15 +44,13 @@ class ProdutosController extends Controller
 
         $id_jua = $id; // ID do produto desejado
         $competitorsthis = Competitor::where('product_id', $id_jua)->get();
-        $pesobutton = 0;
 
         if ($produto) {
             // O promotor foi encontrado, faça algo com as informações
             return view("produtos.produtoinfo", 
                 ['produto'=> $produto,
                 'produtovariants'=>$produtovariants, 
-                'competitorsthis'=>$competitorsthis,
-                'pesobutton'=>$pesobutton]);
+                'competitorsthis'=>$competitorsthis,]);
         } else {
             // O promotor não foi encontrado, trate o erro
             abort(404);

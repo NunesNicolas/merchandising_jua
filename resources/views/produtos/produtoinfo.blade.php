@@ -2,6 +2,28 @@
 @section('title', "{$produto->nome}")
 @section( 'content' )   
 
+<?php
+use App\Models\Produto;
+
+$variant2 = new Produto();
+
+$variant3 =new Produto();
+
+$variant4 = new Produto();
+
+foreach ($produtovariants as $variant) {
+                if ($variant->weight == 5000) {
+                 $variant4 = $variant;
+                } elseif ($variant->weight == 1000) {
+                  $variant3 = $variant;
+                  
+                } elseif ($variant->weight == 500) {
+                  $variant2 = $variant;
+                }
+              } 
+             
+?>
+
 <style>
   .inputFachada{
      height: 7vh; border:none solid #c0c0c0; background-color: #e7e7e7; color: #808080; border-radius: 1vh; padding: 1vh; text-align:justify;
@@ -31,12 +53,19 @@
   .peso{
     width: 5vw;
     height: 7vh;
+    text-aling:center;
     margin-top: 3.8vh;
     background-color: transparent;
     border: none;
     color: #858585;
     border-bottom: 0.1vh solid;
+    text-align: center;
   }
+
+  .peso:visited {
+    color: #858585;
+  }
+
   .peso:hover{
     border-bottom:solid #2C9AFF;
   }
@@ -64,19 +93,7 @@
   }
 </style>
 
-<?php
-$variant2 = $produto;
-$variant3 = $produto;
-$variant4 = $produto;
-foreach ($produtovariants as $variant) {
-                if ($variant->weight == 5000) {
-                 $variant4 = $variant;
-                } elseif ($variant->weight == 1000) {
-                  $variant3 = $variant;
-                } elseif ($variant->weight == 500) {
-                  $variant2 = $variant;
-                }
-              } ?>
+
 <section style="
       display: flex;
       flex-wrap: wrap;  
@@ -106,6 +123,7 @@ foreach ($produtovariants as $variant) {
       width: 85vw;
       height: 50vh;
       border-radius: 1vh;
+      background-color:#ffffff;
       flex-wrap: wrap;
       justify-content: space-evenly;
     ">
@@ -136,15 +154,29 @@ foreach ($produtovariants as $variant) {
         <div class="divFooter">
             <div class="btnPeso">
 
-              <a type="button" class="peso" name="500" ac value="" style="border-radius: 0vh 0vh 0vh 1vh;" href="{{route('Produtos-info',['id'=> $variant2->id ])}}">500g</button>
+              <a type="button" class="peso" name="500" ac value="" style="
+              <?php 
+            if($produto == $variant2) {
+                echo "color:#2C9AFF;border-bottom: solid";
+              }?>;border-radius: 0vh 0vh 0vh 1vh;" href="{{route('Produtos-info',['id'=> $variant2->id ])}}">500g</button>
+             
+              <a type="button" class="peso" name="1000"
+              style="<?php 
+            if($produto == $variant3) {
+                echo "color:#2C9AFF;border-bottom: solid";
+              }?>" 
+              value="" href="{{route('Produtos-info',['id'=> $variant3->id ])}}">1kg</button>
               
-              <a type="button" class="peso" name="1000" value="" href="{{route('Produtos-info',['id'=> $variant3->id ])}}">1kg</button>
-              
-              <a type="button" class="peso" name="5000" value="" href="{{route('Produtos-info',['id'=> $variant4->id ])}}">5kg</a>
+              <a type="button" class="peso" style="<?php 
+            if($produto == $variant4) {
+                echo "color:#2C9AFF;border-bottom: solid";
+              }?>"
+              name="5000" value="" href="{{route('Produtos-info',['id'=> $variant4->id ])}}">5kg</a>
 
                 
 
             </div>
+              
             <div class="btnPeso" style="display:flex; flex-wrap: wrap; justify-content: end; align-items: center; padding-right: 1vw;">
               <button class="addButton">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill=" " class="bi bi-plus-lg" viewBox="0 0 16 16">
@@ -185,7 +217,6 @@ foreach ($produtovariants as $variant) {
     </div>
 
     @foreach ($competitorsthis as $competitor)    
-
     <div class="d-flex mb-2" style="
     width: 90%;
     height:10vh;
@@ -214,7 +245,7 @@ foreach ($produtovariants as $variant) {
             
           </table>
         </p>
-    </div> 
+    </div>
     @endforeach
     @else
     <p>SEM PRODUTOS CONCORRENTES CADASTRADOS</p>
@@ -226,15 +257,5 @@ foreach ($produtovariants as $variant) {
     
   </section>
 
-  <!-- <?php 
-  // if($pesobutton== 5000){
-  //   foreach ($produtovariants as $variant) {
-  //   if ($variant['weight'] == $pesobutton) {
-  //    return redirect()->route('Produtos-info',$variant->id);
-  //     break; 
-  //       }
-  //     }
-  //   }
-               ?> -->
 </main>
 @endsection
