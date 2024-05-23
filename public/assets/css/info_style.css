@@ -1,0 +1,162 @@
+.inputFachada{
+    height: 7vh; border:none solid #662222; background-color: #e7e7e7; color: #808080; border-radius: 1vh; padding: 1vh; text-align:justify;
+
+}
+label{
+    color:#858585;
+    font-size: 2vh;
+    height: 3vh;
+    width: 32vw;
+    padding: 1vh;
+  }
+  .topDiv{
+    display: flex;
+      border: 0.2vh solid #d3d6db;
+      width: 85vw;
+      height: 50vh;
+      border-radius: 1vh;
+      background-color:#ffffff;
+      flex-wrap: wrap;
+      justify-content: space-evenly;
+  }
+
+
+  .divFooter{
+    width: 100%;
+    margin-top: 6vh;
+    height:9vh;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: end;
+    border-top: 0.2vh solid #d3d6db;
+  }
+
+  .bodyall{
+    margin: 0;
+  }
+  .btnPeso{
+    width: 30vw;
+    height: 11vh;
+    border: none;
+  }
+  
+  .peso{
+    width: 5vw;
+    height: 7vh;
+    text-aling:center;
+    margin-top: 3.8vh;
+    background-color: transparent;
+    border: none;
+    color: #858585;
+    border-bottom: 0.1vh solid;
+    text-align: center;
+  }
+
+  .peso:visited {
+    color: #858585;
+  }
+
+  .peso:hover{
+    border-bottom:solid #2C9AFF;
+  }
+  .peso:active{
+    border-bottom: #2C9AFF;
+    text-color: blue;
+  }
+  .addButton{
+    width: 2.5vw;
+    height: 5vh;
+    background-color: transparent;
+    border-radius: 0.5vh;
+    border: 0.1vh solid #858585;
+    color: #858585;
+  }
+  .addButton:hover{
+    border: 0.1vh solid #2C9AFF;
+    color: #2C9AFF;
+  }
+  a:visited {
+    color: purple;
+  }
+  .miniBt{
+    cursor: pointer;
+  }
+
+  #open-modal{
+    margin-left: 10vh;
+    background-color: #ffff;
+    border-radius:15px;
+    border: white;
+    font-weight: bold;
+    color: #858585;
+    border: none;
+    display: flex;
+    cursor: pointer;
+    opacity: .9;
+    transition: 0.4s;
+  }
+  
+  #open-modal:hover{
+    color: #2C9AFF;
+    border: none;
+    opacity: 1;
+  }
+
+  #open-modal:active{
+    border: none;
+    color: #2C9AFF;
+
+  }
+
+
+  #fade, #modal{
+    transition: .5s;
+    opacity: 1;
+    pointer-events: all;
+  }
+  #modal{
+    position:absolute;
+    background-color: white;
+    border: 0.2vh solid #d3d6db;
+    
+    z-index: 10;
+    border-radius: 10px;
+    height: 100%;
+    width: 100%;
+  }
+
+  #fade {
+    position:absolute;
+    top: 25%;
+    left: 67%;
+    width: 32%;
+    height: 100%;
+    }
+
+  #modal-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  #fade.hide,
+  #modal.hide{
+    opacity: 0;
+    pointer-events: none;
+    transition: 0.6;
+  }
+
+  #modal.hide{
+    right: -1;
+  }
+
+  #bodyallId.hide{
+    margin-left: -32vw;
+  }
+  #conDiv.hide{
+    height: 50vh;
+  transition: 0.5s;
+  width: 115vh;
+  }
+
