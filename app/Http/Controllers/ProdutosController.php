@@ -36,14 +36,21 @@ class ProdutosController extends Controller
         return view('produtos.criarprodutos');
     }
     
-
     public function info ($id){
 
         $produto = Produto::find($id);
 
+        $produtovariants = Produto::where('nome', $produto->nome)->get();
+
+        $id_jua = $id; // ID do produto desejado
+        $competitorsthis = Competitor::where('product_id', $id_jua)->get();
+
         if ($produto) {
             // O promotor foi encontrado, faça algo com as informações
-            return view("produtos.produtoinfo", ['produto'=>$produto]);
+            return view("produtos.produtoinfo", 
+                ['produto'=> $produto,
+                'produtovariants'=>$produtovariants, 
+                'competitorsthis'=>$competitorsthis,]);
         } else {
             // O promotor não foi encontrado, trate o erro
             abort(404);
@@ -57,6 +64,7 @@ class ProdutosController extends Controller
 
         return view('produtos.adicionarcompetitors',['produtos'=>$produtos]);
     }
+
 
     public function store(Request $request)
     {
