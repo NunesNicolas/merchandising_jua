@@ -89,6 +89,7 @@
   <div>
     <div class="d-flex" style="
       border: 0.2vh solid #d3d6db;
+      background-color: #ffffff;
       width: 85vw;
       height: 50vh;
       border-radius: 1vh;
