@@ -208,7 +208,7 @@ foreach ($produtovariants as $variant) {
                   <!-- --------------------------MODAL BODY--------------------- -->
                     <div class="modal-body">
                       <label>Nome do produto:</label>
-                      <p class="inputFachada" style="width: 100%;"> <?php echo $produto->nome; ?> </p>
+                      <p class="inputFachada" style="width: 100%;"> <?php echo $competitor->nome; ?> </p>
                       <label style="width: 50%"> Marca: </label>
                       <p class="inputFachada" style="width: 100%;"> <?php echo $competitor->brand; ?></p>
                       <label style="width: 50%">Preço médio:  </label>
