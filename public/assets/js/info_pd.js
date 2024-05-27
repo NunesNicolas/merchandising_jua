@@ -17,11 +17,23 @@ openModalButtons.forEach((button) => {
     closeModalButton.addEventListener("click", toggleModal);
 });
 
+const backgroundModal = document.querySelectorAll(".dark-background");
+const modalEditar = document.querySelectorAll(".modalEditar");
+const closebut = document.querySelectorAll(".closeButton");
+const titulo = document.getElementById("tituloModal");
 
+function abrirModalEditar(){
+    backgroundModal[0].style.height = "100vh";
+    modalEditar[0].style.height = "60vh";
+
+}
+function closeModalEditar(){
+    backgroundModal[0].style.height = "0vh";
+    modalEditar[0].style.height = "0vh"
+}
 // Selecione o botão de fechamento
 
 
 // Função para alternar o modal (abrir/fechar)
 
 // Adicione o evento de clique ao botão de fechamento
-

@@ -50,7 +50,7 @@
             <img class="" style="height: 33vh; width: 33vh;" src="<?php echo $produto->img; ?>" alt="..." >
             <h5 style="color:#8d8d8d"><?php echo $produto->nome; ?></h5>
             <div class="mt-2" style="text-align: center">
-                <a href="{{route('Produtos-info',['id'=>$produto->id])}}" class="btn btn-primary" style="border:none;text-align: center; background: #2c9aff; width: 250px">Detalhes</a>                 
+                <a href="{{route('Produtos-info',['id'=>$produto->id])}}" class="btn btn-primary" style="border:none;text-align: center; background: #2c9aff; width: 250px">Detalhe</a>                 
             </div>
         </div>
         @endforeach

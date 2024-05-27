@@ -59,9 +59,38 @@ foreach ($produtovariants as $variant) {
       font-size:13px
       "> VOLTAR </a>
   </div>
+<section class="dark-background">
 
+  <div class="modalEditar">
+  <div>
+  <p class="tituloModal">Editar Concorrente</p>
+    <span class="closeButton" onclick="closeModalEditar()">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16" style="width: 1.5vw; height: 3vh;">
+        <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8z"/>
+      </svg>
+    </span>
+    </div>
+    <label>Nome do concorrente: </label>
+    <input type="text">
+    <label>Marca do Produto: </label>
+    <select>
+      <option value="0">Ype</option>
+      <option value="1">Downny</option>
+      <option value="2">RT</option>
+    </select>
+    <label>Situação do Produto: </label>
+    <select>
+      <option value="0">Ype</option>
+      <option value="1">Downny</option>
+      <option value="2">RT</option>
+    </select>
+    <div style="padding: 1vh 1vw; padding-top: 2vh; border-top: solid 0.2vh #858585; ">
+      <button class="cancelar">cancelar</button>
+      <button class="salvar">Salvar</button>
+    </div>
+  </div>
+</section>
 <div class="bodyall" id="bodyallId">
-
   <div>
     <div class="topDiv" id="conDiv">
       <div style="width: 100%; height: 5vh; justify-content: end; display: flex; padding: 0.5vh;">
@@ -172,10 +201,14 @@ foreach ($produtovariants as $variant) {
             <th style="width: 22% ; border-radius:15px 0 0 15px;"> {{$competitor->nome}} </th>
             <th style="width: 22%;"> {{$competitor->brand}} </th>
 
-            <th class="editaBt" style="width:28%">Editar produto <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
-              <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
-              <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z"/>
-            </svg> </th>
+            <th class="editaBt" style="width:28%">
+              <button class="editar-produto-modal" onclick="abrirModalEditar()">Editar produto
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+                  <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+                  <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z"/>
+                </svg> 
+              </button>
+            </th>
             
             
             <th class="detalhesBt">
@@ -207,7 +240,7 @@ foreach ($produtovariants as $variant) {
                   <!-- --------------------------MODAL BODY--------------------- -->
                     <div class="modal-body">
                       <label>Nome do produto:</label>
-                      <p class="inputFachada" style="width: 100%;"> <?php echo $produto->nome; ?> </p>
+                      <p class="inputFachada" style="width: 100%;"> <?php echo $competitor->nome; ?> </p>
                       <label style="width: 50%"> Marca: </label>
                       <p class="inputFachada" style="width: 100%;"> <?php echo $competitor->brand; ?></p>
                       <label style="width: 50%">Preço médio:  </label>
