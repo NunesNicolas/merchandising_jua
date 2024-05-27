@@ -1,3 +1,8 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 .inputFachada{
     height: 7vh; border:none solid #662222; background-color: #e7e7e7; color: #808080; border-radius: 1vh; padding: 1vh; text-align:justify;
 
@@ -31,7 +36,83 @@ label{
     align-items: end;
     border-top: 0.2vh solid #d3d6db;
   }
-
+  .dark-background{
+    width: 100%;
+    height: 0vh;
+    position: fixed;
+    background-color: rgb(0, 0, 0, 0.5);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+    overflow: hidden;
+    transition: 0.5s ease-in;
+  }
+  .modalEditar{
+    width: 30vw;
+    height: 0vh;
+    background-color: #ffffff;
+    position: fixed;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    overflow: hidden;
+    margin-bottom: 10vh;
+    border-radius: 1vh;
+    transition: 0.5s ease-in;
+  }
+  .modalEditar input, select, option{
+    width: 27vw;
+    height: 6vh;
+    font-size: 2.2vh;
+  } 
+  .modalEditar div{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: end;
+    align-items: center;
+    padding: 0vw 0.5vw;
+    width: 30vw;
+    height: 8vh;
+    background-color: transparent;
+  }
+  .tituloModal{
+    text-align: start;
+    width: 25vw;
+    font-size: 2.2vh;
+  }
+  .closeButton{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    width: 3vw;
+    background-color: transparent;
+    padding: 1vh 0.1vw;
+  }
+  .closeButton:hover{
+    color: red;
+  }
+  .cancelar, .salvar{
+    padding: 0.2vh 1vw;
+    border: 0.1vh solid #858585;
+    border-radius: 0.4vh;
+  }
+  .cancelar{
+    margin-right: 1vw;
+    background-color: transparent;
+  }
+  .cancelar:hover{
+    background-color: #d3d6db;
+  }
+  .salvar{
+    background-color: #2C9AFF;
+    color: #ffffff;
+  }
+  .salvar:hover{
+    background-color: #2483dd;
+  }
   .bodyall{
     margin: 0;
   }
@@ -44,13 +125,13 @@ label{
   .peso{
     width: 5vw;
     height: 7vh;
-    text-aling:center;
+    text-align: center;
     margin-top: 3.8vh;
     background-color: transparent;
     border: none;
     color: #858585;
     border-bottom: 0.1vh solid;
-    text-align: center;
+    text-decoration: none;
   }
 
   .peso:visited {
@@ -62,7 +143,7 @@ label{
   }
   .peso:active{
     border-bottom: #2C9AFF;
-    text-color: blue;
+    color: blue;
   }
   .addButton{
     width: 2.5vw;
@@ -83,7 +164,7 @@ label{
     cursor: pointer;
   }
 
-  #open-modal{
+  #open-modal, .editar-produto-modal{
     margin-left: 10vh;
     background-color: #ffff;
     border-radius:15px;
@@ -97,7 +178,7 @@ label{
     transition: 0.4s;
   }
   
-  #open-modal:hover{
+  #open-modal:hover, #open-modal:active, .editar-produto-modal:hover{
     color: #2C9AFF;
     border: none;
     opacity: 1;
