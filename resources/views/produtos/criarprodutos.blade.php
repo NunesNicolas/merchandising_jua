@@ -1,8 +1,14 @@
 @extends('layouts.app')
 
-@section('title','criação')
+@section('title','criar produto')
+
+@section('link')
+<link rel="stylesheet" href="{{asset('assets/css/create_produtos.css')}}">
+<script src="{{asset('assets/js/create_pd.js')}}" defer></script>
+@endsection
 
 @section('content')
+
   <div class="conteiner mt-4  ml-5 mr-5 ">
         <h1>Novo Produto
         <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-person-fill-add" viewBox="0 0 16 16">
@@ -28,15 +34,37 @@
                  <div class="alert alert-danger">{{ $message }}</div>
                 @enderror
                 <br>
-                <label for="marcaproduto">Peso do Produto:</label>
-                <select id="weight" name="weight" class="custom-select my-1">
-                    <option value="500">500g</option>
-                    <option value="1000">1kg</option>
-                    <option value="5000">5kg</option>
-                </select>
+                <div class="d-flex">
+                    <input class="switch" id="unit-switch" type="checkbox" checked="true">
+                    <h5 id="unit-text" style="margin-top: -0.9vh; margin-left: 1.5vh;">por Litro</h5>
+                </div>
+
+                <br>
+               
+                <table class="d-flex">
+                         <div class="form-check">
+                        <input id="weight" name="weight" value="500" class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                        <label id="unit-weight0,5" class="form-check-label" for="flexCheckDefault">
+                           500ml
+                        </label>
+                        </div>
+                        <div class="form-check">
+                        <input id="weight" name="weight" value="1000" class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+                        <label id="unit-weight1" class="form-check-label" for="flexCheckChecked">
+                            1L
+                        </label>
+                        </div>
+                        <div class="form-check">
+                        <input id="weight" name="weight" value="5000" class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+                        <label id="unit-weight5"class="form-check-label" for="flexCheckChecked">
+                            5L
+                        </label>
+                        </div>
+                        </table>
                 <br>
                 <button type="submit" class="btn btn-primary">Criar Produto</button>
             
             </form>
     </div>
+</main>
 @endsection

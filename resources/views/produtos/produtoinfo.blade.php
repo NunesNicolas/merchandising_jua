@@ -3,7 +3,6 @@
 
 @section('link')
   <link rel="stylesheet" href="{{asset('assets/css/info_style.css')}}">
-  <link rel="stylesheet" href="{{asset('assets/js/info_pd.js')}}">
   <script src="{{asset('assets/js/info_pd.js')}}" defer></script>
 @endsection
 
