@@ -1,4 +1,4 @@
-const openModalButtons = document.querySelectorAll(".open-modal-button");
+const openModalButtons = document.querySelectorAll(".open-modal-buttonDt");
 const closeModalButton = document.querySelector("#close-modal");
 const modal = document.querySelector("#modal");
 const fade = document.querySelector("#fade");
