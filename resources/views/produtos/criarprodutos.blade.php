@@ -43,19 +43,19 @@
                
                 <table class="d-flex">
                          <div class="form-check">
-                        <input id="weight" name="weight" value="500" class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                        <input id="weight500" name="weight500" value="500" class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
                         <label id="unit-weight0,5" class="form-check-label" for="flexCheckDefault">
                            500ml
                         </label>
                         </div>
                         <div class="form-check">
-                        <input id="weight" name="weight" value="1000" class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+                        <input id="weight1000" name="weight1000" value="1000" class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
                         <label id="unit-weight1" class="form-check-label" for="flexCheckChecked">
                             1L
                         </label>
                         </div>
                         <div class="form-check">
-                        <input id="weight" name="weight" value="5000" class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+                        <input id="weight5000" name="weight5000" value="5000" class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
                         <label id="unit-weight5"class="form-check-label" for="flexCheckChecked">
                             5L
                         </label>
@@ -63,6 +63,8 @@
                         </table>
                 <br>
                 <button type="submit" class="btn btn-primary">Criar Produto</button>
+
+
             
             </form>
     </div>

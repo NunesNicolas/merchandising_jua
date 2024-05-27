@@ -67,10 +67,40 @@ class ProdutosController extends Controller
 
 
     public function store(Request $request)
-    {
-        Produto::create($request->all());
+    {   
+        $weights= [];
+        if ($request->has('weight500')) {
+            // Adicione o peso ao array weights
+            $weight = 500;
+            $weights[] = $weight; // Exemplo de peso (substitua pelo valor real)
+        }
+        if ($request->has('weight1000')) {
+            // Adicione o peso ao array weights
+            $weight = 1000;
+            $weights[] = $weight; // Exemplo de peso (substitua pelo valor real)
+            }
+        if ($request->has('weight5000')) {
+            // Adicione o peso ao array weights
+            $weight = 5000;
+            $weights[] = $weight; // Exemplo de peso (substitua pelo valor real)
+            }
+
+
+        for ($i = 0; $i < count($weights); $i++) {
+            $weight = $weights[$i];
+            # code...
+        $produto = new Produto($request->all());
+        
+        // Defina o peso (weight) para o valor atual do loop
+        $produto->weight = $weight;
+        
+        // Salve o produto no banco de dados
+        $produto->save();
+        }
         return redirect()->route('Produtos-index');
     }
+
+
     public function edit($id)
     {
         $produtos = Produto::where('id', $id)->first();
@@ -83,6 +113,8 @@ class ProdutosController extends Controller
             return redirect()->route('Forms-index');
         }
     }
+
+
     public function update(Request $request, $id)
     {
         $data = [
