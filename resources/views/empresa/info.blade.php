@@ -104,11 +104,11 @@
         </div>
         <div class= "d-flex" style="height: 12%">
             <li class="list-group-item ml-3 mr-2" style="width: 50%; background-color:#e7e7e7; border: none; border-radius: 10px">
-                <p style="font-size:15px;color:#8d8d8d; margin-top:-10px"> nome cliente</p>
+                <p style="font-size:15px;color:#8d8d8d; margin-top:-10px"> <?php echo $empresas->nome; ?> </p>
             </li>
 
             <li class="list-group-item ml-2 mr-3" style="width: 50%; background-color:#e7e7e7; border: none; border-radius: 10px">
-                <p style="font-size:15px;color:#8d8d8d; margin-top:-10px">cnpj</p>
+                <p style="font-size:15px;color:#8d8d8d; margin-top:-10px"><?php echo $empresas->cnpj; ?></p>
             </li>
                
         </div>
