@@ -1,6 +1,9 @@
 @extends('layouts.app')
 
 <style>
+  p:hover{
+    background: none;
+  }
     .divSearch{
       display: flex;
       flex-wrap: wrap;
@@ -63,6 +66,15 @@
     #infos a:hover{
       color: #2C9AFF;
     }
+    .up{
+      margin-bottom: 7px;
+    }
+    li{
+      height:35px;
+    }
+    p{
+      
+    }
 
 </style>
 
@@ -75,7 +87,7 @@
     </div>
 
     <div  class="d-flex" style="width: 100%; height: 3vh; justify-content: end; padding:35px">
-        <a href="{{route('Promotores-home')}}" type="button" class="btn btn-light align-self-center" style="
+        <a href="{{route('Empresas-index')}}" type="button" class="btn btn-light align-self-center" style="
         border-radius: 20px;
         border:solid #858585 0.2vh;
         color:#858585;
@@ -87,75 +99,75 @@
     <!-- BOX 1 -->
 
         <!-- BX1: LINHA 1 -->
-    <div class="bg-white ml-3 mr-3" style="margin-top:-1vh; height:40vh; border-radius: 1vh; padding: 1vh; box-shadow: 0vh 0vh 0.1vh 0.1vh #c0c0c0;">
+    <div class="bg-white ml-3 mr-3" style="margin-top:-1vh; height:45vh; border-radius: 1vh; padding: 1vh; box-shadow: 0vh 0vh 0.1vh 0.1vh #c0c0c0;">
           <div class= "d-flex">
             
           </div>
 
-          <div class= "d-flex" style="height: 10%">
-            <li class="list-group-item ml-0 mr-2" style="width: 50%; border: none; border-radius: 10px">
+          <div class= "d-flex up" style="height: 10%">
+            <li class="list-group-item ml-0 mr-2" style="width: 50%; height:0px; background:none; border: none; border-radius: 10px">
                 <p style="font-size:15px;color:#858585;font-weight: bold; margin-top:-10px"> Nome cliente</p>
             </li>
 
-            <li class="list-group-item ml-0 mr-3" style="width: 50%; border: none; border-radius: 10px">
+            <li class="list-group-item ml-0 mr-3" style="width: 50%; background: none; border: none; border-radius: 10px">
                 <p style="font-size:15px;color:#858585;font-weight: bold; margin-top:-10px">CNPJ</p>
             </li>
                
         </div>
         <div class= "d-flex" style="height: 12%">
             <li class="list-group-item ml-3 mr-2" style="width: 50%; background-color:#e7e7e7; border: none; border-radius: 10px">
-                <p style="font-size:15px;color:#8d8d8d; margin-top:-10px"> nome cliente</p>
+                <p style="font-size:15px;color:#8d8d8d; margin-top:-6px"> <?php echo $empresas->nome; ?> </p>
             </li>
 
             <li class="list-group-item ml-2 mr-3" style="width: 50%; background-color:#e7e7e7; border: none; border-radius: 10px">
-                <p style="font-size:15px;color:#8d8d8d; margin-top:-10px">cnpj</p>
+                <p style="font-size:15px;color:#8d8d8d; margin-top:-6px"><?php echo $empresas->cnpj; ?></p>
             </li>
                
         </div>
         <br>
         <!-- BX1: LINHA 2 -->
-        <div class= "d-flex" style="height: 10%">
-            <li class="list-group-item ml-0 mr-2" style="width: 100%; border: none; border-radius: 10px">
-                <p style="font-size:15px; color:#858585;font-weight: bold; margin-top:-10px">Endereço do cliente</p>
+        <div class= "d-flex up" style="height: 10%">
+            <li class="list-group-item ml-0 mr-2" style="width: 100%; background: none; border: none; border-radius: 10px">
+                <p style="font-size:15px; color:#858585;font-weight: bold; margin-top:-10px ">Endereço do cliente</p>
             </li>
                
         </div>
-        <div class= "d-flex" style="height: 12%">
-            <li class="list-group-item ml-3 mr-3" style="width: 100%; background-color:#e7e7e7; border: none; border-radius: 10px">
-                <p style="font-size:15px;color:#8d8d8d; margin-top:-10px"> Endereço</p>
+        <div class= "d-flex" style="height: 12%; display:flex ">
+            <li class="list-group-item ml-3 mr-3" style="width: 100%; background-color:#e7e7e7; border: none; border-radius: 10px;">
+                <p style="font-size:15px;color:#8d8d8d; margin-top:-6px; "> Endereço</p>
             </li>
                
         </div>
         <br>
         <!-- BX1: LINHA 3 -->
         
-        <div class= "d-flex" style="height: 10%">
-            <li class="list-group-item ml-0 mr-2" style="width: 25%; border: none; border-radius: 10px">
+        <div class= "d-flex up" style="height: 10%">
+            <li class="list-group-item ml-0 mr-2" style="width: 25%; background: none; border: none; border-radius: 10px">
                 <p style="font-size:15px; color:#858585;font-weight: bold; margin-top:-10px">Última visita</p>
             </li>
-            <li class="list-group-item ml-0 mr-2" style="width: 25%; border: none; border-radius: 10px">
+            <li class="list-group-item ml-0 mr-2" style="width: 25%; background: none; border: none; border-radius: 10px">
                 <p style="font-size:15px; color:#858585;font-weight: bold; margin-top:-10px">Última pesquisa</p>
             </li>
-            <li class="list-group-item ml-0 mr-2" style="width: 25%; border: none; border-radius: 10px">
+            <li class="list-group-item ml-0 mr-2" style="width: 25%; background: none; border: none; border-radius: 10px">
                 <p style="font-size:15px; color:#858585;font-weight: bold; margin-top:-10px">Nome promotor</p>
             </li>
-            <li class="list-group-item ml-0 mr-2" style="width: 25%; border: none; border-radius: 10px">
+            <li class="list-group-item ml-0 mr-2" style="width: 25%; background: none; border: none; border-radius: 10px">
                 <p style="font-size:15px; color:#858585;font-weight: bold; margin-top:-10px">Tempo do último atendimento</p>
             </li>
                
         </div>
         <div class= "d-flex" style="height: 12%">
             <li class="list-group-item ml-3 mr-3" style="width: 25%; background-color:#e7e7e7; border: none; border-radius: 10px">
-                <p style="font-size:15px;color:#8d8d8d; margin-top:-10px"> Data</p>
+                <p style="font-size:15px;color:#8d8d8d; margin-top:-6px"> Data</p>
             </li>
             <li class="list-group-item ml-3 mr-3" style="width: 25%; background-color:#e7e7e7; border: none; border-radius: 10px">
-                <p style="font-size:15px;color:#8d8d8d; margin-top:-10px"> Data</p>
+                <p style="font-size:15px;color:#8d8d8d; margin-top:-6px"> Data</p>
             </li>
             <li class="list-group-item ml-3 mr-3" style="width: 25%; background-color:#e7e7e7; border: none; border-radius: 10px">
-                <p style="font-size:15px;color:#8d8d8d; margin-top:-10px"> Promotor</p>
+                <p style="font-size:15px;color:#8d8d8d; margin-top:-6px"> Promotor</p>
             </li>
             <li class="list-group-item ml-3 mr-3" style="width: 25%; background-color:#e7e7e7; border: none; border-radius: 10px">
-                <p style="font-size:15px;color:#8d8d8d; margin-top:-10px"> Tempo</p>
+                <p style="font-size:15px;color:#8d8d8d; margin-top:-6px"> Tempo</p>
             </li>  
         </div>
 
@@ -175,7 +187,7 @@
                     }   
 
                 </style>
-            <select class="select mt-2 mr-3" aria-label="Default select example" style="height: 5vh; border-radius: 10px">
+            <select class="select mb-2 mt-2 mr-3" aria-label="Default select example" style="height: 5vh; border-radius: 10px">
                 <option class="option" selected>Periodo de tempo</option>
                 <option class="option" value="1">One</option>
                 <option class="option" value="2">Two</option>
@@ -243,7 +255,7 @@
               <p> R$ 11,50 </p>
               </div>
           </div>
-          <div style=" display: flex; align-items: right;margin-top:-240px">
+          <div style=" display: flex; align-items: right;margin-top:-200px">
               <img src="https://sabaojua.com.br/Upload/Products/Louca/Prancheta%203_6553c1ab98e9a.png" alt="Desinfetante Herbal 2L" style="max-width: 50px; height: auto; margin-right: 15px;">
               <div>   
               <th style="text-align: left;">Detergente maça 500ml</th>

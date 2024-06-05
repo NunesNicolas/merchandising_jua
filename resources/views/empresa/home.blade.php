@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+    @section('link')
+    <script src="{{asset('assets/js/filtro_em.js')}}" defer></script>
+    @endsection
+
 <style>
   .divSearch{
     display: flex;
@@ -73,7 +77,7 @@
     </div>
     <div class="divSearch">
         <p>Filtros:</p>
-        <input type="text" placehorder="Buscar Cliente">
+        <input type="text" id="input-busca" placehorder="Buscar Cliente">
         <select>
           <option value="0">Por promotor</option>
           <option value="1">Cleiton</option>
@@ -82,8 +86,9 @@
         <select>
       </div>
     </div>
-    <section class="d-flex flex-wrap" style="width: 100%; justify-content: space-evenly; align-items: center;">
-      {{-- @foreach ($empresas as $empresas) --}}
+    <section id="tabela-empresa" class="d-flex flex-wrap" style="width: 100%; justify-content: space-evenly; align-items: center;">
+      @foreach ($empresas as $empresa)
+
           <div class="d-flex flex-wrap content-normal bg-light" id="infos" style="
             width: 95%;
             height: 8vh;
@@ -96,6 +101,7 @@
             box-shadow: 0vh 0.1vh 0.3vh 0vh #858585;
             ">
             <table>
+              <thead>
               <tr class="indicadores">
                 <th>CNPJ</th>
                 <th>CLIENTE</th>
@@ -103,22 +109,25 @@
                 <th>ÚLTIMA PESQUISA</th>
                 <th>ÚLTIMA VISITA</th>
               </tr>
+              </thead>
+              <tbody>
               <tr>
-                <th>3437547647564</th>
-                <th>Cariri Center Supermercado - Centro</th>
+                <th><?php echo $empresa->cnpj; ?></th>
+                <th><?php echo $empresa->nome; ?></th>
                 <th>Nome do promotor</th>
                 <th>06/01/24 às 22:12</th>
                 <th>07/02/24 às 10:12</th>
               </tr>
+            </tbody>
             </table>
-            <a href="" class="d-flex flex-wrap">Ver atividade 
+            <a href="{{route('Empresa-info',['id'=>$empresa->id])}}" class="d-flex flex-wrap">Ver atividade 
               <svg xmlns="http://www.w3.org/2000/svg" style="width: 2vw; height: 4vh;" fill="currentColor" class="bi bi-file-earmark-text" viewBox="0 0 16 16">
                 <path d="M5.5 7a.5.5 0 0 0 0 1h5a.5.5 0 0 0 0-1zM5 9.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5m0 2a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5"/>
                 <path d="M9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4.5zm0 1v2A1.5 1.5 0 0 0 11 4.5h2V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1z"/>
               </svg>
             </a>
           </div>
-      {{-- @endforeach --}}
+      @endforeach
     </section>
 <script src="script.js"></script>
 </main>
