@@ -9,15 +9,8 @@ use  App\Requests\ProdutoStore;
 
 class ProdutosController extends Controller
 {
-    public function index()
+    public function home()
     {
-        // $produtos = Produto::all();
-
-        // $produtos = Produto::select('nome', 'id', 'img')
-        // ->distinct()
-        // ->orderBy('nome')
-        // ->groupBy('nome')
-        // ->get();
 
         $produtos = Produto::select('nome', 'id', 'img')
                 ->whereIn('id', function ($query) {
@@ -27,9 +20,7 @@ class ProdutosController extends Controller
                 })
                 ->get();
 
-        // $produtos = Produto::select('nome','id','img')->distinct()->get();
-        
-        return view('produtos.homeprodutos', ['produtos'=>$produtos]);
+        return response()->json(['produtos'=>$produtos]);
     }
     public function create()
     {
@@ -47,10 +38,11 @@ class ProdutosController extends Controller
 
         if ($produto) {
             // O promotor foi encontrado, faça algo com as informações
-            return view("produtos.produtoinfo", 
-                ['produto'=> $produto,
-                'produtovariants'=>$produtovariants, 
-                'competitorsthis'=>$competitorsthis,]);
+            return response()->json([
+                'produtos'=>$produtos,
+                'produtovariants'=>$produtovariants,
+                'competitorsthis'=>$competitorsthis
+                ]);
         } else {
             // O promotor não foi encontrado, trate o erro
             abort(404);

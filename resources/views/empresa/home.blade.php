@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+    @section('link')
+    <script src="{{asset('assets/js/filtro_em.js')}}" defer></script>
+    @endsection
+
 <style>
   .divSearch{
     display: flex;
@@ -73,7 +77,7 @@
     </div>
     <div class="divSearch">
         <p>Filtros:</p>
-        <input type="text" placehorder="Buscar Cliente">
+        <input type="text" id="input-busca" placehorder="Buscar Cliente">
         <select>
           <option value="0">Por promotor</option>
           <option value="1">Cleiton</option>
@@ -82,8 +86,9 @@
         <select>
       </div>
     </div>
-    <section class="d-flex flex-wrap" style="width: 100%; justify-content: space-evenly; align-items: center;">
+    <section id="tabela-empresa" class="d-flex flex-wrap" style="width: 100%; justify-content: space-evenly; align-items: center;">
       @foreach ($empresas as $empresa)
+
           <div class="d-flex flex-wrap content-normal bg-light" id="infos" style="
             width: 95%;
             height: 8vh;
@@ -96,6 +101,7 @@
             box-shadow: 0vh 0.1vh 0.3vh 0vh #858585;
             ">
             <table>
+              <thead>
               <tr class="indicadores">
                 <th>CNPJ</th>
                 <th>CLIENTE</th>
@@ -103,6 +109,8 @@
                 <th>ÚLTIMA PESQUISA</th>
                 <th>ÚLTIMA VISITA</th>
               </tr>
+              </thead>
+              <tbody>
               <tr>
                 <th><?php echo $empresa->cnpj; ?></th>
                 <th><?php echo $empresa->nome; ?></th>
@@ -110,6 +118,7 @@
                 <th>06/01/24 às 22:12</th>
                 <th>07/02/24 às 10:12</th>
               </tr>
+            </tbody>
             </table>
             <a href="{{route('Empresa-info',['id'=>$empresa->id])}}" class="d-flex flex-wrap">Ver atividade 
               <svg xmlns="http://www.w3.org/2000/svg" style="width: 2vw; height: 4vh;" fill="currentColor" class="bi bi-file-earmark-text" viewBox="0 0 16 16">
