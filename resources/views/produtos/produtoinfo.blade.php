@@ -90,6 +90,8 @@ foreach ($produtovariants as $variant) {
     </div>
   </div>
 </section>
+
+
 <div class="bodyall" id="bodyallId">
   <div>
     <div class="topDiv" id="conDiv">
@@ -108,6 +110,7 @@ foreach ($produtovariants as $variant) {
       </div>
 
       <div class="d-flex" style="width: 100%">
+      
         <img src="<?php echo $produto->img; ?>" style="width: 15vw; height: 29vh;">
         <div style="display: flex; width: 68vw; height: 30vh; flex-wrap: wrap; align-items: center; justify-content: space-between; padding: 1vh;">
           <label>Nome do produto:</label>
@@ -118,7 +121,7 @@ foreach ($produtovariants as $variant) {
           <p class="inputFachada" style="width: 48%;"> {{ count($competitorsthis) }} </p>
         </div>
 
-        </div>
+      </div>
         <div class="divFooter" style="width: 100%">
             <div class="btnPeso">
 
