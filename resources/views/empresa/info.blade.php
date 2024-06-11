@@ -78,7 +78,7 @@
 
 </style>
 
-@section('title','criação')
+@section('title','Clientes')
 
     @section('content')
     <div class="d-flex" style="width: 100%; height: 5vh; justify-content:space-between; padding:10px">
