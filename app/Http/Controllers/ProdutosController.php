@@ -39,7 +39,7 @@ class ProdutosController extends Controller
         if ($produto) {
             // O promotor foi encontrado, faça algo com as informações
             return response()->json([
-                'produtos'=>$produtos,
+                'produto'=>$produto,
                 'produtovariants'=>$produtovariants,
                 'competitorsthis'=>$competitorsthis
                 ]);

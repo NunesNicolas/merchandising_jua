@@ -14,7 +14,7 @@ class PromotoresController extends Controller
     //tava comentado po
     public function home(){
     $promotores = Promotores::all();
-    return view('promotores.homepromotores', ['promotores'=>$promotores]);
+    return response()->json(['promotores'=>$promotores]);
     }
     
     public function create(){
@@ -27,7 +27,7 @@ class PromotoresController extends Controller
 
         if ($promotor) {
             // O promotor foi encontrado, faça algo com as informações
-            return view("promotores.promotorinfo", ['promotor'=>$promotor]);
+            return response()->json(['promotor'=>$promotor]);
         } else {
             // O promotor não foi encontrado, trate o erro
             abort(404);
