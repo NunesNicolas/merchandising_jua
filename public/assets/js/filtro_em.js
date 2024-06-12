@@ -3,8 +3,7 @@ const TABELA_EMPRESA = document.getElementById('tabela-empresa');
 
 INPUT_BUSCA.addEventListener('keyup', () =>{
     let expressao = INPUT_BUSCA.value.toLowerCase();
-
-    let linhas = TABELA_EMPRESA.getElementsByTagName('tbody');
+    let linhas = TABELA_EMPRESA.getElementsByTagName('table');
 
     for (let posicao in linhas) {
         if (true === isNaN(posicao)) {
@@ -18,6 +17,7 @@ INPUT_BUSCA.addEventListener('keyup', () =>{
         } else {
             
             linhas[posicao].style.display = 'none';
+            
         }
     }
 });

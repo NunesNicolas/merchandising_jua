@@ -14,6 +14,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+Route::get('produtos', [App\Http\Controllers\ProdutosController::class, 'produtos']);
+
+Route::post('save_produto', [\App\Http\Controllers\ProdutosController:: class, 'saveProduto']);
