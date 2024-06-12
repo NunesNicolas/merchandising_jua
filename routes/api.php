@@ -16,18 +16,10 @@ use App\Http\Controllers\PromotoresController;
 |
 */
 
-
-//     Route::get('/create', [ProdutosController::class , 'create'])->name('Produtos-create');
-//     Route::post('/', [ProdutosController::class , 'store'])->name('Produtos-store');
-//     Route::get('/{id?}', [ProdutosController::class , 'info'])->name('Produtos-info');
-//     Route::get('/{id}/edit', [ProdutosController::class , 'edit'])->where('id','[0-9]+')->name('Produtos-edit');
-//     Route::put('/{id}', [ProdutosController::class , 'update'])->where('id','[0-9]+')->name('Produtos-update');
-//     Route::delete('/{id}', [ProdutosController::class , 'destroy'])->where('id','[0-9]+')->name('Produtos-destroy');
-//     //----------------------------------------------------------------------------------------
-
 Route::prefix('produtos')->group (function(){
 Route::get('/', [ProdutosController::class , 'home'])->name('Produtos-home');
 Route::get('/{id?}', [ProdutosController::class , 'info'])->name('Produtos-info');
+Route::post('save_produto', [\App\Http\Controllers\ProdutosController:: class, 'saveProduto']);
 }); 
 
 Route::prefix('promotores')->group(function(){
@@ -37,6 +29,5 @@ Route::prefix('promotores')->group(function(){
     Route::get('/{id?}', [PromotoresController::class , 'info'])->name('Promotores-info');
 });
 
-Route::get('produtos', [App\Http\Controllers\ProdutosController::class, 'produtos']);
 
-Route::post('save_produto', [\App\Http\Controllers\ProdutosController:: class, 'saveProduto']);
+
