@@ -25,6 +25,10 @@ use App\Http\Controllers\PromotoresController;
 //     Route::delete('/{id}', [ProdutosController::class , 'destroy'])->where('id','[0-9]+')->name('Produtos-destroy');
 //     //----------------------------------------------------------------------------------------
 
+Route::get('/', [UserController::class , 'initial'])->name('inicial');
+Route::get('/dashboard', [UserController::class , 'login'])->name('dashboard');
+
+
 Route::prefix('produtos')->group (function(){
 Route::get('/', [ProdutosController::class , 'home'])->name('Produtos-home');
 Route::get('/{id?}', [ProdutosController::class , 'info'])->name('Produtos-info');
