@@ -31,7 +31,6 @@ Route::prefix('promotores')->group(function(){
 
 });
 
-
 Route::prefix('produtos')->group (function(){
         Route::get('/', [ProdutosController::class , 'index'])->name('Produtos-index');
         Route::get('/create', [ProdutosController::class , 'create'])->name('Produtos-create');

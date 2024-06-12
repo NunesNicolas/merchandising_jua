@@ -9,8 +9,49 @@ use  App\Requests\ProdutoStore;
 
 class ProdutosController extends Controller
 {
+    public function home()
+    {
 
-    public function produtos() {
+        $produtos = Produto::select('nome', 'id', 'img')
+                ->whereIn('id', function ($query) {
+                    $query->select(Produto::raw('MIN(id)'))
+                          ->from('produtos')
+                          ->groupBy('nome');
+                })
+                ->get();
+
+        return response()->json(['produtos'=>$produtos]);
+    }
+    public function create()
+    {
+        return view('produtos.criarprodutos');
+    }
+    
+    public function info ($id){
+
+        $produto = Produto::find($id);
+
+        $produtovariants = Produto::where('nome', $produto->nome)->get();
+
+        $id_jua = $id; // ID do produto desejado
+        $competitorsthis = Competitor::where('product_id', $id_jua)->get();
+
+        if ($produto) {
+            // O promotor foi encontrado, faça algo com as informações
+            return response()->json([
+                'produto'=>$produto,
+                'produtovariants'=>$produtovariants,
+                'competitorsthis'=>$competitorsthis
+                ]);
+        } else {
+            // O promotor não foi encontrado, trate o erro
+            abort(404);
+        }
+    }
+
+    public function create_competitors()
+    {
+        
         $produtos = Produto::all();
         return response()->json(
             [
