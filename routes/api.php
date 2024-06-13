@@ -30,8 +30,11 @@ Route::get('/', [UserController::class , 'initial'])->name('inicial');
 Route::get('/dashboard', [UserController::class , 'dashboard'])->name('dashboard');
 
 
-Route::post('/login', [UserController::class , 'login'])->name('login-store');
-Route::get('/logout', [UserController::class , 'logout'])->name('login-logout');
+Route::post('/login', [UserController::class , 'login'])->name('login-log');
+Route::post('/transition', [UserController::class , 'transition'])->name('login-transition');
+
+
+// Route::get('/logout', [UserController::class , 'logout'])->name('login-logout');
 
 
 Route::prefix('produtos')->group (function(){

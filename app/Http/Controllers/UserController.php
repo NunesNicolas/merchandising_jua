@@ -15,8 +15,12 @@ class UserController extends Controller
 {   
     private $data = array();
     
-    public function inicial(){
-
+    public function transition(Request $request){
+        $promotor = Promotores::where('id', $request->input('idTransition'))->first();
+        return response()->json([
+            'userid' => $promotor->id,
+            'usernome'=> $promotor->nome
+        ]);
     }
 
     public function login(Request $request){
@@ -25,7 +29,8 @@ class UserController extends Controller
         // && Hash::check($request->input('senha'), $promotor->senha)
         if ($promotor->senha == $request->input('senha')) {
             return response()->json([
-                'message' => 'Promotor encontrado',
+                'userid' => $promotor->id,
+                'usernome' => $promotor->nome,
                 'code' => 200
             ]);
         } else {
