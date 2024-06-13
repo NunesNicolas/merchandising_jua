@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProdutosController;
 use App\Http\Controllers\PromotoresController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,7 +27,11 @@ use App\Http\Controllers\PromotoresController;
 //     //----------------------------------------------------------------------------------------
 
 Route::get('/', [UserController::class , 'initial'])->name('inicial');
-Route::get('/dashboard', [UserController::class , 'login'])->name('dashboard');
+Route::get('/dashboard', [UserController::class , 'dashboard'])->name('dashboard');
+
+
+Route::post('/login', [UserController::class , 'login'])->name('login-store');
+Route::get('/logout', [UserController::class , 'logout'])->name('login-logout');
 
 
 Route::prefix('produtos')->group (function(){
