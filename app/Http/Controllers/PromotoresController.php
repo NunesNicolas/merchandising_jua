@@ -14,8 +14,31 @@ class PromotoresController extends Controller
     //tava comentado po
     public function home(){
     $promotores = Promotores::all();
-    return response()->json(['promotores'=>$promotores]);
+    return response()->json(['promotores'=>$promotores, 'message' => 'Promotores']);
     }
+
+
+    public function savePromotor(Request $request) {
+
+        $promotor = $request->input('promotor');
+        $promotor = new Promotores();
+        $promotor->nome = $request->input('nome');
+        $promotor->email = $request->input('email');
+        $promotor->senha = $request->input('senha');
+        $promotor->telefone = $request->input('telefone');
+        $promotor->save();
+        return response()->json(['message' => 'Sucessfully promotor', 'code' => 200]);
+    }  
+
+    // public function savePromotores(Request $request){
+    //     $promotores = new Promotores();
+    //     $promotores->name = $request->name;
+    //     $promotores->email = $request->email;
+    //     $promotores->senha = $request->senha;
+    //     $promotores->telefone = $request->telefone;
+    //     $promotores->save();
+    //     return response()->json(['message' => 'Sucessfully promotor', 'code' => 200]);
+    // }
     
     public function create(){
         return view('promotores.criarpromotores');
@@ -33,8 +56,8 @@ class PromotoresController extends Controller
             abort(404);
         }
     }
- 
 
+ 
     // public function store(PromotoreStore $request){
     //     Promotores::create($request->all());
     //     return redirect()->route('Promotores-home');
@@ -56,6 +79,7 @@ class PromotoresController extends Controller
     //         return redirect()->route('Usuario-home');
     //     }
     // }
+
     public function update(PromotoreStore $request, $id)
     {
         $date = [
@@ -63,12 +87,12 @@ class PromotoresController extends Controller
             'img' => $request->email,
             'weight' => $request->weight,  
          ];
-        Promotore::where('id',$id)->update($date);
-        return redirect()->route(/*'Usuario-home'*/);
+        Promotores::where('id',$id)->update($date);
+        return redirect()->route('Usuario-home');
     }
     public function destroy($id){
-        Promotore::where('id',$id)->delete();
-        return redirect()->route(/*'Usuario-home'*/);
+        Promotores::where('id',$id)->delete();
+        return redirect()->route('Usuario-home');
     }
     
 }

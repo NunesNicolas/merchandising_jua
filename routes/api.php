@@ -27,6 +27,7 @@ Route::prefix('promotores')->group(function(){
     Route::get('/create', [PromotoresController::class , 'create'])->name('Promotores-create');
     Route::post('/', [PromotoresController::class , 'store'])->name('Promotores-store');
     Route::get('/{id?}', [PromotoresController::class , 'info'])->name('Promotores-info');
+    Route::post('save_promotor', [\App\Http\Controllers\PromotoresController:: class, 'savePromotor']);
 });
 
 
