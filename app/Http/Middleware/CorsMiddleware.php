@@ -13,14 +13,13 @@ class CorsMiddleware
      *
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
-    public function handle(Request $request, Closure $next): Response
-    {
-        $response = $next($request);
+    public function handle($request, Closure $next)
+{
+    return $next($request)
+        ->header('Access-Control-Allow-Origin', 'http://localhost:5173')
+        ->header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS')
+        ->header('Access-Control-Allow-Headers', 'Origin, Content-Type, X-Auth-Token, Authorization, Accept, X-CSRF-Token')
+        ->header('Access-Control-Allow-Credentials', 'true');
+}
 
-        $response->header('Access-Control-Allow-Origin', '*');
-        $response->header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
-        $response->header('Access-Control-Allow-Headers', 'Origin, Content-Type, Accept, Authorization, X-Requested-With');
-
-        return $response;
-    }
 }
