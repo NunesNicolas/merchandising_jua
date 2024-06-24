@@ -24,6 +24,11 @@ Route::post('save_produto', [ProdutosController:: class, 'saveProduto']);
 Route::put('/{id}', [ProdutosController::class , 'update'])->where('id', '[0-9]+');
 }); 
 
+Route::prefix('competitors')->group (function(){
+    Route::get('/create', [ProdutosController::class , 'create_competitors'])->name('Competitors-create');
+    Route::post('/', [ProdutosController::class , 'store_competitors'])->name('Competitors-store');  
+});
+
 Route::prefix('promotores')->group(function(){
     Route::get('/', [PromotoresController::class , 'home'])->name('Promotores-home');
     Route::get('/create', [PromotoresController::class , 'create'])->name('Promotores-create');

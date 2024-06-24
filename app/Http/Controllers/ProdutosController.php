@@ -48,19 +48,6 @@ class ProdutosController extends Controller
             abort(404);
         }
     }
-
-    // public function create_competitors()
-    // {
-        
-    //     $produtos = Produto::all();
-    //     return response()->json(
-    //         [
-    //             'produtos' => $produtos,
-    //             'message' => 'Produtos',
-    //             'code' => 200
-    //         ]
-    //     );
-    // }
    
     public function saveProduto(Request $request) {
 
@@ -90,7 +77,14 @@ class ProdutosController extends Controller
             'code' => 200
         ]);
     }
-    
+    public function store_competitors (Request $request){
+        Competitor::create($request->all());
+        return response()->json([
+            'message' => 'Produto Criado com Sucesso',
+            'code' => 200
+        ]);
+    }
+
 
 
 }
