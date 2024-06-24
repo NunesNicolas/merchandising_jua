@@ -9,8 +9,8 @@ use Illuminate\Http\Request;
 class EmpresasController extends Controller
 {
     public function index(){
-        $empresa = Empresa::all();
-        return view('empresa.home', ['empresas' => $empresa]);
+        $empresas = Empresa::all();
+        return response()->json(['empresas'=>$empresas]);
     }
 
     public function create()
