@@ -19,7 +19,8 @@ use App\Http\Controllers\PromotoresController;
 Route::prefix('produtos')->group (function(){
 Route::get('/', [ProdutosController::class , 'home'])->name('Produtos-home');
 Route::get('/{id?}', [ProdutosController::class , 'info'])->name('Produtos-info');
-Route::post('save_produto', [\App\Http\Controllers\ProdutosController:: class, 'saveProduto']);
+Route::post('save_produto', [ProdutosController:: class, 'saveProduto']);
+Route::put('/{id}', [ProdutosController::class , 'update'])->where('id', '[0-9]+');
 }); 
 
 Route::prefix('promotores')->group(function(){
@@ -27,7 +28,7 @@ Route::prefix('promotores')->group(function(){
     Route::get('/create', [PromotoresController::class , 'create'])->name('Promotores-create');
     Route::post('/', [PromotoresController::class , 'store'])->name('Promotores-store');
     Route::get('/{id?}', [PromotoresController::class , 'info'])->name('Promotores-info');
-    Route::post('save_promotor', [\App\Http\Controllers\PromotoresController:: class, 'savePromotor']);
+    Route::post('save_promotor', [PromotoresController:: class, 'savePromotor']);
 });
 
 

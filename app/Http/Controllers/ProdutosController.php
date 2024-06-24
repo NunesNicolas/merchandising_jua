@@ -90,12 +90,42 @@ class ProdutosController extends Controller
             'code' => 200
         ]);
     }
-    
 
-
-}
+    public function update(Request $request, $id)
+{
+    // $request->validate([
+    //     'nome' => 'required|string|max:255',
+    //     'img' => 'required|url',
         
+    // ]);
 
+    $produto = Produto::find($id);
+    $produto->nome = $request->nome;
+    $produto->img = $request->img;
+    $produto->save();
+
+    return response()->json(['message' => 'Produto atualizado com sucesso'], 200);
+}
+    // public function edit($id)
+    // {
+    //     $produtos = Produto::find($id);
+    //     return response()->json([$produtos, 'message' => 'Produto atualizado com sucesso']);
+    // }
+
+    // public function update(Request $request, $id)
+    // {
+    //     $produto = Produto::find($id);
+
+    //     $produto->nome = $request->nome;
+    //     $produto->img = $request->img;
+
+    //     $produto->save();
+
+    //     return response()->json([$produto ,'message' => 'Produto atualizado com sucesso']);
+    // }
+}
+
+        
 //     public function index()
 //     {
 //         // $produtos = Produto::all();
@@ -187,32 +217,6 @@ class ProdutosController extends Controller
 //         return redirect()->route('Produtos-index');
 //     }
 
-
-//     public function edit($id)
-//     {
-//         $produtos = Produto::where('id', $id)->first();
-//         if(!empty($produtos))
-//         {
-//             return view('produtos.editprodutos', ['produtos'=>$produtos]);        
-//         }
-//         else
-//         {
-//             return redirect()->route('Forms-index');
-//         }
-//     }
-
-
-//     public function update(Request $request, $id)
-//     {
-//         $data = [
-//             'nome' => $request->nome,
-//             'img' => $request->email,
-//             'weight' => $request->weight,  
-
-//         ];
-//         Produto::where('id', $id)->update($data);
-//         return redirect()->route('Produtos-index');
-//     }
 //     public function destroy($id)
 //     {
 //         Produto::where('id', $id)->delete();
