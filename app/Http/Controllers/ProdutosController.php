@@ -49,19 +49,19 @@ class ProdutosController extends Controller
         }
     }
 
-    public function create_competitors()
-    {
+    // public function create_competitors()
+    // {
         
-        $produtos = Produto::all();
-        return response()->json(
-            [
-                'produtos' => $produtos,
-                'message' => 'Produtos',
-                'code' => 200
-            ]
-        );
-    }
-
+    //     $produtos = Produto::all();
+    //     return response()->json(
+    //         [
+    //             'produtos' => $produtos,
+    //             'message' => 'Produtos',
+    //             'code' => 200
+    //         ]
+    //     );
+    // }
+   
     public function saveProduto(Request $request) {
 
         $weights = $request->input('weights');
@@ -89,6 +89,10 @@ class ProdutosController extends Controller
             'message' => 'Produto Criado com Sucesso',
             'code' => 200
         ]);
+    }
+    public function store_competitors (Request $request){
+        Competitor::create($request->all());
+        return redirect()->route('Produtos-index');
     }
     
 
