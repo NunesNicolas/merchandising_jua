@@ -33,11 +33,11 @@ Route::prefix('promotores')->group(function(){
 
 Route::prefix('empresas')->group(function(){
     Route::get('/', [EmpresasController::class , 'index'])->name('Empresas-index');
-    Route::get('/create', [EmpresasController::class , 'create'])->name('Empresas-create');
     Route::post('/', [EmpresasController::class , 'store'])->name('Empresas-store');
     Route::get('/{id}', [EmpresasController::class , 'info'])->where('id','[0-9]')->name('Empresa-info');
     Route::put('/{id}', [EmpresasController::class , 'update'])->where('id','[0-9]')->name('Empresas-update');
     Route::delete('/{id}', [EmpresasController::class, 'destroy'])-> where('id', '[0-9]') -> name('Empresas-destroy');
+    Route::post('save_empresa', [EmpresasController::class, 'saveEmpresa']);
 });
 
 

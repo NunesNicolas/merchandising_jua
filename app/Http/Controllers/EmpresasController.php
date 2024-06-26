@@ -13,10 +13,20 @@ class EmpresasController extends Controller
         return response()->json(['empresas'=>$empresas]);
     }
 
-    public function create()
-    {
-        return view('empresa.createempresas');
+    public function saveEmpresa(Request $request){
+        $empresa = new Empresa();
+        $empresa->nome = $request->input('nome');
+        $empresa->cnpj = $request->input('cnpj');
+        $empresa->promotor_id = $request->input('promotor_id');
+        $empresa->save();
+        return response()->json(['message' => 'Sucessfully empresa', 'code' => 200]);
+
     }
+
+    // public function create()
+    // {
+    //     return view('empresa.createempresas');
+    // }
 
     public function store(Request $request)
     {

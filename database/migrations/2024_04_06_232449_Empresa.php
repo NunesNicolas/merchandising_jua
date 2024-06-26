@@ -18,6 +18,7 @@ return new class extends Migration
             $table -> string("latitude", 100) -> nullable();
             $table -> string("longitude", 100) -> nullable();
             $table -> string("descricao", 2000) -> nullable();
+            $table -> unsignedBigInteger("promotor_id")->nullable();
             $table -> timestamps();
         });
     }
