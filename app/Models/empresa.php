@@ -14,5 +14,6 @@ class Empresa extends Model
         'cnpj',
         'latitude',
         'longitude',
+        'promotor_id'
     ];
 }
