@@ -48,20 +48,7 @@ class ProdutosController extends Controller
             abort(404);
         }
     }
-
-    public function create_competitors()
-    {
-        
-        $produtos = Produto::all();
-        return response()->json(
-            [
-                'produtos' => $produtos,
-                'message' => 'Produtos',
-                'code' => 200
-            ]
-        );
-    }
-
+   
     public function saveProduto(Request $request) {
 
         $weights = $request->input('weights');
@@ -90,39 +77,16 @@ class ProdutosController extends Controller
             'code' => 200
         ]);
     }
+    public function store_competitors (Request $request){
+        Competitor::create($request->all());
+        return response()->json([
+            'message' => 'Produto Criado com Sucesso',
+            'code' => 200
+        ]);
+    }
 
-    public function update(Request $request, $id)
-{
-    // $request->validate([
-    //     'nome' => 'required|string|max:255',
-    //     'img' => 'required|url',
-        
-    // ]);
 
-    $produto = Produto::find($id);
-    $produto->nome = $request->nome;
-    $produto->img = $request->img;
-    $produto->save();
 
-    return response()->json(['message' => 'Produto atualizado com sucesso'], 200);
-}
-    // public function edit($id)
-    // {
-    //     $produtos = Produto::find($id);
-    //     return response()->json([$produtos, 'message' => 'Produto atualizado com sucesso']);
-    // }
-
-    // public function update(Request $request, $id)
-    // {
-    //     $produto = Produto::find($id);
-
-    //     $produto->nome = $request->nome;
-    //     $produto->img = $request->img;
-
-    //     $produto->save();
-
-    //     return response()->json([$produto ,'message' => 'Produto atualizado com sucesso']);
-    // }
 }
 
         
