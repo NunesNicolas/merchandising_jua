@@ -21,7 +21,7 @@ Route::prefix('produtos')->group (function(){
 Route::get('/', [ProdutosController::class , 'home'])->name('Produtos-home');
 Route::get('/{id?}', [ProdutosController::class , 'info'])->name('Produtos-info');
 Route::post('save_produto', [ProdutosController:: class, 'saveProduto']);
-Route::put('/{id}', [ProdutosController::class , 'update'])->where('id', '[0-9]+');
+Route::put('/{id?}', [ProdutosController::class , 'update'])->where('id', '[0-9]+');
 }); 
 
 Route::prefix('promotores')->group(function(){

@@ -30,15 +30,6 @@ class PromotoresController extends Controller
         return response()->json(['message' => 'Sucessfully promotor', 'code' => 200]);
     }  
 
-    // public function savePromotores(Request $request){
-    //     $promotores = new Promotores();
-    //     $promotores->name = $request->name;
-    //     $promotores->email = $request->email;
-    //     $promotores->senha = $request->senha;
-    //     $promotores->telefone = $request->telefone;
-    //     $promotores->save();
-    //     return response()->json(['message' => 'Sucessfully promotor', 'code' => 200]);
-    // }
     
     public function create(){
         return view('promotores.criarpromotores');
