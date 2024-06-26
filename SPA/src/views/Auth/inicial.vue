@@ -89,10 +89,11 @@ export default {
     async getToken() {
       try {
         const response = await axios.get(
-          "http://127.0.0.1:8000/sanctum/csrf-cookie"
+          "http://localhost:8000/sanctum/csrf-cookie"
         );
         // Após obter o token CSRF, armazene-o
         this.csrfToken = this.getTokenFromCookie();
+        console.log('here', this.csrfToken)
       } catch (error) {
         console.error("Erro ao obter o token CSRF:", error);
         throw error; // Lança o erro para o caller (login())
@@ -110,11 +111,12 @@ export default {
 
         // Realizar a requisição de login com o token CSRF no cabeçalho
         let response = await axios.post(
-          "http://127.0.0.1:8000/login",
+          "http://localhost:8000/login",
           formData,
           {
             headers: {
               Accept: "application/json",
+              Referer: "localhost:8000",
               "X-CSRF-TOKEN": this.csrfToken, // Enviar o token CSRF no cabeçalho
             },
           }
