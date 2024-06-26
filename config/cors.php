@@ -2,7 +2,6 @@
 
 return [
 
-    
     /*
     |--------------------------------------------------------------------------
     | Cross-Origin Resource Sharing (CORS) Configuration
@@ -16,20 +15,18 @@ return [
     |
     */
 
-    'paths' => ['api/*', 'sanctum/csrf-cookie'],
+   'paths' => ['api/*'],
 
-    'allowed_methods' => ['*'],
+'allowed_methods' => ['*'],
 
-    'allowed_origins' => ['*'],
+'allowed_origins' => ['http://localhost:5173'], // Altere para o domínio do seu frontend Vue.js
 
-    'allowed_origins_patterns' => [],
+'allowed_headers' => ['*'],
 
-    'allowed_headers' => ['*'],
+'exposed_headers' => [],
 
-    'exposed_headers' => [],
+'max_age' => 0,
 
-    'max_age' => 0,
-
-    'supports_credentials' => false,
+'supports_credentials' => true,
 
 ];

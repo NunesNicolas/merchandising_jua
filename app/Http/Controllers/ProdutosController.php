@@ -48,20 +48,7 @@ class ProdutosController extends Controller
             abort(404);
         }
     }
-
-    public function create_competitors()
-    {
-        
-        $produtos = Produto::all();
-        return response()->json(
-            [
-                'produtos' => $produtos,
-                'message' => 'Produtos',
-                'code' => 200
-            ]
-        );
-    }
-
+   
     public function saveProduto(Request $request) {
 
         $weights = $request->input('weights');
@@ -90,12 +77,19 @@ class ProdutosController extends Controller
             'code' => 200
         ]);
     }
-    
+    public function store_competitors (Request $request){
+        Competitor::create($request->all());
+        return response()->json([
+            'message' => 'Produto Criado com Sucesso',
+            'code' => 200
+        ]);
+    }
+
 
 
 }
-        
 
+        
 //     public function index()
 //     {
 //         // $produtos = Produto::all();
@@ -187,32 +181,6 @@ class ProdutosController extends Controller
 //         return redirect()->route('Produtos-index');
 //     }
 
-
-//     public function edit($id)
-//     {
-//         $produtos = Produto::where('id', $id)->first();
-//         if(!empty($produtos))
-//         {
-//             return view('produtos.editprodutos', ['produtos'=>$produtos]);        
-//         }
-//         else
-//         {
-//             return redirect()->route('Forms-index');
-//         }
-//     }
-
-
-//     public function update(Request $request, $id)
-//     {
-//         $data = [
-//             'nome' => $request->nome,
-//             'img' => $request->email,
-//             'weight' => $request->weight,  
-
-//         ];
-//         Produto::where('id', $id)->update($data);
-//         return redirect()->route('Produtos-index');
-//     }
 //     public function destroy($id)
 //     {
 //         Produto::where('id', $id)->delete();
