@@ -17,15 +17,4 @@ Route::get('/', function () {
     return ['Laravel' => app()->version()];
 });
 
-Route::prefix('produtos')->group (function(){
-        Route::get('/', [ProdutosController::class , 'index'])->name('Produtos-index');
-        Route::get('/create', [ProdutosController::class , 'create'])->name('Produtos-create');
-        Route::post('/', [ProdutosController::class , 'store'])->name('Produtos-store');
-        Route::get('/{id?}', [ProdutosController::class , 'info'])->name('Produtos-info');
-        Route::get('/{id}/edit', [ProdutosController::class , 'edit'])->where('id','[0-9]+')->name('Produtos-edit');
-        Route::put('/{id}', [ProdutosController::class , 'update'])->where('id','[0-9]+')->name('Produtos-update'); 
-        Route::delete('/{id}', [ProdutosController::class , 'destroy'])->where('id','[0-9]+')->name('Produtos-destroy');
-        //----------------------------------------------------------------------------------------
-        
-});
-
+require __DIR__.'/auth.php';

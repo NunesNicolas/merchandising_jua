@@ -3,16 +3,12 @@ import '../axios'
 </script>
 
 <template>
-
-
-  <!-- <div id="app"> -->
-
   
   <div class="page">
-    <router-view :key="$route.fullPath" /> 
+    <router-view :key="$route.fullPath" />
   </div>
 
-<!-- </div> -->
+  <!-- </div> -->
 </template>
 
 <script>
@@ -30,28 +26,29 @@ import infoEmpresas from './views/empresas/InfoEmpresas.vue';
 </script>
 
 <style>
-body{
+body {
   background-color: rgb(5, 180, 255);
 }
 
-.page{
-  padding: 0% ;
-  margin: 0%  ;
+.page {
+  padding: 0%;
+  margin: 0%;
   justify-content: space-between;
-  height: 100% ;
+  height: 100%;
   min-height: 100vh;
 }
+
 #app {
   padding: 0%;
   margin: 0%;
-} 
+}
 
-#topheader{
+#topheader {
   padding-bottom: 2px;
   background-color: #f0f0f0;
   height: 100%;
   width: 94.95%;
   margin-left: 5vw;
   border: none;
-  }
+}
 </style>

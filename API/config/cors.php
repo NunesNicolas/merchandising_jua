@@ -15,20 +15,20 @@ return [
     |
     */
 
-   'paths' => ['api/*'],
+    'paths' => ['*'],
 
     'allowed_methods' => ['*'],
 
-    'allowed_origins' => ['http://localhost:5173'],
+    'allowed_origins' => [env('FRONTEND_URL', 'http://localhost:3000', 'http://localhost:5173')],
 
-'allowed_origins' => ['http://localhost:5173'], // Altere para o domínio do seu frontend Vue.js
+    'allowed_origins_patterns' => [],
 
-'allowed_headers' => ['*'],
+    'allowed_headers' => ['*'],
 
-'exposed_headers' => [],
+    'exposed_headers' => [],
 
-'max_age' => 0,
+    'max_age' => 0,
 
-'supports_credentials' => true,
+    'supports_credentials' => true,
 
 ];
