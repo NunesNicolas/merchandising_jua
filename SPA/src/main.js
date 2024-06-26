@@ -24,6 +24,8 @@ import homeEmpresas from './views/empresas/homeEmpresas.vue';
 import infoEmpresas from './views/empresas/InfoEmpresas.vue';
 import createEmpresas from './views/empresas/createEmpresas.vue';
 
+import homeClientes from './views/clientes/home.vue';
+
 const routes = [
   {
     path: '/login',
@@ -48,6 +50,8 @@ const routes = [
       { path: 'empresas', name: 'homeEmpresas', component: homeEmpresas },
       { path: 'empresas/:id', name: 'infoEmpresas', component: infoEmpresas },
       { path: 'empresas/create', name: 'createEmpresas', component: createEmpresas },
+
+      { path: 'clientes', name: 'clientes', component: homeClientes },
     ]
   }
 ];
