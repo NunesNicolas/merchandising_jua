@@ -1,4 +1,5 @@
 <template>
+
     <head>
         <link rel="stylesheet" href="{{ asset('assets/css/variables.css') }}">
         <link rel="stylesheet" href="{{ asset('assets/css/login.css') }}">
@@ -12,12 +13,13 @@
 <script></script>
 
 <style scoped>
-body{
+body {
     margin: 0;
     padding: 0;
 }
-#topheader{
-    height:100% ;
+
+#topheader {
+    height: 100%;
     width: 100%;
     margin: 0;
     margin-right: 0;

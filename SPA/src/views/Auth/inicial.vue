@@ -7,25 +7,20 @@
     <div class="form-container">
       <form @submit.prevent="login">
         <h2 class="text-center">Bem-vindo ao sistema</h2>
-        
+
         <div class="input-container">
           <input type="email" v-model="form.email" required placeholder="Email" />
         </div>
-        
+
         <div class="input-container">
-          <input
-            type="password"
-            v-model="form.senha"
-            required
-            placeholder="Senha"
-          />
+          <input type="password" v-model="form.senha" required placeholder="Senha" />
           <i class="bi bi-eye-fill" @click="mostrarSenha"></i>
         </div>
-        
+
         <div class="form-link">
           <router-link to="/esqueceu-senha">Esqueceu sua senha?</router-link>
         </div>
-        
+
         <button type="submit" class="btn-login">
           Entrar
         </button>
@@ -171,4 +166,3 @@ const getTokenFromCookie = () => {
   cursor: pointer;
 }
 </style>
-
