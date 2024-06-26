@@ -37,7 +37,7 @@
 <script setup>
 import { ref } from 'vue';
 import axios from 'axios';
-import { useRoute, useRouter } from 'vue-router';
+import { useRouter } from 'vue-router';
 
 const form = ref({
   email: '',
@@ -45,7 +45,6 @@ const form = ref({
 });
 
 const router = useRouter();
-const route = useRoute();
 
 const mostrarSenha = () => {
   // Lógica para mostrar a senha
@@ -67,6 +66,9 @@ const login = async () => {
         'X-CSRF-TOKEN': csrfToken,
       },
     });
+
+    // Armazenar o token em localStorage
+    localStorage.setItem('token', csrfToken);
 
     console.log('Login successful:', loginResponse.data);
 
@@ -169,3 +171,4 @@ const getTokenFromCookie = () => {
   cursor: pointer;
 }
 </style>
+

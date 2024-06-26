@@ -6,7 +6,7 @@ import {ref, onMounted} from 'vue'
 
 const user = ref();
 onMounted(async ()=> {
-    const data = await axios.get('http://127.0.0.1:8000/api/user');
+    // const data = await axios.get('http://127.0.0.1:8000/api/user');
     console.log(data);
 })
 </script>
