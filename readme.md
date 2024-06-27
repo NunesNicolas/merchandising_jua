@@ -90,7 +90,7 @@
 
 ## Todos
 
-[ ] - Função de logout
-[ ] - Finalizar telas do clientes/produtos/promotes
-[ ] - Iniciar fluxo de visitas/carteiras de clientes
-[ ] - Criar aplicação para que o promotor possa realizar suas análises
+- [ ] - Função de logout
+- [ ] - Finalizar telas do clientes/produtos/promotes
+- [ ] - Iniciar fluxo de visitas/carteiras de clientes
+- [ ] - Criar aplicação para que o promotor possa realizar suas análises
