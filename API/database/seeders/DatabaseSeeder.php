@@ -2,21 +2,29 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use App\Models\User;
 
 class DatabaseSeeder extends Seeder
 {
-    /**
-     * Seed the application's database.
-     */
     public function run(): void
     {
-        // \App\Models\User::factory(10)->create();
+        // Dados do usuário
+        $userData = [
+            'name' => 'Usuário de teste',
+            'email' => 'teste@teste.com',
+            'password' => bcrypt('123456'),
+        ];
 
-        \App\Models\User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
-        ]);
+        // Verifica se o usuário já existe pelo email
+        $existingUser = User::where('email', $userData['email'])->first();
+
+        if ($existingUser) {
+            // Atualiza os dados do usuário existente
+            $existingUser->update($userData);
+        } else {
+            // Cria um novo usuário se não existir
+            User::factory()->create($userData);
+        }
     }
 }
