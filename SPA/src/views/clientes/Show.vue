@@ -17,9 +17,7 @@
                     <BoxInfo title="Endereço" :value="cliente.endereco"></BoxInfo>
                 </div>
                 <div class="box-line">
-                    
                     <img :src="cliente.imagem" height="300px" width="auto"/>
-                    
                 </div>
 
             </slot>
