@@ -29,7 +29,6 @@ export default {
             try {
                 const response = await axios.get(`/clientes/${this.$route.params.id}`);
                 this.values = response.data;
-                console.log(this.initialValues)
             } catch (error) {
                 console.error('Error fetching client data:', error);
             }
@@ -37,7 +36,7 @@ export default {
         async updateClient(formData) {
             try {
                 const response = await axios.put(`/clientes/${this.$route.params.id}`, formData);
-                console.log(response);
+                
                 if (response.status === 200) {
                     alert(response.statusText);
                     this.$router.push('/clientes');

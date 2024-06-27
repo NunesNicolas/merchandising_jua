@@ -3,7 +3,7 @@
         <Breadcrumb pageTitle="Clientes" routeInfo="Dashboard / Clientes" />
 
         <ActionListWrapper>
-            <ActionRouterBack :label="'voltar'" />
+            <ActionRouterBack/>
         </ActionListWrapper>
 
         <BoxInfoWrapper>

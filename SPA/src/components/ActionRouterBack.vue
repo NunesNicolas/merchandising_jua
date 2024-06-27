@@ -11,13 +11,7 @@
 
 <script>
 export default {
-  name: 'ActionRouterBack',
-  props: {
-    label: {
-      type: String,
-      required: true
-    }
-  }
+  name: 'ActionRouterBack'
 };
 </script>
 
