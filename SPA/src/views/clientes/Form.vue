@@ -12,6 +12,7 @@
         @update:modelValue="updateFormValue('endereco', $event)" />
       <SelectInput label="Estado" name="estado" :modelValue="formValues.estado" :options="estadoOptions"
         @update:modelValue="updateFormValue('estado', $event)" />
+      <ImageUploadInput />
     </template>
   </DefaultForm>
 </template>
@@ -20,13 +21,17 @@
 import DefaultForm from '../../components/form/DefaultForm.vue';
 import TextInput from '../../components/form/TextInput.vue';
 import SelectInput from '../../components/form/SelectInput.vue';
+import ImageUploadInput from '../../components/form/ImageUploadInput.vue';
+
+
 
 export default {
   name: 'Form',
   components: {
     DefaultForm,
     TextInput,
-    SelectInput
+    SelectInput,
+    ImageUploadInput
   },
   props: {
     title: String,
