@@ -1,7 +1,6 @@
 <template>
-  <DefaultForm :values="formValues" :validations="validations" :onSave="handleSave"
-    :submitLabel="submitLabel">
-    
+  <DefaultForm :values="formValues" :validations="validations" :onSave="handleSave" :submitLabel="submitLabel">
+
     <template v-slot="{ formValues, updateFormValue }">
       <h1>{{ title }}</h1>
       <hr>
@@ -9,6 +8,8 @@
         @update:modelValue="updateFormValue('nome', $event)" />
       <TextInput label="CNPJ" name="cnpj" :modelValue="formValues.cnpj"
         @update:modelValue="updateFormValue('cnpj', $event)" />
+      <TextInput label="Endereço" name="endereco" :modelValue="formValues.endereco"
+        @update:modelValue="updateFormValue('endereco', $event)" />
       <SelectInput label="Estado" name="estado" :modelValue="formValues.estado" :options="estadoOptions"
         @update:modelValue="updateFormValue('estado', $event)" />
     </template>

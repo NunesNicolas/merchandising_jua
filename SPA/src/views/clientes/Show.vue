@@ -3,7 +3,7 @@
         <Breadcrumb pageTitle="Clientes" routeInfo="Dashboard / Clientes" />
 
         <ActionListWrapper>
-            <ActionRouterBack/>
+            <ActionRouterBack />
         </ActionListWrapper>
 
         <BoxInfoWrapper>
@@ -18,6 +18,20 @@
                 </div>
             </slot>
         </BoxInfoWrapper>
+
+        <CardList :items="visitas" :fields="{
+            date: 'Data da visita',
+        }">
+
+            <template v-slot:actions="{ item }">
+                <router-link :to="'#'" class="d-flex flex-wrap">
+                    <i class="bi bi-file-earmark-text" style="font-size: 2rem;"></i>
+                </router-link>
+                <router-link :to="'#'" class="d-flex flex-wrap">
+                    <i class="bi bi-camera-fill" style="font-size: 2rem;"></i>
+                </router-link>
+            </template>
+        </CardList>
     </div>
 </template>
 <script>
@@ -28,7 +42,7 @@ import ActionRouterBack from "../../components/ActionRouterBack.vue";
 import BoxInfoWrapper from "../../components/Box/BoxInfoWrapper.vue";
 import BoxInfo from "../../components/Box/BoxInfo.vue";
 import Breadcrumb from "../../components/Breadcrumb.vue";
-
+import CardList from '../../components/CardList.vue';
 
 
 export default {
@@ -38,7 +52,8 @@ export default {
         ActionRouterBack,
         BoxInfoWrapper,
         BoxInfo,
-        Breadcrumb
+        Breadcrumb,
+        CardList
     },
     data() {
         return {
@@ -46,7 +61,18 @@ export default {
                 nome: '',
                 cnpj: '',
                 endereco: ''
-            }
+            },
+            visitas: [
+                {
+                    date: '29/12/2024'
+                },
+                {
+                    date: '01/17/2024'
+                },
+                {
+                    date: '02/07/2024'
+                },
+            ]
         };
     },
     created() {
