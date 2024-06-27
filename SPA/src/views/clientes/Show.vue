@@ -16,6 +16,10 @@
                 <div class="box-line">
                     <BoxInfo title="Endereço" :value="cliente.endereco"></BoxInfo>
                 </div>
+                <div class="box-line">
+                    <img :src="cliente.imagem" height="300px" width="auto"/>
+                </div>
+
             </slot>
         </BoxInfoWrapper>
 
@@ -32,6 +36,8 @@
                 </router-link>
             </template>
         </CardList>
+        <br />
+        <br />
     </div>
 </template>
 <script>
