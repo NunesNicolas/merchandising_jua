@@ -3,12 +3,9 @@ import '../axios'
 </script>
 
 <template>
-  
   <div class="page">
     <router-view :key="$route.fullPath" />
   </div>
-
-  <!-- </div> -->
 </template>
 
 <script>
@@ -20,6 +17,10 @@ import infoPromotores from './views/promotores/InfoPromotores.vue';
 import createPromotores from './views/promotores/createPromotores.vue';
 import homeEmpresas from './views/empresas/homeEmpresas.vue';
 import infoEmpresas from './views/empresas/InfoEmpresas.vue';
+
+import HomeClientes from './views/clientes/Home.vue';
+import CreateClientes from './views/clientes/Create.vue';
+import UpdateClientes from './views/clientes/Update.vue';
 
 
 

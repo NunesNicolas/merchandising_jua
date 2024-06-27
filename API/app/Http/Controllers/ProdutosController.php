@@ -13,21 +13,22 @@ class ProdutosController extends Controller
     {
 
         $produtos = Produto::select('nome', 'id', 'img')
-                ->whereIn('id', function ($query) {
-                    $query->select(Produto::raw('MIN(id)'))
-                          ->from('produtos')
-                          ->groupBy('nome');
-                })
-                ->get();
+            ->whereIn('id', function ($query) {
+                $query->select(Produto::raw('MIN(id)'))
+                    ->from('produtos')
+                    ->groupBy('nome');
+            })
+            ->get();
 
-        return response()->json(['produtos'=>$produtos]);
+        return response()->json(['produtos' => $produtos]);
     }
     public function create()
     {
         return view('produtos.criarprodutos');
     }
-    
-    public function info ($id){
+
+    public function info($id)
+    {
 
         $produto = Produto::find($id);
 
@@ -39,29 +40,30 @@ class ProdutosController extends Controller
         if ($produto) {
             // O promotor foi encontrado, faça algo com as informações
             return response()->json([
-                'produto'=>$produto,
-                'produtovariants'=>$produtovariants,
-                'competitorsthis'=>$competitorsthis
-                ]);
+                'produto' => $produto,
+                'produtovariants' => $produtovariants,
+                'competitorsthis' => $competitorsthis
+            ]);
         } else {
             // O promotor não foi encontrado, trate o erro
             abort(404);
         }
     }
-   
-    public function saveProduto(Request $request) {
+
+    public function saveProduto(Request $request)
+    {
 
         $weights = $request->input('weights');
-        
-        if(is_array($weights)) {
+
+        if (is_array($weights)) {
             foreach ($weights as $weight) {
                 $produto = new Produto();
                 $produto->nome = $request->input('nome');
                 $produto->img = $request->input('img');
-                
+
                 // Defina o peso (weight) para o valor atual do loop
                 $produto->weight = $weight;
-                
+
                 // Salve o produto no banco de dados
                 $produto->save();
             }
@@ -71,22 +73,20 @@ class ProdutosController extends Controller
                 'code' => 400
             ]);
         }
-    
+
         return response()->json([
             'message' => 'Produto Criado com Sucesso',
             'code' => 200
         ]);
     }
-    public function store_competitors (Request $request){
+    public function store_competitors(Request $request)
+    {
         Competitor::create($request->all());
         return response()->json([
             'message' => 'Produto Criado com Sucesso',
             'code' => 200
         ]);
     }
-
-
-
 }
 
         
@@ -197,5 +197,3 @@ class ProdutosController extends Controller
 //     }
 
 //     // FALTA COISA 
-
-

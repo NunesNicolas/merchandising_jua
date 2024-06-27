@@ -27,7 +27,7 @@ import axios from "axios";
             </ul>
         </div>
 
-        <form action="http://127.0.0.1:8000/produtos" method="POST" @submit.prevent="saveProduto" novalidate>
+        <form action=" " method="POST" @submit.prevent="saveProduto" novalidate>
             <input type="hidden" name="_token" value="VMMuhrZ1JiFYSZxORQlfaH5jwjfrmWlCsGfp98K2" autocomplete="off">
             <div class="form-group">
                 <label for="nomeproduto">Nome do Produto:</label>
