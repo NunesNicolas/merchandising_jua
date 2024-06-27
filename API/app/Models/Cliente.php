@@ -10,6 +10,6 @@ class Cliente extends Model
     use HasFactory;
 
     protected $fillable = [
-        'nome', 'cnpj', 'endereco','estado'
+        'nome', 'cnpj', 'endereco','estado','imagem'
     ];
 }

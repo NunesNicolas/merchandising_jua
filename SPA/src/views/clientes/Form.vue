@@ -12,7 +12,9 @@
         @update:modelValue="updateFormValue('endereco', $event)" />
       <SelectInput label="Estado" name="estado" :modelValue="formValues.estado" :options="estadoOptions"
         @update:modelValue="updateFormValue('estado', $event)" />
-      <ImageUploadInput />
+      <ImageUploadInput label="Imagem" name="imagem" :modelValue="formValues.imagem" 
+        @update:modelValue="updateFormValue('imagem', $event)"
+      />
     </template>
   </DefaultForm>
 </template>

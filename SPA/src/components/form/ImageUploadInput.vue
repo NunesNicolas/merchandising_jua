@@ -1,27 +1,28 @@
 <template>
-    <div>
-      <label for="imageUploadInput" class="btn btn-primary">
-        Selecionar Imagem
-        <input id="imageUploadInput" @change="handleImage" class="image-upload-input" type="file" accept="image/*" style="display: none;">
-      </label>
-  
-      <!-- Preview da imagem -->
-      <div v-if="image" class="mt-3">
-        <img :src="image" alt="Preview da imagem" style="max-width: 100%; max-height: 300px;">
-      </div>
-  
-      <!-- Mostrar URL remota após o upload -->
-      <div v-if="remoteUrl" class="mt-3">
-        <p>URL Remota da Imagem: <a :href="remoteUrl" target="_blank">{{ remoteUrl }}</a></p>
-      </div>
+  <div>
+    <label for="imageUploadInput" class="btn btn-primary">
+      Selecionar Imagem
+      <input id="imageUploadInput" @change="handleImage" class="image-upload-input" type="file" accept="image/*"
+        style="display: none;">
+    </label>
+
+    <!-- Preview da imagem -->
+    <div v-if="image" class="mt-3">
+      <img :src="image" alt="Preview da imagem" style="max-width: 100%; max-height: 300px;">
     </div>
-  </template>
-  
-  <script>
+
+    <!-- Mostrar URL remota após o upload -->
+    <div v-if="remoteUrl" class="mt-3">
+      <p>URL Remota da Imagem: <a :href="remoteUrl" target="_blank">{{ remoteUrl }}</a></p>
+    </div>
+  </div>
+</template>
+
+<script>
 import axios from 'axios';
 
 export default {
-  name: 'home',
+  name: 'ImageUploadInput',
   data() {
     return {
       image: '',
@@ -40,31 +41,30 @@ export default {
 
       reader.onload = (e) => {
         this.image = e.target.result; // Atribui a URL base64 à variável image
-        this.uploadImage(); // Chama o método para enviar a imagem ao servidor
+        this.$emit('update:modelValue', e.target.result); // Emite evento com a URL base64
       };
-      
+
       reader.readAsDataURL(fileObject); // Lê o arquivo como URL base64
     },
     uploadImage() {
       const { image } = this;
-      console.log(image)
-    //   axios.post('http://127.0.0.1:8081/upload', { image })
-    //     .then((response) => {
-    //       this.remoteUrl = response.data.url; // Salva a URL remota da imagem após o upload
-    //     })
-    //     .catch((err) => {
-    //       console.error('Erro ao enviar imagem:', err);
-    //     })
+      // Simular o upload da imagem para obter a URL remota (descomente esta parte para uso real)
+      // axios.post('http://127.0.0.1:8081/upload', { image })
+      //   .then((response) => {
+      //     this.remoteUrl = response.data.url; // Salva a URL remota da imagem após o upload
+      //   })
+      //   .catch((err) => {
+      //     console.error('Erro ao enviar imagem:', err);
+      //   })
     }
   },
-}
+};
 </script>
 
-  
-  <style scoped>
-  /* Estilos opcionais para personalização */
-  .image-upload-input {
-    display: none;
-  }
-  </style>
-  
+
+<style scoped>
+/* Estilos opcionais para personalização */
+.image-upload-input {
+  display: none;
+}
+</style>
