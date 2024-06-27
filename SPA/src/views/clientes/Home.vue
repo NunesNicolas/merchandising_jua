@@ -5,17 +5,10 @@ import axios from "axios";
 
 <template>
     <div class="page">
-
-        <Breadcrumb pageTitle="Promotores" routeInfo="Dashboard / Promotores" />
-
-        <div style='text-align: right; margin-right:' class="mt-2 ml-auto">
-            <router-link to="/promotores/create">
-                <button class="btn btn-primary"
-                    style="background-color: #2c9aff; border-radius: 30px; margin-right: 42px; text-align: right; border: none;">
-                    <font color="#ffffff">Adicionar Promotor</font>
-                </button>
-            </router-link>
-        </div>
+        <Breadcrumb pageTitle="Clientes" routeInfo="Dashboard / Clientes" />
+        <ActionListWrapper>
+            <ActionRouter route="/clientes/create" color="primary" label="Adicionar" />
+        </ActionListWrapper>
         
         <card-list :items="clientes" :fields="{
             cnpj: 'CNPJ',
@@ -31,6 +24,8 @@ import axios from "axios";
 
 import CardList from '../../components/CardList.vue'; 
 import Breadcrumb from '../../components/Breadcrumb.vue';
+import ActionListWrapper from '../../components/ActionListWrapper.vue';
+import ActionRouter from '../../components/ActionRouter.vue';
 
 export default {
     components: {
