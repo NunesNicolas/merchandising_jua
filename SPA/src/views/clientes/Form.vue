@@ -1,7 +1,7 @@
 <template>
   <DefaultForm
     :title="title"
-    :initialValues="formValues"
+    :values="formValues"
     :validations="validations"
     :onSave="handleSave"
     :submitLabel="submitLabel"
@@ -44,20 +44,28 @@ export default {
   },
   props: {
     title: String,
-    initialValues: Object,
+    values: Object,
     submitLabel: String,
     onSave: Function
   },
+  watch: {
+    values: {
+      handler(newValue) {
+        this.formValues = { ...newValue }; // Atualiza formValues com os novos valores
+      },
+      deep: true // Observação profunda para objetos e arrays
+    }
+  },
   data() {
     return {
-      formValues: { ...this.initialValues },
+      formValues: { ...this.values },
       tipoOptions: [
         { value: 'tipo1', text: 'Tipo 1' },
         { value: 'tipo2', text: 'Tipo 2' }
       ],
       validations: {
-        nome: value => (!value ? 'Nome is required' : ''),
-        cnpj: value => (!value ? 'CNPJ is required' : '')
+        nome: value => (!value ? 'Nome é obrigatório' : ''),
+        cnpj: value => (!value ? 'CNPJ é obrigatório' : '')
       }
     };
   },

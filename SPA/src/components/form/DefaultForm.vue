@@ -27,16 +27,24 @@ export default {
   name: 'DefaultForm',
   props: {
     title: String,
-    initialValues: Object,
+    values: Object,
     validations: Object,
     onSave: Function,
     submitLabel: String
   },
   data() {
     return {
-      formValues: { ...this.initialValues },
+      formValues: { ...this.values },
       errors: []
     };
+  },
+  watch: {
+    values: {
+      handler(newValue) {
+        this.formValues = { ...newValue }; // Atualiza formValues com os novos valores
+      },
+      deep: true // Observação profunda para objetos e arrays
+    }
   },
   methods: {
     updateFormValue(name, value) {

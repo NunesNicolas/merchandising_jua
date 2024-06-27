@@ -1,5 +1,5 @@
 <template>
-    <ClientForm :title="'Atualizar Cliente'" :initialValues="initialValues" :submitLabel="'Atualizar Cliente'"
+    <ClientForm :title="'Atualizar Cliente'" :values="values" :submitLabel="'Atualizar Cliente'"
         :onSave="updateClient" />
 </template>
 
@@ -15,10 +15,10 @@ export default {
     data() {
         // const response = await axios.get(`/clientes/${this.$route.params.id}`);
         return {
-            initialValues: {
-                    nome: '',
-                    cnpj: '',
-                    tipo: ''
+            values: {
+                nome: 'xyz',
+                cnpj: '',
+                tipo: ''
             }
         };
     },
@@ -29,7 +29,7 @@ export default {
         async fetchClientData() {
             try {
                 const response = await axios.get(`/clientes/${this.$route.params.id}`);
-                this.initialValues = response.data;
+                this.values = response.data;
                 console.log(this.initialValues)
             } catch (error) {
                 console.error('Error fetching client data:', error);
