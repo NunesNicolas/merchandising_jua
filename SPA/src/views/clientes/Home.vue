@@ -19,19 +19,19 @@ import axios from "axios";
             // ultima_visita: 'ÚLTIMA VISITA'
         }">
 
-        <!-- Isso é o comportamento dinâmico que eu citei. Deste modo, podem adicionar mais coisas dentro do compontente -->
+            <!-- Isso é o comportamento dinâmico que eu citei. Deste modo, podem adicionar mais coisas dentro do compontente -->
             <template v-slot:actions="{ item }">
                 <router-link :to="'clientes/' + item.id" class="d-flex flex-wrap">
                     <i class="bi bi-file-earmark-text" style="font-size: 2rem;"></i>
                 </router-link>
-                
-                <router-link :to="'clientes/' + item.id+ '/update'" class="d-flex flex-wrap">
+
+                <router-link :to="'clientes/' + item.id + '/update'" class="d-flex flex-wrap">
                     <i class="bi bi-pencil-square" style="font-size: 2rem; color: #000"></i>
                 </router-link>
 
-                <router-link :to="'clientes/' + item.id" class="d-flex flex-wrap">
+                <button @click="confirmDelete(item)" class="d-flex flex-wrap btn btn-link p-0">
                     <i class="bi bi-trash" style="font-size: 2rem; color: red"></i>
-                </router-link>
+                </button>
             </template>
         </CardList>
     </div>
@@ -65,6 +65,22 @@ export default {
                 })
                 .catch(error => {
                     console.error('Erro ao carregar clientes: ', error);
+                });
+        },
+        confirmDelete(item) {
+            if (confirm(`Você tem certeza que deseja excluir o cliente ${item.nome}?`)) {
+                this.deleteCliente(item.id);
+            }
+        },
+        deleteCliente(clienteId) {
+            axios.delete(`/clientes/${clienteId}`)
+                .then(response => {
+                    alert('Cliente excluído com sucesso!');
+                    this.fetchClientes(); // Atualiza a lista de clientes após exclusão
+                })
+                .catch(error => {
+                    console.error('Erro ao excluir cliente: ', error);
+                    alert('Ocorreu um erro ao tentar excluir o cliente.');
                 });
         }
     }
