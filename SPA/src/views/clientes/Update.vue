@@ -13,7 +13,6 @@ export default {
         ClientForm
     },
     data() {
-        // const response = await axios.get(`/clientes/${this.$route.params.id}`);
         return {
             values: {
                 nome: '',

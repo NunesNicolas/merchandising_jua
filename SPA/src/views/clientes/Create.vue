@@ -1,5 +1,5 @@
 <template>
-    <Form :title="'Novo Cliente'" :initialValues="initialValues" :submitLabel="'Criar Cliente'" :onSave="saveClient" />
+    <Form :title="'Novo Cliente'" :values="values" :submitLabel="'Criar Cliente'" :onSave="saveClient" />
 </template>
 
 <script>
@@ -13,7 +13,7 @@ export default {
     },
     data() {
         return {
-            initialValues: {
+            values: {
                 nome: '',
                 cnpj: '',
                 tipo: ''
@@ -24,13 +24,12 @@ export default {
         async saveClient(formData) {
             try {
                 const response = await axios.post('/clientes', formData);
-                console.log(response);
                 if (response.status === 201) {
-                    alert(response.statusText);
                     this.$router.push('/clientes');
                 }
             } catch (error) {
-                console.error('Error saving cliente:', error);
+
+                alert('Erro ao salvar cliente', error);
             }
         }
     }

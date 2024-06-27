@@ -6,8 +6,8 @@
         @update:modelValue="updateFormValue('nome', $event)" />
       <TextInput label="CNPJ" name="cnpj" :modelValue="formValues.cnpj"
         @update:modelValue="updateFormValue('cnpj', $event)" />
-      <SelectInput label="Tipo" name="tipo" :modelValue="formValues.tipo" :options="tipoOptions"
-        @update:modelValue="updateFormValue('tipo', $event)" />
+      <SelectInput label="estado" name="estado" :modelValue="formValues.estado" :options="estadoOptions"
+        @update:modelValue="updateFormValue('estado', $event)" />
     </template>
   </DefaultForm>
 </template>
@@ -41,9 +41,10 @@ export default {
   data() {
     return {
       formValues: { ...this.values },
-      tipoOptions: [
-        { value: 'tipo1', text: 'Tipo 1' },
-        { value: 'tipo2', text: 'Tipo 2' }
+      estadoOptions: [
+        { value: 'MA', text: 'Maranhão' },
+        { value: 'CE', text: 'Ceará' },
+        { value: 'PI', text: 'Piaui' }
       ],
       validations: {
         nome: value => (!value ? 'Nome é obrigatório' : ''),

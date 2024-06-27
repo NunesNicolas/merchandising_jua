@@ -1,28 +1,28 @@
 <script setup>
 import axios from "axios";
-
 </script>
 
 <template>
     <div class="page">
         <Breadcrumb pageTitle="Clientes" routeInfo="Dashboard / Clientes" />
+
         <ActionListWrapper>
             <ActionRouter route="/clientes/create" color="primary" label="Adicionar" />
         </ActionListWrapper>
-        
-        <card-list :items="clientes" :fields="{
+
+        <CardList :items="clientes" :fields="{
             cnpj: 'CNPJ',
             nome: 'CLIENTE',
             promotores: 'PROMOTORES',
             ultima_pesquisa: 'ÚLTIMA PESQUISA',
             ultima_visita: 'ÚLTIMA VISITA'
-        }"></card-list>
+        }" />
     </div>
 </template>
 
 <script>
 
-import CardList from '../../components/CardList.vue'; 
+import CardList from '../../components/CardList.vue';
 import Breadcrumb from '../../components/Breadcrumb.vue';
 import ActionListWrapper from '../../components/ActionListWrapper.vue';
 import ActionRouter from '../../components/ActionRouter.vue';
