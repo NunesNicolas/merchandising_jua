@@ -1,31 +1,13 @@
 <template>
-  <DefaultForm
-    :title="title"
-    :values="formValues"
-    :validations="validations"
-    :onSave="handleSave"
-    :submitLabel="submitLabel"
-  >
+  <DefaultForm :title="title" :values="formValues" :validations="validations" :onSave="handleSave"
+    :submitLabel="submitLabel">
     <template v-slot="{ formValues, updateFormValue }">
-      <TextInput
-        label="Nome"
-        name="nome"
-        :modelValue="formValues.nome"
-        @update:modelValue="updateFormValue('nome', $event)"
-      />
-      <TextInput
-        label="CNPJ"
-        name="cnpj"
-        :modelValue="formValues.cnpj"
-        @update:modelValue="updateFormValue('cnpj', $event)"
-      />
-      <SelectInput
-        label="Tipo"
-        name="tipo"
-        :modelValue="formValues.tipo"
-        :options="tipoOptions"
-        @update:modelValue="updateFormValue('tipo', $event)"
-      />
+      <TextInput label="Nome" name="nome" :modelValue="formValues.nome"
+        @update:modelValue="updateFormValue('nome', $event)" />
+      <TextInput label="CNPJ" name="cnpj" :modelValue="formValues.cnpj"
+        @update:modelValue="updateFormValue('cnpj', $event)" />
+      <SelectInput label="Tipo" name="tipo" :modelValue="formValues.tipo" :options="tipoOptions"
+        @update:modelValue="updateFormValue('tipo', $event)" />
     </template>
   </DefaultForm>
 </template>

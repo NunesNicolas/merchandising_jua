@@ -5,16 +5,13 @@ import axios from "axios";
 
 <template>
     <div class="page">
-        <card-list
-            :items="clientes"
-            :fields="{
-                cnpj: 'CNPJ',
-                nome: 'CLIENTE',
-                promotores: 'PROMOTORES',
-                ultima_pesquisa: 'ÚLTIMA PESQUISA',
-                ultima_visita: 'ÚLTIMA VISITA'
-            }"
-        ></card-list>
+        <card-list :items="clientes" :fields="{
+            cnpj: 'CNPJ',
+            nome: 'CLIENTE',
+            promotores: 'PROMOTORES',
+            ultima_pesquisa: 'ÚLTIMA PESQUISA',
+            ultima_visita: 'ÚLTIMA VISITA'
+        }"></card-list>
     </div>
 </template>
 
