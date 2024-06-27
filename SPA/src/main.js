@@ -25,6 +25,7 @@ import infoEmpresas from './views/empresas/InfoEmpresas.vue';
 import createEmpresas from './views/empresas/createEmpresas.vue';
 
 import homeClientes from './views/clientes/home.vue';
+import createClientes from './views/clientes/create.vue';
 
 const routes = [
   {
@@ -52,6 +53,7 @@ const routes = [
       { path: 'empresas/create', name: 'createEmpresas', component: createEmpresas },
 
       { path: 'clientes', name: 'clientes', component: homeClientes },
+      { path: 'clientes/create', name: 'createClientes', component: createClientes },
     ]
   }
 ];
