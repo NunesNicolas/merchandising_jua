@@ -16,7 +16,7 @@ export default {
         // const response = await axios.get(`/clientes/${this.$route.params.id}`);
         return {
             values: {
-                nome: 'xyz',
+                nome: '',
                 cnpj: '',
                 tipo: ''
             }
