@@ -8,6 +8,7 @@ import axios from "axios";
 
         <ActionListWrapper>
             <ActionRouter route="/clientes/create" color="primary" label="Adicionar" />
+            <ActionRouterBack />
         </ActionListWrapper>
 
         <CardList :items="clientes" :fields="{
@@ -43,6 +44,7 @@ import CardList from '../../components/CardList.vue';
 import Breadcrumb from '../../components/Breadcrumb.vue';
 import ActionListWrapper from '../../components/ActionListWrapper.vue';
 import ActionRouter from '../../components/ActionRouter.vue';
+import ActionRouterBack from "../../components/ActionRouterBack.vue";
 
 export default {
     components: {
