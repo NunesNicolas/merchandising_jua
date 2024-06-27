@@ -1,8 +1,6 @@
 <template>
   <div class="page">
     <div class="container mt-4 ml-5 mr-5" style="text-align: justify;">
-      <h1>{{ title }}</h1>
-      <hr>
       <div class="alert alert-danger mt-4" v-if="errors.length">
         <ul class="mb-0">
           <li v-for="(error, index) in errors" :key="index">

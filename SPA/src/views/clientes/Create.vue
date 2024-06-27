@@ -1,15 +1,21 @@
 <template>
-    <Form :title="'Novo Cliente'" :values="values" :submitLabel="'Criar Cliente'" :onSave="saveClient" />
+
+    <div class="page">
+        <Breadcrumb pageTitle="Clientes" routeInfo="Dashboard / Clientes" />
+        <Form :title="'Novo Cliente'" :values="values" :submitLabel="'Criar Cliente'" :onSave="saveClient" />
+    </div>
 </template>
 
 <script>
 import axios from 'axios';
 import Form from './Form.vue';
+import Breadcrumb from '../../components/Breadcrumb.vue';
 
 export default {
     name: 'CreateCliente',
     components: {
-        Form
+        Form,
+        Breadcrumb
     },
     data() {
         return {

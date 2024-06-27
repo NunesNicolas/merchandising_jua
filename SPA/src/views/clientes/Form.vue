@@ -1,7 +1,10 @@
 <template>
-  <DefaultForm :title="title" :values="formValues" :validations="validations" :onSave="handleSave"
+  <DefaultForm :values="formValues" :validations="validations" :onSave="handleSave"
     :submitLabel="submitLabel">
+    
     <template v-slot="{ formValues, updateFormValue }">
+      <h1>{{ title }}</h1>
+      <hr>
       <TextInput label="Nome" name="nome" :modelValue="formValues.nome"
         @update:modelValue="updateFormValue('nome', $event)" />
       <TextInput label="CNPJ" name="cnpj" :modelValue="formValues.cnpj"
