@@ -9,14 +9,17 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('clientes', function (Blueprint $table) {
-            $table->text('imagem')->nullable();
+            $table->string('estado', 2)->nullable();
         });
     }
 
+    /**
+     * Reverse the migrations.
+     */
     public function down(): void
     {
-        Schema::table('clientes', function (Blueprint $table) {
-            $table->dropColumn('imagem');
+       Schema::table('clientes', function (Blueprint $table) {
+            $table->dropColumn('estado');
         });
     }
 };
