@@ -52,7 +52,4 @@ Route::prefix('empresas')->group(function () {
     Route::post('save_empresa', [EmpresasController::class, 'saveEmpresa']);
 });
 
-Route::prefix('clientes')->group(function () {
-    Route::get('/', [ClientesController::class, 'index'])->name('clientes-home');
-    Route::post('/', [ClientesController::class, 'store'])->name('clientes-store');
-});
+Route::resource('clientes', ClientesController::class);

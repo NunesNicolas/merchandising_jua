@@ -1,0 +1,52 @@
+<template>
+    <ClientForm :title="'Atualizar Cliente'" :initialValues="initialValues" :submitLabel="'Atualizar Cliente'"
+        :onSave="updateClient" />
+</template>
+
+<script>
+import axios from 'axios';
+import ClientForm from './Form.vue';
+
+export default {
+    name: 'Update',
+    components: {
+        ClientForm
+    },
+    data() {
+        // const response = await axios.get(`/clientes/${this.$route.params.id}`);
+        return {
+            initialValues: {
+                    nome: '',
+                    cnpj: '',
+                    tipo: ''
+            }
+        };
+    },
+    created() {
+        this.fetchClientData();
+    },
+    methods: {
+        async fetchClientData() {
+            try {
+                const response = await axios.get(`/clientes/${this.$route.params.id}`);
+                this.initialValues = response.data;
+                console.log(this.initialValues)
+            } catch (error) {
+                console.error('Error fetching client data:', error);
+            }
+        },
+        async updateClient(formData) {
+            try {
+                const response = await axios.put(`/clientes/${this.$route.params.id}`, formData);
+                console.log(response);
+                if (response.status === 200) {
+                    alert(response.statusText);
+                    this.$router.push('/clientes');
+                }
+            } catch (error) {
+                console.error('Error updating cliente:', error);
+            }
+        }
+    }
+};
+</script>

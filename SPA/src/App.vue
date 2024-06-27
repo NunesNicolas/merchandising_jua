@@ -18,8 +18,9 @@ import createPromotores from './views/promotores/createPromotores.vue';
 import homeEmpresas from './views/empresas/homeEmpresas.vue';
 import infoEmpresas from './views/empresas/InfoEmpresas.vue';
 
-import HomeClientes from './views/clientes/home.vue';
-import CreateClientes from './views/clientes/create.vue';
+import HomeClientes from './views/clientes/Home.vue';
+import CreateClientes from './views/clientes/Create.vue';
+import UpdateClientes from './views/clientes/Update.vue';
 
 
 
