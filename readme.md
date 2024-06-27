@@ -86,3 +86,11 @@
 
 - Ambientes de Produção:
 - Certifique-se de configurar corretamente as variáveis de ambiente (`APP_URL`, `DB_*`, etc.) para ambientes de produção antes de implantar.
+
+
+## Todos
+
+[ ] - Função de logout
+[ ] - Finalizar telas do clientes/produtos/promotes
+[ ] - Iniciar fluxo de visitas/carteiras de clientes
+[ ] - Criar aplicação para que o promotor possa realizar suas análises
