@@ -6,7 +6,7 @@
         @update:modelValue="updateFormValue('nome', $event)" />
       <TextInput label="CNPJ" name="cnpj" :modelValue="formValues.cnpj"
         @update:modelValue="updateFormValue('cnpj', $event)" />
-      <SelectInput label="estado" name="estado" :modelValue="formValues.estado" :options="estadoOptions"
+      <SelectInput label="Estado" name="estado" :modelValue="formValues.estado" :options="estadoOptions"
         @update:modelValue="updateFormValue('estado', $event)" />
     </template>
   </DefaultForm>
