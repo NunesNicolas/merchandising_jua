@@ -12,11 +12,28 @@ import axios from "axios";
 
         <CardList :items="clientes" :fields="{
             cnpj: 'CNPJ',
-            nome: 'CLIENTE',
-            promotores: 'PROMOTORES',
-            ultima_pesquisa: 'ÚLTIMA PESQUISA',
-            ultima_visita: 'ÚLTIMA VISITA'
-        }" />
+            nome: 'Cliente',
+            estado: 'Estado',
+            promotores: 'Promotores',
+            // ultima_pesquisa: 'ÚLTIMA PESQUISA',
+            // ultima_visita: 'ÚLTIMA VISITA'
+        }">
+
+        <!-- Isso é o comportamento dinâmico que eu citei. Deste modo, podem adicionar mais coisas dentro do compontente -->
+            <template v-slot:actions="{ item }">
+                <router-link :to="'clientes/' + item.id" class="d-flex flex-wrap">
+                    <i class="bi bi-file-earmark-text" style="font-size: 2rem;"></i>
+                </router-link>
+                
+                <router-link :to="'clientes/' + item.id+ '/update'" class="d-flex flex-wrap">
+                    <i class="bi bi-pencil-square" style="font-size: 2rem; color: #000"></i>
+                </router-link>
+
+                <router-link :to="'clientes/' + item.id" class="d-flex flex-wrap">
+                    <i class="bi bi-trash" style="font-size: 2rem; color: red"></i>
+                </router-link>
+            </template>
+        </CardList>
     </div>
 </template>
 
