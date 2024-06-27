@@ -23,6 +23,9 @@ import axios from 'axios';
 
 export default {
   name: 'ImageUploadInput',
+  props: {
+    modelValue: String  // Propriedade para armazenar a URL base64 da imagem
+  },
   data() {
     return {
       image: '',
@@ -45,22 +48,21 @@ export default {
       };
 
       reader.readAsDataURL(fileObject); // Lê o arquivo como URL base64
-    },
-    uploadImage() {
-      const { image } = this;
-      // Simular o upload da imagem para obter a URL remota (descomente esta parte para uso real)
-      // axios.post('http://127.0.0.1:8081/upload', { image })
-      //   .then((response) => {
-      //     this.remoteUrl = response.data.url; // Salva a URL remota da imagem após o upload
-      //   })
-      //   .catch((err) => {
-      //     console.error('Erro ao enviar imagem:', err);
-      //   })
     }
   },
+  watch: {
+    // Monitora mudanças na propriedade modelValue (URL base64 inicial)
+    modelValue: {
+      immediate: true,  // Executa o handler imediatamente na inicialização
+      handler(newVal) {
+        if (newVal) {
+          this.image = newVal;  // Define a imagem inicial
+        }
+      }
+    }
+  }
 };
 </script>
-
 
 <style scoped>
 /* Estilos opcionais para personalização */
