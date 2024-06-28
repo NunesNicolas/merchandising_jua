@@ -21,8 +21,12 @@ import axios from "axios";
         </div>
 
         <nav id="main-container" style="display: flex; text-align: center; flex-wrap: wrap; gap:50px;">
-            <!-- CARD PROMOTORES -->
-            <cardComponents :promotores="promotores" />
+            <CardList :items="promotores" :fields="{
+                nome: 'Promotor',
+                telefone: 'Telefone',
+                // ultima_pesquisa: 'ÚLTIMA PESQUISA',
+                // ultima_visita: 'ÚLTIMA VISITA'
+            }" />
         </nav>
 
     </div>
@@ -32,7 +36,7 @@ import axios from "axios";
 
 <script>
 
-import cardComponents from '../../components/promotores/cardComponenents.vue';
+import CardList from '../../components/CardIconList.vue';
 
 export default {
 
@@ -45,13 +49,12 @@ export default {
     methods: {
         async getPromotores() {
             let response = axios.get('/promotores');
-            this.promotores = (await response).data.promotores;
-
+            this.promotores = (await response).data;
         },
     },
 
     components: {
-        cardComponents
+        CardList
     },
 
     mounted() {

@@ -16,7 +16,7 @@ import infoProdutos from './views/produtos/InfoProdutos.vue';
 import createProdutos from './views/produtos/createProdutos.vue';
 import createCompetitors from './views/produtos/createCompetitors.vue';
 
-import homePromotores from './views/promotores/homePromotores.vue';
+import homePromotores from './views/promotores/Home.vue';
 import infoPromotores from './views/promotores/InfoPromotores.vue';
 import createPromotores from './views/promotores/createPromotores.vue';
 
