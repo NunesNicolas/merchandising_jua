@@ -24,9 +24,13 @@ import axios from "axios";
             <CardList :items="promotores" :fields="{
                 nome: 'Promotor',
                 telefone: 'Telefone',
-                // ultima_pesquisa: 'ÚLTIMA PESQUISA',
-                // ultima_visita: 'ÚLTIMA VISITA'
-            }" />
+            }">
+                <template v-slot:actions="{ item }">
+                    <router-link :to="'promotores/' + item.id" class="d-flex flex-wrap">
+                       <h5 class="dtbutton">DETALHES</h5>
+                    </router-link>
+                </template>
+            </CardList>
         </nav>
 
     </div>
@@ -65,7 +69,16 @@ export default {
 
 </script>
 
-<style scoped>
+<style>
+.dtbutton{
+    color: white;
+    background-color: rgb(13, 141, 214);
+    text-align: center;
+    margin-bottom: 0;
+    width: 100%;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
 .li {
     width: 100%;
 }

@@ -15,21 +15,23 @@
                     </svg>
                 </div>
                 <div v-else>
-                    <img class="" style="height: 33vh; width: 33vh;" :src=item.img alt="imagem não encontrada" >
+                    <img class="" style="height: 33vh; width: 33vh;" :src=item.img alt="imagem não encontrada">
+                </div>
+
+                <div class="contentTable">
+                    <thead class="tablet">
+                        <tr class="indicadores">
+                            <th v-for="(label, field) in fields" :key="field">{{ label }}: </th>
+                        </tr>
+                    </thead>
+                    <tbody class="tablet">
+                        <tr>
+                            <td v-for="(label, field) in fields" :key="field">{{ item[field] }}</td>
+                        </tr>
+                    </tbody>
                 </div>
             </div>
-            <div class="contentTable">
-                <thead class="tablet">
-                    <tr class="indicadores">
-                        <th v-for="(label, field) in fields" :key="field">{{ label }}: </th>
-                    </tr>
-                </thead>
-                <tbody class="tablet">
-                    <tr>
-                        <td v-for="(label, field) in fields" :key="field">{{ item[field] }}</td>
-                    </tr>
-                </tbody>
-            </div>
+            <slot name="actions" :item="item"></slot>
         </div>
     </div>
 </template>
@@ -54,15 +56,17 @@ export default {
 .contentTable {
     border-top-left-radius: 8px;
     border-top-right-radius: 8px;
-    background-color: rgb(187, 187, 187);
+    background-color: #E7E7E7;
     display: flex;
     width: 100%;
 }
-.tablet{
+
+.tablet {
     width: 100%;
     text-align: center;
     margin-top: 0;
 }
+
 tr {
     width: 100%;
     display: grid;
