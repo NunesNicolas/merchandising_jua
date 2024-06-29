@@ -2,7 +2,7 @@
     <div v-for="item in items" :key="item.id" class="card-container"
         style="display: flex; text-align: center; flex-wrap: wrap;">
         <div class="card"
-            style="justify-content: center; border-radius: 10px; width: 235px; display: flex; text-align: left; margin: 10px;">
+            style="justify-content: center; border-radius: 10px; width: 235px; display: flex; text-align: left;">
             <div class="card-body">
                 <div v-if="!this.fields.img">
                     <svg viewBox="0 0 200 200">
