@@ -19,6 +19,13 @@ import axios from "axios";
                 nome: 'Promotor',
                 telefone: 'Telefone',
             }">
+
+            <template v-slot:topactions="{item}">
+                <button @click="confirmDelete(item)" class="d-flex flex-wrap btn btn-link p-0">
+                    <i class="bi bi-trash" style="font-size: 2rem; color: red"></i>
+                </button>
+            </template>
+
                 <template v-slot:actions="{ item }">
                     <router-link :to="'promotores/' + item.id" class="d-flex flex-wrap">
                        <h5 class="dtbutton">DETALHES</h5>
@@ -53,6 +60,22 @@ export default {
             let response = axios.get('/promotores');
             this.promotores = (await response).data;
         },
+        confirmDelete(item) {
+            if (confirm(`Você tem certeza que deseja excluir o promotor ${item.nome}?`)) {
+                this.deletePromotor(item.id);
+            }
+        },
+        deletePromotor(promotorId) {
+            axios.delete(`/Promotores/${promotorId}`)
+                .then(response => {
+                    alert('Promotor excluído com sucesso!');
+                    this.fetchClientes(); // Atualiza a lista de clientes após exclusão
+                })
+                .catch(error => {
+                    console.error('Erro ao excluir cliente: ', error);
+                    alert('Ocorreu um erro ao tentar excluir o cliente.');
+                });
+        }
     },
 
     components: {

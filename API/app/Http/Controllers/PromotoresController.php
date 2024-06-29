@@ -36,5 +36,11 @@ class PromotoresController extends Controller
         return response()->json($promotor, 201);
     }
     
+    public function destroy($id)
+    {
+        $promotor = Promotores::find($id);
+        $promotor->delete();
+        return response()->json(null, 204);
+    }
     
 }
