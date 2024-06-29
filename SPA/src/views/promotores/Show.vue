@@ -3,33 +3,11 @@ import axios from "axios";
 </script>
 
 <template>
-  <div class="d-flex" style="
-      width: 100%;
-      height: 5vh;
-      justify-content: space-between;
-      padding: 10px;
-    ">
-    <p class="ml-4 mr-auto" style="color: #858585; font-weight: bold; font-size: 2.2vh">
-      Promotores
-    </p>
-    <p class="mr-3" style="color: #858585; font-weight: bold; font-size: 2.2vh">
-      Dashboard / Promotores
-    </p>
-  </div>
+  <Breadcrumb pageTitle="Promotor" routeInfo="Info / Promotor" />
+  <ActionListWrapper>
+    <ActionRouterBack />
+  </ActionListWrapper>
 
-  <router-link to="/promotores">
-    <div class="d-flex" style="width: 100%; height: 4vh; justify-content: end; padding: 35px">
-      <a href="" type="button" class="btn btn-light align-self-center" style="
-          border-radius: 20px;
-          border: solid #858585 0.2vh;
-          color: #858585;
-          font-weight: bold;
-          font-size: 13px;
-        ">
-        VOLTAR
-      </a>
-    </div>
-  </router-link>
 
   <section style="
       display: flex;
@@ -139,6 +117,8 @@ import CardList from "../../components/CardIconList.vue";
 import BoxMedium from "../../components/Box/BoxinfoMedium.vue";
 import ActionListWrapper from "../../components/ActionListWrapper.vue";
 import ActionRouter from "../../components/ActionRouter.vue";
+import Breadcrumb from '../../components/Breadcrumb.vue';
+import ActionRouterBack from "../../components/ActionRouterBack.vue";
 
 export default {
   data() {
