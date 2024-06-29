@@ -3,7 +3,7 @@
         style="display: flex; text-align: center; flex-wrap: wrap;">
         <div class="card"
             style="justify-content: center; border-radius: 10px; width: 235px; display: flex; text-align: left; margin: 10px;">
-            <div class="card-body" style="height: 35vh;">
+            <div class="card-body">
                 <div v-if="!this.fields.img">
                     <svg viewBox="0 0 200 200">
                         <clipPath id="clipCircle">
@@ -17,19 +17,12 @@
                 <div v-else>
                     <img class="" style="height: 33vh; width: 33vh;" :src=item.img alt="imagem não encontrada">
                 </div>
-
-                <div class="contentTable">
-                    <thead class="tablet">
-                        <tr class="indicadores">
-                            <th v-for="(label, field) in fields" :key="field">{{ label }}: </th>
-                        </tr>
-                    </thead>
-                    <tbody class="tablet">
-                        <tr>
-                            <td v-for="(label, field) in fields" :key="field">{{ item[field] }}</td>
-                        </tr>
-                    </tbody>
-                </div>
+                <table>
+                    <tr v-for="(label, field) in fields" :key="field">
+                        <th>{{ label }}:</th>
+                        <td>{{ item[field] }}</td>
+                    </tr>
+                </table>
             </div>
             <slot name="actions" :item="item"></slot>
         </div>
@@ -53,22 +46,35 @@ export default {
 </script>
 
 <style scoped>
-.contentTable {
+.card-body {
+    height: 100%;
+    padding: 0;
+    padding-top: 10px;
+}
+
+table {
     border-top-left-radius: 8px;
     border-top-right-radius: 8px;
     background-color: #E7E7E7;
-    display: flex;
-    width: 100%;
+    display: grid;
 }
 
 .tablet {
-    width: 100%;
-    text-align: center;
+    text-align: start;
     margin-top: 0;
+    height: 100%;
 }
 
 tr {
-    width: 100%;
     display: grid;
+    padding-left: 5px;
+}
+
+th {
+    color: rgb(71, 71, 71);
+}
+
+td {
+    color: rgb(131, 130, 130);
 }
 </style>
