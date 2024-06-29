@@ -1,5 +1,9 @@
 <template>
-    <div v-for="item in items" :key="item.id" class="card-container"
+    <div v-if="items.length === 0" style="width: 100%;">
+                <h3>Não há dados disponíveis.</h3>
+        </div>
+  
+    <div v-else v-for="item in items" :key="item.id" class="card-container"
         style="display: flex; text-align: center; flex-wrap: wrap;">
         <div class="card"
             style="justify-content: center; border-radius: 10px; width: 235px; display: flex; text-align: left;">
