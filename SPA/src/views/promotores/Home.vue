@@ -6,19 +6,13 @@ import axios from "axios";
 
     <div class="page">
 
-        <div class="d-flex" style="width: 100%; height: 5vh; justify-content:space-between; padding:10px">
-            <p class="ml-4 mr-auto" style="color:#858585; font-weight: bold; font-size: 2.2vh;"> Promotores </p>
-            <p class="mr-3" style="color:#858585; font-weight: bold; font-size: 2.2vh;"> Dashboard / Promotores </p>
-        </div>
+        <Breadcrumb pageTitle="Promotores" routeInfo="Dashboard / Promotores" />
 
-        <div style='text-align: right; margin-right:' class="mt-2 ml-auto">
-            <router-link to="/promotores/create">
-                <button class="btn btn-primary"
-                    style="background-color: #2c9aff; border-radius: 30px; margin-right: 42px; text-align: right; border: none;">
-                    <font color="#ffffff">Adicionar Promotor</font>
-                </button>
-            </router-link>
-        </div>
+        <ActionListWrapper>
+            <ActionRouter route="/promotores/create" color="primary" label="Adicionar" />
+            <ActionRouterBack />
+        </ActionListWrapper>
+
 
         <nav id="main-container" style="display: flex; text-align: center; flex-wrap: wrap; gap:50px;">
             <CardList :items="promotores" :fields="{
@@ -41,6 +35,10 @@ import axios from "axios";
 <script>
 
 import CardList from '../../components/CardIconList.vue';
+import Breadcrumb from '../../components/Breadcrumb.vue';
+import ActionListWrapper from '../../components/ActionListWrapper.vue';
+import ActionRouter from '../../components/ActionRouter.vue';
+import ActionRouterBack from "../../components/ActionRouterBack.vue";
 
 export default {
 

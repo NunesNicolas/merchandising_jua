@@ -30,33 +30,13 @@ import axios from "axios";
       color:#858585; 
       font-weight: bold;
   ">
-    <div class="card" style="width: 20rem; display: flex; border-radius:20px; height: 85vh;">
-      <div class="card-body" style="width: 20rem; display: flex; justify-content: center;">
-        <svg width="200" height="200">
-          <clipPath id="clipCircle">
-            <circle cx="100" cy="100" r="70" />
-          </clipPath>
-          <circle cx="100" cy="100" r="70" width="200" height="200" fill="none" stroke="grey" stroke-width="3" />
-          <image xlink:href="https://www.pngall.com/wp-content/uploads/5/Profile-PNG-Pic.png" width="200" height="200"
-            clip-path="url(#clipCircle)" />
-        </svg>
-      </div>
 
-      <ul class="list-group list-group-flush" style="border-radius:20px; text-align: justify;">
-        <li class="list-group-item" style="background: none;border: none">Nome do Promotor:</li>
-        <li class="list-group-item" style="background: none;border: none; margin-top:-20px; color:#9FA4ADFF">
-          {{ promotor.nome }} </li>
-        <li class="list-group-item" style="background: none;border: none">Email do Promotor:</li>
-        <li class="list-group-item" style="background: none;border: none; margin-top:-20px; color:#9FA4ADFF">
-          {{ promotor.email }} </li>
-        <li class="list-group-item" style="background: none;border: none; border-radius:20px">Status do Promotor:</li>
-        <li class="list-group-item"
-          style="background: none;border: none; border-radius:20px; margin-top:-20px; color:#9FA4ADFF">
-          <p style="color:red">A DEFINIR</p>
-        </li>
-      </ul>
-
-    </div>
+  <CardList :items="promotores" :fields="{
+    nome: 'Promotor',
+    email: 'Email',
+   status: 'status',
+}">
+</CardList>
 
     <div class="d-flex" style="
       width: 41vw; 
@@ -209,12 +189,14 @@ import axios from "axios";
 </template>
 
 <script>
+import CardList from '../../components/CardIconList.vue';
 
 export default {
   data() {
     return {
       id: this.$route.params.id,
-      promotor: ''
+      promotor: '',
+      promotores: []
     };
   },
 
@@ -222,6 +204,7 @@ export default {
     async getPromotores() {
       let response = axios.get('/promotores/' + this.id);
       this.promotor = (await response).data.promotor;
+      this.promotores.push(this.promotor);
     },
   },
 
