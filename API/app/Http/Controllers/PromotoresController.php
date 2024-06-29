@@ -30,6 +30,11 @@ class PromotoresController extends Controller
             }
     }
 
+    public function store(Request $request)
+    {
+        $promotor = Promotores::create($request->all());
+        return response()->json($promotor, 201);
+    }
 
     // public function savePromotor(Request $request) {
 
