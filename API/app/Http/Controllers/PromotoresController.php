@@ -17,9 +17,17 @@ class PromotoresController extends Controller
     return response()->json($promotores);
     }
 
-    public function show(Promotores $promotor)
+    public function show($id)
     {
-        return response()->json($promotor);
+        $promotor = Promotores::find($id);
+
+            if ($promotor) {
+                // O promotor foi encontrado, faça algo com as informações
+                return response()->json(['promotor'=>$promotor]);
+            } else {
+                // O promotor não foi encontrado, trate o erro
+                abort(404);
+            }
     }
 
 
