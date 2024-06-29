@@ -31,12 +31,12 @@ import axios from "axios";
       font-weight: bold;
   ">
 
-  <CardList :items="promotores" :fields="{
-    nome: 'Promotor',
-    email: 'Email',
-   status: 'status',
-}">
-</CardList>
+    <CardList :items="promotores" :fields="{
+      nome: 'Promotor',
+      email: 'Email',
+      status: 'status',
+    }">
+    </CardList>
 
     <div class="d-flex" style="
       width: 41vw; 
@@ -45,38 +45,31 @@ import axios from "axios";
       flex-wrap: wrap;
       padding-top: 2vh;
     ">
-      <div class="bg-white d-flex"
-        style=" justify-content: space-evenly; flex-wrap: wrap; width: 20vw; height:20vh; border-radius: 1vh; padding: 1vh; box-shadow: 0vh 0vh 0.1vh 0.1vh #c0c0c0;">
-        <h6 style=" width: 15vw; height: 9vh;">Tempo médio de atendimento:</h6>
-        <img
-          src="https://cdn.discordapp.com/attachments/1145841372402819143/1229234582977515530/image.png?ex=662ef0ea&is=661c7bea&hm=cbba8302d8813fb5400af32d50008f33a783042805293df5727532541708fda6&"
-          style="width: 4vw; height: 8vh;">
-        <div style="height: 6vh; width: 20vw;"></div>
-        <p style="font-size: 1.5vh; width: 20vw; height:3vh;">Tempo medio de atendimento 14/04/2024</p>
-      </div>
-      <div class="bg-white d-flex"
-        style=" justify-content: space-evenly; flex-wrap: wrap; width: 20vw; height:20vh; border-radius: 1vh; padding: 1vh; box-shadow: 0vh 0vh 0.1vh 0.1vh #c0c0c0;">
-        <h6 style=" width: 15vw; height: 9vh;">Quantidades de atendimentos no mês:</h6>
-        <img
-          src="https://cdn.discordapp.com/attachments/1145841372402819143/1229234815551934635/image.png?ex=662ef122&is=661c7c22&hm=04b32a8707e33c5a32cdef66ab9d12d100e785b90b523bb46d21a160a39b3159&"
-          style="width: 4vw; height: 8vh;">
-        <div style="height: 6vh; width: 20vw;"></div>
-        <p style="font-size: 1.5vh; width: 20vw; height:3vh;">Tempo medio de atendimento 14/04/2024</p>
-      </div>
-      <div class="bg-white d-flex"
-        style=" justify-content: space-evenly; flex-wrap: wrap; width: 20vw; height:20vh; border-radius: 1vh; padding: 1vh; box-shadow: 0vh 0vh 0.1vh 0.1vh #c0c0c0;">
-        <h6 style=" width: 15vw; height: 9vh;">Pesquisas feitas:</h6>
-        <img
-          src="https://cdn.discordapp.com/attachments/1145841372402819143/1229234734639353867/image.png?ex=662ef10e&is=661c7c0e&hm=9d4ccb18d89e5895a2b98f2e54a68942ea38d497bc4cfef505e17dbc197f28a5&"
-          style="width: 4vw; height: 8vh;">
-        <div style="height: 6vh; width: 20vw;"></div>
-        <p style="font-size: 1.5vh; width: 20vw; height:3vh;">Tempo medio de atendimento 14/04/2024</p>
-      </div>
-      <div class="bg-white d-flex"
-        style=" justify-content: space-evenly; flex-wrap: wrap; width: 20vw; height:20vh; border-radius: 1vh; padding: 1vh; box-shadow: 0vh 0vh 0.1vh 0.1vh #c0c0c0;">
-
-      </div>
+      <BoxMedium title="tempo médio de atendimento" subtitle="ultimo atendimento">
+        <template v-slot:icon="{ item }">
+          <i class="bi bi-clock-history" style="color: green;"></i>
+        </template>
+      </BoxMedium>
+      <BoxMedium title="Quantidade de atendimentos no mês">
+        <template v-slot:icon="{ item }">
+          <i class="bi bi-calendar-date" style="color: blue;"></i>
+        </template>
+      </BoxMedium>
+      <BoxMedium title="Pesquisas feitas" subtitle="ultima pesquisa">
+        <template v-slot:icon="{ item }">
+          <i class="bi bi-list-check" style="color: red;"></i>
+        </template>
+      </BoxMedium>
+      <BoxMedium title="???">
+        <template v-slot:icon="{ item }">
+          <i class="bi bi-clock-history" style="color: blue;"></i>
+        </template>
+      </BoxMedium>
     </div>
+
+    <!-- cards centro pequenos   FIM-->
+
+    <!-- card direita -->
     <div class="d-flex bg-white " style="
         flex-wrap: wrap;
         width: 25vw;
@@ -100,6 +93,7 @@ import axios from "axios";
         </router-link>
       </div>
     </div>
+    <!-- card direita FIM -->
 
     <div class="d-flex" style="
           width:100%; 
@@ -190,6 +184,7 @@ import axios from "axios";
 
 <script>
 import CardList from '../../components/CardIconList.vue';
+import BoxMedium from '../../components/Box/BoxinfoMedium.vue';
 
 export default {
   data() {
