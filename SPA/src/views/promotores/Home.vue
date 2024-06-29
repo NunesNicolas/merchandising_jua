@@ -24,7 +24,7 @@ import axios from "axios";
                        <h5 class="dtbutton">DETALHES</h5>
                     </router-link>
                 </template>
-            </CardList>
+            </CardList> 
         </nav>
 
     </div>
