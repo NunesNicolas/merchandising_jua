@@ -37,7 +37,7 @@ import axios from "axios";
             <br>
 
             <div class="form-group">
-                <label for="linkimagem">Adicione o link da imagem do seu produto:</label>
+                <label for="precoproduto">Adicione o link da imagem do seu produto:</label>
                 <input type="text" class="form-control" name="img" v-model="produto.img" placeholder="Coloque um Link">
             </div>
 

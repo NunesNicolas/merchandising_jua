@@ -11,13 +11,13 @@ import authLayout from './views/layout/auth.vue';
 
 import inicialAuth from './views/Auth/inicial.vue';
 
-import homeProdutos from './views/produtos/homeProdutos.vue';
+import homeProdutos from './views/produtos/Home.vue';
 import infoProdutos from './views/produtos/InfoProdutos.vue';
 import createProdutos from './views/produtos/createProdutos.vue';
 import createCompetitors from './views/produtos/createCompetitors.vue';
 
-import homePromotores from './views/promotores/homePromotores.vue';
-import infoPromotores from './views/promotores/InfoPromotores.vue';
+import homePromotores from './views/promotores/Home.vue';
+import infoPromotores from './views/promotores/Show.vue';
 import createPromotores from './views/promotores/createPromotores.vue';
 
 import homeEmpresas from './views/empresas/homeEmpresas.vue';
