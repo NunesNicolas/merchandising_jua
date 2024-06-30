@@ -9,7 +9,7 @@ use  App\Requests\ProdutoStore;
 
 class ProdutosController extends Controller
 {
-    public function home()
+    public function index()
     {
 
         $produtos = Produto::select('nome', 'id', 'img')
@@ -22,12 +22,8 @@ class ProdutosController extends Controller
 
         return response()->json(['produtos' => $produtos]);
     }
-    public function create()
-    {
-        return view('produtos.criarprodutos');
-    }
 
-    public function info($id)
+    public function show($id)
     {
 
         $produto = Produto::find($id);
@@ -50,7 +46,7 @@ class ProdutosController extends Controller
         }
     }
 
-    public function saveProduto(Request $request)
+    public function store(Request $request)
     {
 
         $weights = $request->input('weights');
