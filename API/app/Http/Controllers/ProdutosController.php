@@ -20,7 +20,7 @@ class ProdutosController extends Controller
             })
             ->get();
 
-        return response()->json(['produtos' => $produtos]);
+        return response()->json($produtos);
     }
 
     public function show($id)

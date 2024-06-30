@@ -4,7 +4,7 @@
         <div class="card"
             style="justify-content: center; border-radius: 10px; width: 235px; display: flex; text-align: left;">
             <div class="card-body">
-                <div v-if="!this.fields.img">
+                <div v-if="!item.img">
                     <svg viewBox="0 0 200 200">
                         <clipPath id="clipCircle">
                             <circle cx="100" cy="80" r="75" />
@@ -14,13 +14,13 @@
                             height="200" clip-path="url(#clipCircle)" y="-20" />
                     </svg>
                 </div>
-                <div v-else>
+                <div style="text-align: center;" v-else>
                     <img class="" style="height: 33vh; width: 33vh;" :src=item.img alt="imagem não encontrada">
                 </div>
-                <table>
+                <table v-if="textBox">
                     <tr v-for="(label, field) in fields" :key="field">
-                        <th>{{ label }}:</th>
-                        <td>{{ item[field] }}</td>
+                        <th v-if="field != 'img'">{{ label }}:</th>
+                        <td v-if="field != 'img'">{{ item[field] }}</td>
                     </tr>
                 </table>
             </div>
@@ -35,6 +35,10 @@ export default {
     props: {
         items: {
             type: Array,
+            required: true
+        },
+        textBox: {
+            type: Boolean,
             required: true
         },
         fields: {
