@@ -26,7 +26,7 @@ import axios from "axios";
         padding: 15px;
         padding-top: 0;
       ">
-      <CardList :items="promotores" :fields="{
+      <CardList :textBox="true" :items="promotores" :fields="{  
         nome: 'Promotor',
         email: 'Email',
         status: 'status',

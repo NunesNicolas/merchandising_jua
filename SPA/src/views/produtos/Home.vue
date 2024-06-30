@@ -6,26 +6,30 @@ import axios from "axios";
 
     <div class="page">
 
-        <Breadcrumb pageTitle="Promotores" routeInfo="Dashboard / Promotores" />
+        <Breadcrumb pageTitle="Produtos" routeInfo="Dashboard / Produtos" />
 
         <ActionListWrapper>
-            <ActionRouter route="/promotores/create" color="primary" label="Adicionar" />
+            <ActionRouter route="/produtos/create" color="primary" label="Adicionar" />
             <ActionRouterBack />
         </ActionListWrapper>
-
-
+        
         <nav id="main-container" style="display: flex; text-align: center; flex-wrap: wrap; gap:50px;">
-            <CardList :textBox="true" :items="promotores" :fields="{
-                nome: 'Promotor',
-                telefone: 'Telefone',
+            <CardList :textBox="false" :items="produtos" :fields="{
+                nome: 'Produto',
+                img: 'img'
+                
             }">
-                <template v-slot:actions="{ item }">
-                    <router-link :to="'promotores/' + item.id" class="d-flex flex-wrap">
-                       <h5 class="dtbutton">DETALHES</h5>
+                <template class="tp" v-slot:actions="{ item }">
+                    <router-link :to="'produtos/' + item.id" class="d-flex flex-wrap mb-3">
+                    <div class="dtbutton">
+                       <h6 class="mt-2">DETALHES</h6>
+                    </div>
                     </router-link>
+                    
                 </template>
             </CardList> 
         </nav>
+
 
     </div>
 
@@ -44,14 +48,14 @@ export default {
 
     data() {
         return {
-            promotores: [],
+            produtos: [],
         };
     },
 
     methods: {
-        async getPromotores() {
-            let response = axios.get('/promotores');
-            this.promotores = (await response).data;
+        async getProdutos() {
+            let response = axios.get('/produtos');
+            this.produtos = (await response).data;
         },
     },
 
@@ -60,7 +64,7 @@ export default {
     },
 
     mounted() {
-        this.getPromotores();
+        this.getProdutos();
     }
 
 }
@@ -68,14 +72,21 @@ export default {
 </script>
 
 <style scoped>
+.tp{
+    margin-bottom: 15px;
+}
 .dtbutton{
     color: white;
     background-color: rgb(13, 141, 214);
     text-align: center;
     margin-bottom: 0;
-    width: 100%;
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
+    height: 70%;
+    width: 80%;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    margin-left: 10%;
+    
+    
 }
 .li {
     width: 100%;
