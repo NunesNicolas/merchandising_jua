@@ -19,6 +19,7 @@ import createCompetitors from './views/produtos/createCompetitors.vue';
 import homePromotores from './views/promotores/Home.vue';
 import infoPromotores from './views/promotores/Show.vue';
 import createPromotores from './views/promotores/Create.vue';
+import updatePromotores from './views/promotores/Update.vue';
 
 import homeEmpresas from './views/empresas/homeEmpresas.vue';
 import infoEmpresas from './views/empresas/InfoEmpresas.vue';
@@ -49,6 +50,7 @@ const routes = [
       { path: 'promotores', name: 'homePromotores', component: homePromotores },
       { path: 'promotores/:id', name: 'infoPromotores', component: infoPromotores },
       { path: 'promotores/create', name: 'createPromotores', component: createPromotores },
+      { path: 'promotores/:id/update', name: 'UpdatePromotores', component: updatePromotores },
 
       { path: 'empresas', name: 'homeEmpresas', component: homeEmpresas },
       { path: 'empresas/:id', name: 'infoEmpresas', component: infoEmpresas },
