@@ -18,10 +18,10 @@
                         </div>
                         <div class="d-flex" style="width: 100%; gap:10px; justify-content:space-between">
                             <div class="box-line" style="width: 50%">
-                                <BoxInfo title="Nome" :value="produto.nome"></BoxInfo>
+                                <BoxInfo title="Preço médio:" :value="produto.nome"></BoxInfo>
                             </div>
                             <div class="box-line" style="width: 50%">
-                                <BoxInfo title="Nome" :value="produto.nome"></BoxInfo>
+                                <BoxInfo title="Quantidade de concorrentes:" :value="produto.nome"></BoxInfo>
                             </div>
                         </div>
                     </div>
