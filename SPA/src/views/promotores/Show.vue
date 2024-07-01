@@ -31,6 +31,14 @@ import axios from "axios";
         email: 'Email',
         status: 'status',
       }">
+      <template v-slot:topactions="{ item }">
+      <RouterLink  :to="{
+        name: 'UpdatePromotores',
+        params: { id: this.$route.params.id },
+      }">
+        <i class="bi bi-pencil-square" style="font-size: 25px; margin-right:10px;"></i>
+      </RouterLink>
+    </template>
       </CardList>
 
       <div class="d-flex" style="
@@ -119,6 +127,7 @@ import ActionListWrapper from "../../components/ActionListWrapper.vue";
 import ActionRouter from "../../components/ActionRouter.vue";
 import Breadcrumb from '../../components/Breadcrumb.vue';
 import ActionRouterBack from "../../components/ActionRouterBack.vue";
+import { RouterLink } from "vue-router";
 
 export default {
   data() {

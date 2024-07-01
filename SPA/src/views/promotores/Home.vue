@@ -14,17 +14,26 @@ import axios from "axios";
         </ActionListWrapper>
 
 
-        <nav id="main-container" style="display: flex; text-align: center; flex-wrap: wrap; gap:50px;">
+        <nav id="main-container" style="text-align: center; flex-wrap: wrap;">
+           <div class="d-flex" style="padding: 20px;  gap:50px;">
             <CardList :textBox="true" :items="promotores" :fields="{
                 nome: 'Promotor',
                 telefone: 'Telefone',
             }">
+
+                <template v-slot:topactions="{ item }">
+                    <button @click="confirmDelete(item)" class="d-flex flex-wrap btn btn-link p-0">
+                        <i class="bi bi-trash" style="font-size: 2rem; color: red"></i>
+                    </button>
+                </template>
+
                 <template v-slot:actions="{ item }">
                     <router-link :to="'promotores/' + item.id" class="d-flex flex-wrap">
-                       <h5 class="dtbutton">DETALHES</h5>
+                        <h5 class="dtbutton">DETALHES</h5>
                     </router-link>
                 </template>
-            </CardList> 
+            </CardList>
+        </div>
         </nav>
 
     </div>
@@ -53,6 +62,22 @@ export default {
             let response = axios.get('/promotores');
             this.promotores = (await response).data;
         },
+        confirmDelete(item) {
+            if (confirm(`Você tem certeza que deseja excluir o promotor ${item.nome}?`)) {
+                this.deletePromotor(item.id);
+            }
+        },
+        deletePromotor(promotorId) {
+            axios.delete(`/promotores/${promotorId}`)
+                .then(response => {
+                    alert('Promotor excluído com sucesso!');
+                    this.getPromotores(); // Atualiza a lista de clientes após exclusão
+                })
+                .catch(error => {
+                    console.error('Erro ao excluir cliente: ', error);
+                    alert('Ocorreu um erro ao tentar excluir o cliente.');
+                });
+        }
     },
 
     components: {
@@ -77,6 +102,7 @@ export default {
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
 }
+
 .li {
     width: 100%;
 }
