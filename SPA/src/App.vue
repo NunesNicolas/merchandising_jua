@@ -10,7 +10,7 @@ import '../axios'
 
 <script>
 import homeProdutos from './views/produtos/Home.vue';
-import InfoProdutos from './views/produtos/InfoProdutos.vue';
+import InfoProdutos from './views/produtos/Show.vue';
 import createProdutos from './views/produtos/createProdutos.vue';
 import homePromotores from './views/promotores/Home.vue';
 import infoPromotores from './views/promotores/Show.vue';
