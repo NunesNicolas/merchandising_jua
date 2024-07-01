@@ -4,6 +4,8 @@ import axios from "axios";
 
 <template>
 
+
+  <div class="page">
   <div class="d-flex" style="width: 100%; height: 5vh; justify-content:space-between; padding:10px;">
     <p class="ml-2 mr-auto" style="color:#858585; font-weight: 400 Bold; font-size: 3.2vh;"> Produtos </p>
     <p class="mr-3" style="color:#858585; font-weight: bold; font-size: 2.2vh;"> Dashboard / Produtos </p>
@@ -43,7 +45,7 @@ import axios from "axios";
       </div>
 
       <div style="text-align:right; margin-right:10px; align-items: right;" class="bmt-2 ml-auto ">
-        <router-link to="/produto/create">
+        <router-link to="/produtos/create">
           <div class="mb-2"><a href=""><button class="btn btn-primary"
                 style="background-color: #2c9aff; border-radius: 30px; text-align: center; border: none;  font-weight:bold; width: 100%">
                 <font color="#ffffff">ADICIONAR PRODUTO</font>
@@ -59,6 +61,8 @@ import axios from "axios";
 
 
   </div>
+
+</div>
 
   <!-- CARDS PRODUTOS -->
   <produtosComponents :produtos="produtos" />

@@ -4,7 +4,7 @@ import axios from "axios";
 
 <template>
 
-
+<div class="page">
 
     <div class="container mt-4 ml-4 mr-5" style="text-align: justify;">
         <h2>Novo Produto
@@ -38,7 +38,7 @@ import axios from "axios";
 
             <div class="form-group">
                 <label for="precoproduto">Adicione o link da imagem do seu produto:</label>
-                <input type="text" class="form-control" name="img" v-model="produto.img" placeholder="Digite um Preço">
+                <input type="text" class="form-control" name="img" v-model="produto.img" placeholder="Coloque um Link">
             </div>
 
             <br>
@@ -81,6 +81,8 @@ import axios from "axios";
             <button type="submit" class="btn btn-primary">Criar Produto</button>
         </form>
     </div>
+
+</div>
 </template>
 
 <script>

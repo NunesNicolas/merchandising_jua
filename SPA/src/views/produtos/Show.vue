@@ -44,14 +44,31 @@
                                 style="border-bottom: solid" value="" href="">5kg</a>
                         </router-link>
 
-
                     </div>
 
                 </div>
+
             </slot>
         </BoxInfoWrapper>
 
+        
+        <div style="
+            height: 100%;
+            justify-content:left;
+            padding: 15px;
+            padding-top: 10px;
+        ">
+            <div style="display: grid; width: 10%; text-align: end;">
+                <div style="width: 100%; text-align: end; padding-top: 10px">
+                    <ActionRouter route="/produtos/createCompetitors" color="primary" label="Adicionar Concorrente" />
+                </div>
+            </div>
+        </div>
+
+
     </div>
+
+
 </template>
 
 <script>
@@ -59,6 +76,7 @@
 import axios from 'axios';
 import ActionListWrapper from "../../components/ActionListWrapper.vue";
 import ActionRouterBack from "../../components/ActionRouterBack.vue";
+import ActionRouter from "../../components/ActionRouter.vue";
 import BoxInfoWrapper from "../../components/Box/BoxInfoWrapper.vue";
 import BoxInfo from "../../components/Box/BoxInfo.vue";
 import Breadcrumb from "../../components/Breadcrumb.vue";
@@ -141,6 +159,7 @@ export default {
     components: {
         ActionListWrapper,
         ActionRouterBack,
+        ActionRouter,
         BoxInfoWrapper,
         BoxInfo,
         Breadcrumb,
@@ -184,13 +203,14 @@ export default {
     align-items: end;
     border-top: 0.2vh solid #d3d6db;
     margin-bottom: -25px;
-    margin-left: -25px; 
-  }
-  .botao-ativo {
+    margin-left: -25px;
+}
+
+.botao-ativo {
     color: #2C9AFF;
-  }
-  
-  .peso:hover {
+}
+
+.peso:hover {
     border-bottom: solid #2C9AFF;
-  }
+}
 </style>
