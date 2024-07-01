@@ -13,7 +13,8 @@ import axios from "axios";
             <ActionRouterBack />
         </ActionListWrapper>
         
-        <nav id="main-container" style="display: flex; text-align: center; flex-wrap: wrap; gap:50px;">
+        <nav id="main-container" style="display: flex; text-align: center; flex-wrap: wrap; ">
+            <div class="d-flex" style="padding: 20px; gap:50px;">
             <CardList :textBox="false" :items="produtos" :fields="{
                 nome: 'Produto',
                 img: 'img'
@@ -28,6 +29,7 @@ import axios from "axios";
                     
                 </template>
             </CardList> 
+        </div>
         </nav>
 
 

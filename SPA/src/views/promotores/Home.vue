@@ -15,6 +15,7 @@ import axios from "axios";
 
 
         <nav id="main-container" style="display: flex; text-align: center; flex-wrap: wrap; gap:70px;">
+           <div class="d-flex" style="padding: 20px;  gap:50px;">
             <CardList :textBox="true" :items="promotores" :fields="{
                 nome: 'Promotor',
                 telefone: 'Telefone',
@@ -32,6 +33,7 @@ import axios from "axios";
                     </router-link>
                 </template>
             </CardList>
+        </div>
         </nav>
 
     </div>
