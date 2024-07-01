@@ -4,7 +4,7 @@
     </div>
 
     <div v-else v-for="item in items" :key="item.id" class="card-container"
-        style="display: flex;padding: 20px">
+        style="display: flex;">
         <div class="card"
             style="justify-content: center; border-radius: 10px; width: 235px; display: flex; text-align: left;">
             <div class="card-body">
