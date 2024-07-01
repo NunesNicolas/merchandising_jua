@@ -23,7 +23,7 @@ import axios from "axios";
 
                 <template v-slot:topactions="{ item }">
                     <button @click="confirmDelete(item)" class="d-flex flex-wrap btn btn-link p-0">
-                        <i class="bi bi-trash" style="font-size: 2rem; color: red"></i>
+                        <i class="bi bi-trash" style="font-size: 2rem; color: red; margin-left: 0.5vw;"></i>
                     </button>
                 </template>
 
@@ -101,6 +101,7 @@ export default {
     width: 100%;
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
+    padding-block: 1vh;
 }
 
 .li {

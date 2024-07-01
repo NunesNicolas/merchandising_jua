@@ -28,7 +28,7 @@ import UpdateClientes from './views/clientes/Update.vue';
 
 <style>
 body {
-  background-color: rgb(5, 180, 255);
+  background-color: #f0f0f0;
 }
 
 .page {
