@@ -11,7 +11,8 @@ import '../axios'
 <script>
 import homeProdutos from './views/produtos/Home.vue';
 import InfoProdutos from './views/produtos/Show.vue';
-import createProdutos from './views/produtos/Create.vue';
+import UpdateProdutos from './views/produtos/Update.vue';
+import CreateProdutos from './views/produtos/Create.vue';
 import homePromotores from './views/promotores/Home.vue';
 import infoPromotores from './views/promotores/Show.vue';
 import createPromotores from './views/promotores/Create.vue';

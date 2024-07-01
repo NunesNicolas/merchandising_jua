@@ -70,19 +70,29 @@ class ProdutosController extends Controller
         //     ]);
         // }
 
-        return response()->json([
-            'message' => 'Produto Criado com Sucesso',
-            'code' => 200
-        ]);
+        return response()->json($produto, 201);
     }
-    public function store_competitors(Request $request)
+    // public function store_competitors(Request $request)
+    // {
+    //     Competitor::create($request->all());
+    //     return response()->json([
+    //         'message' => 'Produto Criado com Sucesso',
+    //         'code' => 200
+    //     ]);
+    // }
+    public function update(Request $request, $id)
     {
-        Competitor::create($request->all());
-        return response()->json([
-            'message' => 'Produto Criado com Sucesso',
-            'code' => 200
-        ]);
+        $produto = Produto::find($id);
+        $produto->update($request->all());
+        return response()->json($produto);
     }
+    public function destroy($id)
+    {
+        $produto = Produto::find($id);
+        $produto->delete();
+        return response()->json(null, 204);
+    }
+    
 }
 
         

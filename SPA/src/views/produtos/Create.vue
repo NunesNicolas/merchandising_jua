@@ -12,7 +12,7 @@ import Form from './Form.vue'
 import Breadcrumb from '../../components/Breadcrumb.vue';
 
 export default {
-    name: 'createProdutos',
+    name: 'CreateProdutos',
     components: {
         Form,
         Breadcrumb
@@ -30,6 +30,7 @@ export default {
             try {
                 const response = await axios.post('/produtos', formData);
                 if (response.status === 201) {
+                    alert('Produto Criado')
                     this.$router.push('/produtos');
                 }
             } catch (error) {
