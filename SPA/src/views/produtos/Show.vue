@@ -25,7 +25,10 @@
                             </div>
                         </div>
                     </div>
+                    <i class="bi bi-exclamation-circle-fill" style="color: red;"></i>
+                    <i class="bi bi-pencil-square ml-2" style="font-size: 17px; color:dodgerblue"></i>
                 </div>
+
                 <div class="divFooter" style="width: 100%">
                     <div class="btnPeso">
 
@@ -51,7 +54,7 @@
             </slot>
         </BoxInfoWrapper>
 
-        
+
         <div style="
             height: 100%;
             justify-content:left;
@@ -65,6 +68,22 @@
             </div>
         </div>
 
+
+
+        <CardList :items="competitors" :fields="{
+            nome: 'PRODUTOS',
+            brand: 'CONCORRENTES',
+        }">
+            <template v-slot:actions="{ item }">
+                <router-link :to="'#'" class="d-flex flex-wrap">
+                    <i class="bi bi-pencil-square" style="font-size: 2rem; color:grey"></i>
+                </router-link>
+                <router-link :to="'#'" class="d-flex flex-wrap">
+                    <i class="bi bi-file-earmark-text" style="font-size: 2rem; color:grey"></i>
+                </router-link>
+            </template>
+
+        </CardList>
 
     </div>
 
@@ -81,6 +100,7 @@ import BoxInfoWrapper from "../../components/Box/BoxInfoWrapper.vue";
 import BoxInfo from "../../components/Box/BoxInfo.vue";
 import Breadcrumb from "../../components/Breadcrumb.vue";
 import CardList from '../../components/CardList.vue';
+
 
 export default {
 
