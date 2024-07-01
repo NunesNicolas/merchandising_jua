@@ -9,7 +9,7 @@ import axios from "axios";
         <Breadcrumb pageTitle="Produtos" routeInfo="Dashboard / Produtos" />
 
         <ActionListWrapper>
-            <ActionRouter route="/produtos/create" color="primary" label="Adicionar" />
+            <ActionRouter route="/produtos/Create" color="primary" label="Adicionar" />
             <ActionRouterBack />
         </ActionListWrapper>
         

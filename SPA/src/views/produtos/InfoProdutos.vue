@@ -146,11 +146,6 @@ import axios from "axios";
 import competitorsComponents from '../../components/produtos/competitorsComponents.vue';
 import editarProdutoModal from '../../components/produtos/modals/editarProdutoModal.vue';
 
-// const showModal = ref(false);
-
-// const abrirModal = () => {
-//   showModal.value = true;
-// };
 
 export default {
 

@@ -49,26 +49,26 @@ class ProdutosController extends Controller
     public function store(Request $request)
     {
 
-        $weights = $request->input('weights');
+        // $weights = $request->input('weights');
 
-        if (is_array($weights)) {
-            foreach ($weights as $weight) {
+        // if (is_array($weights)) {
+        //     foreach ($weights as $weight) {
                 $produto = new Produto();
                 $produto->nome = $request->input('nome');
                 $produto->img = $request->input('img');
 
                 // Defina o peso (weight) para o valor atual do loop
-                $produto->weight = $weight;
+                // $produto->weight = $weight;
 
                 // Salve o produto no banco de dados
                 $produto->save();
-            }
-        } else {
-            return response()->json([
-                'message' => 'Peso não é um array',
-                'code' => 400
-            ]);
-        }
+            
+        // } else {
+        //     return response()->json([
+        //         'message' => 'Peso não é um array',
+        //         'code' => 400
+        //     ]);
+        // }
 
         return response()->json([
             'message' => 'Produto Criado com Sucesso',

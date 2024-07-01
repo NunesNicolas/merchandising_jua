@@ -13,7 +13,7 @@ import inicialAuth from './views/Auth/inicial.vue';
 
 import homeProdutos from './views/produtos/Home.vue';
 import infoProdutos from './views/produtos/Show.vue';
-import createProdutos from './views/produtos/createProdutos.vue';
+import createProdutos from './views/produtos/Create.vue';
 import createCompetitors from './views/produtos/createCompetitors.vue';
 
 import homePromotores from './views/promotores/Home.vue';
