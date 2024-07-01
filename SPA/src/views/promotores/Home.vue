@@ -14,7 +14,7 @@ import axios from "axios";
         </ActionListWrapper>
 
 
-        <nav id="main-container" style="display: flex; text-align: center; flex-wrap: wrap; gap:50px;">
+        <nav id="main-container" style="display: flex; text-align: center; flex-wrap: wrap; gap:70px;">
             <CardList :textBox="true" :items="promotores" :fields="{
                 nome: 'Promotor',
                 telefone: 'Telefone',
@@ -66,11 +66,10 @@ export default {
             }
         },
         deletePromotor(promotorId) {
-            alert(promotorId)
-            axios.delete(`/Promotores/${promotorId}`)
+            axios.delete(`/promotores/${promotorId}`)
                 .then(response => {
                     alert('Promotor excluído com sucesso!');
-                    this.fetchClientes(); // Atualiza a lista de clientes após exclusão
+                    this.getPromotores(); // Atualiza a lista de clientes após exclusão
                 })
                 .catch(error => {
                     console.error('Erro ao excluir cliente: ', error);
@@ -91,13 +90,8 @@ export default {
 
 </script>
 
-<<<<<<< HEAD
-<style>
-.dtbutton {
-=======
 <style scoped>
 .dtbutton{
->>>>>>> master
     color: white;
     background-color: rgb(13, 141, 214);
     text-align: center;
