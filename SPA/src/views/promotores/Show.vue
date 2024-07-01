@@ -36,7 +36,7 @@ import axios from "axios";
         name: 'UpdatePromotores',
         params: { id: this.$route.params.id },
       }">
-        <i class="bi bi-pencil-square" style="font-size: 25px; margin-left:1vw;"></i>
+        <i class="bi bi-pencil-square" style="font-size: 3.5vh; margin-left:1vw;"></i>
       </RouterLink>
     </template>
       </CardList>
@@ -103,7 +103,7 @@ import axios from "axios";
         ultima_visita: 'ÚLTIMA VISITA',
       }">
         <template v-slot:tableactions="{ table }">
-          <i class="bi bi-pencil-square" style="font-size: 25px; color: blue; padding-inline: 0.5vw;"></i>
+          <i class="bi bi-pencil-square" style="font-size: 3.5vh; color: blue; padding-inline: 0.5vw; cursor: pointer;"></i>
         </template>
         <template v-slot:itemactions="{ item }">
           <router-link :to="{
