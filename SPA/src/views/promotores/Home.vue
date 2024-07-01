@@ -20,18 +20,18 @@ import axios from "axios";
                 telefone: 'Telefone',
             }">
 
-            <template v-slot:topactions="{item}">
-                <button @click="confirmDelete(item)" class="d-flex flex-wrap btn btn-link p-0">
-                    <i class="bi bi-trash" style="font-size: 2rem; color: red"></i>
-                </button>
-            </template>
+                <template v-slot:topactions="{ item }">
+                    <button @click="confirmDelete(item)" class="d-flex flex-wrap btn btn-link p-0">
+                        <i class="bi bi-trash" style="font-size: 2rem; color: red"></i>
+                    </button>
+                </template>
 
                 <template v-slot:actions="{ item }">
                     <router-link :to="'promotores/' + item.id" class="d-flex flex-wrap">
-                       <h5 class="dtbutton">DETALHES</h5>
+                        <h5 class="dtbutton">DETALHES</h5>
                     </router-link>
                 </template>
-            </CardList> 
+            </CardList>
         </nav>
 
     </div>
@@ -66,6 +66,7 @@ export default {
             }
         },
         deletePromotor(promotorId) {
+            alert(promotorId)
             axios.delete(`/Promotores/${promotorId}`)
                 .then(response => {
                     alert('Promotor excluído com sucesso!');
@@ -91,7 +92,7 @@ export default {
 </script>
 
 <style>
-.dtbutton{
+.dtbutton {
     color: white;
     background-color: rgb(13, 141, 214);
     text-align: center;
@@ -100,6 +101,7 @@ export default {
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
 }
+
 .li {
     width: 100%;
 }
