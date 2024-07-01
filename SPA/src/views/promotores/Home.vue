@@ -15,7 +15,7 @@ import axios from "axios";
 
 
         <nav id="main-container" style="display: flex; text-align: center; flex-wrap: wrap; gap:50px;">
-            <CardList :items="promotores" :fields="{
+            <CardList :textBox="true" :items="promotores" :fields="{
                 nome: 'Promotor',
                 telefone: 'Telefone',
             }">
@@ -91,8 +91,13 @@ export default {
 
 </script>
 
+<<<<<<< HEAD
 <style>
 .dtbutton {
+=======
+<style scoped>
+.dtbutton{
+>>>>>>> master
     color: white;
     background-color: rgb(13, 141, 214);
     text-align: center;

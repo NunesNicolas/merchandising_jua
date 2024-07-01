@@ -9,7 +9,7 @@ import '../axios'
 </template>
 
 <script>
-import homeProdutos from './views/produtos/homeProdutos.vue';
+import homeProdutos from './views/produtos/Home.vue';
 import InfoProdutos from './views/produtos/InfoProdutos.vue';
 import createProdutos from './views/produtos/createProdutos.vue';
 import homePromotores from './views/promotores/Home.vue';

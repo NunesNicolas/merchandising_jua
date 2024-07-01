@@ -23,12 +23,14 @@ Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::prefix('produtos')->group(function () {
-    Route::get('/', [ProdutosController::class, 'home'])->name('Produtos-home');
-    Route::get('/{id?}', [ProdutosController::class, 'info'])->name('Produtos-info');
-    Route::post('save_produto', [ProdutosController::class, 'saveProduto']);
-    Route::put('/{id?}', [ProdutosController::class, 'update'])->where('id', '[0-9]+');
-});
+// Route::prefix('produtos')->group(function () {
+//     Route::get('/', [ProdutosController::class, 'home'])->name('Produtos-home');
+//     Route::get('/{id?}', [ProdutosController::class, 'info'])->name('Produtos-info');
+//     Route::post('save_produto', [ProdutosController::class, 'saveProduto']);
+//     Route::put('/{id?}', [ProdutosController::class, 'update'])->where('id', '[0-9]+');
+// });
+
+Route::resource('produtos', ProdutosController::class);
 
 Route::resource('promotores', PromotoresController::class);
 
