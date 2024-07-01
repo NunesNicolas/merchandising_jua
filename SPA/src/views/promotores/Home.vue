@@ -14,8 +14,8 @@ import axios from "axios";
         </ActionListWrapper>
 
 
-        <nav id="main-container" style="text-align: center; flex-wrap: wrap;">
-           <div class="d-flex" style="padding: 20px;  gap:50px;">
+        <nav id="main-container" style="text-align: center;">
+           <div class="d-flex" style="padding: 20px;  gap:50px; flex-wrap: wrap;">
             <CardList :textBox="true" :items="promotores" :fields="{
                 nome: 'Promotor',
                 telefone: 'Telefone',
