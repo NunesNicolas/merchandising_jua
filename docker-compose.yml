@@ -1,0 +1,35 @@
+services:
+  api:
+    build:
+      context: ./API
+      dockerfile: Dockerfile
+
+    container_name: api
+
+    depends_on:
+      - db
+
+  db:
+    image: mysql:5.7
+    container_name: mysql
+    environment:
+      MYSQL_DATABASE: track
+      MYSQL_ROOT_PASSWORD: track
+      MYSQL_USER: root
+      MYSQL_PASSWORD: pass@123
+    volumes:
+      - db_data:/var/lib/mysql
+
+  caddy:
+    image: caddy:latest
+    container_name: caddy
+    ports:
+      - "80:80"
+    volumes:
+      - ./infrastructure/caddy/Caddyfile:/etc/caddy/Caddyfile
+
+    depends_on:
+      - api
+
+volumes:
+  db_data:
