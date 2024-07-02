@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string("nome", 100)->nullable();
             $table->string("img", 150)->nullable();
-            $table->string("weight", 100)->nullable();
+            $table->longText("weight", 100)->nullable();
             $table->timestamps();    
         });
     }
