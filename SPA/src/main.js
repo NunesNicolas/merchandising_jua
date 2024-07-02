@@ -13,7 +13,8 @@ import inicialAuth from './views/Auth/inicial.vue';
 
 import homeProdutos from './views/produtos/Home.vue';
 import infoProdutos from './views/produtos/Show.vue';
-import createProdutos from './views/produtos/createProdutos.vue';
+import CreateProdutos from './views/produtos/Create.vue';
+import UpdateProdutos from './views/produtos/Update.vue';
 import createCompetitors from './views/produtos/createCompetitors.vue';
 
 import homePromotores from './views/promotores/Home.vue';
@@ -44,7 +45,8 @@ const routes = [
     children: [
       { path: 'produtos', name: 'homeProdutos', component: homeProdutos },
       { path: 'produtos/:id', name: 'infoProdutos', component: infoProdutos },
-      { path: 'produtos/create', name: 'createProdutos', component: createProdutos },
+      { path: 'produtos/create', name: 'CreateProdutos', component: CreateProdutos },
+      { path: 'produtos/:id/update', name: 'UpdateProdutos', component: UpdateProdutos },
       { path: 'produtos/:id/competitors/create', name: 'createCompetitors', component: createCompetitors, props: true },
 
       { path: 'promotores', name: 'homePromotores', component: homePromotores },

@@ -49,40 +49,50 @@ class ProdutosController extends Controller
     public function store(Request $request)
     {
 
-        $weights = $request->input('weights');
+        // $weights = $request->input('weights');
 
-        if (is_array($weights)) {
-            foreach ($weights as $weight) {
+        // if (is_array($weights)) {
+        //     foreach ($weights as $weight) {
                 $produto = new Produto();
                 $produto->nome = $request->input('nome');
                 $produto->img = $request->input('img');
 
                 // Defina o peso (weight) para o valor atual do loop
-                $produto->weight = $weight;
+                // $produto->weight = $weight;
 
                 // Salve o produto no banco de dados
                 $produto->save();
-            }
-        } else {
-            return response()->json([
-                'message' => 'Peso não é um array',
-                'code' => 400
-            ]);
-        }
+            
+        // } else {
+        //     return response()->json([
+        //         'message' => 'Peso não é um array',
+        //         'code' => 400
+        //     ]);
+        // }
 
-        return response()->json([
-            'message' => 'Produto Criado com Sucesso',
-            'code' => 200
-        ]);
+        return response()->json($produto, 201);
     }
-    public function store_competitors(Request $request)
+    // public function store_competitors(Request $request)
+    // {
+    //     Competitor::create($request->all());
+    //     return response()->json([
+    //         'message' => 'Produto Criado com Sucesso',
+    //         'code' => 200
+    //     ]);
+    // }
+    public function update(Request $request, $id)
     {
-        Competitor::create($request->all());
-        return response()->json([
-            'message' => 'Produto Criado com Sucesso',
-            'code' => 200
-        ]);
+        $produto = Produto::find($id);
+        $produto->update($request->all());
+        return response()->json($produto);
     }
+    public function destroy($id)
+    {
+        $produto = Produto::find($id);
+        $produto->delete();
+        return response()->json(null, 204);
+    }
+    
 }
 
         

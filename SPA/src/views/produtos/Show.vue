@@ -26,7 +26,12 @@
                         </div>
                     </div>
                     <i class="bi bi-exclamation-circle-fill" style="color: red;"></i>
+                    <router-link :to="{
+                        name: 'UpdateProdutos',
+                        params: { id: this.$route.params.id },
+                      }">
                     <i class="bi bi-pencil-square ml-2" style="font-size: 17px; color:dodgerblue"></i>
+                    </router-link>
                 </div>
 
                 <div class="divFooter" style="width: 100%">
