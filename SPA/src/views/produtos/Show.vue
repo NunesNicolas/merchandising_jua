@@ -1,6 +1,6 @@
 <template>
     <div class="page">
-        <Breadcrumb pageTitle="Clientes" routeInfo="Dashboard / Clientes" />
+        <Breadcrumb pageTitle="Produtos" routeInfo="Dashboard / Produtos" />
 
         <ActionListWrapper>
             <ActionRouterBack />
@@ -21,7 +21,7 @@
                                 <BoxInfo title="Preço médio:" :value="produto.nome"></BoxInfo>
                             </div>
                             <div class="box-line" style="width: 50%">
-                                <BoxInfo title="Quantidade de concorrentes:" :value="produto.nome"></BoxInfo>
+                                <BoxInfo title="Quantidade de concorrentes:" :value="competitors.length"></BoxInfo>
                             </div>
                         </div>
                     </div>
