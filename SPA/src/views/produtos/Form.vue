@@ -7,8 +7,7 @@
         @update:modelValue="updateFormValue('nome', $event)" />
       <TextInput label="link da imagem" name="img" :modelValue="formValues.img"
         @update:modelValue="updateFormValue('img', $event)" />
-      <CheckBox label="Pesos" :items="weights" name="weights" @update:objects="updateObjects" :modelValue="formValues.modelValueArray"
-        @update:modelValue="updateFormValue('weights', $event)" />
+     
     </template>
   </DefaultForm>
 </template>
@@ -18,7 +17,7 @@ import DefaultForm from '../../components/form/DefaultForm.vue';
 import TextInput from '../../components/form/TextInput.vue';
 import SelectInput from '../../components/form/SelectInput.vue';
 import ImageUploadInput from '../../components/form/ImageUploadInput.vue';
-import CheckBox from '../../components/form/CheckBox.vue';
+
 
 export default {
   name: 'Form',
@@ -27,21 +26,11 @@ export default {
     TextInput,
     SelectInput,
     ImageUploadInput,
-    CheckBox
+
   },
 
   data() {
     return {
-      weights: [
-        '200g',
-        '500g',
-        '1kg',
-        '5kg',
-        '500ml',
-        '1l',
-        '2l',
-        '5l',
-      ],
       formValues: { ...this.values },
       validations: {
         nome: value => (!value ? 'Nome é obrigatório' : ''),
