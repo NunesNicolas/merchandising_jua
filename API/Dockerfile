@@ -76,6 +76,8 @@ RUN echo "\
 COPY . /var/www/html
 WORKDIR /var/www/html
 
+RUN rm .env
+
 RUN chown -R www-data:www-data /var/www/html
 
 RUN composer install
