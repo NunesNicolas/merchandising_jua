@@ -30,7 +30,7 @@ import axios from "axios";
 
 <script>
 export default {
-    name: 'createCompetitors',
+    name: 'Competitors',
     data() {
         return {
             competitors: {

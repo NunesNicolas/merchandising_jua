@@ -59,20 +59,14 @@
             </slot>
         </BoxInfoWrapper>
 
-
-        <div style="
-            height: 100%;
-            justify-content:left;
-            padding: 15px;
-            padding-top: 10px;
-        ">
-            <div style="display: grid; width: 10%; text-align: end;">
-                <div style="width: 100%; text-align: end; padding-top: 10px">
-                    <ActionRouter route="/produtos/createCompetitors" color="primary" label="Adicionar Concorrente" />
-                </div>
-            </div>
-        </div>
-
+    <div class="btCompetitorAdd">
+        <router-link :to="{
+            name: 'CreateCompetitors',
+            params: { id: this.$route.params.id },
+          }">
+        <h5 style="color: white; text-align:center">Adicionar Concorrente</h5>
+        </router-link>
+    </div>
 
 
         <CardList :items="competitors" :fields="{
@@ -80,7 +74,10 @@
             brand: 'CONCORRENTES',
         }">
             <template v-slot:actions="{ item }">
-                <router-link :to="'#'" class="d-flex flex-wrap">
+                <router-link :to="{
+                    name: 'UpdateCompetitors',
+                    params: { id: this.$route.params.id },
+                  }" class="d-flex flex-wrap">
                     <i class="bi bi-pencil-square" style="font-size: 2rem; color:grey"></i>
                 </router-link>
                 <router-link :to="'#'" class="d-flex flex-wrap">
@@ -199,6 +196,22 @@ export default {
 </script>
 
 <style scoped>
+
+.btCompetitorAdd {
+    text-align: left; 
+    margin-top: 25px;
+    margin-left: 15px;
+    border-radius: 10px;
+    background-color: #2C9AFF;
+    width: 17%;
+    height: 50%;
+
+}
+
+.bi.bi-pencil-square {
+    color: #2C9AFF;
+}
+
 .btnPeso {
     width: 30vw;
     height: 11vh;

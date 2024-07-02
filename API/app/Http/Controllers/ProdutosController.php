@@ -96,13 +96,7 @@ class ProdutosController extends Controller
 }
 
 
-//     public function create_competitors()
-//     {
-        
-//         $produtos = Produto::all();
-
-//         return view('produtos.adicionarcompetitors',['produtos'=>$produtos]);
-//     }
+    
 
 
 //     public function store(Request $request)
