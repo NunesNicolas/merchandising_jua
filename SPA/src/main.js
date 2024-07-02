@@ -15,7 +15,8 @@ import homeProdutos from './views/produtos/Home.vue';
 import infoProdutos from './views/produtos/Show.vue';
 import CreateProdutos from './views/produtos/Create.vue';
 import UpdateProdutos from './views/produtos/Update.vue';
-import createCompetitors from './views/produtos/createCompetitors.vue';
+import CreateCompetitors from './views/produtos/competitors/Create.vue';
+import UpdateCompetitors from './views/produtos/competitors/Update.vue';
 
 import homePromotores from './views/promotores/Home.vue';
 import infoPromotores from './views/promotores/Show.vue';
@@ -45,9 +46,10 @@ const routes = [
     children: [
       { path: 'produtos', name: 'homeProdutos', component: homeProdutos },
       { path: 'produtos/:id', name: 'infoProdutos', component: infoProdutos },
-      { path: 'produtos/create', name: 'CreateProdutos', component: CreateProdutos },
+      { path: 'produtos/create', name: 'CreateProdutos  ', component: CreateProdutos },
       { path: 'produtos/:id/update', name: 'UpdateProdutos', component: UpdateProdutos },
-      { path: 'produtos/:id/competitors/create', name: 'createCompetitors', component: createCompetitors, props: true },
+      { path: 'produtos/:id/competitors/create', name: 'CreateCompetitors', component: CreateCompetitors },
+      { path: 'produtos/:id/competitors/update/:compid', name: 'UpdateCompetitors', component: UpdateCompetitors },
 
       { path: 'promotores', name: 'homePromotores', component: homePromotores },
       { path: 'promotores/:id', name: 'infoPromotores', component: infoPromotores },

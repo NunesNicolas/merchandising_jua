@@ -13,6 +13,8 @@ import homeProdutos from './views/produtos/Home.vue';
 import InfoProdutos from './views/produtos/Show.vue';
 import UpdateProdutos from './views/produtos/Update.vue';
 import CreateProdutos from './views/produtos/Create.vue';
+import CreateCompetitors from './views/produtos/competitors/Create.vue';
+import UpdateCompetitors from './views/produtos/competitors/Update.vue';
 import homePromotores from './views/promotores/Home.vue';
 import infoPromotores from './views/promotores/Show.vue';
 import createPromotores from './views/promotores/Create.vue';
