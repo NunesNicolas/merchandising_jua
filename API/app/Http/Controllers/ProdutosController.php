@@ -49,26 +49,26 @@ class ProdutosController extends Controller
     public function store(Request $request)
     {
 
-        // $weights = $request->input('weights');
+        $weights = $request->input('weights');
 
-        // if (is_array($weights)) {
-        //     foreach ($weights as $weight) {
+        if (is_array($weights)) {
+            foreach ($weights as $weight) {
                 $produto = new Produto();
                 $produto->nome = $request->input('nome');
                 $produto->img = $request->input('img');
 
                 // Defina o peso (weight) para o valor atual do loop
-                // $produto->weight = $weight;
+                $produto->weight = $weight;
 
                 // Salve o produto no banco de dados
-                $produto->save();
+                $produto->save();}
             
-        // } else {
-        //     return response()->json([
-        //         'message' => 'Peso não é um array',
-        //         'code' => 400
-        //     ]);
-        // }
+        } else {
+            return response()->json([
+                'message' => 'Peso não registrado',
+                'code' => 400
+            ]);
+        }
 
         return response()->json($produto, 201);
     }
@@ -95,54 +95,6 @@ class ProdutosController extends Controller
     
 }
 
-        
-//     public function index()
-//     {
-//         // $produtos = Produto::all();
-
-//         // $produtos = Produto::select('nome', 'id', 'img')
-//         // ->distinct()
-//         // ->orderBy('nome')
-//         // ->groupBy('nome')
-//         // ->get();
-
-//         $produtos = Produto::select('nome', 'id', 'img')
-//                 ->whereIn('id', function ($query) {
-//                     $query->select(Produto::raw('MIN(id)'))
-//                           ->from('produtos')
-//                           ->groupBy('nome');
-//                 })
-//                 ->get();
-
-//         // $produtos = Produto::select('nome','id','img')->distinct()->get();
-        
-//         return view('produtos.homeprodutos', ['produtos'=>$produtos]);
-//     }
-//     public function create()
-//     {
-//         return view('produtos.criarprodutos');
-//     }
-    
-//     public function info ($id){
-
-//         $produto = Produto::find($id);
-
-//         $produtovariants = Produto::where('nome', $produto->nome)->get();
-
-//         $id_jua = $id; // ID do produto desejado
-//         $competitorsthis = Competitor::where('product_id', $id_jua)->get();
-
-//         if ($produto) {
-//             // O promotor foi encontrado, faça algo com as informações
-//             return view("produtos.produtoinfo", 
-//                 ['produto'=> $produto,
-//                 'produtovariants'=>$produtovariants, 
-//                 'competitorsthis'=>$competitorsthis,]);
-//         } else {
-//             // O promotor não foi encontrado, trate o erro
-//             abort(404);
-//         }
-//     }
 
 //     public function create_competitors()
 //     {

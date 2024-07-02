@@ -51,12 +51,3 @@ Route::prefix('empresas')->group(function () {
 
 
 Route::resource('clientes', ClientesController::class);
-
-// Route::prefix('promotores')->group(function () {
-   
-//     Route::get('/', [PromotoresController::class, 'home'])->name('Promotores-home');
-//     Route::get('/create', [PromotoresController::class, 'create'])->name('Promotores-create');
-//     Route::post('/', [PromotoresController::class, 'store'])->name('Promotores-store');
-//     Route::get('/{id?}', [PromotoresController::class, 'info'])->name('Promotores-info');
-//     Route::post('save_promotor', [PromotoresController::class, 'savePromotor']);
-// });
