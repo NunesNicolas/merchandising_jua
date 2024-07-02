@@ -10,7 +10,7 @@
                 <div class="d-flex flex-wrap content-normal ml-4" id="infos" style="">
                     <table style="width: 100%;">
                         <thead>
-                            <tr class="indicadores">
+                            <tr class="indicadores" style="">
                                 <th v-for="(label, field) in fields" :key="field">{{ label }}</th>
                             </tr>
                         </thead>
@@ -20,9 +20,7 @@
                                 <slot name="itemactions" :item="item"></slot>
                             </tr>
                         </tbody>
-                        
                     </table>
-                    
                 </div>
             </div>
         </ul>
@@ -61,7 +59,7 @@ export default {
     text-decoration: none;
     color: #858585;
     width: 95%;
-    height: 8vh;
+    height: 10vh;
     margin-top: 1.5vh;
     border-radius: 0.5vh;
     align-items: center;
