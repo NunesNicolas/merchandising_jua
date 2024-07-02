@@ -49,7 +49,7 @@ const routes = [
       { path: 'produtos/create', name: 'CreateProdutos  ', component: CreateProdutos },
       { path: 'produtos/:id/update', name: 'UpdateProdutos', component: UpdateProdutos },
       { path: 'produtos/:id/competitors/create', name: 'CreateCompetitors', component: CreateCompetitors },
-      { path: 'produtos/:id/competitors/update', name: 'UpdateCompetitors', component: UpdateCompetitors },
+      { path: 'produtos/:id/competitors/update/:compid', name: 'UpdateCompetitors', component: UpdateCompetitors },
 
       { path: 'promotores', name: 'homePromotores', component: homePromotores },
       { path: 'promotores/:id', name: 'infoPromotores', component: infoPromotores },

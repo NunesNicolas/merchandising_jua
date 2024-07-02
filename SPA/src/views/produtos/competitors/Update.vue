@@ -26,7 +26,7 @@ export default {
     methods: {
         async fetchCompetitorData() {
             try {
-                const response = await axios.get(`/competitors/${this.$route.params.id}`);
+                const response = await axios.get(`/competitors/${this.$route.params.compid}`);
                 this.values = response.data.competitor;
             } catch (error) {
                 console.error('Error fetching concorrente data:', error);
@@ -34,7 +34,7 @@ export default {
         },
         async updateCompetitor(formData) {
             try {
-                const response = await axios.put(`/competitors/${this.$route.params.id}`, formData);
+                const response = await axios.put(`/competitors/${this.$route.params.compid}`, formData);
                 
                 if (response.status === 200) {
                     alert(response.statusText);

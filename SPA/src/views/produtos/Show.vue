@@ -76,7 +76,9 @@
             <template v-slot:actions="{ item }">
                 <router-link :to="{
                     name: 'UpdateCompetitors',
-                    params: { id: this.$route.params.id },
+                    params: { 
+                        id: this.$route.params.id,
+                        compid: item.id },
                   }" class="d-flex flex-wrap">
                     <i class="bi bi-pencil-square" style="font-size: 2rem; color:grey"></i>
                 </router-link>
