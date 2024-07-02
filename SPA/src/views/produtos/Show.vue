@@ -59,12 +59,12 @@
             </slot>
         </BoxInfoWrapper>
 
-    <div>
+    <div class="btCompetitorAdd">
         <router-link :to="{
             name: 'CreateCompetitors',
             params: { id: this.$route.params.id },
           }">
-        <h5>Adicionar Concorrente</h5>
+        <h5 style="color: white; text-align:center">Adicionar Concorrente</h5>
         </router-link>
     </div>
 
@@ -196,6 +196,17 @@ export default {
 </script>
 
 <style scoped>
+
+.btCompetitorAdd {
+    text-align: left; 
+    margin-top: 25px;
+    margin-left: 15px;
+    border-radius: 10px;
+    background-color: #2C9AFF;
+    width: 17%;
+    height: 50%;
+
+}
 
 .bi.bi-pencil-square {
     color: #2C9AFF;
