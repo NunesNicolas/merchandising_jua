@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProdutosController;
 use App\Http\Controllers\PromotoresController;
 use App\Http\Controllers\EmpresasController;
+use App\Http\Controllers\CompetitorsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,10 +35,12 @@ Route::resource('produtos', ProdutosController::class);
 
 Route::resource('promotores', PromotoresController::class);
 
-Route::prefix('competitors')->group(function () {
-    Route::get('/create', [ProdutosController::class, 'create_competitors'])->name('Competitors-create');
-    Route::post('/', [ProdutosController::class, 'store_competitors'])->name('Competitors-store');
-});
+Route::resource('competitors', CompetitorsController::class);
+
+// Route::prefix('competitors')->group(function () {
+//     Route::get('/create', [ProdutosController::class, 'create_competitors'])->name('Competitors-create');
+//     Route::post('/', [ProdutosController::class, 'store_competitors'])->name('Competitors-store');
+// });
 
 
 Route::prefix('empresas')->group(function () {
@@ -51,12 +54,3 @@ Route::prefix('empresas')->group(function () {
 
 
 Route::resource('clientes', ClientesController::class);
-
-// Route::prefix('promotores')->group(function () {
-   
-//     Route::get('/', [PromotoresController::class, 'home'])->name('Promotores-home');
-//     Route::get('/create', [PromotoresController::class, 'create'])->name('Promotores-create');
-//     Route::post('/', [PromotoresController::class, 'store'])->name('Promotores-store');
-//     Route::get('/{id?}', [PromotoresController::class, 'info'])->name('Promotores-info');
-//     Route::post('save_promotor', [PromotoresController::class, 'savePromotor']);
-// });

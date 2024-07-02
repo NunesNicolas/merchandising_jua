@@ -61,86 +61,42 @@ class ProdutosController extends Controller
                 $produto->weight = $weight;
 
                 // Salve o produto no banco de dados
-                $produto->save();
-            }
+                $produto->save();}
+            
         } else {
             return response()->json([
-                'message' => 'Peso não é um array',
+                'message' => 'Peso não registrado',
                 'code' => 400
             ]);
         }
 
-        return response()->json([
-            'message' => 'Produto Criado com Sucesso',
-            'code' => 200
-        ]);
+        return response()->json($produto, 201);
     }
-    public function store_competitors(Request $request)
+    // public function store_competitors(Request $request)
+    // {
+    //     Competitor::create($request->all());
+    //     return response()->json([
+    //         'message' => 'Produto Criado com Sucesso',
+    //         'code' => 200
+    //     ]);
+    // }
+    public function update(Request $request, $id)
     {
-        Competitor::create($request->all());
-        return response()->json([
-            'message' => 'Produto Criado com Sucesso',
-            'code' => 200
-        ]);
+        $produto = Produto::find($id);
+        $produto->update($request->all());
+        return response()->json($produto);
     }
+    public function destroy($id)
+    {
+        $produto = Produto::find($id);
+        $produto->delete();
+        return response()->json(null, 204);
+    }
+    
 }
 
-        
-//     public function index()
-//     {
-//         // $produtos = Produto::all();
 
-//         // $produtos = Produto::select('nome', 'id', 'img')
-//         // ->distinct()
-//         // ->orderBy('nome')
-//         // ->groupBy('nome')
-//         // ->get();
-
-//         $produtos = Produto::select('nome', 'id', 'img')
-//                 ->whereIn('id', function ($query) {
-//                     $query->select(Produto::raw('MIN(id)'))
-//                           ->from('produtos')
-//                           ->groupBy('nome');
-//                 })
-//                 ->get();
-
-//         // $produtos = Produto::select('nome','id','img')->distinct()->get();
-        
-//         return view('produtos.homeprodutos', ['produtos'=>$produtos]);
-//     }
-//     public function create()
-//     {
-//         return view('produtos.criarprodutos');
-//     }
     
-//     public function info ($id){
-
-//         $produto = Produto::find($id);
-
-//         $produtovariants = Produto::where('nome', $produto->nome)->get();
-
-//         $id_jua = $id; // ID do produto desejado
-//         $competitorsthis = Competitor::where('product_id', $id_jua)->get();
-
-//         if ($produto) {
-//             // O promotor foi encontrado, faça algo com as informações
-//             return view("produtos.produtoinfo", 
-//                 ['produto'=> $produto,
-//                 'produtovariants'=>$produtovariants, 
-//                 'competitorsthis'=>$competitorsthis,]);
-//         } else {
-//             // O promotor não foi encontrado, trate o erro
-//             abort(404);
-//         }
-//     }
-
-//     public function create_competitors()
-//     {
-        
-//         $produtos = Produto::all();
-
-//         return view('produtos.adicionarcompetitors',['produtos'=>$produtos]);
-//     }
 
 
 //     public function store(Request $request)
