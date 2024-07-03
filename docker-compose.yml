@@ -1,82 +1,82 @@
-services:
-  api:
-    build:
-      context: ./API
-      dockerfile: Dockerfile
-    container_name: api
+  services:
+    api:
+      build:
+        context: ./API
+        dockerfile: Dockerfile
+      container_name: api
+      
+      command:  ["./entrypoint.sh"]
+      
+      depends_on:
+        mariadb:
+          condition: service_healthy
+
+      networks:
+        - internal
+
+      environment:
+        APP_NAME: ${APP_NAME}
+        APP_ENV: ${APP_ENV}
+        APP_KEY: ${APP_KEY}
+        APP_DEBUG: ${APP_DEBUG}
+        APP_URL: ${APP_URL}
+        FRONTEND_URL: ${FRONTEND_URL}
+        LOG_CHANNEL: ${LOG_CHANNEL}
+        LOG_DEPRECATIONS_CHANNEL: ${LOG_DEPRECATIONS_CHANNEL}
+        LOG_LEVEL: ${LOG_LEVEL}
+        DB_CONNECTION: ${DB_CONNECTION}
+        DB_HOST: mariadb
+        DB_PORT: ${DB_PORT}
+        DB_DATABASE: ${DB_DATABASE}
+        DB_USERNAME: ${DB_USERNAME}
+        DB_PASSWORD: ${DB_PASSWORD}
+        BROADCAST_DRIVER: ${BROADCAST_DRIVER}
+        CACHE_DRIVER: ${CACHE_DRIVER}
+        FILESYSTEM_DISK: ${FILESYSTEM_DISK}
+        QUEUE_CONNECTION: ${QUEUE_CONNECTION}
+        SESSION_DRIVER: ${SESSION_DRIVER}
+        SESSION_LIFETIME: ${SESSION_LIFETIME}
     
-    command:  ["./entrypoint.sh"]
-    
-    depends_on:
-      mariadb:
-        condition: service_healthy
+    mariadb:
+      image: mariadb:latest
+      restart: always
+      container_name: mariadb
+      
+      environment:
+          MYSQL_DATABASE: ${DB_DATABASE}
+          MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+      volumes:
+        - mariadb_data:/var/lib/mysql
 
-    networks:
-      - internal
+      networks:
+        - internal
 
-    environment:
-      APP_NAME: ${APP_NAME}
-      APP_ENV: ${APP_ENV}
-      APP_KEY: ${APP_KEY}
-      APP_DEBUG: ${APP_DEBUG}
-      APP_URL: ${APP_URL}
-      FRONTEND_URL: ${FRONTEND_URL}
-      LOG_CHANNEL: ${LOG_CHANNEL}
-      LOG_DEPRECATIONS_CHANNEL: ${LOG_DEPRECATIONS_CHANNEL}
-      LOG_LEVEL: ${LOG_LEVEL}
-      DB_CONNECTION: ${DB_CONNECTION}
-      DB_HOST: mariadb
-      DB_PORT: ${DB_PORT}
-      DB_DATABASE: ${DB_DATABASE}
-      DB_USERNAME: ${DB_USERNAME}
-      DB_PASSWORD: ${DB_PASSWORD}
-      BROADCAST_DRIVER: ${BROADCAST_DRIVER}
-      CACHE_DRIVER: ${CACHE_DRIVER}
-      FILESYSTEM_DISK: ${FILESYSTEM_DISK}
-      QUEUE_CONNECTION: ${QUEUE_CONNECTION}
-      SESSION_DRIVER: ${SESSION_DRIVER}
-      SESSION_LIFETIME: ${SESSION_LIFETIME}
-   
-  mariadb:
-    image: mariadb:latest
-    restart: always
-    container_name: mariadb
-    
-    environment:
-        MYSQL_DATABASE: ${DB_DATABASE}
-        MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
-    volumes:
-      - mariadb_data:/var/lib/mysql
+      ports:
+          - "3306:3306"
 
-    networks:
-      - internal
+      healthcheck:
+        test: ["CMD-SHELL", "mariadb-admin ping -p$DB_PASSWORD"]
+        interval: 30s
+        timeout: 10s
+        retries: 5
+        start_period: 40s
 
-    ports:
-        - "3306:3306"
+    caddy:
+      image: caddy:latest
+      container_name: caddy
+      ports:
+        - "80:80"
+      volumes:
+        - ./infrastructure/caddy/Caddyfile:/etc/caddy/Caddyfile
+      depends_on:
+        - api
+      
+      networks:
+        - internal
 
-    healthcheck:
-      test: ["CMD-SHELL", "mariadb-admin ping -p$DB_PASSWORD"]
-      interval: 30s
-      timeout: 10s
-      retries: 5
-      start_period: 40s
+  volumes:
+    mariadb_data:
 
-  caddy:
-    image: caddy:latest
-    container_name: caddy
-    ports:
-      - "80:80"
-    volumes:
-      - ./infrastructure/caddy/Caddyfile:/etc/caddy/Caddyfile
-    depends_on:
-      - api
-    
-    networks:
-      - internal
-
-volumes:
-  mariadb_data:
-
-networks:
-  internal:
-    driver: bridge
+  networks:
+    internal:
+      driver: bridge
