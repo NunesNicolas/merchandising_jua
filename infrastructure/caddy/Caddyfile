@@ -11,3 +11,10 @@
     try_files {path} /index.html
 	file_server
 }
+
+## colocar variavel de ambiente para MOBI DOMAIN
+:3000 {
+    root * /var/www/spa/spa
+    try_files {path} /index.html
+	file_server
+}
