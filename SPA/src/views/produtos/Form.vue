@@ -5,8 +5,10 @@
       <hr>
       <TextInput label="Nome" name="nome" :modelValue="formValues.nome"
         @update:modelValue="updateFormValue('nome', $event)" />
-      <TextInput label="link da imagem" name="img" :modelValue="formValues.img"
-        @update:modelValue="updateFormValue('img', $event)" />
+      <!-- <TextInput label="link da imagem" name="img" :modelValue="formValues.img"
+        @update:modelValue="updateFormValue('img', $event)" /> -->
+        <ImageUploadInput label="Imagem" name="img" :modelValue="formValues.img" 
+        @update:modelValue="updateFormValue('img', $event)"/>
      
     </template>
   </DefaultForm>
@@ -33,8 +35,7 @@ export default {
     return {
       formValues: { ...this.values },
       validations: {
-        nome: value => (!value ? 'Nome é obrigatório' : ''),
-        img: value => (!value ? 'Link de imagem é obrigatório' : '')
+        nome: value => (!value ? 'Nome é obrigatório' : '')
       }
     };
   },
