@@ -53,15 +53,15 @@ class ProdutosController extends Controller
 
         // if (is_array($weights)) {
         //     foreach ($weights as $weight) {
-                $produto = new Produto();
-                $produto->nome = $request->input('nome');
-                $produto->img = $request->input('img');
+                // $produto = new Produto();
+                // $produto->nome = $request->input('nome');
+                // $produto->img = $request->input('img');
 
                 // Defina o peso (weight) para o valor atual do loop
                 // $produto->weight = $weight;
 
                 // Salve o produto no banco de dados
-                $produto->save();
+                // $produto->save();
             
         // } else {
         //     return response()->json([
@@ -69,7 +69,7 @@ class ProdutosController extends Controller
         //         'code' => 400
         //     ]);
         // }
-
+        $produto = Produto::create($request->all());
         return response()->json($produto, 201);
     }
     // public function store_competitors(Request $request)

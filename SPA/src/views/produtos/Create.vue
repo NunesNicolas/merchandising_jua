@@ -21,7 +21,6 @@ export default {
         return {
             values: {
                 nome: '',
-                img: ''
             }
         };
     },
