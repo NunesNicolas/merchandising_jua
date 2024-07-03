@@ -1,30 +1,42 @@
 <script setup>
-import HelloWorld from './components/HelloWorld.vue'
+import '../axios'
 </script>
 
 <template>
-  <div>
-    <a href="https://vitejs.dev" target="_blank">
-      <img src="/vite.svg" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://vuejs.org/" target="_blank">
-      <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
-    </a>
+  <div class="page">
+    <router-view :key="$route.fullPath" />
   </div>
-  <HelloWorld msg="Vite + Vue" />
 </template>
 
+<script>
+import InicialAuth from './views/auth/login.vue';
+import InicialSistema from './views/dashboard/inicial.vue';
+</script>
+
 <style scoped>
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
+body {
+  background-color: #f0f0f0;
 }
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
+
+.page {
+  padding: 0%;
+  margin: 0%;
+  justify-content: space-between;
+  height: 100%;
+  min-height: 100vh;
 }
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
+
+#app {
+  padding: 0%;
+  margin: 0%;
+}
+
+#topheader {
+  padding-bottom: 2px;
+  background-color: #f0f0f0;
+  height: 100%;
+  width: 94.95%;
+  margin-left: 5vw;
+  border: none;
 }
 </style>
