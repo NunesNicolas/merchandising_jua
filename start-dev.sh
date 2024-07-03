@@ -38,7 +38,4 @@ wait_for_service "$API_CONTAINER" "API" "php -v"
 wait_for_service "$DB_CONTAINER" "MariaDB" "mariadb-admin ping  -p$MYSQL_ROOT_PASSWORD"
 
 # Executa os comandos dentro do container 'api'
-docker exec "$API_CONTAINER" php artisan config:clear
-docker exec "$API_CONTAINER" php artisan cache:clear
-docker exec "$API_CONTAINER" php artisan migrate
-docker exec "$API_CONTAINER" php artisan config:cache
+docker exec "$API_CONTAINER" sh entrypoint.sh
