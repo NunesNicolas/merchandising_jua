@@ -9,27 +9,10 @@ pkgs.mkShell {
   ];
 
   shellHook = ''
-    export APP_NAME="Merchan Track"
-    export APP_ENV=local
-    export APP_KEY=base64:tTE91/I68qBHyitSsssfPej2pONWGsCcAPsU3mGanII=
-    export APP_DEBUG=true
-    export APP_URL=http://localhost:8000
-    export FRONTEND_URL=http://localhost:5173
-    export LOG_CHANNEL=stack
-    export LOG_DEPRECATIONS_CHANNEL=null
-    export LOG_LEVEL=debug
-    export DB_CONNECTION=mysql
-    export DB_HOST=mariadb
-    export DB_PORT=3306
-    export DB_DATABASE=track
-    export DB_USERNAME=root
-    export DB_PASSWORD=pass@123
-    export BROADCAST_DRIVER=log
-    export CACHE_DRIVER=file
-    export FILESYSTEM_DISK=local
-    export QUEUE_CONNECTION=sync
-    export SESSION_DRIVER=file
-    export SESSION_LIFETIME=120
+    
+    if [ -f API/.env.nix ]; then
+      export $(grep -v '^#' API/.env.nix | xargs)
+    fi
 
     MYSQL_BASEDIR=${pkgs.mariadb}
     MYSQL_HOME="$PWD/../mysql"
