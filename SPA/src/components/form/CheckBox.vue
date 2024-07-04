@@ -4,7 +4,7 @@
 
         <div class="form-check" v-for="item in items">
             <label class="form-check-label">
-                <input :checked="modelValue.some(obj => obj === item || Object.keys(obj).every(key => obj[key] === item[key]))" :id="item" :name="item" :value="item" class="form-check-input" type="checkbox"
+                <input :id="item" :name="item" :value="item" class="form-check-input" type="checkbox"
                     @change="updateObjects(item, $event)">
                 {{ item }}
             </label>
@@ -14,31 +14,27 @@
 
 <script>
 export default {
-  name: 'CheckBox',
-  props: {
-    label: String,
-    modelValue: Array,
-    items: Array,
-  },
-  methods: {
-    updateObjects(object, event) {
-      if (event.target.checked) {
-        this.modelValue.push(object);
-      } else {
-        const index = this.modelValue.findIndex(obj => {
-          if (typeof obj === 'object' && typeof object === 'object') {
-            return Object.keys(obj).every(key => obj[key] === object[key]);
-          } else {
-            return obj === object;
-          }
-        });
-        if (index!== -1) {
-          this.modelValue.splice(index, 1);
+    name: 'CheckBox',
+    data() {
+        return {
+            objects: []
         }
-      }
-      this.$emit('input', this.modelValue);
     },
-  },
+    props: {
+        label: String,
+        modelValue: Array,
+        items: Array
+    },
+    methods: {
+        updateObjects(object, event) {
+            if (event.target.checked) {
+                this.objects.push(object);
+            } else {
+                this.objects = this.objects.filter(item => item !== object);
+            }
+            this.$emit('update:modelValue', this.objects);
+        }
+    }
 }
 </script>
 
