@@ -1,5 +1,5 @@
 <template>
-    <ProdutoForm :title="'Atualizar Produto'" :values="values" :submitLabel="'Atualizar Produto'"
+    <ProdutoForm :created="false" :title="'Atualizar Produto'" :values="values" :submitLabel="'Atualizar Produto'"
         :onSave="updateProduto" />
 </template>
 
