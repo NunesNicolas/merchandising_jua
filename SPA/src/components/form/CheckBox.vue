@@ -14,32 +14,31 @@
 
 <script>
 export default {
-    name: 'CheckBox',
-    data() {
-        return {
-            objects: []
+  name: 'CheckBox',
+  props: {
+    label: String,
+    modelValue: Array,
+    items: Array,
+  },
+  methods: {
+    updateObjects(object, event) {
+      if (event.target.checked) {
+        this.modelValue.push(object);
+      } else {
+        const index = this.modelValue.findIndex(obj => {
+          if (typeof obj === 'object' && typeof object === 'object') {
+            return Object.keys(obj).every(key => obj[key] === object[key]);
+          } else {
+            return obj === object;
+          }
+        });
+        if (index!== -1) {
+          this.modelValue.splice(index, 1);
         }
+      }
+      this.$emit('input', this.modelValue);
     },
-    props: {
-        label: String,
-        modelValue: Array,
-        items: Array,
-    },
-    methods: {
-        updateObjects(object, event) {
-            if (event.target.checked) {
-                this.objects.push(object);
-            } else {
-                this.objects = this.objects.filter(item => item !== object);
-            }
-            this.$emit('update:modelValue', this.objects);
-        },
-
-        selectedBox() {
-                const checkbox = document.querySelector('#weight500g');
-                checkbox.checked = true; // Define a checkbox como marcada  
-        },
-    }
+  },
 }
 </script>
 

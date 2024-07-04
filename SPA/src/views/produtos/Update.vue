@@ -42,6 +42,7 @@ export default {
         async updateProduto(formData) {
             try {
                 const response = await axios.put(`/produtos/${this.$route.params.id}`, formData);
+                alert(formData.weights);
 
                 if (response.status === 200) {
                     alert(response.statusText);
