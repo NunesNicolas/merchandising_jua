@@ -5,8 +5,10 @@
       <hr>
       <TextInput label="Nome" name="nome" :modelValue="formValues.nome"
         @update:modelValue="updateFormValue('nome', $event)" />
-      <CheckBox label="Pesos" :items="weights" name="weights"
+      <div v-if="this.created">
+        <CheckBox label="Pesos" :items="weights" name="weights"
         :modelValue="formValues.weights" @update:modelValue="updateFormValue('weights', $event)" />
+      </div>
       <ImageUploadInput label="Imagem" name="img" :modelValue="formValues.img"
         @update:modelValue="updateFormValue('img', $event)" />
     </template>
@@ -49,7 +51,8 @@ export default {
     title: String,
     values: Object,
     submitLabel: String,
-    onSave: Function
+    onSave: Function,
+    created: Boolean
   },
   watch: {
     values: {

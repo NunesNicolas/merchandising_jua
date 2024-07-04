@@ -2,7 +2,7 @@
 
     <div class="page">
         <Breadcrumb pageTitle="Produtos" routeInfo="Dashboard / Produtos" />
-        <Form :title="'Cadastrar produto'" :values="values" :submitLabel="'Criar Produto'" :onSave="saveProduto" />
+        <Form :created="true" :title="'Cadastrar produto'" :values="values" :submitLabel="'Criar Produto'" :onSave="saveProduto" />
     </div>
 </template>
 

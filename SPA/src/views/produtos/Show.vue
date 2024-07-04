@@ -29,44 +29,60 @@
                     <router-link :to="{
                         name: 'UpdateProdutos',
                         params: { id: this.$route.params.id },
-                      }">
-                    <i class="bi bi-pencil-square ml-2" style="font-size: 17px; color:dodgerblue"></i>
+                    }">
+                        <i class="bi bi-pencil-square ml-2" style="font-size: 17px; color:dodgerblue"></i>
                     </router-link>
                 </div>
 
                 <div class="divFooter" style="width: 100%">
-                    <div class="btnPeso">
 
-                        <router-link :to="{ name: 'infoProdutos', params: { id: button500 } }">
+                        <FooterButtons
+                        :id="id"
+                        :label = "'weight'"
+                        :instance = "produto"
+                        :items="variants"
+                        :defaults="[
+                            { weight: '200g' },
+                            { weight: '500g' },
+                            { weight: '1kg' },
+                            { weight: '5kg' },
+                            { weight: '500ml' },
+                            { weight: '1l' },
+                            { weight: '2l' },
+                            { weight: '5l' },
+                        ]"
+                        />
+
+
+                        <!-- <router-link  :to="{ name: 'infoProdutos', params: { id: button500 } }">
                             <a type="button" class="peso" :class="{ 'botao-ativo': paginaAtual == '500' }" name="500" ac
                                 value="" style="border-bottom: solid;border-radius: 0vh 0vh 0vh 1vh;" href="">500g</a>
                         </router-link>
 
-                        <router-link :to="{ name: 'infoProdutos', params: { id: button1000 } }">
+                         <router-link :to="{ name: 'infoProdutos', params: { id: button1000 } }">
                             <a type="button" class="peso" :class="{ 'botao-ativo': paginaAtual == '1000' }" name="1000"
                                 style="border-bottom: solid" value="" href="">1kg</a>
-                        </router-link>
+                        </router-link> 
 
-                        <router-link :to="{ name: 'infoProdutos', params: { id: button5000 } }">
+                        <router-link v-for="variant in variants" :key="variant.id" :to="{ name: 'infoProdutos', params: { id: button5000 } }">
                             <a type="button" class="peso" :class="{ 'botao-ativo': paginaAtual == '5000' }" name="5000"
                                 style="border-bottom: solid" value="" href="">5kg</a>
-                        </router-link>
+                        </router-link> -->
 
-                    </div>
 
                 </div>
 
             </slot>
         </BoxInfoWrapper>
 
-    <div class="btCompetitorAdd">
-        <router-link :to="{
-            name: 'CreateCompetitors',
-            params: { id: this.$route.params.id },
-          }">
-        <h5 style="color: white; text-align:center">Adicionar Concorrente</h5>
-        </router-link>
-    </div>
+        <div class="btCompetitorAdd">
+            <router-link :to="{
+                name: 'CreateCompetitors',
+                params: { id: this.$route.params.id },
+            }">
+                <h5 style="color: white; text-align:center">Adicionar Concorrente</h5>
+            </router-link>
+        </div>
 
     <DetalhesModal  :items="competitors" :value="produto.nome" :fields="{
         nome: '',
@@ -85,10 +101,11 @@
             <template v-slot:actions="{ item }">
                 <router-link :to="{
                     name: 'UpdateCompetitors',
-                    params: { 
+                    params: {
                         id: this.$route.params.id,
-                        compid: item.id },
-                  }" class="d-flex flex-wrap">
+                        compid: item.id
+                    },
+                }" class="d-flex flex-wrap">
                     <i class="bi bi-pencil-square" style="font-size: 2rem; color:grey"></i>
                 </router-link>
                 <div class="d-flex flex-wrap">
@@ -113,8 +130,12 @@ import BoxInfoWrapper from "../../components/Box/BoxInfoWrapper.vue";
 import BoxInfo from "../../components/Box/BoxInfo.vue";
 import Breadcrumb from "../../components/Breadcrumb.vue";
 import CardList from '../../components/CardList.vue';
+<<<<<<< HEAD
 import competitorsComponents from '../../components/produtos/competitorsComponents.vue';
 import DetalhesModal from '../../components/produtos/modals/DetalhesModal.vue';
+=======
+import FooterButtons from '../../components/FooterButtons.vue'
+>>>>>>> fb8989fedb22945a99365fa4d4621c372e7b4701
 
 
 export default {
@@ -125,6 +146,7 @@ export default {
             produto: "",
             competitors: [],
             variants: [],
+            weights: [],
             temCompetitors: false,
             paginaAtual: 500,
             button500: 0,
@@ -142,8 +164,7 @@ export default {
             this.competitors = (await response).data.competitorsthis;
             this.variants = (await response).data.produtovariants;
             this.produto = (await response).data.produto;
-            this.paginaAtual = this.produto.weight
-
+            this.paginaAtual = this.produto.weight;
 
             if (this.competitors[0] != null) {
                 this.temCompetitors = true;
@@ -198,9 +219,14 @@ export default {
         BoxInfoWrapper,
         BoxInfo,
         Breadcrumb,
+<<<<<<< HEAD
         competitorsComponents,
         CardList,
         DetalhesModal
+=======
+        CardList,
+        FooterButtons
+>>>>>>> fb8989fedb22945a99365fa4d4621c372e7b4701
     },
 
     mounted() {
@@ -211,9 +237,8 @@ export default {
 </script>
 
 <style scoped>
-
 .btCompetitorAdd {
-    text-align: left; 
+    text-align: left;
     margin-top: 25px;
     margin-left: 15px;
     border-radius: 10px;
@@ -251,7 +276,7 @@ export default {
     margin-top: 6vh;
     height: 9vh;
     display: flex;
-    flex-wrap: nowrap;
+    flex-wrap:nowrap;
     justify-content: space-between;
     align-items: end;
     border-top: 0.2vh solid #d3d6db;
