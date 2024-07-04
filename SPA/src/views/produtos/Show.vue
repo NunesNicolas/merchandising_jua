@@ -256,7 +256,7 @@ export default {
     margin-top: 6vh;
     height: 9vh;
     display: flex;
-    flex-wrap: nowrap;
+    flex-wrap:nowrap;
     justify-content: space-between;
     align-items: end;
     border-top: 0.2vh solid #d3d6db;
