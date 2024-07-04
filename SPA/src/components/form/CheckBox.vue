@@ -25,18 +25,14 @@ export default {
         modelValue: Array,
         items: Array
     },
-
     methods: {
         updateObjects(object, event) {
             if (event.target.checked) {
-                this.$emit('update:modelValue', [...this.objects, object]);
+                this.objects.push(object);
             } else {
-                const index = this.objects.indexOf(object);
-                if (index > -1) {
-                    this.$emit('update:objects', this.objects.filter(item => item !== object));
-                }
+                this.objects = this.objects.filter(item => item !== object);
             }
-            ;
+            this.$emit('update:modelValue', this.objects);
         }
     }
 }
