@@ -16,8 +16,11 @@ check_and_start_container() {
 # Verifica e inicia o contêiner MariaDB
 check_and_start_container "mariadb" 'mariadb'
 
+docker compose up -d --build spa
+
 # Inicia ou reconstrói o contêiner da API
 docker compose up -d --build api
+
 
 # Verifica e inicia o contêiner Caddy
 check_and_start_container "caddy" 'caddy'
