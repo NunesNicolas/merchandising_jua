@@ -21,21 +21,14 @@
         APP_DEBUG: ${APP_DEBUG}
         APP_URL: ${APP_URL}
         FRONTEND_URL: ${FRONTEND_URL}
-        LOG_CHANNEL: ${LOG_CHANNEL}
-        LOG_DEPRECATIONS_CHANNEL: ${LOG_DEPRECATIONS_CHANNEL}
-        LOG_LEVEL: ${LOG_LEVEL}
+        
         DB_CONNECTION: ${DB_CONNECTION}
         DB_HOST: mariadb
         DB_PORT: ${DB_PORT}
         DB_DATABASE: ${DB_DATABASE}
         DB_USERNAME: ${DB_USERNAME}
         DB_PASSWORD: ${DB_PASSWORD}
-        BROADCAST_DRIVER: ${BROADCAST_DRIVER}
-        CACHE_DRIVER: ${CACHE_DRIVER}
-        FILESYSTEM_DISK: ${FILESYSTEM_DISK}
-        QUEUE_CONNECTION: ${QUEUE_CONNECTION}
-        SESSION_DRIVER: ${SESSION_DRIVER}
-        SESSION_LIFETIME: ${SESSION_LIFETIME}
+        
     
     mariadb:
       image: mariadb:latest
@@ -50,9 +43,6 @@
 
       networks:
         - internal
-
-      ports:
-          - "3306:3306"
 
       healthcheck:
         test: ["CMD-SHELL", "mariadb-admin ping -p$DB_PASSWORD"]
@@ -76,6 +66,7 @@
       ports:
         - "80:80"
         - "8080:8080"
+        - "3000:3000"
 
       volumes:
         - ./infrastructure/caddy/Caddyfile:/etc/caddy/Caddyfile
@@ -86,6 +77,12 @@
       
       networks:
         - internal
+
+      environment:
+          API_DOMAIN: ${API_DOMAIN}
+          SPA_DOMAIN: ${SPA_DOMAIN}
+          MOBI_DOMAIN: ${MOBI_DOMAIN}
+          EMAIL: ${EMAIL}
 
   volumes:
     mariadb_data:

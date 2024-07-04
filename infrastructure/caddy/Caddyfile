@@ -1,19 +1,19 @@
 ## colocar variavel de ambiente para SPA DOMAIN
 
-:8080 {
+{$API_DOMAIN} {
     reverse_proxy api:80
 }
 
 ## colocar variavel de ambiente para API DOMAIN
 
-:80 {
+{$SPA_DOMAIN} {
     root * /var/www/spa
     try_files {path} /index.html
 	file_server
 }
 
 ## colocar variavel de ambiente para MOBI DOMAIN
-:3000 {
+{$MOBI_DOMAIN} {
     root * /var/www/mobi
     try_files {path} /index.html
 	file_server
