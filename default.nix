@@ -9,7 +9,6 @@ pkgs.mkShell {
   ];
 
   shellHook = ''
-    
     if [ -f API/.env.nix ]; then
       export $(grep -v '^#' API/.env.nix | xargs)
     fi
@@ -19,7 +18,7 @@ pkgs.mkShell {
     MYSQL_DATADIR="$MYSQL_HOME/data"
     export MYSQL_UNIX_PORT="$MYSQL_HOME/mysql.sock"
     MYSQL_PID_FILE="$MYSQL_HOME/mysql.pid"
-    alias mysql='mysql -u root'
+    alias mysql='mysql -u root --socket="$MYSQL_UNIX_PORT"'
 
     if [ ! -d "$MYSQL_HOME" ]; then
       # Make sure to use normal authentication method otherwise we can only
@@ -37,6 +36,8 @@ pkgs.mkShell {
       --socket="$MYSQL_UNIX_PORT" 2> "$MYSQL_HOME/mysql.log" &
     MYSQL_PID=$!
 
+    sleep 5  # Wait a few seconds to ensure MySQL has time to start
+
     finish()
     {
       mysqladmin -u root --socket="$MYSQL_UNIX_PORT" shutdown
@@ -45,6 +46,11 @@ pkgs.mkShell {
     }
     trap finish EXIT
 
-    mysql -uroot -e "CREATE DATABASE IF NOT EXISTS track;"
+    # Check if mysqld started successfully
+    if ps -p $MYSQL_PID > /dev/null; then
+      mysql -uroot -e "CREATE DATABASE IF NOT EXISTS $DB_DATABASE;"
+    else
+      echo "Failed to start mysqld. Check the log at $MYSQL_HOME/mysql.log"
+    fi
   '';
 }
