@@ -15,8 +15,7 @@ export default {
     data() {
         return {
             values: {
-                nome: '',
-                img: '',
+                nome: ''
             }
         };
     },

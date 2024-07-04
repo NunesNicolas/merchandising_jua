@@ -53,15 +53,15 @@ class ProdutosController extends Controller
 
         // if (is_array($weights)) {
         //     foreach ($weights as $weight) {
-                $produto = new Produto();
-                $produto->nome = $request->input('nome');
-                $produto->img = $request->input('img');
+                // $produto = new Produto();
+                // $produto->nome = $request->input('nome');
+                // $produto->img = $request->input('img');
 
                 // Defina o peso (weight) para o valor atual do loop
                 // $produto->weight = $weight;
 
                 // Salve o produto no banco de dados
-                $produto->save();
+                // $produto->save();
             
         // } else {
         //     return response()->json([
@@ -69,17 +69,10 @@ class ProdutosController extends Controller
         //         'code' => 400
         //     ]);
         // }
-
+        $produto = Produto::create($request->all());
         return response()->json($produto, 201);
     }
-    // public function store_competitors(Request $request)
-    // {
-    //     Competitor::create($request->all());
-    //     return response()->json([
-    //         'message' => 'Produto Criado com Sucesso',
-    //         'code' => 200
-    //     ]);
-    // }
+    
     public function update(Request $request, $id)
     {
         $produto = Produto::find($id);
@@ -94,58 +87,3 @@ class ProdutosController extends Controller
     }
     
 }
-
-
-    
-
-
-//     public function store(Request $request)
-//     {   
-//         $weights= [];
-//         if ($request->has('weight500')) {
-//             // Adicione o peso ao array weights
-//             $weight = 500;
-//             $weights[] = $weight; // Exemplo de peso (substitua pelo valor real)
-//         }
-//         if ($request->has('weight1000')) {
-//             // Adicione o peso ao array weights
-//             $weight = 1000;
-//             $weights[] = $weight; // Exemplo de peso (substitua pelo valor real)
-//             }
-//         if ($request->has('weight5000')) {
-//             // Adicione o peso ao array weights
-//             $weight = 5000;
-//             $weights[] = $weight; // Exemplo de peso (substitua pelo valor real)
-//             }
-
-
-//         for ($i = 0; $i < count($weights); $i++) {
-//             $weight = $weights[$i];
-//             # code...
-//         $produto = new Produto($request->all());
-        
-//         // Defina o peso (weight) para o valor atual do loop
-//         $produto->weight = $weight;
-        
-//         // Salve o produto no banco de dados
-//         $produto->save();
-//         }
-//         return redirect()->route('Produtos-index');
-//     }
-
-//     public function destroy($id)
-//     {
-//         Produto::where('id', $id)->delete();
-//         return redirect()->route('Forms-index');
-//     }
-
-//     // COMPETITORS ROUTES :c
-
-
-//     public function store_competitors (Request $request)
-//     {
-//         Competitor::create($request->all());
-//         return redirect()->route('Produtos-index');
-//     }
-
-//     // FALTA COISA 
