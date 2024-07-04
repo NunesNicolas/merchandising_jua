@@ -5,11 +5,10 @@
       <hr>
       <TextInput label="Nome" name="nome" :modelValue="formValues.nome"
         @update:modelValue="updateFormValue('nome', $event)" />
-      <!-- <TextInput label="link da imagem" name="img" :modelValue="formValues.img"
-        @update:modelValue="updateFormValue('img', $event)" /> -->
+        <CheckBox label="Pesos" :items="weights" name="weights" @update:objects="updateObjects" :modelValue="formValues.weights"
+        @update:modelValue="updateFormValue('weights', $event)" />
         <ImageUploadInput label="Imagem" name="img" :modelValue="formValues.img" 
         @update:modelValue="updateFormValue('img', $event)"/>
-     
     </template>
   </DefaultForm>
 </template>
@@ -19,6 +18,7 @@ import DefaultForm from '../../components/form/DefaultForm.vue';
 import TextInput from '../../components/form/TextInput.vue';
 import SelectInput from '../../components/form/SelectInput.vue';
 import ImageUploadInput from '../../components/form/ImageUploadInput.vue';
+import CheckBox from '../../components/form/CheckBox.vue';
 
 
 export default {
@@ -28,6 +28,7 @@ export default {
     TextInput,
     SelectInput,
     ImageUploadInput,
+    CheckBox,
 
   },
 
@@ -36,14 +37,18 @@ export default {
       formValues: { ...this.values },
       validations: {
         nome: value => (!value ? 'Nome é obrigatório' : '')
-      }
+      },
+      weights: [
+        '200g',
+        '500g',
+        '1kg',
+        '5kg',
+        '500ml',
+        '1l',
+        '2l',
+        '5l',
+      ],
     };
-  },
-  computed: {
-    modelValueArray() {
-      // Converte o valor para um array
-      return this.modelValue.split(',').map(item => item.trim());
-    }
   },
 
   props: {

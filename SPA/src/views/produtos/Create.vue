@@ -27,6 +27,7 @@ export default {
     methods: {
         async saveProduto(formData) {
             try {
+                alert(formData.weights);
                 const response = await axios.post('/produtos', formData);
                 if (response.status === 201) {
                     alert('Produto Criado')
