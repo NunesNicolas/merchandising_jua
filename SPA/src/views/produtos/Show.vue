@@ -68,6 +68,15 @@
         </router-link>
     </div>
 
+    <DetalhesModal  :items="competitors" :value="produto.nome" :fields="{
+        nome: '',
+        
+    }">
+
+    </DetalhesModal>
+    
+
+    <competitorsComponents @modificarEstilo="modificarEstilo" :competitors="competitors" />
 
         <CardList :items="competitors" :fields="{
             nome: 'PRODUTOS',
@@ -82,9 +91,9 @@
                   }" class="d-flex flex-wrap">
                     <i class="bi bi-pencil-square" style="font-size: 2rem; color:grey"></i>
                 </router-link>
-                <router-link :to="'#'" class="d-flex flex-wrap">
-                    <i class="bi bi-file-earmark-text" style="font-size: 2rem; color:grey"></i>
-                </router-link>
+                <div class="d-flex flex-wrap">
+                    <i  class="bi bi-file-earmark-text" style="font-size: 2rem; color:grey"></i>
+                </div>
             </template>
 
         </CardList>
@@ -104,6 +113,8 @@ import BoxInfoWrapper from "../../components/Box/BoxInfoWrapper.vue";
 import BoxInfo from "../../components/Box/BoxInfo.vue";
 import Breadcrumb from "../../components/Breadcrumb.vue";
 import CardList from '../../components/CardList.vue';
+import competitorsComponents from '../../components/produtos/competitorsComponents.vue';
+import DetalhesModal from '../../components/produtos/modals/DetalhesModal.vue';
 
 
 export default {
@@ -119,8 +130,8 @@ export default {
             button500: 0,
             button1000: 0,
             button5000: 0,
-            // bodyAll: 'bodyBase',
-            // topDiv: 'topBase'
+            bodyAll: 'bodyBase',
+            topDiv: 'topBase'
 
         };
     },
@@ -167,16 +178,16 @@ export default {
 
         },
 
-        // modificarEstilo() {
-        //     if (this.bodyAll == 'bodyBase') {
-        //         this.bodyAll = 'bodyMod';
-        //         this.topDiv = 'topMod';
-        //     } else {
-        //         this.bodyAll = 'bodyBase';
-        //         this.topDiv = 'topBase';
-        //     }
+        modificarEstilo() {
+            if (this.bodyAll == 'bodyBase') {
+                this.bodyAll = 'bodyMod';
+                this.topDiv = 'topMod';
+            } else {
+                this.bodyAll = 'bodyBase';
+                this.topDiv = 'topBase';
+            }
 
-        // }
+        }
 
     },
 
@@ -187,7 +198,9 @@ export default {
         BoxInfoWrapper,
         BoxInfo,
         Breadcrumb,
-        CardList
+        competitorsComponents,
+        CardList,
+        DetalhesModal
     },
 
     mounted() {
