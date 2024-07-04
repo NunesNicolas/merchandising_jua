@@ -60,8 +60,12 @@ class ProdutosController extends Controller
                 // Defina o peso (weight) para o valor atual do loop
                 $produto->weight = $weight;
 
-                // Salve o produto no banco de dados
-                $produto->save();
+                $existingProduct = Produto::where('nome', $produto->nome)
+                    ->where('weight', $produto->weight)
+                    ->first();
+                if (!$existingProduct) {
+                    $produto->save();
+                }
             }
         } else {
             return response()->json([
