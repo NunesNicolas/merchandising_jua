@@ -35,8 +35,6 @@ export default {
                     this.values.weights.push(this.variants[i].weight)
                     
                 }
-                alert(this.values.weights);
-                console.log(this.variants);
             } catch (error) {
                 console.error('Error fetching produto data:', error);
             }

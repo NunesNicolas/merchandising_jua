@@ -4,7 +4,7 @@
 
         <div class="form-check" v-for="item in items">
             <label class="form-check-label">
-                <input :id="item" :name="item" :value="item" class="form-check-input" type="checkbox"
+                <input :checked="modelValue.some(obj => obj === item || Object.keys(obj).every(key => obj[key] === item[key]))" :id="item" :name="item" :value="item" class="form-check-input" type="checkbox"
                     @change="updateObjects(item, $event)">
                 {{ item }}
             </label>
@@ -23,7 +23,7 @@ export default {
     props: {
         label: String,
         modelValue: Array,
-        items: Array
+        items: Array,
     },
     methods: {
         updateObjects(object, event) {
@@ -33,7 +33,12 @@ export default {
                 this.objects = this.objects.filter(item => item !== object);
             }
             this.$emit('update:modelValue', this.objects);
-        }
+        },
+
+        selectedBox() {
+                const checkbox = document.querySelector('#weight500g');
+                checkbox.checked = true; // Define a checkbox como marcada  
+        },
     }
 }
 </script>
