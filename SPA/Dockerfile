@@ -13,6 +13,15 @@ RUN npm install
 # Copy the rest of the application code to the working directory
 COPY . .
 
+# Remove existing .env file
+RUN rm .env
+
+# Declare the build argument
+ARG VITE_API_DOMAIN
+
+# Create the .env.production file with the VITE_API_DOMAIN variable
+RUN echo "VITE_API_DOMAIN=${VITE_API_DOMAIN}" > .env.production
+
 # Build the Vue.js application
 RUN npm run build
 

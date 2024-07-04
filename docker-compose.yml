@@ -55,6 +55,8 @@
       build:
         context: ./SPA
         dockerfile: Dockerfile
+        args:
+          VITE_API_DOMAIN: ${API_DOMAIN}
 
       container_name: spa
       volumes:
@@ -65,6 +67,7 @@
       container_name: caddy
       ports:
         - "80:80"
+        - "8000:8000"
         - "8080:8080"
         - "3000:3000"
 
