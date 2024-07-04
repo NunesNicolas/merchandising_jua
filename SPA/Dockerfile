@@ -16,7 +16,7 @@ COPY . .
 # Build the Vue.js application
 RUN npm run build
 
-# Move built files to /var/www/spa
-RUN mkdir -p /var/www/spa && cp -r dist/* /var/www/spa
+# Move built files to /var/www
+RUN mkdir -p /var/www && cp -r dist/* /var/www
 
 # This image will only be used to generate the build

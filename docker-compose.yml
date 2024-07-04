@@ -68,7 +68,7 @@
 
       container_name: spa
       volumes:
-        - spa_data:/var/www/spa
+        - spa_data:/var/www
 
     caddy:
       image: caddy:latest

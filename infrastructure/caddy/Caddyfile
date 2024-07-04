@@ -7,7 +7,7 @@
 ## colocar variavel de ambiente para API DOMAIN
 
 :80 {
-    root * /var/www/spa/spa
+    root * /var/www/spa
     try_files {path} /index.html
 	file_server
 }
