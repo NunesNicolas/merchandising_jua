@@ -70,6 +70,7 @@
         - "8000:8000"
         - "8080:8080"
         - "3000:3000"
+        - "443:443"
 
       volumes:
         - ./infrastructure/caddy/Caddyfile:/etc/caddy/Caddyfile
