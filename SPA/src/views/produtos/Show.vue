@@ -130,12 +130,9 @@ import BoxInfoWrapper from "../../components/Box/BoxInfoWrapper.vue";
 import BoxInfo from "../../components/Box/BoxInfo.vue";
 import Breadcrumb from "../../components/Breadcrumb.vue";
 import CardList from '../../components/CardList.vue';
-<<<<<<< HEAD
 import competitorsComponents from '../../components/produtos/competitorsComponents.vue';
 import DetalhesModal from '../../components/produtos/modals/DetalhesModal.vue';
-=======
 import FooterButtons from '../../components/FooterButtons.vue'
->>>>>>> fb8989fedb22945a99365fa4d4621c372e7b4701
 
 
 export default {
@@ -219,14 +216,10 @@ export default {
         BoxInfoWrapper,
         BoxInfo,
         Breadcrumb,
-<<<<<<< HEAD
         competitorsComponents,
         CardList,
-        DetalhesModal
-=======
-        CardList,
+        DetalhesModal,
         FooterButtons
->>>>>>> fb8989fedb22945a99365fa4d4621c372e7b4701
     },
 
     mounted() {
