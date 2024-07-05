@@ -6,7 +6,7 @@
 
 <style scoped>
 .box-info-wrapper {
-  width: 91vw;
+  max-width: 91vw;
   margin-top: -1vh;
   padding: 1vh;
   background-color: white;

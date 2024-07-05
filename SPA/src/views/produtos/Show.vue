@@ -1,5 +1,5 @@
 <template>
-    <div class="page">
+    <div class="page" id="BodyAll"  ref="BodyAll">
         <Breadcrumb pageTitle="Produtos" routeInfo="Dashboard / Produtos" />
 
         <ActionListWrapper>
@@ -46,23 +46,6 @@
                         { weight: '2l' },
                         { weight: '5l' },
                     ]" />
-
-
-                    <!-- <router-link  :to="{ name: 'infoProdutos', params: { id: button500 } }">
-                            <a type="button" class="peso" :class="{ 'botao-ativo': paginaAtual == '500' }" name="500" ac
-                                value="" style="border-bottom: solid;border-radius: 0vh 0vh 0vh 1vh;" href="">500g</a>
-                        </router-link>
-
-                         <router-link :to="{ name: 'infoProdutos', params: { id: button1000 } }">
-                            <a type="button" class="peso" :class="{ 'botao-ativo': paginaAtual == '1000' }" name="1000"
-                                style="border-bottom: solid" value="" href="">1kg</a>
-                        </router-link> 
-
-                        <router-link v-for="variant in variants" :key="variant.id" :to="{ name: 'infoProdutos', params: { id: button5000 } }">
-                            <a type="button" class="peso" :class="{ 'botao-ativo': paginaAtual == '5000' }" name="5000"
-                                style="border-bottom: solid" value="" href="">5kg</a>
-                        </router-link> -->
-
 
                 </div>
 
@@ -140,8 +123,7 @@ export default {
             weights: [],
             temCompetitors: false,
             modalEdit: false,
-            page: 'bodyBase',
-            topDiv: 'topBase'
+            BodyAll: 'page',
 
         };
     },
@@ -188,25 +170,13 @@ export default {
         },
 
         modificarEstilo() {
-            if (this.bodyAll == 'bodyBase') {
-                this.bodyAll = 'bodyMod';
-                this.topDiv = 'topMod';
-            } else {
-                this.bodyAll = 'bodyBase';
-                this.topDiv = 'topBase';
-            }
-
-        },
+  this.$refs.BodyAll.classList.toggle('pageMod');
+},
 
         toggleModal() {
-            if (!this.modalEdit) {
-                this.modalEdit = true;
-        }else {
-            this.modalEdit = false;
+            this.modalEdit = !this.modalEdit;
+            this.modificarEstilo();
         }
-        console.log(this.modalEdit);
-
-        },
 
 
     },
@@ -232,6 +202,10 @@ export default {
 </script>
 
 <style scoped>
+.pageMod {
+    width: 62%;
+}
+
 .buttonComp {
     display: flex;
     flex: wrap;
