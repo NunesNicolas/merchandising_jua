@@ -36,25 +36,19 @@
 
                 <div class="divFooter" style="width: 100%">
 
-                        <FooterButtons
-                        :id="id"
-                        :label = "'weight'"
-                        :instance = "produto"
-                        :items="variants"
-                        :defaults="[
-                            { weight: '200g' },
-                            { weight: '500g' },
-                            { weight: '1kg' },
-                            { weight: '5kg' },
-                            { weight: '500ml' },
-                            { weight: '1l' },
-                            { weight: '2l' },
-                            { weight: '5l' },
-                        ]"
-                        />
+                    <FooterButtons :id="id" :label="'weight'" :instance="produto" :items="variants" :defaults="[
+                        { weight: '200g' },
+                        { weight: '500g' },
+                        { weight: '1kg' },
+                        { weight: '5kg' },
+                        { weight: '500ml' },
+                        { weight: '1l' },
+                        { weight: '2l' },
+                        { weight: '5l' },
+                    ]" />
 
 
-                        <!-- <router-link  :to="{ name: 'infoProdutos', params: { id: button500 } }">
+                    <!-- <router-link  :to="{ name: 'infoProdutos', params: { id: button500 } }">
                             <a type="button" class="peso" :class="{ 'botao-ativo': paginaAtual == '500' }" name="500" ac
                                 value="" style="border-bottom: solid;border-radius: 0vh 0vh 0vh 1vh;" href="">500g</a>
                         </router-link>
@@ -84,15 +78,9 @@
             </router-link>
         </div>
 
-    <DetalhesModal  :items="competitors" :value="produto.nome" :fields="{
-        nome: '',
-        
-    }">
 
-    </DetalhesModal>
-    
 
-    <competitorsComponents @modificarEstilo="modificarEstilo" :competitors="competitors" />
+
 
         <CardList :items="competitors" :fields="{
             nome: 'PRODUTOS',
@@ -108,15 +96,21 @@
                 }" class="d-flex flex-wrap">
                     <i class="bi bi-pencil-square" style="font-size: 2rem; color:grey"></i>
                 </router-link>
-                <div class="d-flex flex-wrap">
-                    <i  class="bi bi-file-earmark-text" style="font-size: 2rem; color:grey"></i>
-                </div>
+
+                <button :onclick="toggleModal" class="buttonComp">
+                    <i class="bi bi-file-earmark-text" style="font-size: 2rem; color:grey"></i>
+                </button>
             </template>
 
         </CardList>
 
     </div>
 
+    <DetalhesModal :value="modalEdit" :items="competitors" :fields="{
+        nome: '',
+
+    }">
+    </DetalhesModal>
 
 </template>
 
@@ -131,7 +125,7 @@ import BoxInfo from "../../components/Box/BoxInfo.vue";
 import Breadcrumb from "../../components/Breadcrumb.vue";
 import CardList from '../../components/CardList.vue';
 import competitorsComponents from '../../components/produtos/competitorsComponents.vue';
-import DetalhesModal from '../../components/produtos/modals/DetalhesModal.vue';
+import DetalhesModal from '../../components/modals/DetalhesModal.vue';
 import FooterButtons from '../../components/FooterButtons.vue'
 
 
@@ -145,11 +139,8 @@ export default {
             variants: [],
             weights: [],
             temCompetitors: false,
-            paginaAtual: 500,
-            button500: 0,
-            button1000: 0,
-            button5000: 0,
-            bodyAll: 'bodyBase',
+            modalEdit: false,
+            page: 'bodyBase',
             topDiv: 'topBase'
 
         };
@@ -205,7 +196,18 @@ export default {
                 this.topDiv = 'topBase';
             }
 
+        },
+
+        toggleModal() {
+            if (!this.modalEdit) {
+                this.modalEdit = true;
+        }else {
+            this.modalEdit = false;
         }
+        console.log(this.modalEdit);
+
+        },
+
 
     },
 
@@ -230,6 +232,15 @@ export default {
 </script>
 
 <style scoped>
+.buttonComp {
+    display: flex;
+    flex: wrap;
+    background-color: #F8f9FA;
+    height: 100%;
+    text-align: center;
+    outline: none;
+}
+
 .btCompetitorAdd {
     text-align: left;
     margin-top: 25px;
@@ -269,7 +280,7 @@ export default {
     margin-top: 6vh;
     height: 9vh;
     display: flex;
-    flex-wrap:nowrap;
+    flex-wrap: nowrap;
     justify-content: space-between;
     align-items: end;
     border-top: 0.2vh solid #d3d6db;

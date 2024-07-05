@@ -1,5 +1,5 @@
 <template>
-  <div class="boxAll">
+  <div class="boxAll" v-if="value == true">
     <div>
       <label class="box-title">{{ title }}</label>
 
@@ -26,10 +26,9 @@ export default {
       type: Array,
       required: true,
     },
-    value: {
-      type: String,
-      required: false,
-    },
+    
+    value: {type: Boolean},
+
     fields: {
       type: Object,
       required: true,
