@@ -9,7 +9,7 @@ import App from './App.vue'
 import sistemaLayout from './views/layouts/sistema.vue';
 import authLayout from './views/layouts/auth.vue';
 
-import InicialAuth from './views/auth/login.vue';
+import InicialAuth from './views/auth/inicial.vue';
 import InicialSistema from './views/dashboard/inicial.vue';
 
 const routes = [
