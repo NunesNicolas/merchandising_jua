@@ -1,5 +1,5 @@
 <template>
-    <div class="page" id="BodyAll"  ref="BodyAll">
+    <div class="page" id="BodyAll" ref="BodyAll">
         <Breadcrumb pageTitle="Produtos" routeInfo="Dashboard / Produtos" />
 
         <ActionListWrapper>
@@ -80,20 +80,22 @@
                     <i class="bi bi-pencil-square" style="font-size: 2rem; color:grey"></i>
                 </router-link>
 
-                <button :onclick="toggleModal" class="buttonComp">
+                <button @click="toggleModal(item.id)" class="buttonComp">
                     <i class="bi bi-file-earmark-text" style="font-size: 2rem; color:grey"></i>
                 </button>
+
+                <DetalhesModal @modificarEstilo="modificarEstilo" @toggleModal="toggleModal()" v-show="modalEdit == item.id" :value="modalEdit" :item="item" :fields="{
+                    nome: 'Nome',
+
+                }">
+                </DetalhesModal>
+
             </template>
 
         </CardList>
 
     </div>
 
-    <DetalhesModal :value="modalEdit" :items="competitors" :fields="{
-        nome: '',
-
-    }">
-    </DetalhesModal>
 
 </template>
 
@@ -122,7 +124,7 @@ export default {
             variants: [],
             weights: [],
             temCompetitors: false,
-            modalEdit: false,
+            modalEdit: '',
             BodyAll: 'page',
 
         };
@@ -140,43 +142,25 @@ export default {
                 this.temCompetitors = true;
             }
 
-            for (let i = 0; i < this.variants.length; i++) {
-
-                if (this.variants[i].weight == 500) {
-                    this.button500 = this.variants[i].id;
-                }
-                if (this.variants[i].weight == 1000) {
-                    this.button1000 = this.variants[i].id;
-
-                }
-                if (this.variants[i].weight == 5000) {
-                    this.button5000 = this.variants[i].id;
-
-                }
-            }
-            if (this.button500 == 0) {
-                this.button500 = this.produto.id;
-
-            }
-            if (this.button1000 == 0) {
-                this.button1000 = this.produto.id;
-
-            }
-            if (this.button5000 == 0) {
-                this.button5000 = this.produto.id;
-
-            }
-
         },
 
         modificarEstilo() {
-  this.$refs.BodyAll.classList.toggle('pageMod');
-},
+            this.$refs.BodyAll.classList.toggle('pageMod');
+        },
 
-        toggleModal() {
-            this.modalEdit = !this.modalEdit;
-            this.modificarEstilo();
-        }
+        toggleModal(id) {
+            const bodyAllElement = this.$refs.BodyAll;
+            if (this.modalEdit == id) {
+                this.modalEdit = null;
+                this.modificarEstilo();
+            } else if(this.modalEdit != id && !bodyAllElement.classList.contains('pageMod')) {
+                this.modalEdit = id;
+                this.modificarEstilo();
+            } else {
+                this.modalEdit = id;
+            }
+
+        },
 
 
     },
@@ -267,6 +251,7 @@ export default {
 }
 
 .peso:hover {
+    color: solid #2C9AFF;
     border-bottom: solid #2C9AFF;
 }
 </style>
