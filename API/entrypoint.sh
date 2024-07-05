@@ -2,7 +2,7 @@
 
 php artisan config:clear
 php artisan cache:clear
-php artisan migrate
+php artisan migrate --seed
 php artisan config:cache
 
 echo "Starting PHP-FPM and Nginx..."
