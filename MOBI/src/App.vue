@@ -15,22 +15,21 @@ import InicialSistema from './views/dashboard/inicial.vue';
 
 <style scoped>
 body {
-  background-color: #f0f0f0;
+  background-color: #ff0000;
 }
 
 .page {
-  padding: 0%;
-  margin: 0%;
-  justify-content: space-between;
-  height: 100%;
+  padding: 0;
+  margin: 0;
+  height: 1000vw;
+  width: 100%;
   min-height: 100vh;
 }
 
 #app {
-  padding: 0%;
-  margin: 0%;
+  padding: 0;
+  margin: 0;
 }
-
 #topheader {
   padding-bottom: 2px;
   background-color: #f0f0f0;
