@@ -1,0 +1,23 @@
+## colocar variavel de ambiente para SPA DOMAIN
+
+{$API_DOMAIN} {
+    reverse_proxy api:80
+    tls {$EMAIL}
+}
+
+## colocar variavel de ambiente para API DOMAIN
+
+{$SPA_DOMAIN} {
+    root * /var/www/spa
+    try_files {path} /index.html
+	file_server
+	tls {$EMAIL}
+}
+
+## colocar variavel de ambiente para MOBI DOMAIN
+{$MOBI_DOMAIN} {
+    root * /var/www/mobi
+    try_files {path} /index.html
+	file_server
+	tls {$EMAIL}
+}
