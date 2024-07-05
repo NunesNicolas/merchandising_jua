@@ -14,7 +14,7 @@ RUN npm install
 COPY . .
 
 # Remove existing .env file
-RUN rm .env
+RUN [ -f .env ] && rm .env || true
 
 # Declare the build argument
 ARG VITE_API_DOMAIN

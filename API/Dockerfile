@@ -76,7 +76,7 @@ RUN echo "\
 COPY . /var/www/html
 WORKDIR /var/www/html
 
-RUN rm .env
+RUN [ -f .env ] && rm .env || true
 
 RUN chown -R www-data:www-data /var/www/html
 
