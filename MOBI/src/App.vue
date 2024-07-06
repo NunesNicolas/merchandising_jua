@@ -10,7 +10,7 @@ import '../axios'
 
 <script>
 import InicialAuth from './views/auth/login.vue';
-import InicialSistema from './views/dashboard/inicial.vue';
+import InicialSistema from './views/dashboard/Home.vue';
 </script>
 
 <style scoped>
