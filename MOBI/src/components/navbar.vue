@@ -28,7 +28,7 @@
     background-color: #2C9AFF;
     width: 100%;
     height: 8vh;
-    margin-top: 75vh;
+    margin-top: 80vh;
 }
 
 .img{

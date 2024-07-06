@@ -49,7 +49,8 @@ export default {
     color: #a0a0a0;
     font-size: 2.5vh;
     margin-left: 40px;
-    margin-top: 95px;
+    margin-top: 50px;
+    margin-bottom: 8vh;
 }
 
 </style>

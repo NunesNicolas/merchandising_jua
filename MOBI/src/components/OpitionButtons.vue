@@ -21,8 +21,8 @@
     background-color: #f0f0f0;
     color: #2C9AFF;
     width: 80%;
-    height: 15vh;
-    margin-top: 5vh;
+    height: 10vh;
+    margin-top: 3vh;
     box-shadow: 0vh 0vh 1vh 0.1vh;
 }
 </style>
