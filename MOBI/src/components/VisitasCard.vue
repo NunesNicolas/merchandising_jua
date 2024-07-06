@@ -9,17 +9,18 @@
 </template>
 <style>
 .visitasCard{
-    width: 90vw;
+    width: 85vw;
     background-color: #f0f0f0;
     display: flex;
     flex-wrap: wrap;
-    height: 15vh;
-    margin-inline: 5vw;
-    margin-top: 5vh;
+    height: 14vh;
+    margin-inline: 8vw;
+    margin-top: -5vh;
     border-radius: 1vh;
 }
 .visitasCard div h6{
     background-color: #d0d0d0;
+    font-weight: bold;
     height: 5vh;
     display: flex;
     flex-wrap: wrap;
@@ -31,22 +32,24 @@
     display: flex;
     flex-wrap: wrap;
     width: 70%;
-    height: 15vh;
+    height: 13vh;
 }
   .visitasCard div p, h6{
     margin: 0;
     width: 100%;
     text-align: start;
-    padding-inline: 1vw;
+    padding-inline: 3vw;
+
 }
   .visitasCard p{
-    height: 10vh;
-    font-size: 2.5vh;
+    padding-top: 2vw;
+    height: 9vh;
+    font-size: 2.0vh;
 }
   .visitasCard button{
+    text-align: center;
     width: 30%;
-    font-size: 2vh;
-    height: 15vh;
+    height: 14vh;
     border-radius: 0 1vh 1vh 0vh;
     background-color: #2C9AFF;
 }

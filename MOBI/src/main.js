@@ -11,6 +11,7 @@ import authLayout from './views/layouts/auth.vue';
 
 import InicialAuth from './views/auth/login.vue';
 import InicialSistema from './views/dashboard/Home.vue';
+import InicialInfo from './views/dashboard/Show.vue';
 
 const routes = [
     {
@@ -26,7 +27,14 @@ const routes = [
         children: [
             { path: '', name: 'dashboard', component: InicialSistema },
         ]
-    }
+    },
+    {
+      path: '/info',
+      component: sistemaLayout,
+      children: [
+          { path: '', name: 'info', component: InicialInfo },
+      ]
+  }
 ]
 const router = createRouter({
     history: createWebHistory(),
