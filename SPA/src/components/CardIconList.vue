@@ -10,7 +10,7 @@
             <div class="card-body">
                 <slot name="topactions" :item="item">
                 </slot>
-                <div v-if="!this.fields.img">
+                <div v-if="!item.img">
                     <svg viewBox="0 0 200 200">
                         <clipPath id="clipCircle">
                             <circle cx="100" cy="80" r="75" />
@@ -19,9 +19,20 @@
                         <image xlink:href="https://www.pngall.com/wp-content/uploads/5/Profile-PNG-Pic.png" width="200"
                             height="200" clip-path="url(#clipCircle)" y="-20" />
                     </svg>
+
                 </div>
                 <div style="text-align: center;" v-else>
-                    <img class="" style="height: 33vh; width: 33vh;" :src=item.img alt="imagem não encontrada">
+                    <svg v-if="thisuser" viewBox="0 0 200 200">
+                        <clipPath id="clipCircle">
+                            <circle cx="100" cy="80" r="75" />
+                        </clipPath>
+                        <circle cx="100" cy="81" r="75" fill="none" stroke="grey" stroke-width="3" />
+                        <image :xlink:href=item.img width="200"
+                            height="200" clip-path="url(#clipCircle)" y="-20" />
+                    </svg>
+            
+                     <img  v-else class="" style="height: 33vh; width: 33vh;" :src=item.img alt="imagem não encontrada" />
+                      
                 </div>
                 <table v-if="textBox">
                     <tr v-for="(label, field) in fields" :key="field">
@@ -50,6 +61,9 @@ export default {
         fields: {
             type: Object,
             required: true
+        },
+        thisuser: {
+            type: Boolean,
         }
     }
 };

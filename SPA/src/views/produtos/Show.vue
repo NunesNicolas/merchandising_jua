@@ -1,117 +1,119 @@
 <template>
-    <div class="page" id="BodyAll" ref="BodyAll">
+    <div>
         <Breadcrumb pageTitle="Produtos" routeInfo="Dashboard / Produtos" />
 
         <ActionListWrapper>
             <ActionRouterBack />
         </ActionListWrapper>
 
-        <BoxInfoWrapper>
-            <slot>
-                <div class="d-flex">
-                    <div class="box-line">
-                        <img :src="produto.img" height="150px" width="auto" />
-                    </div>
-                    <div style="width: 100%;">
+        <div class="page" id="BodyAll" ref="BodyAll">
+            <BoxInfoWrapper>
+                <slot>
+                    <div class="d-flex">
                         <div class="box-line">
-                            <BoxInfo title="Nome" :value="produto.nome"></BoxInfo>
+                            <img :src="produto.img" height="150px" width="auto" />
                         </div>
-                        <div class="d-flex" style="width: 100%; gap:10px; justify-content:space-between">
-                            <div class="box-line" style="width: 50%">
-                                <BoxInfo title="Preço médio:"></BoxInfo>
+                        <div style="width: 100%;">
+                            <div class="box-line">
+                                <BoxInfo title="Nome" :value="produto.nome"></BoxInfo>
                             </div>
-                            <div class="box-line" style="width: 50%">
-                                <BoxInfo title="Quantidade de concorrentes:" :value="competitors.length"></BoxInfo>
+                            <div class="d-flex" style="width: 100%; gap:10px; justify-content:space-between">
+                                <div class="box-line" style="width: 50%">
+                                    <BoxInfo title="Preço médio:"></BoxInfo>
+                                </div>
+                                <div class="box-line" style="width: 50%">
+                                    <BoxInfo title="Quantidade de concorrentes:" :value="competitors.length"></BoxInfo>
+                                </div>
                             </div>
                         </div>
+                        <DeleteBT :item="produto" :label="'nome'" :url="'/produtos/'" />
+                        <router-link :to="{
+                            name: 'UpdateProdutos',
+                            params: { id: this.$route.params.id },
+                        }">
+                            <i class="bi bi-pencil-square ml-2" style="font-size: 17px; color:dodgerblue"></i>
+                        </router-link>
                     </div>
-                    <DeleteBT :item="produto" :label="'nome'" :url="'/produtos/'"/>
-                    <router-link :to="{
-                        name: 'UpdateProdutos',
-                        params: { id: this.$route.params.id },
-                    }">
-                        <i class="bi bi-pencil-square ml-2" style="font-size: 17px; color:dodgerblue"></i>
-                    </router-link>
-                </div>
+                    <div class="divFooter" style="width: 100%">
 
-                <div class="divFooter" style="width: 100%">
+                        <FooterButtons :id="id" :label="'weight'" :instance="produto" :items="variants"
+                            :defaults="weights" />
 
-                    <FooterButtons :id="id" :label="'weight'" :instance="produto" :items="variants" :defaults="[
-                        { weight: '200g' },
-                        { weight: '500g' },
-                        { weight: '1kg' },
-                        { weight: '5kg' },
-                        { weight: '500ml' },
-                        { weight: '1l' },
-                        { weight: '2l' },
-                        { weight: '5l' },
-                    ]" />
+                        <b-button v-b-modal.modal-1 class="" style="padding: 5px; background-color: white; margin: 2px">
+                            <i class="bi bi-plus-circle" style="font-size:30px; color: black; border: none"></i>
+                        </b-button>
+                        <b-modal id="modal-1" title="Editar Tamanho do Produto">
+                            <CheckBox @util="updateweights" :options="variants" :value="'id'" :label="'weight'"
+                                :instance="produto" :defaults="weights" />
+                        </b-modal>
+                    </div>
 
-                    <button class="" style="padding: 5px; background-color: white; margin: 2px">
-                        <i class="bi bi-plus-circle" style="font-size:30px; color: black"></i>
-                    </button>
-                </div>
+                </slot>
+            </BoxInfoWrapper>
 
-            </slot>
-        </BoxInfoWrapper>
-
-        <div class="btCompetitorAdd">
-            <router-link :to="{
-                name: 'CreateCompetitors',
-                params: { id: this.$route.params.id },
-            }">
-                <h5 style="color: white; text-align:center">Adicionar Concorrente</h5>
-            </router-link>
-        </div>
-
-
-
-
-
-        <CardList :items="competitors" :fields="{
-            nome: 'PRODUTOS',
-            brand: 'CONCORRENTES',
-        }">
-            <template v-slot:actions="{ item }">
+            <div class="btCompetitorAdd">
                 <router-link :to="{
-                    name: 'UpdateCompetitors',
-                    params: {
-                        id: this.$route.params.id,
-                        compid: item.id
-                    },
-                }" class="d-flex flex-wrap">
-                    <i class="bi bi-pencil-square" style="font-size: 2rem; color:grey"></i>
+                    name: 'CreateCompetitors',
+                    params: { id: this.$route.params.id },
+                }">
+                    <h5 style="color: white; text-align:center">Adicionar Concorrente</h5>
                 </router-link>
+            </div>
 
-                <button @click="toggleModal(item.id)" class="buttonComp">
-                    <i class="bi bi-file-earmark-text" style="font-size: 2rem; color:grey"></i>
-                </button>
+            <CardList :items="competitors" :fields="{
+                nome: 'PRODUTOS',
+                brand: 'CONCORRENTES',
+            }">
+                <template v-slot:actions="{ item }">
+                    <router-link :to="{
+                        name: 'UpdateCompetitors',
+                        params: {
+                            id: this.$route.params.id,
+                            compid: item.id,
+                        },
+                    }" class="d-flex flex-wrap">
+                        <i class="bi bi-pencil-square" style="font-size: 2rem; color: grey"></i>
+                    </router-link>
 
-                <DetalhesModal @modificarEstilo="modificarEstilo" @toggleModal="toggleModal()" 
-                v-show="modalEdit == item.id" :title="'DETALHES PRODUTO CONCORRENTE'" :value="modalEdit" :item="item" 
-                :fields="{
-                    nome: 'Nome',
-                    brand: 'Marca',
-                    }">
-                    <slot>
-                        <div>
-                            <h5>asdasd</h5>
-                        </div>
-                    </slot>
-                </DetalhesModal>
+                    <button @click="toggleModal(item.id)" class="buttonComp">
+                        <i class="bi bi-file-earmark-text" style="font-size: 2rem; color: grey"></i>
+                    </button>
 
-            </template>
-
-        </CardList>
-
+                    <DetalhesModal @modificarEstilo="modificarEstilo" @toggleModal="toggleModal()"
+                        v-show="modalEdit == item.id" :title="'DETALHES PRODUTO CONCORRENTE'" :value="modalEdit"
+                        :item="item" :fields="{
+                            nome: 'Nome',
+                            brand: 'Marca',
+                        }">
+                        <slot>
+                            <div>
+                                <h5 class="subtitle">Preço nos nossos clientes</h5>
+                                <div class="linha-horizontal"></div>
+                            </div>
+                            <div class="divtable">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>CLIENTES</th>
+                                            <th>JUÁ</th>
+                                            <th>MARCA</th>
+                                        </tr>
+                                        <td>PEDRO LUCAS MOREIRA</td>
+                                        <td>R$ 15,00</td>
+                                        <td>R$ 15,99</td>
+                                    </thead>
+                                </table>
+                            </div>
+                        </slot>
+                    </DetalhesModal>
+                </template>
+            </CardList>
+        </div>
     </div>
-
-
 </template>
 
 <script>
-
-import axios from 'axios';
+import axios from "axios";
 import ActionListWrapper from "../../components/ActionListWrapper.vue";
 import ActionRouterBack from "../../components/ActionRouterBack.vue";
 import ActionRouter from "../../components/ActionRouter.vue";
@@ -123,10 +125,10 @@ import competitorsComponents from '../../components/produtos/competitorsComponen
 import DetalhesModal from '../../components/modals/DetalhesModal.vue';
 import FooterButtons from '../../components/FooterButtons.vue';
 import DeleteBT from '../../components/delete.vue';
+import CheckBox from '../../components/circleCheck.vue';
 
 
 export default {
-
     data() {
         return {
             id: this.$route.params.id,
@@ -135,9 +137,18 @@ export default {
             variants: [],
             weights: [],
             temCompetitors: false,
-            modalEdit: '',
-            BodyAll: 'page',
-
+            modalEdit: "",
+            BodyAll: "page",
+            weights: [
+                { weight: '200g' },
+                { weight: '500g' },
+                { weight: '1kg' },
+                { weight: '5kg' },
+                { weight: '500ml' },
+                { weight: '1l' },
+                { weight: '2l' },
+                { weight: '5l' },
+            ]
         };
     },
 
@@ -152,19 +163,13 @@ export default {
             if (this.competitors[0] != null) {
                 this.temCompetitors = true;
             }
-
         },
-
-        modificarEstilo() {
-            this.$refs.BodyAll.classList.toggle('pageMod');
-        },
-
         toggleModal(id) {
             const bodyAllElement = this.$refs.BodyAll;
             if (this.modalEdit == id) {
                 this.modalEdit = null;
                 this.modificarEstilo();
-            } else if(this.modalEdit != id && !bodyAllElement.classList.contains('pageMod')) {
+            } else if (this.modalEdit != id && !bodyAllElement.classList.contains('pageMod')) {
                 this.modalEdit = id;
                 this.modificarEstilo();
             } else {
@@ -172,7 +177,28 @@ export default {
             }
 
         },
+        modificarEstilo() {
+            this.$refs.BodyAll.classList.toggle("pageMod");
+        },
 
+        updateweights(selecteds) {
+            const existem = selecteds.filter(item => !this.variants.find(b => b.weight == item));
+            const weights = existem.filter(element => element != this.produto.weight);
+            const formData = {weights: weights, nome: this.produto.nome, img: this.produto.img}
+            
+            if (weights.length > 0) {
+                console.log(formData)
+                axios.post('/produtos', formData)
+                    .then(response => {
+                        console.log(response);
+                        window.location.reload();
+                    })
+                    .catch(error => {
+                        console.error(error);
+                    });
+                    
+            }
+        }
 
     },
 
@@ -188,24 +214,48 @@ export default {
         DetalhesModal,
         FooterButtons,
         DeleteBT,
+        CheckBox,
     },
 
     mounted() {
         this.getProdutos();
-    }
-
-}
+    },
+};
 </script>
 
 <style scoped>
+.divtable {
+    text-align: justify;
+    width: 100%;
+}
+
+table {
+    width: 100%;
+}
+
+.linha-horizontal {
+    height: 0px;
+    width: 100%;
+}
+
+.subtitle {
+    margin-bottom: -15px;
+    text-align: justify;
+    font-size: 15px;
+}
+
 .pageMod {
     width: 62%;
+}
+
+.bi.bi-file-earmark-text {
+    display: flex;
 }
 
 .buttonComp {
     display: flex;
     flex: wrap;
-    background-color: #F8f9FA;
+    background-color: #f8f9fa;
     height: 100%;
     text-align: center;
     outline: none;
@@ -216,14 +266,13 @@ export default {
     margin-top: 25px;
     margin-left: 15px;
     border-radius: 10px;
-    background-color: #2C9AFF;
+    background-color: #2c9aff;
     width: 17%;
     height: 50%;
-
 }
 
 .bi.bi-pencil-square {
-    color: #2C9AFF;
+    color: #2c9aff;
 }
 
 .btnPeso {
@@ -259,11 +308,11 @@ export default {
 }
 
 .botao-ativo {
-    color: #2C9AFF;
+    color: #2c9aff;
 }
 
 .peso:hover {
-    color: solid #2C9AFF;
-    border-bottom: solid #2C9AFF;
+    color: solid #2c9aff;
+    border-bottom: solid #2c9aff;
 }
 </style>
