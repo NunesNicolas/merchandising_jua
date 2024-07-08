@@ -49,30 +49,34 @@ class ProdutosController extends Controller
     public function store(Request $request)
     {
 
-        // $weights = $request->input('weights');
+        $weights = $request->input('weights');
 
-        // if (is_array($weights)) {
-        //     foreach ($weights as $weight) {
-                // $produto = new Produto();
-                // $produto->nome = $request->input('nome');
-                // $produto->img = $request->input('img');
+        if (is_array($weights)) {
+            foreach ($weights as $weight) {
+                $produto = new Produto();
+                $produto->nome = $request->input('nome');
+                $produto->img = $request->input('img');
 
                 // Defina o peso (weight) para o valor atual do loop
-                // $produto->weight = $weight;
+                $produto->weight = $weight;
 
-                // Salve o produto no banco de dados
-                // $produto->save();
-            
-        // } else {
-        //     return response()->json([
-        //         'message' => 'Peso não registrado',
-        //         'code' => 400
-        //     ]);
-        // }
-        $produto = Produto::create($request->all());
+                $existingProduct = Produto::where('nome', $produto->nome)
+                    ->where('weight', $produto->weight)
+                    ->first();
+                if (!$existingProduct) {
+                    $produto->save();
+                }
+            }
+        } else {
+            return response()->json([
+                'message' => 'Peso não registrado',
+                'code' => 400
+            ]);
+        }
+        // $produto = Produto::create($request->all());
         return response()->json($produto, 201);
     }
-    
+
     public function update(Request $request, $id)
     {
         $produto = Produto::find($id);
@@ -85,5 +89,4 @@ class ProdutosController extends Controller
         $produto->delete();
         return response()->json(null, 204);
     }
-    
 }

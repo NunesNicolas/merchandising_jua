@@ -1,5 +1,5 @@
 <template>
-    <div class="page">
+    <div class="page" id="BodyAll" ref="BodyAll">
         <Breadcrumb pageTitle="Produtos" routeInfo="Dashboard / Produtos" />
 
         <ActionListWrapper>
@@ -25,48 +25,47 @@
                             </div>
                         </div>
                     </div>
-                    <i class="bi bi-exclamation-circle-fill" style="color: red;"></i>
+                    <DeleteBT :item="produto" :label="'nome'" :url="'/produtos/'"/>
                     <router-link :to="{
                         name: 'UpdateProdutos',
                         params: { id: this.$route.params.id },
-                      }">
-                    <i class="bi bi-pencil-square ml-2" style="font-size: 17px; color:dodgerblue"></i>
+                    }">
+                        <i class="bi bi-pencil-square ml-2" style="font-size: 17px; color:dodgerblue"></i>
                     </router-link>
                 </div>
 
                 <div class="divFooter" style="width: 100%">
-                    <div class="btnPeso">
 
-                        <router-link :to="{ name: 'infoProdutos', params: { id: button500 } }">
-                            <a type="button" class="peso" :class="{ 'botao-ativo': paginaAtual == '500' }" name="500" ac
-                                value="" style="border-bottom: solid;border-radius: 0vh 0vh 0vh 1vh;" href="">500g</a>
-                        </router-link>
+                    <FooterButtons :id="id" :label="'weight'" :instance="produto" :items="variants" :defaults="[
+                        { weight: '200g' },
+                        { weight: '500g' },
+                        { weight: '1kg' },
+                        { weight: '5kg' },
+                        { weight: '500ml' },
+                        { weight: '1l' },
+                        { weight: '2l' },
+                        { weight: '5l' },
+                    ]" />
 
-                        <router-link :to="{ name: 'infoProdutos', params: { id: button1000 } }">
-                            <a type="button" class="peso" :class="{ 'botao-ativo': paginaAtual == '1000' }" name="1000"
-                                style="border-bottom: solid" value="" href="">1kg</a>
-                        </router-link>
-
-                        <router-link :to="{ name: 'infoProdutos', params: { id: button5000 } }">
-                            <a type="button" class="peso" :class="{ 'botao-ativo': paginaAtual == '5000' }" name="5000"
-                                style="border-bottom: solid" value="" href="">5kg</a>
-                        </router-link>
-
-                    </div>
-
+                    <button class="" style="padding: 5px; background-color: white; margin: 2px">
+                        <i class="bi bi-plus-circle" style="font-size:30px; color: black"></i>
+                    </button>
                 </div>
 
             </slot>
         </BoxInfoWrapper>
 
-    <div class="btCompetitorAdd">
-        <router-link :to="{
-            name: 'CreateCompetitors',
-            params: { id: this.$route.params.id },
-          }">
-        <h5 style="color: white; text-align:center">Adicionar Concorrente</h5>
-        </router-link>
-    </div>
+        <div class="btCompetitorAdd">
+            <router-link :to="{
+                name: 'CreateCompetitors',
+                params: { id: this.$route.params.id },
+            }">
+                <h5 style="color: white; text-align:center">Adicionar Concorrente</h5>
+            </router-link>
+        </div>
+
+
+
 
 
         <CardList :items="competitors" :fields="{
@@ -76,15 +75,31 @@
             <template v-slot:actions="{ item }">
                 <router-link :to="{
                     name: 'UpdateCompetitors',
-                    params: { 
+                    params: {
                         id: this.$route.params.id,
-                        compid: item.id },
-                  }" class="d-flex flex-wrap">
+                        compid: item.id
+                    },
+                }" class="d-flex flex-wrap">
                     <i class="bi bi-pencil-square" style="font-size: 2rem; color:grey"></i>
                 </router-link>
-                <router-link :to="'#'" class="d-flex flex-wrap">
+
+                <button @click="toggleModal(item.id)" class="buttonComp">
                     <i class="bi bi-file-earmark-text" style="font-size: 2rem; color:grey"></i>
-                </router-link>
+                </button>
+
+                <DetalhesModal @modificarEstilo="modificarEstilo" @toggleModal="toggleModal()" 
+                v-show="modalEdit == item.id" :title="'DETALHES PRODUTO CONCORRENTE'" :value="modalEdit" :item="item" 
+                :fields="{
+                    nome: 'Nome',
+                    brand: 'Marca',
+                    }">
+                    <slot>
+                        <div>
+                            <h5>asdasd</h5>
+                        </div>
+                    </slot>
+                </DetalhesModal>
+
             </template>
 
         </CardList>
@@ -104,6 +119,10 @@ import BoxInfoWrapper from "../../components/Box/BoxInfoWrapper.vue";
 import BoxInfo from "../../components/Box/BoxInfo.vue";
 import Breadcrumb from "../../components/Breadcrumb.vue";
 import CardList from '../../components/CardList.vue';
+import competitorsComponents from '../../components/produtos/competitorsComponents.vue';
+import DetalhesModal from '../../components/modals/DetalhesModal.vue';
+import FooterButtons from '../../components/FooterButtons.vue';
+import DeleteBT from '../../components/delete.vue';
 
 
 export default {
@@ -114,13 +133,10 @@ export default {
             produto: "",
             competitors: [],
             variants: [],
+            weights: [],
             temCompetitors: false,
-            paginaAtual: 500,
-            button500: 0,
-            button1000: 0,
-            button5000: 0,
-            // bodyAll: 'bodyBase',
-            // topDiv: 'topBase'
+            modalEdit: '',
+            BodyAll: 'page',
 
         };
     },
@@ -131,52 +147,32 @@ export default {
             this.competitors = (await response).data.competitorsthis;
             this.variants = (await response).data.produtovariants;
             this.produto = (await response).data.produto;
-            this.paginaAtual = this.produto.weight
-
+            this.paginaAtual = this.produto.weight;
 
             if (this.competitors[0] != null) {
                 this.temCompetitors = true;
             }
 
-            for (let i = 0; i < this.variants.length; i++) {
+        },
 
-                if (this.variants[i].weight == 500) {
-                    this.button500 = this.variants[i].id;
-                }
-                if (this.variants[i].weight == 1000) {
-                    this.button1000 = this.variants[i].id;
+        modificarEstilo() {
+            this.$refs.BodyAll.classList.toggle('pageMod');
+        },
 
-                }
-                if (this.variants[i].weight == 5000) {
-                    this.button5000 = this.variants[i].id;
-
-                }
-            }
-            if (this.button500 == 0) {
-                this.button500 = this.produto.id;
-
-            }
-            if (this.button1000 == 0) {
-                this.button1000 = this.produto.id;
-
-            }
-            if (this.button5000 == 0) {
-                this.button5000 = this.produto.id;
-
+        toggleModal(id) {
+            const bodyAllElement = this.$refs.BodyAll;
+            if (this.modalEdit == id) {
+                this.modalEdit = null;
+                this.modificarEstilo();
+            } else if(this.modalEdit != id && !bodyAllElement.classList.contains('pageMod')) {
+                this.modalEdit = id;
+                this.modificarEstilo();
+            } else {
+                this.modalEdit = id;
             }
 
         },
 
-        // modificarEstilo() {
-        //     if (this.bodyAll == 'bodyBase') {
-        //         this.bodyAll = 'bodyMod';
-        //         this.topDiv = 'topMod';
-        //     } else {
-        //         this.bodyAll = 'bodyBase';
-        //         this.topDiv = 'topBase';
-        //     }
-
-        // }
 
     },
 
@@ -187,7 +183,11 @@ export default {
         BoxInfoWrapper,
         BoxInfo,
         Breadcrumb,
-        CardList
+        competitorsComponents,
+        CardList,
+        DetalhesModal,
+        FooterButtons,
+        DeleteBT,
     },
 
     mounted() {
@@ -198,9 +198,21 @@ export default {
 </script>
 
 <style scoped>
+.pageMod {
+    width: 62%;
+}
+
+.buttonComp {
+    display: flex;
+    flex: wrap;
+    background-color: #F8f9FA;
+    height: 100%;
+    text-align: center;
+    outline: none;
+}
 
 .btCompetitorAdd {
-    text-align: left; 
+    text-align: left;
     margin-top: 25px;
     margin-left: 15px;
     border-radius: 10px;
@@ -251,6 +263,7 @@ export default {
 }
 
 .peso:hover {
+    color: solid #2C9AFF;
     border-bottom: solid #2C9AFF;
 }
 </style>

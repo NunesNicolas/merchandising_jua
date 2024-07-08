@@ -20,12 +20,6 @@ import axios from "axios";
                 img: 'img'
                 
             }">
-            <template v-slot:topactions="{ item }">
-                <button @click="confirmDelete(item)" class="d-flex flex-wrap btn btn-link p-0">
-                    <i class="bi bi-trash" style="font-size: 2rem; color: red"></i>
-                </button>
-            </template>
-
                 <template class="tp" v-slot:actions="{ item }">
                     <router-link :to="'produtos/' + item.id" class="d-flex flex-wrap mb-3">
                     <div class="dtbutton">
@@ -66,22 +60,8 @@ export default {
             let response = axios.get('/produtos');
             this.produtos = (await response).data;
         },
-        confirmDelete(item) {
-            if (confirm(`Você tem certeza que deseja excluir o produto ${item.nome}?`)) {
-                this.deleteProduto(item.id);
-            }
-        },
-        deleteProduto(produtoId) {
-            axios.delete(`/produtos/${produtoId}`)
-                .then(response => {
-                    alert('Produto excluído com sucesso!');
-                    this.getProdutos(); // Atualiza a lista de produtos após exclusão
-                })
-                .catch(error => {
-                    console.error('Erro ao excluir produto: ', error);
-                    alert('Ocorreu um erro ao tentar excluir o produto.');
-                });
-        }
+       
+        
     },
 
     components: {
