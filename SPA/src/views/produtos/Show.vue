@@ -47,9 +47,12 @@
                         { weight: '5l' },
                     ]" />
 
-                    <button class="" style="padding: 5px; background-color: white; margin: 2px">
+                    <b-button v-b-modal.modal-1 class="" style="padding: 5px; background-color: white; margin: 2px">
                         <i class="bi bi-plus-circle" style="font-size:30px; color: black"></i>
-                    </button>
+                    </b-button>
+                    <b-modal id="modal-1" title="BootstrapVue">
+                        <p class="my-4">Hello from modal!</p>
+                      </b-modal>
                 </div>
 
             </slot>
