@@ -47,6 +47,9 @@
                         { weight: '5l' },
                     ]" />
 
+                    <button class="" style="padding: 5px; background-color: white; margin: 2px">
+                        <i class="bi bi-plus-circle" style="font-size:30px; color: black"></i>
+                    </button>
                 </div>
 
             </slot>
@@ -84,10 +87,17 @@
                     <i class="bi bi-file-earmark-text" style="font-size: 2rem; color:grey"></i>
                 </button>
 
-                <DetalhesModal @modificarEstilo="modificarEstilo" @toggleModal="toggleModal()" v-show="modalEdit == item.id" :value="modalEdit" :item="item" :fields="{
+                <DetalhesModal @modificarEstilo="modificarEstilo" @toggleModal="toggleModal()" 
+                v-show="modalEdit == item.id" :title="'DETALHES PRODUTO CONCORRENTE'" :value="modalEdit" :item="item" 
+                :fields="{
                     nome: 'Nome',
-
-                }">
+                    brand: 'Marca',
+                    }">
+                    <slot>
+                        <div>
+                            <h5>asdasd</h5>
+                        </div>
+                    </slot>
                 </DetalhesModal>
 
             </template>
