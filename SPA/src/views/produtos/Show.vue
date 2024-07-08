@@ -25,7 +25,7 @@
                             </div>
                         </div>
                     </div>
-                    <i class="bi bi-exclamation-circle-fill" style="color: red;"></i>
+                    <DeleteBT :item="produto" :label="'nome'" :url="'/produtos/'"/>
                     <router-link :to="{
                         name: 'UpdateProdutos',
                         params: { id: this.$route.params.id },
@@ -121,7 +121,8 @@ import Breadcrumb from "../../components/Breadcrumb.vue";
 import CardList from '../../components/CardList.vue';
 import competitorsComponents from '../../components/produtos/competitorsComponents.vue';
 import DetalhesModal from '../../components/modals/DetalhesModal.vue';
-import FooterButtons from '../../components/FooterButtons.vue'
+import FooterButtons from '../../components/FooterButtons.vue';
+import DeleteBT from '../../components/delete.vue';
 
 
 export default {
@@ -185,7 +186,8 @@ export default {
         competitorsComponents,
         CardList,
         DetalhesModal,
-        FooterButtons
+        FooterButtons,
+        DeleteBT,
     },
 
     mounted() {
