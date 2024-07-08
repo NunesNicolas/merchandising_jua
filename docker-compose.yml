@@ -1,0 +1,97 @@
+  services:
+    api:
+      build:
+        context: ./API
+        dockerfile: Dockerfile
+      container_name: api
+      
+      command:  ["./entrypoint.sh"]
+      
+      depends_on:
+        mariadb:
+          condition: service_healthy
+
+      networks:
+        - internal  
+
+      environment:
+        APP_NAME: ${APP_NAME}
+        APP_ENV: ${APP_ENV}
+        APP_KEY: ${APP_KEY}
+        APP_DEBUG: ${APP_DEBUG}
+        APP_URL: ${APP_URL}
+        FRONTEND_URL: ${FRONTEND_URL}
+        
+        DB_CONNECTION: ${DB_CONNECTION}
+        DB_HOST: mariadb
+        DB_PORT: ${DB_PORT}
+        DB_DATABASE: ${DB_DATABASE}
+        DB_USERNAME: ${DB_USERNAME}
+        DB_PASSWORD: ${DB_PASSWORD}
+        
+    
+    mariadb:
+      image: mariadb:latest
+      restart: always
+      container_name: mariadb
+      
+      environment:
+          MYSQL_DATABASE: ${DB_DATABASE}
+          MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+      volumes:
+        - mariadb_data:/var/lib/mysql
+
+      networks:
+        - internal
+
+      healthcheck:
+        test: ["CMD-SHELL", "mariadb-admin ping -p$DB_PASSWORD"]
+        interval: 30s
+        timeout: 10s
+        retries: 5
+        start_period: 40s
+
+    spa:
+      build:
+        context: ./SPA
+        dockerfile: Dockerfile
+        args:
+          VITE_API_DOMAIN: ${API_DOMAIN}
+
+      container_name: spa
+      volumes:
+        - spa_data:/var/www
+
+    caddy:
+      image: caddy:latest
+      container_name: caddy
+      ports:
+        - "80:80"
+        - "8000:8000"
+        - "8080:8080"
+        - "3000:3000"
+        - "443:443"
+
+      volumes:
+        - ./infrastructure/caddy/Caddyfile:/etc/caddy/Caddyfile
+        - spa_data:/var/www/spa
+
+      depends_on:
+        - api
+      
+      networks:
+        - internal
+
+      environment:
+          API_DOMAIN: ${API_DOMAIN}
+          SPA_DOMAIN: ${SPA_DOMAIN}
+          MOBI_DOMAIN: ${MOBI_DOMAIN}
+          EMAIL: ${EMAIL}
+
+  volumes:
+    mariadb_data:
+    spa_data:
+
+  networks:
+    internal:
+      driver: bridge
