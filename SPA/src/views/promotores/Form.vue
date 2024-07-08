@@ -12,6 +12,8 @@
                 @update:modelValue="updateFormValue('senha', $event)" />
             <TextInput label="Telefone" name="telefone" :modelValue="formValues.telefone"
                 @update:modelValue="updateFormValue('telefone', $event)" />
+            <ImageUploadInput label="Imagem" name="img" :modelValue="formValues.img"
+                @update:modelValue="updateFormValue('img', $event)" />
         </template>
     </DefaultForm>
 </template>
