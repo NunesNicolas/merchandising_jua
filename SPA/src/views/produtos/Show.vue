@@ -43,12 +43,8 @@
                             <i class="bi bi-plus-circle" style="font-size:30px; color: black; border: none"></i>
                         </b-button>
                         <b-modal id="modal-1" title="Editar Tamanho do Produto">
-                            <CheckBox :options="variants" :value="'id'" :label="'weight'" :instance="produto"
-                                :defaults="weights" />
-                            <slot>
-                                <button>Cancelar</button>
-                                <button @click="updateweights(selectedOptions)">Atualizar</button>
-                            </slot>
+                            <CheckBox @util="updateweights" :options="variants" :value="'id'" :label="'weight'"
+                                :instance="produto" :defaults="weights" />
                         </b-modal>
                     </div>
 
@@ -186,8 +182,24 @@ export default {
         },
 
         updateweights(selecteds) {
-            console.log(selecteds)
+            const existem = selecteds.filter(item => !this.variants.find(b => b.weight == item));
+            const weights = existem.filter(element => element != this.produto.weight);
+            const formData = {weights: weights, nome: this.produto.nome, img: this.produto.img}
+            
+            if (weights.length > 0) {
+                console.log(formData)
+                axios.post('/produtos', formData)
+                    .then(response => {
+                        console.log(response);
+                        window.location.reload();
+                    })
+                    .catch(error => {
+                        console.error(error);
+                    });
+                    
+            }
         }
+
     },
 
     components: {
