@@ -51,8 +51,17 @@
                         <i class="bi bi-plus-circle" style="font-size:30px; color: black"></i>
                     </b-button>
                     <b-modal id="modal-1" title="BootstrapVue">
-                        <p class="my-4">Hello from modal!</p>
-                      </b-modal>
+                    <CheckBox :options="variants" :value="'id'" :label="'weight'" :instance="produto" :defaults="[
+                        { weight: '200g' },
+                        { weight: '500g' },
+                        { weight: '1kg' },
+                        { weight: '5kg' },
+                        { weight: '500ml' },
+                        { weight: '1l' },
+                        { weight: '2l' },
+                        { weight: '5l' },
+                    ]"></CheckBox>
+                    </b-modal>
                 </div>
 
             </slot>
@@ -126,6 +135,7 @@ import competitorsComponents from '../../components/produtos/competitorsComponen
 import DetalhesModal from '../../components/modals/DetalhesModal.vue';
 import FooterButtons from '../../components/FooterButtons.vue';
 import DeleteBT from '../../components/delete.vue';
+import CheckBox from '../../components/circleCheck.vue';
 
 
 export default {
@@ -191,6 +201,7 @@ export default {
         DetalhesModal,
         FooterButtons,
         DeleteBT,
+        CheckBox,
     },
 
     mounted() {
@@ -269,4 +280,6 @@ export default {
     color: solid #2C9AFF;
     border-bottom: solid #2C9AFF;
 }
+
+
 </style>
