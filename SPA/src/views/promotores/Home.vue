@@ -16,7 +16,7 @@ import axios from "axios";
 
         <nav id="main-container" style="text-align: center;">
            <div class="d-flex" style="padding: 20px;  gap:50px; flex-wrap: wrap;">
-            <CardList :textBox="true" :items="promotores" :fields="{
+            <CardList :thisuser="true" :textBox="true" :items="promotores" :fields="{
                 nome: 'Promotor',
                 telefone: 'Telefone',
             }">

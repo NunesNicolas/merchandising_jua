@@ -22,7 +22,7 @@
 
                 </div>
                 <div style="text-align: center;" v-else>
-                    <svg viewBox="0 0 200 200">
+                    <svg v-if="thisuser" viewBox="0 0 200 200">
                         <clipPath id="clipCircle">
                             <circle cx="100" cy="80" r="75" />
                         </clipPath>
@@ -30,6 +30,9 @@
                         <image :xlink:href=item.img width="200"
                             height="200" clip-path="url(#clipCircle)" y="-20" />
                     </svg>
+            
+                     <img  v-else class="" style="height: 33vh; width: 33vh;" :src=item.img alt="imagem não encontrada" />
+                      
                 </div>
                 <table v-if="textBox">
                     <tr v-for="(label, field) in fields" :key="field">
@@ -58,6 +61,9 @@ export default {
         fields: {
             type: Object,
             required: true
+        },
+        thisuser: {
+            type: Boolean,
         }
     }
 };
