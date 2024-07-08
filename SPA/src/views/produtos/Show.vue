@@ -95,7 +95,21 @@
                     }">
                     <slot>
                         <div>
-                            <h5>asdasd</h5>
+                            <h5 class="subtitle">Preço nos nossos clientes</h5>
+                            <div class="linha-horizontal"></div>
+                        </div>
+                        <div class="divtable">
+                            <table>
+                               <th>CLIENTES
+                                <td>PEDRO LUCAS MOREIRA</td>
+                               </th>
+                               <th>JUÁ
+                                <td>R$ 15,00</td>
+                               </th>
+                               <th>MARCA
+                                <td>AAAAAA</td>
+                               </th>
+                            </table>
                         </div>
                     </slot>
                 </DetalhesModal>
@@ -196,6 +210,20 @@ export default {
 </script>
 
 <style scoped>
+.table{
+    width: 100%;   
+}
+.linha-horizontal{
+    height: 0px;
+    width: 100%;
+}
+
+.subtitle{
+    margin-bottom: -15px;
+    text-align: justify;
+    font-size: 15px;
+}
+
 .pageMod {
     width: 62%;
 }
