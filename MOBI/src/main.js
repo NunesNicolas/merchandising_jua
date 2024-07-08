@@ -10,7 +10,8 @@ import sistemaLayout from './views/layouts/sistema.vue';
 import authLayout from './views/layouts/auth.vue';
 
 import InicialAuth from './views/auth/login.vue';
-import InicialSistema from './views/dashboard/inicial.vue';
+import InicialSistema from './views/dashboard/Home.vue';
+import InicialInfo from './views/dashboard/Show.vue';
 
 const routes = [
     {
@@ -21,12 +22,19 @@ const routes = [
       ]
     },
     {
-        path: '/',
+        path: '/home',
         component: sistemaLayout,
         children: [
             { path: '', name: 'dashboard', component: InicialSistema },
         ]
-    }
+    },
+    {
+      path: '/info',
+      component: sistemaLayout,
+      children: [
+          { path: '', name: 'info', component: InicialInfo },
+      ]
+  }
 ]
 const router = createRouter({
     history: createWebHistory(),
