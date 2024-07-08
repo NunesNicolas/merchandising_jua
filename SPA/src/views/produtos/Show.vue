@@ -39,9 +39,9 @@
                     <FooterButtons :id="id" :label="'weight'" :instance="produto" :items="variants" :defaults="weights" />
 
                     <b-button v-b-modal.modal-1 class="" style="padding: 5px; background-color: white; margin: 2px">
-                        <i class="bi bi-plus-circle" style="font-size:30px; color: black"></i>
+                        <i class="bi bi-plus-circle" style="font-size:30px; color: black; border: none"></i>
                     </b-button>
-                    <b-modal id="modal-1" title="BootstrapVue">
+                    <b-modal id="modal-1" title="Editar Tamanho do Produto">
                     <CheckBox :options="variants" :value="'id'" :label="'weight'" :instance="produto" 
                     :defaults="weights" />
                     </b-modal>
@@ -166,21 +166,6 @@ export default {
     modificarEstilo() {
       this.$refs.BodyAll.classList.toggle("pageMod");
     },
-
-    components: {
-        ActionListWrapper,
-        ActionRouterBack,
-        ActionRouter,
-        BoxInfoWrapper,
-        BoxInfo,
-        Breadcrumb,
-        competitorsComponents,
-        CardList,
-        DetalhesModal,
-        FooterButtons,
-        DeleteBT,
-        CheckBox,
-    },
   },
 
   components: {
@@ -195,6 +180,7 @@ export default {
     DetalhesModal,
     FooterButtons,
     DeleteBT,
+    CheckBox,
   },
 
   mounted() {
