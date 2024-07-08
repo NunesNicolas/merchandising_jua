@@ -25,7 +25,7 @@
                             </div>
                         </div>
                     </div>
-                    <i class="bi bi-exclamation-circle-fill" style="color: red;"></i>
+                    <DeleteBT :item="produto" :label="'nome'" :url="'/produtos/'"/>
                     <router-link :to="{
                         name: 'UpdateProdutos',
                         params: { id: this.$route.params.id },
@@ -47,9 +47,12 @@
                         { weight: '5l' },
                     ]" />
 
-                    <button class="" style="padding: 5px; background-color: white; margin: 2px">
+                    <b-button v-b-modal.modal-1 class="" style="padding: 5px; background-color: white; margin: 2px">
                         <i class="bi bi-plus-circle" style="font-size:30px; color: black"></i>
-                    </button>
+                    </b-button>
+                    <b-modal id="modal-1" title="BootstrapVue">
+                        <p class="my-4">Hello from modal!</p>
+                      </b-modal>
                 </div>
 
             </slot>
@@ -135,7 +138,8 @@ import Breadcrumb from "../../components/Breadcrumb.vue";
 import CardList from '../../components/CardList.vue';
 import competitorsComponents from '../../components/produtos/competitorsComponents.vue';
 import DetalhesModal from '../../components/modals/DetalhesModal.vue';
-import FooterButtons from '../../components/FooterButtons.vue'
+import FooterButtons from '../../components/FooterButtons.vue';
+import DeleteBT from '../../components/delete.vue';
 
 
 export default {
@@ -199,7 +203,8 @@ export default {
         competitorsComponents,
         CardList,
         DetalhesModal,
-        FooterButtons
+        FooterButtons,
+        DeleteBT,
     },
 
     mounted() {

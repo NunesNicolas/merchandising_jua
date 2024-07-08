@@ -46,15 +46,17 @@ export default {
       // Lógica para mostrar a senha
     },
     async login() {
+      const domain = import.meta.env.VITE_API_DOMAIN ?? 'http://localhost:8000';
+
       try {
-        const response = await axios.get('http://localhost:8000/sanctum/csrf-cookie');
+        const response = await axios.get(domain + '/sanctum/csrf-cookie');
         const csrfToken = this.getTokenFromCookie();
 
         const formData = new FormData();
         formData.append('email', this.email);
         formData.append('password', this.senha);
 
-        const loginResponse = await axios.post('http://localhost:8000/login', formData, {
+        const loginResponse = await axios.post(domain + '/login', formData, {
           headers: {
             Accept: 'application/json',
             'X-CSRF-TOKEN': csrfToken,
