@@ -1,10 +1,12 @@
 <template>
-  <div class="page" id="BodyAll" ref="BodyAll">
-    <Breadcrumb pageTitle="Produtos" routeInfo="Dashboard / Produtos" />
+<div>
+  <Breadcrumb pageTitle="Produtos" routeInfo="Dashboard / Produtos" />
 
-    <ActionListWrapper>
-      <ActionRouterBack />
-    </ActionListWrapper>
+  <ActionListWrapper>
+    <ActionRouterBack />
+  </ActionListWrapper>
+
+  <div class="page" id="BodyAll" ref="BodyAll">
 
     <BoxInfoWrapper>
       <slot>
@@ -16,62 +18,38 @@
             <div class="box-line">
               <BoxInfo title="Nome" :value="produto.nome"></BoxInfo>
             </div>
-            <div
-              class="d-flex"
-              style="width: 100%; gap: 10px; justify-content: space-between"
-            >
+            <div class="d-flex" style="width: 100%; gap: 10px; justify-content: space-between">
               <div class="box-line" style="width: 50%">
                 <BoxInfo title="Preço médio:"></BoxInfo>
               </div>
               <div class="box-line" style="width: 50%">
-                <BoxInfo
-                  title="Quantidade de concorrentes:"
-                  :value="competitors.length"
-                ></BoxInfo>
+                <BoxInfo title="Quantidade de concorrentes:" :value="competitors.length"></BoxInfo>
               </div>
             </div>
           </div>
           <DeleteBT :item="produto" :label="'nome'" :url="'/produtos/'" />
-          <router-link
-            :to="{
-              name: 'UpdateProdutos',
-              params: { id: this.$route.params.id },
-            }"
-          >
-            <i
-              class="bi bi-pencil-square ml-2"
-              style="font-size: 17px; color: dodgerblue"
-            ></i>
+          <router-link :to="{
+            name: 'UpdateProdutos',
+            params: { id: this.$route.params.id },
+          }">
+            <i class="bi bi-pencil-square ml-2" style="font-size: 17px; color: dodgerblue"></i>
           </router-link>
         </div>
 
         <div class="divFooter" style="width: 100%">
-          <FooterButtons
-            :id="id"
-            :label="'weight'"
-            :instance="produto"
-            :items="variants"
-            :defaults="[
-              { weight: '200g' },
-              { weight: '500g' },
-              { weight: '1kg' },
-              { weight: '5kg' },
-              { weight: '500ml' },
-              { weight: '1l' },
-              { weight: '2l' },
-              { weight: '5l' },
-            ]"
-          />
+          <FooterButtons :id="id" :label="'weight'" :instance="produto" :items="variants" :defaults="[
+            { weight: '200g' },
+            { weight: '500g' },
+            { weight: '1kg' },
+            { weight: '5kg' },
+            { weight: '500ml' },
+            { weight: '1l' },
+            { weight: '2l' },
+            { weight: '5l' },
+          ]" />
 
-          <b-button
-            v-b-modal.modal-1
-            class=""
-            style="padding: 5px; background-color: white; margin: 2px"
-          >
-            <i
-              class="bi bi-plus-circle"
-              style="font-size: 30px; color: black"
-            ></i>
+          <b-button v-b-modal.modal-1 class="" style="padding: 5px; background-color: white; margin: 2px">
+            <i class="bi bi-plus-circle" style="font-size: 30px; color: black"></i>
           </b-button>
           <b-modal id="modal-1" title="BootstrapVue">
             <p class="my-4">Hello from modal!</p>
@@ -81,59 +59,38 @@
     </BoxInfoWrapper>
 
     <div class="btCompetitorAdd">
-      <router-link
-        :to="{
-          name: 'CreateCompetitors',
-          params: { id: this.$route.params.id },
-        }"
-      >
+      <router-link :to="{
+        name: 'CreateCompetitors',
+        params: { id: this.$route.params.id },
+      }">
         <h5 style="color: white; text-align: center">Adicionar Concorrente</h5>
       </router-link>
     </div>
 
-    <CardList
-      :items="competitors"
-      :fields="{
-        nome: 'PRODUTOS',
-        brand: 'CONCORRENTES',
-      }"
-    >
+    <CardList :items="competitors" :fields="{
+      nome: 'PRODUTOS',
+      brand: 'CONCORRENTES',
+    }">
       <template v-slot:actions="{ item }">
-        <router-link
-          :to="{
-            name: 'UpdateCompetitors',
-            params: {
-              id: this.$route.params.id,
-              compid: item.id,
-            },
-          }"
-          class="d-flex flex-wrap"
-        >
-          <i
-            class="bi bi-pencil-square"
-            style="font-size: 2rem; color: grey"
-          ></i>
+        <router-link :to="{
+          name: 'UpdateCompetitors',
+          params: {
+            id: this.$route.params.id,
+            compid: item.id,
+          },
+        }" class="d-flex flex-wrap">
+          <i class="bi bi-pencil-square" style="font-size: 2rem; color: grey"></i>
         </router-link>
 
         <button @click="toggleModal(item.id)" class="buttonComp">
-          <i
-            class="bi bi-file-earmark-text"
-            style="font-size: 2rem; color: grey"
-          ></i>
+          <i class="bi bi-file-earmark-text" style="font-size: 2rem; color: grey"></i>
         </button>
 
-        <DetalhesModal
-          @modificarEstilo="modificarEstilo"
-          @toggleModal="toggleModal()"
-          v-show="modalEdit == item.id"
-          :title="'DETALHES PRODUTO CONCORRENTE'"
-          :value="modalEdit"
-          :item="item"
-          :fields="{
+        <DetalhesModal @modificarEstilo="modificarEstilo" @toggleModal="toggleModal()" v-show="modalEdit == item.id"
+          :title="'DETALHES PRODUTO CONCORRENTE'" :value="modalEdit" :item="item" :fields="{
             nome: 'Nome',
             brand: 'Marca',
-          }"
-        >
+          }">
           <slot>
             <div>
               <h5 class="subtitle">Preço nos nossos clientes</h5>
@@ -150,7 +107,6 @@
                   <td>PEDRO LUCAS MOREIRA</td>
                   <td>R$ 15,00</td>
                   <td>R$ 15,99</td>
-                  
                 </thead>
               </table>
             </div>
@@ -159,6 +115,7 @@
       </template>
     </CardList>
   </div>
+</div>
 </template>
 
 <script>
@@ -266,6 +223,10 @@ table {
 
 .pageMod {
   width: 62%;
+}
+
+.bi.bi-file-earmark-text{
+  display: flex;
 }
 
 .buttonComp {
