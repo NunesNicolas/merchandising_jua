@@ -14,6 +14,7 @@ class Promotores extends Model
         'email',
         'senha',
         'telefone',
+        'img',
     ];
 
 }
