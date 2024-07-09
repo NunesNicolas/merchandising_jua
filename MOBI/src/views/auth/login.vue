@@ -6,20 +6,9 @@
                 <input type="textarea" placeholder=" Nome de Usuário">
                 <input type="password" placeholder=" Senha">
             </div>
-        </div>
-
-        <a href="">Esqueci minha senha</a>
-
-        <div class="bt">
-            <div>
-            
-            </div>
-            <div>
+            <a href="">Esqueci minha senha</a>
             <button>Entrar</button>
-            </div>
-
-        </div>
-        
+        </div>     
     </section>
 </template>
 
@@ -42,13 +31,14 @@ export default {
         justify-content: space-evenly;
         align-items: center;
         width: 100%;
-        height: 60%;
+        height: 70vh;
+
     }
     .view img{
-        margin-top: -50px;
-        margin-bottom: -200px;
         width: 60vw;
         height: 17vh;
+        margin-top: 22vh;
+        margin-bottom: 3vh;
     }
     .info{
         height: 10%;
@@ -58,30 +48,26 @@ export default {
         margin-bottom: 20px;
         width: 75%;
         background-color: #fff;
-        height: 100%;
+        height: 6vh;
         color: #000;
         border: none;
         border-radius: 1.5vh;
-        box-shadow: 0vh 0vh 1vh 0vh #000;
+        box-shadow: 0vh 0vh 0.5vh 0vh #000;
+        padding-inline-start: 3vw;
     }
     a{  
         display: flex;
-        margin-top: -30px;
-        margin-left: 55px;
-        justify-content: left;
+        justify-content: center;
         text-align: left;
+        margin-right: 40vw;
+        margin-top: 7vh;
         color: #fff;
         text-decoration: underline;
     }
-    .bt{
-        margin-top: 25px;
-        text-align: center;
-    }
-    .bt button{
+    .view button{
         width: 35%;
         margin-inline: 10%;
         background-color: transparent;
         border: 0.1vh solid #fff;
-        box-shadow: 0vh 0vh 1vh 0vh #000;
     }
 </style>

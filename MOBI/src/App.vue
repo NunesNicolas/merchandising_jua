@@ -22,7 +22,7 @@ body {
 .page {
   padding: 0;
   margin: 0;
-  height: 1000vw;
+  height: 100vh;
   width: 100%;
   min-height: 100vh;
 }

@@ -17,6 +17,7 @@
     margin-inline: 8vw;
     margin-top: -5vh;
     border-radius: 1vh;
+    box-shadow: 0vh 0vh 0.5vh 0vh;
 }
 .visitasCard div h6{
     background-color: #d0d0d0;
@@ -52,5 +53,11 @@
     height: 14vh;
     border-radius: 0 1vh 1vh 0vh;
     background-color: #2C9AFF;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
 }
 </style>
