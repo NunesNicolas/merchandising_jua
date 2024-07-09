@@ -1,7 +1,7 @@
 <template>
     <div>
         <button @click="confirmDelete(item)" class="d-flex flex-wrap btn btn-link p-0">
-            <i class="bi bi-trash" style="font-size: 2rem; color: red"></i>
+            <i class="bi bi-trash" style="font-size: 25px; color: red"></i>
         </button>
     </div>
 </template>

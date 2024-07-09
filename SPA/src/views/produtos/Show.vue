@@ -9,6 +9,15 @@
         <div class="page" id="BodyAll" ref="BodyAll">
             <BoxInfoWrapper>
                 <slot>
+                    <div class="topIcons">
+                    <DeleteBT :item="produto" :label="'nome'" :url="'/produtos/'" />
+                        <router-link :to="{
+                            name: 'UpdateProdutos',
+                            params: { id: this.$route.params.id },
+                        }">
+                            <i class="bi bi-pencil-square ml-1" style="font-size: 25px; color:dodgerblue"></i>
+                        </router-link>
+                    </div>
                     <div class="d-flex">
                         <div class="box-line">
                             <img :src="produto.img" height="150px" width="auto" />
@@ -26,13 +35,7 @@
                                 </div>
                             </div>
                         </div>
-                        <DeleteBT :item="produto" :label="'nome'" :url="'/produtos/'" />
-                        <router-link :to="{
-                            name: 'UpdateProdutos',
-                            params: { id: this.$route.params.id },
-                        }">
-                            <i class="bi bi-pencil-square ml-2" style="font-size: 17px; color:dodgerblue"></i>
-                        </router-link>
+                        
                     </div>
                     <div class="divFooter" style="width: 100%">
 
@@ -42,9 +45,13 @@
                         <b-button v-b-modal.modal-1 class="" style="padding: 5px; background-color: white; margin: 2px">
                             <i class="bi bi-plus-circle" style="font-size:30px; color: black; border: none"></i>
                         </b-button>
-                        <b-modal id="modal-1" title="Editar Tamanho do Produto">
+                        <b-modal id="modal-1" hide-footer title="Editar Tamanho do Produto">
                             <CheckBox @util="updateweights" :options="variants" :value="'id'" :label="'weight'"
-                                :instance="produto" :defaults="weights" />
+                                :instance="produto" :defaults="weights">
+                                <slot>
+                                <b-button style="height:6vh;margin-top:10px"  v-b-modal.modal-1>Cancelar</b-button>
+                                </slot>
+                            </CheckBox>
                         </b-modal>
                     </div>
 
@@ -56,7 +63,7 @@
                     name: 'CreateCompetitors',
                     params: { id: this.$route.params.id },
                 }">
-                    <h5 style="color: white; text-align:center">Adicionar Concorrente</h5>
+                    Adicionar Concorrente
                 </router-link>
             </div>
 
@@ -228,7 +235,12 @@ export default {
     text-align: justify;
     width: 100%;
 }
-
+.topIcons{
+    display: flex;
+    text-align: end;
+    justify-content: end;
+    gap: 20px;
+}
 table {
     width: 100%;
 }
@@ -262,13 +274,15 @@ table {
 }
 
 .btCompetitorAdd {
-    text-align: left;
+    text-align: center;
     margin-top: 25px;
     margin-left: 15px;
     border-radius: 10px;
     background-color: #2c9aff;
+    color: white;
+    font-size: 22px;
     width: 17%;
-    height: 50%;
+    height: auto;
 }
 
 .bi.bi-pencil-square {
@@ -296,7 +310,7 @@ table {
 
 .divFooter {
     width: 100%;
-    margin-top: 6vh;
+    margin-top: 3vh;
     height: 9vh;
     display: flex;
     flex-wrap: nowrap;
