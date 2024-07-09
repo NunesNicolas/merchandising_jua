@@ -9,8 +9,11 @@
     </div>
 
   </div>
-  <button>Cancelar</button>
-  <button @click="this.$emit('util', this.selectedOptions)">Atualizar</button>
+  <div class="containerBt">
+  <slot>
+  </slot>
+  <button style="background-color: #2c9aff;" @click="this.$emit('util', this.selectedOptions)">Atualizar</button>
+</div>
 
 </template>
 
@@ -66,10 +69,19 @@ export default {
 </script>
 
 <style scoped>
+button{
+  margin: 10px;
+}
 .container {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+}
+.containerBt{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: end;
+  margin-top: 10px;
 }
 
 .round {
