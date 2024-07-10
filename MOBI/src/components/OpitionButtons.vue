@@ -23,6 +23,6 @@
     width: 80%;
     height: 10vh;
     margin-top: 3vh;
-    box-shadow: 0vh 0vh 1vh 0.1vh;
+    box-shadow: 0vh 0vh 0.5vh 0.1vh #979797;
 }
 </style>
