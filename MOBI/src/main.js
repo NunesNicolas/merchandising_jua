@@ -29,7 +29,7 @@ const routes = [
         ]
     },
     {
-      path: '/info',
+      path: '/',
       component: sistemaLayout,
       children: [
           { path: '', name: 'info', component: InicialInfo },
