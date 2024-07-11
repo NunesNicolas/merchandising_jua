@@ -5,28 +5,24 @@ import axios from "axios";
 <template>
 
     <div class="page">
-        <headerMobile/>
+        
             <div class="info">
                 <h5>O que deseja fazer?</h5>
                 <OptionButtons/>
             </div>
-            <navbar/>
+            
     </div>
 
 </template>
 
 <script>
 
-import headerMobile from '../../components/headerMobile.vue';
 import OptionButtons from '../../components/OpitionButtons.vue'
-import navbar from '../../components/navbar.vue'
 
 export default {
 
     components: {
-        headerMobile,
         OptionButtons,
-        navbar
     },
     
 }

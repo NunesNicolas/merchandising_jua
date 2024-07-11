@@ -4,14 +4,24 @@ import '../axios'
 
 <template>
   <div class="page">
+    <headerMobile/>
+    <navbar/>
     <router-view :key="$route.fullPath" />
   </div>
 </template>
 
 <script>
+import headerMobile from "./components/headerMobile.vue";
+import navbar from './components/navbar.vue';
 import InicialAuth from './views/auth/login.vue';
 import InicialSistema from './views/dashboard/Home.vue';
 import InicialInfo from './views/dashboard/Show.vue';
+
+components: {
+        headerMobile,
+        navbar
+    }
+
 </script>
 
 <style scoped>

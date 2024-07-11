@@ -30,7 +30,7 @@
     height: 8vh;
     position: fixed;
     padding: 0;
-    margin-top: 79.5vh;
+    margin-top: 85.5vh;
 }
 .navbar-mobile a{
     width: 8vw;
