@@ -1,12 +1,29 @@
 <template>
     <div class="visitasCard">
         <div style="">  
-          <h6>Cariri Shopping</h6>
-          <p>Endereço: Rua alguma 289 <br> Ultima Visita: 12/12/12</p>
+          <h6>{{cliente.nome}}</h6>
+          <p>{{cliente.endereco}} <br> Ultima Visita:{{visita.route_date}}</p>
         </div>
         <button>Checkout</button>
       </div>
 </template>
+<script>
+
+export default {
+  props: {
+        visita: {
+            type: Object,
+            required: true
+        },
+        cliente: {
+            type: Object,
+            required: true
+        }
+    },
+
+   
+};
+</script>
 <style>
 .visitasCard{
     width: 85vw;

@@ -33,6 +33,7 @@ Route::resource('competitors', CompetitorsController::class);
 
 Route::resource('clientes', ClientesController::class);
 
-Route::resource('pesquisa', PromoterRouterController::class);
+Route::resource('pesquisas', PromoterRouterController::class);
+Route::get('pesquisas/promotor/{promotor_id}', [PromoterRouterController::class, 'showByPromotorId']);
 
 Route::resource('workreg', WorkRegisterController::class);

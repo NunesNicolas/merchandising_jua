@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('promotor_router', function (blueprint $table) {
+        Schema::create('promotor_routers', function (blueprint $table) {
             $table->id();
             $table->unsignedBigInteger("cliente_id")->nullable();
             $table->unsignedBigInteger("promotor_id")->nullable();
