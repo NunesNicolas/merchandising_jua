@@ -5,15 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Cliente extends Model
+class WorkRegister extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'nome', 
-        'cnpj', 
-        'endereco',
-        'estado',
-        'imagem',
+        'title',
+        'type',
+        'img',
+        'promotor_route_id',
     ];
+
 }
