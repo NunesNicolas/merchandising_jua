@@ -12,6 +12,7 @@ import authLayout from './views/layouts/auth.vue';
 import InicialAuth from './views/auth/login.vue';
 import InicialSistema from './views/dashboard/Home.vue';
 import InicialInfo from './views/dashboard/Show.vue';
+import CreateAtendimentos from './views/Atendimentos/Create.vue';
 
 const routes = [
     {
@@ -33,6 +34,7 @@ const routes = [
       component: sistemaLayout,
       children: [
           { path: '', name: 'info', component: InicialInfo },
+          { path: 'create', name: 'CreateAtendimentos', component: CreateAtendimentos },
       ]
   }
 ]
