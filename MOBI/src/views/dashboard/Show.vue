@@ -3,49 +3,33 @@ import axios from "axios";
 </script>
 
 <template>
-
-    <div class="page">
-        <headerMobile/>
-            <div class="info">
-                <h5>Roteiro de Clientes</h5>
-                <VisitasCard/>
-            </div>
-            <navbar/>
+    <div class="info">
+        <h5>Roteiro de Clientes</h5>
+        <VisitasCard />
     </div>
-
 </template>
 
 <script>
-
-import headerMobile from '../../components/headerMobile.vue';
 import VisitasCard from '../../components/VisitasCard.vue'
-import navbar from '../../components/navbar.vue'
 
 export default {
 
     components: {
-        headerMobile,
         VisitasCard,
-        navbar
     },
-    
+
 }
 </script>
 
 
 <style>
 
-.page{
-    flex-wrap: wrap;
-    height:15vh;
-    width: 100%;
-    background-color: #ffffff;
-}
-.info{
+.info {
     text-align: center;
     justify-content: space-evenly;
 }
-.info h5{
+
+.info h5 {
     text-align: left;
     color: #a0a0a0;
     font-size: 2.5vh;
@@ -53,5 +37,4 @@ export default {
     margin-top: 50px;
     margin-bottom: 8vh;
 }
-
 </style>
