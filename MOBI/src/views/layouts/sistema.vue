@@ -1,15 +1,15 @@
 <template>
-    <div class="page">
-        <headerMobile />
-
-        <main>
-            <navbar />
-            <router-view :key="$route.fullPath" />
-
-        </main>
-
-
-    </div>
+  <div class="page">
+        <headerMobile/>
+        
+    <main>
+        <navbar/>
+        <router-view :key="$route.fullPath" />
+        
+    </main>
+       
+    
+     </div>
 </template>
 
 <script>
@@ -19,9 +19,9 @@ export default {
 
     components: {
         headerMobile,
-        navbar,
-    }
-
+    navbar,
+}
+    
 }
 
 </script>

@@ -4,11 +4,14 @@ import axios from "axios";
 
 <template>
   <div class="info">
+
     <ActionListWrapper>
       <ActionRouter route="/create" color="primary" label="Adicionar" />
     </ActionListWrapper>
     <h5>Roteiro de Clientes</h5>
-    <VisitasCard />
+        <div class="containercards" v-for="visita in visitas">
+    <VisitasCard :visita="visita" :cliente="visita.cliente"/>
+    </div>
   </div>
 </template>
 
@@ -19,13 +22,41 @@ import ActionRouter from "../../components/ActionRouter.vue";
 import ActionRouterBack from "../../components/ActionRouterBack.vue";
 
 export default {
-  components: {
-    VisitasCard,
-  },
-};
+    data() {
+        return {
+            // visita: {
+            //     data: '12/01/12'
+            // },
+            cliente: {
+                nome: 'nome exemplo',
+                endereco: 'endereco exemplo',
+            },
+            visitas: [],
+        }
+    },
+    
+
+    methods: {
+     async iniciar() {
+        let response = axios.get('/pesquisas/promotor/'+ 1);
+        this.visitas = (await response).data;
+    },
+    },
+    mounted() {
+        this.iniciar();
+    },
+
+    components: {
+        VisitasCard,
+    },
+  }
+
 </script>
 
 <style>
+.containercards {
+    margin-bottom: 70px;
+}
 .info {
   text-align: center;
   justify-content: space-evenly;
