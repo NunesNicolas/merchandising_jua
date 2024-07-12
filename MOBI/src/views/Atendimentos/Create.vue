@@ -1,16 +1,16 @@
 <template>
 
-    <FormAtendimentos :created="true" title="Cadastrar Atrendimento" :values="values" :submitLabel="'Criar Atendimento'"
-        :onSave="saveAtendimento" />
+    <FormAtendimentos :title="'Cadastrar atendimento'" :values="values" :submitLabel="'Criar Atendimento'" :onSave="saveAtendimento" />
 
 </template>
 
 <script>
 import axios from "axios";
-import FormAtendimentos from '../../components/Form/DefaultForm.vue';
+import FormAtendimentos from './Form.vue';
+
 
 export default {
-    name: 'CreateProdutos',
+    name: 'CreateAtendimentos',
     components: {
         FormAtendimentos,
     },

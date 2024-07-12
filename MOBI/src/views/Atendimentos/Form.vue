@@ -1,26 +1,27 @@
 <template>
-    <FormAtendimentos :values="formValues" :validations="validations" :onSave="handleSave" :submitLabel="submitLabel">
+    <DefaultForm :values="formValues" :validations="validations" :onSave="handleSave" :submitLabel="submitLabel">
+      
       <template v-slot="{ formValues, updateFormValue }">
         <h1>{{ title }}</h1>
         <hr>
         <TextInput label="Nome" name="nome" :modelValue="formValues.nome"
           @update:modelValue="updateFormValue('nome', $event)" />
-        
-          
       </template>
-    </FormAtendimentos>
+    </DefaultForm> 
   </template>
   
-  <script>
-    import FormAtendimentos from '../../components/Form/DefaultForm.vue';
-    import TextInput from '../../components/form/TextInput.vue';
+<script>
+import DefaultForm from '../../components/Form/DefaultForm.vue';
+import FormAtendimentos from '../../components/Form/DefaultForm.vue';
+import TextInput from '../../components/Form/TextInput.vue';
  
   
   export default {
     name: 'FormAtendimentos',
     components: {
-      DefaultForm,
+      FormAtendimentos,
       TextInput,
+      DefaultForm,
 
     },
     data() {
@@ -36,27 +37,28 @@
       title: String,
       values: Object,
       submitLabel: String,
-      onSave: Function,
-      created: Boolean
+      onSave: Function
     },
     watch: {
-      values: {
-        handler(newValue) {
-          this.formValues = { ...newValue };
-        },
-        deep: true
-      }
-    },
-    methods: {
-      handleSave(formData) {
-        this.onSave(formData);
+    values: {
+      handler(newValue) {
+        this.formValues = { ...newValue }; // Atualiza formValues com os novos valores
       },
-      updateFormValue(key, value) {
-        this.formValues[key] = value;
-      }
-    },
-    mounted() {
-      this.formValues = { ...this.values };
+      deep: true // Observação profunda para objetos e arrays
     }
+  },
+  data() {
+    return {
+      formValues: { ...this.values },
+      validations: {
+        nome: value => (!value ? 'Nome é obrigatório' : ''),
+      }
+    };
+  },
+  methods: {
+    handleSave(formData) {
+      this.onSave(formData);
+    }
+  }
   };
   </script>
