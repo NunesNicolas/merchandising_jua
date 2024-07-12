@@ -24,7 +24,7 @@ export default {
     methods: {
         async saveAtendimento(formData) {
             try {
-                const response = await axios.post('/', formData);
+                const response = await axios.post('/pesquisas', formData);
                 if (response.status === 201) {
                     alert('Atendimento Criado')
                     this.$router.push('/');

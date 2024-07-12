@@ -16,6 +16,12 @@ class PromoterRouterController extends Controller
         return response()->json($PromoterRouter);
     }
 
+    public function store(Request $request)
+    {
+        $PromoterRouter = promotor_router::create($request->all());
+        return response()->json($PromoterRouter, 201);
+    }
+
    public function showByPromotorId($promotor_id)
     {
         $promoterRouters = promotor_router::where('promotor_id', $promotor_id)->get();
