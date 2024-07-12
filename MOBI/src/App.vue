@@ -13,6 +13,7 @@ import CreateAtendimentos from './views/Atendimentos/Create.vue';
 import InicialAuth from './views/auth/login.vue';
 import InicialSistema from './views/dashboard/Home.vue';
 import InicialInfo from './views/dashboard/Show.vue';
+import VisitasHome from './views/Visitas/Home.vue';
 </script>
 
 <style scoped>

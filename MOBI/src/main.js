@@ -14,6 +14,8 @@ import InicialSistema from './views/dashboard/Home.vue';
 import InicialInfo from './views/dashboard/Show.vue';
 import CreateAtendimentos from './views/Atendimentos/Create.vue';
 
+import VisitasHome from './views/Visitas/Home.vue';
+
 const routes = [
     {
       path: '/login',
@@ -36,7 +38,13 @@ const routes = [
           { path: '', name: 'info', component: InicialInfo },
           { path: 'create', name: 'CreateAtendimentos', component: CreateAtendimentos },
       ]
-  }
+  },
+    {
+      path: '/visitas',
+      children: [
+          { path: '', name: 'home', component: VisitasHome },
+      ]
+    }
 ]
 const router = createRouter({
     history: createWebHistory(),

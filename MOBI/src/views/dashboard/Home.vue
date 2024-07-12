@@ -14,7 +14,6 @@ import axios from "axios";
 <script>
 import OptionButtons from '../../components/OpitionButtons.vue'
 
-
 export default {
 
     components: {
