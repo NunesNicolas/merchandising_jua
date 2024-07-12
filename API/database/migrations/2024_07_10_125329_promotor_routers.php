@@ -20,7 +20,7 @@ return new class extends Migration
             $table->dateTime("checkin_datetime")->nullable();
             $table->float("latitude")->nullable();
             $table->float("longitude")->nullable();
-            $table->enum('status', ['ABERTO', 'CONCLUIDO', 'A FAZER']);
+            $table->enum('status', ['A FAZER', 'CONCLUIDO', 'ABERTO'])->default('A FAZER');
             $table->dateTime("product_survey_datetime")->nullable();
             $table->dateTime("competitor_survey_datetime")->nullable();
             $table->timestamps();
@@ -30,8 +30,8 @@ return new class extends Migration
     /**
      * Reverse the migrations.
      */
-    public function down(): void
-    {
-        //
-    }
+    public function down()
+{
+    Schema::dropIfExists('promotor_routers');
+}
 };
