@@ -13,6 +13,8 @@ import InicialAuth from './views/auth/login.vue';
 import InicialSistema from './views/dashboard/Home.vue';
 import InicialInfo from './views/dashboard/Show.vue';
 
+import VisitasHome from './views/Visitas/Home.vue';
+
 const routes = [
     {
       path: '/login',
@@ -34,7 +36,13 @@ const routes = [
       children: [
           { path: '', name: 'info', component: InicialInfo },
       ]
-  }
+  },
+    {
+      path: '/visitas',
+      children: [
+          { path: '', name: 'home', component: VisitasHome },
+      ]
+    }
 ]
 const router = createRouter({
     history: createWebHistory(),
