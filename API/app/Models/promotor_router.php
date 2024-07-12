@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 
-class PromoterRouter extends Model
+class promotor_router extends Model
 {
     use HasFactory;
 

@@ -19,9 +19,9 @@ export default {
 
     components: {
         headerMobile,
-        navbar,
-    }
-
+    navbar,
+}
+    
 }
 
 </script>
