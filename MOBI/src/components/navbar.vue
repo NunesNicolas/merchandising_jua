@@ -28,9 +28,9 @@
     background-color: #2C9AFF;
     width: 100%;
     height: 8vh;
-    position: fixed;
+    position:fixed;
     padding: 0;
-    margin-top: 85.5vh;
+    bottom: 0;
 }
 .navbar-mobile a{
     width: 8vw;
