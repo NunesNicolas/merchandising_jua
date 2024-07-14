@@ -3,11 +3,13 @@ import axios from "axios";
 </script>
 
 <template>
-  <div class="info">
+  <div class="roteiro-info">
 
+    <div class="add-but">
     <ActionListWrapper>
       <ActionRouter route="/create" color="primary" label="Adicionar" />
     </ActionListWrapper>
+    </div>
     <h5>Roteiro de Clientes</h5>
         <div class="containercards" v-for="visita in visitas">
     <VisitasCard :visita="visita" :cliente="visita.cliente"/>
@@ -57,17 +59,27 @@ export default {
 .containercards {
     margin-bottom: 70px;
 }
-.info {
+.roteiro-info {
   text-align: center;
   justify-content: space-evenly;
 }
 
-.info h5 {
+.roteiro-info h5 {
   text-align: left;
   color: #a0a0a0;
   font-size: 2.5vh;
   margin-left: 40px;
-  margin-top: 50px;
+  margin-top: 30px;
   margin-bottom: 8vh;
+}
+
+.add-but a{  
+  display: flex;
+  justify-content: left;
+  text-align: left;
+  width: 50%;
+  margin-left: 40px;
+  margin-top: 2vh;
+  color: #fff;
 }
 </style>

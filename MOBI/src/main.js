@@ -8,6 +8,7 @@ import App from './App.vue'
 
 import sistemaLayout from './views/layouts/sistema.vue';
 import authLayout from './views/layouts/auth.vue';
+import pesquisaLayout from './views/layouts/pesquisa.vue'
 
 import InicialAuth from './views/auth/login.vue';
 import InicialSistema from './views/dashboard/Home.vue';
@@ -41,6 +42,7 @@ const routes = [
   },
     {
       path: '/visitas',
+      component: pesquisaLayout,
       children: [
           { path: '', name: 'home', component: VisitasHome },
       ]

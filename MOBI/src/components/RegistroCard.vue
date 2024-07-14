@@ -1,6 +1,6 @@
 <template>
 
-    <div class="But">
+    <div class="registro-card">
         <img src="https://blog.cobasi.com.br/wp-content/uploads/2018/08/hamster-anao-russo-capa-blog-cobasi.jpg">
         <div>
             <h5>TÍTULO DO REGISTRO</h5>
@@ -13,7 +13,7 @@
 
 <style>
 
-.But{
+.registro-card{
     margin-inline: 5%;
     flex-wrap: wrap;
     display: flex;
@@ -28,23 +28,23 @@
     align-items: center;
 }
 
-.But img{
+.registro-card img{
     margin-left: 10px;
     border-radius: 20px;
     width: 22%;
     height: 80%;
 }
 
-.But h5 {
+.registro-card h5 {
     font-weight: bold;
     font-size:medium;
     margin-left: 25px;
     margin-top: 10px;
 }
-.But p {
+.registro-card p {
     margin-left: 25px;
 }
-.But i {
+.registro-card i {
     margin-left: 60px;
 }
     
