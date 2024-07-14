@@ -1,15 +1,18 @@
 <template>
-    <header class="header-empresa">
-        <div>
-            <h6>Cliente:</h6>
-            <p>Cariri Garden Shopping</p>
-            <h6>Endereço:</h6>
-            <p>Rua, Avenida Ailton Gomes</p>
-            <h6>Tempo de Pesquisa:</h6>
-            <p>2h e 35min e 45s</p>
-        </div>
-        <img src="../assets/nova-logo.png">
-    </header>
+    <div style="height: 25vh; width: 100%;">
+        <header class="header-empresa">
+            <div>
+                <h6>Cliente:</h6>
+                <p>Cariri Garden Shopping</p>
+                <h6>Endereço:</h6>
+                <p>Rua, Avenida Ailton Gomes</p>
+                <h6>Tempo de Pesquisa:</h6>
+                <p>2h e 35min e 45s</p>
+            </div>
+            <img src="../assets/nova-logo.png">
+        </header>
+    </div>
+    
 </template>
 
 <style>

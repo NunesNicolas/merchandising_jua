@@ -14,31 +14,27 @@ import InicialAuth from './views/auth/login.vue';
 import InicialSistema from './views/dashboard/Home.vue';
 import InicialInfo from './views/dashboard/Show.vue';
 import VisitasHome from './views/Visitas/Home.vue';
+import VisitasCheck from './views/Visitas/CheckCamp.vue';
 </script>
 
 <style scoped>
 body {
   background-color: #ff0000;
 }
+#app {
+  padding: 0;
+  margin: 0;
+  
 
+}
 .page {
   padding: 0;
   margin: 0;
   height: 100vh;
   width: 100%;
   min-height: 100vh;
+  padding-bottom: 10vh;
 }
 
-#app {
-  padding: 0;
-  margin: 0;
-}
-#topheader {
-  padding-bottom: 2px;
-  background-color: #f0f0f0;
-  height: 100%;
-  width: 94.95%;
-  margin-left: 5vw;
-  border: none;
-}
+
 </style>
