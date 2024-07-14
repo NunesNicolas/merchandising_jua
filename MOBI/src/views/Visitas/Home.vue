@@ -1,13 +1,17 @@
 <template>
-    <headerEmpresa/>
+    
+    <researchField/>
 </template>
 
 <script>
-    import headerEmpresa from "../../components/headerEmpresa.vue";
+    import HeaderEmpresa from "../../components/headerEmpresa.vue";
+    import researchField from "../../components/researchField.vue";
     export default{
         components:{
             headerEmpresa,
-        }
+            researchField
+        },
+            
     }
 
 </script>

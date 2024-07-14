@@ -17,10 +17,12 @@
         display: flex;
         flex-wrap: wrap;
         width: 100%;
-        height: 25vh;
+        height: 24vh;
         background-color: #2C9AFF;
         color: #ffffff;
         align-items: center;
+        position: fixed;
+        z-index: 1;
     }
     header div{
         display: flex;
@@ -28,8 +30,7 @@
         width: 60%;
         height: 100%;
         padding-left: 5vw;
-        padding-top: 3vh;
-        padding-bottom: 1vh;
+        padding-block: 3vh;
         text-align: start;
     }
     header img{
