@@ -8,10 +8,12 @@ import App from './App.vue'
 
 import sistemaLayout from './views/layouts/sistema.vue';
 import authLayout from './views/layouts/auth.vue';
+import pesquisaLayout from './views/layouts/pesquisa.vue'
 
 import InicialAuth from './views/auth/login.vue';
 import InicialSistema from './views/dashboard/Home.vue';
 import InicialInfo from './views/dashboard/Show.vue';
+import CreateAtendimentos from './views/Atendimentos/Create.vue';
 
 import VisitasHome from './views/Visitas/Home.vue';
 
@@ -35,10 +37,12 @@ const routes = [
       component: sistemaLayout,
       children: [
           { path: '', name: 'info', component: InicialInfo },
+          { path: 'create', name: 'CreateAtendimentos', component: CreateAtendimentos },
       ]
   },
     {
       path: '/visitas',
+      component: pesquisaLayout,
       children: [
           { path: '', name: 'home', component: VisitasHome },
       ]

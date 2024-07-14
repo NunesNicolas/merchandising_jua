@@ -1,6 +1,5 @@
 <template>
     <div class="page">
-        <headerMobile />
 
         <main>
             <navbar />
@@ -14,12 +13,10 @@
 
 <script>
 import navbar from '../../components/navbar.vue';
-import headerMobile from '../../components/headerMobile.vue';
 export default {
 
     components: {
-        headerMobile,
-    navbar,
+        navbar,
 }
     
 }
@@ -32,5 +29,6 @@ export default {
     height: 15vh;
     width: 100%;
     background-color: #ffffff;
+    background-size: cover;
 }
 </style>

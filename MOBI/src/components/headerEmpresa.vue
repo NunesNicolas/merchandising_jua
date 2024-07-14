@@ -1,5 +1,5 @@
 <template>
-    <header class="">
+    <header class="header-empresa">
         <div>
             <h6>Cliente:</h6>
             <p>Cariri Garden Shopping</p>
@@ -13,7 +13,7 @@
 </template>
 
 <style>
-    header{
+    .header-empresa {
         display: flex;
         flex-wrap: wrap;
         width: 100%;
@@ -24,22 +24,24 @@
         position: fixed;
         z-index: 1;
     }
-    header div{
+    .header-empresa div{
         display: flex;
         flex-wrap: wrap;
         width: 60%;
         height: 100%;
         padding-left: 5vw;
-        padding-block: 3vh;
+        padding-top: 3vh;
+        padding-bottom: 1vh;
         text-align: start;
+
     }
-    header img{
+    .header-empresa img{
         width: 25vw;
         height: 8vh;
         margin-left: 10vw;
         margin-bottom: 12vh;
     }
-    header h6{
+    .header-empresa div h6{
         width: 100%;
         font-weight: bold;
         padding: 0;

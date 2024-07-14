@@ -2,7 +2,7 @@
     <section>
         <div class="view">
             <img src="../../assets/nova-logo.png">
-            <div class="info">
+            <div class="login">
                 <input type="textarea" placeholder=" Nome de Usuário">
                 <input type="password" placeholder=" Senha">
             </div>
@@ -40,11 +40,11 @@ export default {
         margin-top: 22vh;
         margin-bottom: 3vh;
     }
-    .info{
+    .login{
         height: 10%;
         width: 100%;
     }
-    .info input{
+    .login input{
         margin-bottom: 20px;
         width: 75%;
         background-color: #fff;
@@ -55,7 +55,7 @@ export default {
         box-shadow: 0vh 0vh 0.5vh 0vh #000;
         padding-inline-start: 3vw;
     }
-    a{  
+    .view a{  
         display: flex;
         justify-content: center;
         text-align: left;
