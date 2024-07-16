@@ -1,12 +1,15 @@
 <template>
-    <headerEmpresa />
+    <div style="height: 25vh; width: 100%;">
+        <headerEmpresa />
+    </div>
+    
     <h5 class="name">Registro de Trabalho</h5>
     <div>
         <button class="btn">Adicionar Registro
             <i class="bi bi-image"></i>
         </button>
 
-        <RegistroCard />
+        <RegistroCard/>
 
     </div>
 </template>

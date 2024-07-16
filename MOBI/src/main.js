@@ -16,6 +16,8 @@ import InicialInfo from './views/dashboard/Show.vue';
 import CreateAtendimentos from './views/Atendimentos/Create.vue';
 
 import VisitasHome from './views/Visitas/Home.vue';
+import VisitasCheck from './views/Visitas/CheckCamp.vue';
+import Registro from './views/Visitas/Registros.vue';
 
 const routes = [
     {
@@ -45,6 +47,20 @@ const routes = [
       component: pesquisaLayout,
       children: [
           { path: '', name: 'home', component: VisitasHome },
+      ]
+    },
+    {
+      path: '/visitas/check',
+      component: pesquisaLayout,
+      children: [
+          { path: '', name: 'check', component: VisitasCheck },
+      ]
+    },
+    {
+      path: '/visitas/registro',
+      component: pesquisaLayout,
+      children: [
+          { path: '', name: 'regristro', component: Registro },
       ]
     }
 ]

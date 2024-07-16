@@ -1,4 +1,5 @@
 <template>
+  <div class="bottomSpace">
     <nav class="navbar-mobile">
         <router-link to="">
           <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-grid-1x2-fill" viewBox="0 0 16 16">
@@ -18,8 +19,10 @@
           </svg>
         </router-link>
     </nav>
+  </div>
 </template>
 <style>
+
 .navbar-mobile{
     display: flex;
     flex-wrap: wrap;
@@ -31,11 +34,13 @@
     position:fixed;
     padding: 0;
     bottom: 0;
+    color: #ffffff;
+    z-index: 1;
 }
 .navbar-mobile a{
     width: 8vw;
     margin: 0;
-    color: white;
+    color: #ffffff;
 }
 
 </style>
