@@ -35,6 +35,7 @@
 .navbar-mobile a{
     width: 8vw;
     margin: 0;
+    color: white;
 }
 
 </style>
