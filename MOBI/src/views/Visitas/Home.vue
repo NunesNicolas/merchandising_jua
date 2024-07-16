@@ -4,11 +4,15 @@
     </div>
     
     <h5 class="name">Registro de Trabalho</h5>
-    <div>
+    <div class="tamanho">
         <button class="btn">Adicionar Registro
             <i class="bi bi-image"></i>
         </button>
 
+        <RegistroCard/>
+        <RegistroCard/>
+        <RegistroCard/>
+        <RegistroCard/>
         <RegistroCard/>
 
     </div>
@@ -37,6 +41,10 @@ export default {
     color: #2C9AFF;
     height: 5vh;
     width: 30vh;
+}
+
+.tamanho{
+    padding-bottom: 20vh;
 }
 
 .name {
