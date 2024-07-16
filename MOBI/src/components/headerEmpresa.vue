@@ -24,7 +24,7 @@
         background-color: #2C9AFF;
         color: #ffffff;
         align-items: center;
-        position: fixed;
+        position: absolute;
         z-index: 1;
     }
     .header-empresa div{

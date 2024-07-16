@@ -12,10 +12,10 @@ import pesquisaLayout from './views/layouts/pesquisa.vue'
 
 import InicialAuth from './views/auth/login.vue';
 import InicialSistema from './views/dashboard/Home.vue';
-import InicialInfo from './views/dashboard/Show.vue';
+import InicialInfo from './views/dashboard/Dashboard.vue';
 import CreateAtendimentos from './views/Atendimentos/Create.vue';
 
-import VisitasHome from './views/Visitas/Home.vue';
+import RegistroHome from './views/Visitas/Home.vue';
 import VisitasCheck from './views/Visitas/CheckCamp.vue';
 import Registro from './views/Visitas/Registros.vue';
 
@@ -32,7 +32,8 @@ const routes = [
         component: sistemaLayout,
         children: [
             { path: ':pesquisaid', name: 'pesquisa', component: InicialSistema},
-            { path: 'registro/:pesquisaid', name: 'regristro', component: Registro },
+            { path: 'create/:pesquisaid', name: 'newReg', component: Registro },
+            { path: 'registro/:pesquisaid', name: 'registro', component: RegistroHome },
         ]
     },
     {
@@ -43,13 +44,6 @@ const routes = [
           { path: 'create', name: 'CreateAtendimentos', component: CreateAtendimentos },
       ]
   },
-    {
-      // path: '/visitas',
-      // component: pesquisaLayout,
-      // children: [
-      //     { path: '', name: 'home', component: VisitasHome },
-      // ]
-    },
     {
       path: '/visitas/check',
       component: pesquisaLayout,

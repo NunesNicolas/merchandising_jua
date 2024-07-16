@@ -22,7 +22,7 @@ export default {
     routerbutton (route) {
       switch (route) {
         case 'RT':
-          this.$router.push({ name: 'regristro', params: { pesquisaid: this.$route.pesquisaid} });
+          this.$router.push({ name: 'registro', params: { pesquisaid: this.$route.pesquisaid} });
           break;
       
         default:

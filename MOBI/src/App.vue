@@ -12,8 +12,8 @@ import '../axios'
 import CreateAtendimentos from './views/Atendimentos/Create.vue';
 import InicialAuth from './views/auth/login.vue';
 import InicialSistema from './views/dashboard/Home.vue';
-import InicialInfo from './views/dashboard/Show.vue';
-import VisitasHome from './views/Visitas/Home.vue';
+import InicialInfo from './views/dashboard/Dashboard.vue';
+import RegistroHome from './views/Visitas/Home.vue';
 import Registro from './views/Visitas/Registros.vue';
 import VisitasCheck from './views/Visitas/CheckCamp.vue';
 </script>
