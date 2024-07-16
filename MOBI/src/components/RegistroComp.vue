@@ -25,7 +25,7 @@
         position: fixed;
         padding-top: 5vh;
     }
-    label{
+    .RegistroComponents label{
         color: #ffffff;
         font-size: 2.5vh;
         width: 100%;
@@ -37,7 +37,8 @@
     .newReg{
         color: #ffffff;
         width: 80%;
-        height: 5vh;
+        height: 6vh;
+        font-size: 200%;
         border-bottom: solid #ffffff 0.5vh;
         margin-left: 10vw;
         text-align: start;
@@ -52,7 +53,9 @@
         box-shadow: #000000 0vh 0.2vh 0vh 0.1vh;
         font-size: bold;
     }
+
     .img{
-        height: 3vh;
+        width: 80%;
+        height: 5vh;
     }
 </style>

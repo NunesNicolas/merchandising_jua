@@ -28,7 +28,7 @@ export default {
     flex-wrap: wrap;
     height: 15vh;
     width: 100%;
-    background-color: #ffffff;
     background-size: cover;
+    background-color: #ffffff;
 }
 </style>

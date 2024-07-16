@@ -16,7 +16,7 @@
         width: 80vw;
         height: 12vh;
         margin-inline: 10vw;
-        margin-top: 5vh;
+        margin-top: 3vh;
     }
     .separator label{
         text-align: start;
@@ -24,6 +24,7 @@
         height: 3vh;
         color: #b0b0b0;
         font-weight: bold;
+        font-size: 2.5vh;
 
     }
     .separator input{

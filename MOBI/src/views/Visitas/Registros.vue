@@ -1,6 +1,8 @@
 <template>
-    <RegistroCamp/>
-    <SaveAndCancel/>
+    <div class="SaveCancel">
+        <RegistroCamp/>
+        <SaveAndCancel/>
+    </div>
 </template>
 
 <script>
@@ -21,9 +23,6 @@
     .page{
         background-color: #000000;
     }
-    .butArea{
-        background-color: transparent;
-    }
     .save{
         background-color: #ffffff;
         color: #2C9AFF;
@@ -36,5 +35,9 @@
     .space{
         width: 0;
         height: 0;
+    }
+    .SaveCancel .butArea{
+        box-shadow: 0.0vh 0.0vh 0.0vh 0.0vh #979797;
+        background-color: #2C9AFF;
     }
 </style>

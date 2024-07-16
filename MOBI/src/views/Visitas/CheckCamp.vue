@@ -1,16 +1,28 @@
 <template>
-    <headerEmpresa/>
-    <researchField/>
-    <researchField/>
-    <researchField/>
-    <SaveAndCancel/>
+    <div style="background-color: #ffffff;">
+        <headerEmpresa/>
+        <div class="tamanho">
+            <researchField/>
+            <researchField/>
+            <researchField/>
+            <researchField/>
+        </div>
+        <SaveAndCancel/>
+    </div>
 </template>
 
 <style>
-    .space{
-        width: 100%;
-        height: 19vh;
-    }
+.tamanho{
+    padding-bottom: 20vh;
+
+}
+
+div .butArea{
+    box-shadow: 0.0vh 0.0vh 0.9vh 0.0vh #979797;
+    background-color: #D9D9D9;
+}
+
+
 </style>
 
 <script>

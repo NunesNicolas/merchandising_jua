@@ -9,8 +9,14 @@
     
 </template>
 <style>
+
+    .space{
+    background-color: #ffffff;
+    width: 100%;
+    height: 100%;
+    }
+
     .butArea{
-        background-color: #D9D9D9;
         width: 100%;
         height: 18vh;
         bottom: 8vh;
