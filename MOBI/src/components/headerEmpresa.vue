@@ -4,9 +4,9 @@
             <div>
                 <h6>Cliente:</h6>
                 
-                <p>{{ visita}}</p>
+                <p>{{visita?.cliente?.nome }}</p>
                 <h6>Endereço:</h6>
-                <p>{{ visita}}</p>
+                <p>{{visita?.cliente?.endereco}}</p>
                 <h6>Tempo de Pesquisa:</h6>
                 <p>99h e 99min e 99s</p>
             </div>
@@ -17,11 +17,10 @@
 </template>
 
 <script>
-import axios from 'axios';
 
 export default {
     props:{
-        visita: {
+        pesquisa: {
             type: Object,
             required: true
         },

@@ -1,6 +1,6 @@
 <template>
   <div style="height: 25vh; width: 100%">
-    <headerEmpresa />
+    <headerEmpresa :pesquisa="pesquisa" />
   </div>
 
   <h5 class="name">Registro de Trabalho</h5>
@@ -10,7 +10,7 @@
       <i class="bi bi-image"></i>
     </button>
 
-    <RegistroCard :visita="pesquisa.cliente"/>
+    <RegistroCard />
   </div>
 </template>
 
@@ -20,34 +20,30 @@ import RegistroCard from "../../components/RegistroCard.vue";
 import axios from 'axios';
 
 export default {
-    data(){
-        return{
-            id: this.$route.params.pesquisaid,
-            pesquisa: {}
-        }
-    },
-    components: {
-        headerEmpresa,
-        RegistroCard,
-    },
-    methods: {
-        fetchPesquisa() {
-            axios.get('/pesquisas/' + this.id)
-                .then(response => {
-                    this.pesquisa = response.data;
-                    console.log('Dados da pesquisa:', response.data);
-                })
-                .catch(error => {
-                    console.error('Erro ao carregar clientes: ', error);
-                });
-        },
-        routebutton(id) {
-            this.$router.push({ name: 'newReg', params: { id: id } });
+  data() {
+    return {
+      id: this.$route.params.pesquisaid,
+      pesquisa: {}
     }
-},
-mounted(){
+  },
+  components: {
+    headerEmpresa,
+    RegistroCard,
+  },
+  methods: {
+    async fetchPesquisa() {
+      let response = axios.get('/pesquisas/' + this.id)
+      this.pesquisa = (await response).data;
+      console.log('Dados da pesquisa:', this.pesquisa);
+    },
+
+    routebutton(id) {
+      this.$router.push({ name: 'newReg', params: { id: id } });
+    }
+  },
+  mounted() {
     this.fetchPesquisa();
-}
+  }
 }
 </script>
 
