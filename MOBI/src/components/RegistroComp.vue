@@ -10,7 +10,9 @@
             <option value="2">Tipo 3</option>
         </select>
         <label>Selecionar uma Imagem</label>
-        <input type="file" class="img" accept=".png, .jpeg, .svg">
+        <div class="img">
+            <input class="form-control form-control-lg" type="file" accept=".png, .jpeg, .svg">
+          </div>
     </div>
 
 </template>
@@ -55,7 +57,12 @@
     }
 
     .img{
+        color: #ffffff;
         width: 80%;
         height: 5vh;
+        font-size: 200%;
+        border-bottom: solid #ffffff 0.5vh;
+        margin-left: 10vw;
+        text-align: start;
     }
 </style>
