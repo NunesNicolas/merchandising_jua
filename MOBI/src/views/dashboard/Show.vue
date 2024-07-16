@@ -6,13 +6,19 @@ import axios from "axios";
   <div class="roteiro-info">
 
     <div class="add-but">
-    <ActionListWrapper>
-      <ActionRouter route="/create" color="primary" label="Adicionar" />
-    </ActionListWrapper>
+      <ActionListWrapper>
+        <ActionRouter route="/create" color="primary" label="Adicionar" />
+      </ActionListWrapper>
     </div>
     <h5>Roteiro de Clientes</h5>
-        <div class="containercards" v-for="visita in visitas">
-    <VisitasCard :visita="visita" :cliente="visita.cliente"/>
+    <div class="containercards" v-for="visita in visitas">
+      <VisitasCard :visita="visita" :cliente="visita.cliente">
+        <slot>
+
+          <button @click="RouterButton(visita.id)" class="routerbutton">Checkout</button>
+
+        </slot>
+      </VisitasCard>
     </div>
   </div>
 </template>
@@ -24,41 +30,46 @@ import ActionRouter from "../../components/ActionRouter.vue";
 import ActionRouterBack from "../../components/ActionRouterBack.vue";
 
 export default {
-    data() {
-        return {
-            // visita: {
-            //     data: '12/01/12'
-            // },
-            cliente: {
-                nome: 'nome exemplo',
-                endereco: 'endereco exemplo',
-            },
-            visitas: [],
-        }
-    },
-    
+  data() {
+    return {
+      // visita: {
+      //     data: '12/01/12'
+      // },
+      cliente: {
+        nome: 'nome exemplo',
+        endereco: 'endereco exemplo',
+      },
+      visitas: [],
+    }
+  },
 
-    methods: {
-     async iniciar() {
-        let response = axios.get('/pesquisas/promotor/'+ 1);
-        this.visitas = (await response).data;
-    },
-    },
-    mounted() {
-        this.iniciar();
+
+  methods: {
+    async iniciar() {
+      let response = axios.get('/pesquisas/promotor/' + 1);
+      this.visitas = (await response).data;
     },
 
-    components: {
-        VisitasCard,
-    },
-  }
+    RouterButton(id){
+      this.$router.push({ name: 'pesquisa', params: { pesquisaid: id} });
+    }
+  },
+  mounted() {
+    this.iniciar();
+  },
+
+  components: {
+    VisitasCard,
+  },
+}
 
 </script>
 
 <style>
 .containercards {
-    margin-bottom: 70px;
+  margin-bottom: 70px;
 }
+
 .roteiro-info {
   text-align: center;
   justify-content: space-evenly;
@@ -73,7 +84,7 @@ export default {
   margin-bottom: 8vh;
 }
 
-.add-but a{  
+.add-but a {
   display: flex;
   justify-content: left;
   text-align: left;

@@ -4,7 +4,9 @@
           <h6>{{cliente.nome}}</h6>
           <p>{{cliente.endereco}} <br> Ultima Visita:{{visita.route_date}}</p>
         </div>
-        <button>Checkout</button>
+        <slot>
+       
+      </slot>
       </div>
 </template>
 <script>

@@ -6,7 +6,9 @@
           </svg>
           <strong>User Ipsum</strong>
         </p>
+        <router-link :to="{ name: 'dashboard' }">
         <p><strong>Home</strong></p>
+      </router-link>
     </div>
 </template>
 <style>

@@ -28,26 +28,27 @@ const routes = [
       ]
     },
     {
-        path: '/home',
+        path: '/pesquisas',
         component: sistemaLayout,
         children: [
-            { path: '', name: 'dashboard', component: InicialSistema },
+            { path: ':pesquisaid', name: 'pesquisa', component: InicialSistema},
+            { path: 'registro/:pesquisaid', name: 'regristro', component: Registro },
         ]
     },
     {
       path: '/',
       component: sistemaLayout,
       children: [
-          { path: '', name: 'info', component: InicialInfo },
+          { path: '', name: 'dashboard', component: InicialInfo },
           { path: 'create', name: 'CreateAtendimentos', component: CreateAtendimentos },
       ]
   },
     {
-      path: '/visitas',
-      component: pesquisaLayout,
-      children: [
-          { path: '', name: 'home', component: VisitasHome },
-      ]
+      // path: '/visitas',
+      // component: pesquisaLayout,
+      // children: [
+      //     { path: '', name: 'home', component: VisitasHome },
+      // ]
     },
     {
       path: '/visitas/check',
@@ -60,7 +61,7 @@ const routes = [
       path: '/visitas/registro',
       component: pesquisaLayout,
       children: [
-          { path: '', name: 'regristro', component: Registro },
+         
       ]
     }
 ]

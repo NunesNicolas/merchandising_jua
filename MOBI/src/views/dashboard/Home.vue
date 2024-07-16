@@ -6,7 +6,7 @@ import axios from "axios";
 
     <div class="info">
         <h5>O que deseja fazer?</h5>
-        <OptionButtons />
+        <OptionButtons :id="this.$route.pesquisaid"/>
     </div>
 
 </template>
