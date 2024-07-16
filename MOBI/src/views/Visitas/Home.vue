@@ -1,6 +1,6 @@
 <template>
   <div style="height: 25vh; width: 100%">
-    <headerEmpresa :pesquisa="pesquisa" />
+    <headerEmpresa :visita="pesquisa" />
   </div>
 
   <h5 class="name">Registro de Trabalho</h5>

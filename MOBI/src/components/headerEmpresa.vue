@@ -20,7 +20,7 @@
 
 export default {
     props:{
-        pesquisa: {
+        visita: {
             type: Object,
             required: true
         },
