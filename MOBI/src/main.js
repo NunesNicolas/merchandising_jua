@@ -11,7 +11,7 @@ import authLayout from './views/layouts/auth.vue';
 import pesquisaLayout from './views/layouts/pesquisa.vue'
 
 import InicialAuth from './views/auth/login.vue';
-import InicialSistema from './views/PesquisaHome.vue';
+import InicialSistema from './views/Pesquisa/Home.vue';
 import InicialInfo from './views/Dashboard.vue';
 import Checkin from './views/Checkin.vue';
 
