@@ -15,10 +15,10 @@ import InicialSistema from './views/PesquisaHome.vue';
 import InicialInfo from './views/Dashboard.vue';
 import Checkin from './views/Checkin.vue';
 
-import CreateAtendimentos from './views/RegistroTb/Create.vue';
-import RegistroCreate from './views/RegistroTb/Home.vue';
+import CreateAtendimentos from './views/Pesquisa/Create.vue';
+import RegistroCreate from './views/RegistroTb/Create.vue';
 
-import RegistroHome from './views/PesquisaJua/Home.vue';
+import RegistroHome from './views/RegistroTb/Home.vue';
 import VisitasCheck from './views/PesquisaJua/CheckCamp.vue';
 
 

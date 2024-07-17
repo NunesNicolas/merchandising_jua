@@ -1,39 +1,43 @@
 <template>
-
-    <FormAtendimentos :title="'Cadastrar atendimento'" :values="values" :submitLabel="'Criar Atendimento'" :onSave="saveAtendimento" />
-
+    <div class="SaveCancel">
+        <RegistroCamp/>
+        <SaveAndCancel/>
+    </div>
 </template>
 
 <script>
-import axios from "axios";
-import FormAtendimentos from './Form.vue';
-
-
-export default {
-    name: 'CreateAtendimentos',
+    import SaveAndCancel from "../../components/SaveAndCancel.vue";
+    import RegistroCamp from "../../components/RegistroComp.vue";
+    export default {
     components: {
-        FormAtendimentos,
-    },
-    data() {
-        return {
-            values: {
-                nome: '',
-            }
-        };
-    },
-    methods: {
-        async saveAtendimento(formData) {
-            try {
-                const response = await axios.post('/pesquisas', formData);
-                if (response.status === 201) {
-                    alert('Atendimento Criado')
-                    this.$router.push('/');
-                }
-            } catch (error) {
-
-                alert('Erro ao salvar atendimento', error);
-            }
-        }
+        RegistroCamp,
+        SaveAndCancel,
     }
-};
+}
 </script>
+
+<style>
+    #app{
+        padding-bottom: 0vh;
+    }
+    .page{
+        background-color: #000000;
+    }
+    .save{
+        background-color: #ffffff;
+        color: #2C9AFF;
+    }
+    .cancel{
+        background-color: #2C9AFF;
+        color: #ffffff;
+        border: solid #fff 0.3vh;
+    }
+    .space{
+        width: 0;
+        height: 0;
+    }
+    .SaveCancel .butArea{
+        box-shadow: 0.0vh 0.0vh 0.0vh 0.0vh #979797;
+        background-color: #2C9AFF;
+    }
+</style>
