@@ -5,9 +5,9 @@
             <h4 class="text">está preste a iniciar seu atendimento, mas antes, precisamos que confirme sua localização
             </h4>
         </div>
-        <div class="d-flex" style="gap: 10px; width:100%; justify-content:center">
-        <RouterBack style="width: 40%;  font-size:18px"/>
-        <a  type="button" @click="RouterButton(this.$route.pesquisaid)" id="routerbutton" class="btn btn-light align-self-center">Iniciar</a>
+        <div class="d-grid" style="gap:25px; width:100%; justify-content:center">
+        <RouterBack style="font-size:20px"/>
+        <a  type="button" @click="getGeoLocation();" id="routerbutton" class="btn btn-light align-self-center">Iniciar</a>
     </div>
     </div>
 </template>
@@ -15,6 +15,16 @@
 import RouterBack from '../components/ActionRouterBack.vue'
 export default {
     methods: {
+        getGeoLocation() {
+            window.navigator.geolocation.getCurrentPosition(this.navtrue, this.navfalse);
+        },
+        navtrue(geoloc){
+            console.log(geoloc);
+            this.RouterButton(this.$route.pesquisaid);
+        },
+        navfalse(geoloc){
+            console.error(geoloc);
+        },
         RouterButton(id) {
             this.$router.push({ name: 'pesquisa', params: { pesquisaid: id } });
         }
@@ -30,13 +40,12 @@ export default {
 
 }
 #routerbutton{
-    width: 40%;
     border-radius: 20px;
     border:solid  #858585 0.2vh;
     color:white;
     background-color: #47a6ff;
     font-weight: bold;
-    font-size:18px
+    font-size:20px
 }
 .textbox {
     padding: 20px;
