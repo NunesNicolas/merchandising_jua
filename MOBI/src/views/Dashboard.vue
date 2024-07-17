@@ -24,10 +24,10 @@ import axios from "axios";
 </template>
 
 <script>
-import VisitasCard from "../../components/VisitasCard.vue";
-import ActionListWrapper from "../../components/ActionListWrapper.vue";
-import ActionRouter from "../../components/ActionRouter.vue";
-import ActionRouterBack from "../../components/ActionRouterBack.vue";
+import VisitasCard from "../components/VisitasCard.vue";
+import ActionListWrapper from "../components/ActionListWrapper.vue";
+import ActionRouter from "../components/ActionRouter.vue";
+import ActionRouterBack from "../components/ActionRouterBack.vue";
 
 export default {
   data() {
