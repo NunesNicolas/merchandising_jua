@@ -6,9 +6,10 @@
             </h4>
         </div>
         <div class="d-grid" style="gap:25px; width:100%; justify-content:center">
-        <RouterBack style="font-size:20px"/>
-        <a  type="button" @click="getGeoLocation();" id="routerbutton" class="btn btn-light align-self-center">Iniciar</a>
-    </div>
+            <RouterBack style="font-size:20px" />
+            <a type="button" @click="getGeoLocation();" id="routerbutton"
+                class="btn btn-light align-self-center">Iniciar</a>
+        </div>
     </div>
 </template>
 <script>
@@ -18,13 +19,16 @@ export default {
         getGeoLocation() {
             window.navigator.geolocation.getCurrentPosition(this.navtrue, this.navfalse);
         },
-        navtrue(geoloc){
+
+        navtrue(geoloc) {
             console.log(geoloc);
             this.RouterButton(this.$route.pesquisaid);
         },
-        navfalse(geoloc){
+
+        navfalse(geoloc) {
             console.error(geoloc);
         },
+
         RouterButton(id) {
             this.$router.push({ name: 'pesquisa', params: { pesquisaid: id } });
         }
@@ -35,18 +39,20 @@ export default {
 }
 </script>
 <style scoped>
-#all{
-    margin-top:30%;
+#all {
+    margin-top: 30%;
 
 }
-#routerbutton{
+
+#routerbutton {
     border-radius: 20px;
-    border:solid  #858585 0.2vh;
-    color:white;
+    border: solid #858585 0.2vh;
+    color: white;
     background-color: #47a6ff;
     font-weight: bold;
-    font-size:20px
+    font-size: 20px
 }
+
 .textbox {
     padding: 20px;
     margin-bottom: 10px;
