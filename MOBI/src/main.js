@@ -11,13 +11,16 @@ import authLayout from './views/layouts/auth.vue';
 import pesquisaLayout from './views/layouts/pesquisa.vue'
 
 import InicialAuth from './views/auth/login.vue';
-import InicialSistema from './views/dashboard/Home.vue';
-import InicialInfo from './views/dashboard/Dashboard.vue';
-import CreateAtendimentos from './views/Atendimentos/Create.vue';
+import InicialSistema from './views/PesquisaHome.vue';
+import InicialInfo from './views/Dashboard.vue';
 
-import RegistroHome from './views/Visitas/Home.vue';
-import VisitasCheck from './views/Visitas/CheckCamp.vue';
-import Registro from './views/Visitas/Registros.vue';
+import CreateAtendimentos from './views/RegistroTb/Create.vue';
+import RegistroCreate from './views/RegistroTb/Home.vue';
+
+import RegistroHome from './views/PesquisaJua/Home.vue';
+import VisitasCheck from './views/PesquisaJua/CheckCamp.vue';
+
+
 
 const routes = [
     {
@@ -32,7 +35,7 @@ const routes = [
         component: sistemaLayout,
         children: [
             { path: ':pesquisaid', name: 'pesquisa', component: InicialSistema},
-            { path: 'create/:pesquisaid', name: 'newReg', component: Registro },
+            { path: 'registro/create/:pesquisaid', name: 'newReg', component: RegistroCreate },
             { path: 'registro/:pesquisaid', name: 'registro', component: RegistroHome },
         ]
     },

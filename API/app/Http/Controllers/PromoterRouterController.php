@@ -10,9 +10,11 @@ use App\Models\Cliente;
 
 class PromoterRouterController extends Controller
 {
-    public function index()
+    public function show($id)
     {
-        $PromoterRouter = promotor_router::all();
+        $PromoterRouter = promotor_router::find($id);
+        $PromoterRouter->promotor = Promotores::find($PromoterRouter->promotor_id);
+        $PromoterRouter->cliente = Cliente::find($PromoterRouter->cliente_id);
         return response()->json($PromoterRouter);
     }
 

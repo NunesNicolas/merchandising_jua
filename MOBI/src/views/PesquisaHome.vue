@@ -12,7 +12,7 @@ import axios from "axios";
 </template>
 
 <script>
-import OptionButtons from '../../components/OpitionButtons.vue'
+import OptionButtons from '../components/OpitionButtons.vue'
 
 export default {
 
