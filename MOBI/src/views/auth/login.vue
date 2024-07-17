@@ -1,6 +1,7 @@
 <template>
     <section>
         <div class="view">
+            
             <img src="../../assets/nova-logo.png">
             <div class="login">
                 <input type="textarea" placeholder=" Nome de Usuário">
