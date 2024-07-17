@@ -10,7 +10,7 @@ import '../axios'
 
 <script>
 import CreateAtendimentos from './views/RegistroTb/Create.vue';
-import InicialAuth from './views/Auth/login.vue';
+import InicialAuth from './views/auth/login.vue';
 import InicialSistema from './views/PesquisaHome.vue';
 import InicialInfo from './views/Dashboard.vue';
 import RegistroHome from './views/PesquisaJua/Home.vue';
