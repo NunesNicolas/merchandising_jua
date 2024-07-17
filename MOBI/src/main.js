@@ -6,9 +6,9 @@ import 'bootstrap-vue-3/dist/bootstrap-vue-3.css';
 import './style.css'
 import App from './App.vue'
 
-import sistemaLayout from './views/layouts/sistema.vue';
-import authLayout from './views/layouts/auth.vue';
-import pesquisaLayout from './views/layouts/pesquisa.vue'
+import sistemaLayout from './views/Layouts/sistema.vue';
+import authLayout from './views/Layouts/auth.vue';
+import pesquisaLayout from './views/Layouts/pesquisa.vue'
 
 import InicialAuth from './views/Auth/login.vue';
 import InicialSistema from './views/PesquisaHome.vue';
