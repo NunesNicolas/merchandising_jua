@@ -51,7 +51,7 @@ export default {
     },
 
     RouterButton(id){
-      this.$router.push({ name: 'pesquisa', params: { pesquisaid: id} });
+      this.$router.push({ name: 'checkin', params: { pesquisaid: id} });
     }
   },
   mounted() {

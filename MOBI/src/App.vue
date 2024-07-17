@@ -16,6 +16,7 @@ import InicialInfo from './views/Dashboard.vue';
 import RegistroHome from './views/PesquisaJua/Home.vue';
 import Registro from './views/RegistroTb/Home.vue';
 import VisitasCheck from './views/PesquisaJua/CheckCamp.vue';
+import Checkin from './views/Checkin.vue';
 </script>
 
 <style scoped>

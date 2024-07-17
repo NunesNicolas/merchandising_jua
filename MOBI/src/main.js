@@ -13,6 +13,7 @@ import pesquisaLayout from './views/layouts/pesquisa.vue'
 import InicialAuth from './views/auth/login.vue';
 import InicialSistema from './views/PesquisaHome.vue';
 import InicialInfo from './views/Dashboard.vue';
+import Checkin from './views/Checkin.vue';
 
 import CreateAtendimentos from './views/RegistroTb/Create.vue';
 import RegistroCreate from './views/RegistroTb/Home.vue';
@@ -35,6 +36,7 @@ const routes = [
         component: sistemaLayout,
         children: [
             { path: ':pesquisaid', name: 'pesquisa', component: InicialSistema},
+            { path: '/checkin/:pesquisaid', name: 'checkin', component: Checkin},
             { path: 'registro/create/:pesquisaid', name: 'newReg', component: RegistroCreate },
             { path: 'registro/:pesquisaid', name: 'registro', component: RegistroHome },
         ]
