@@ -9,13 +9,14 @@ import '../axios'
 </template>
 
 <script>
-import CreateAtendimentos from './views/RegistroTb/Create.vue';
-import InicialAuth from './views/Auth/login.vue';
-import InicialSistema from './views/PesquisaHome.vue';
+import CreateAtendimentos from './views/Pesquisa/Create.vue';
+import InicialAuth from './views/auth/login.vue';
+import InicialSistema from './views/Pesquisa/Home.vue';
 import InicialInfo from './views/Dashboard.vue';
-import RegistroHome from './views/PesquisaJua/Home.vue';
-import Registro from './views/RegistroTb/Home.vue';
+import RegistroHome from './views/RegistroTb/Home.vue';
+import Registro from './views/RegistroTb/Create.vue';
 import VisitasCheck from './views/PesquisaJua/CheckCamp.vue';
+import Checkin from './views/Checkin.vue';
 </script>
 
 <style scoped>

@@ -1,17 +1,43 @@
 <template>
 
-    <div class="registro-card">
-        <img src="https://blog.cobasi.com.br/wp-content/uploads/2018/08/hamster-anao-russo-capa-blog-cobasi.jpg">
+    <div class="registro-card" v-for="work in workregs">
+
+        <img v-if="work.img" :src=work.img />
+        <img v-else src="https://media.istockphoto.com/id/1409329028/vector/no-picture-available-placeholder-thumbnail-icon-illustration-design.jpg?s=612x612&w=0&k=20&c=_zOuJu755g2eEUioiOUdz_mHKJQJn-tDgIAhQzyeKUQ=">
+        
+        
         <div>
-            <h5>TÍTULO DO REGISTRO</h5>
-                <p>Categoria do Produto</p>
+            <div class="d-flex">
+            <h5 class="label">TÍTULO:</h5>
+            <h5> {{ work.title }} </h5>
+            </div>
+            <div class="d-flex">
+                <p class="label">CATEGORIA:</p>
+                <p> {{ work.type }}  </p>
+            </div>
         </div>
         <i class="bi bi-trash" style="font-size: 25px; color: red"></i>
     </div>
 
 </template>
 
+<script>
+
+export default {
+    props: {
+        workregs: {type: Array,
+            requerid: true,
+        },
+    },
+}
+
+</script>
+
 <style>
+
+.label{
+    color: grey;
+}
 
 .registro-card{
     margin-inline: 5%;

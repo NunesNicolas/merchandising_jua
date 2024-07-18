@@ -1,43 +1,78 @@
-<template>
-    <div class="SaveCancel">
-        <RegistroCamp/>
-        <SaveAndCancel/>
-    </div>
+  <template>
+  <div style="height: 25vh; width: 100%">
+    <headerEmpresa :visita="pesquisa" />
+  </div>
+
+  <h5 class="name">Registro de Trabalho</h5>
+  <div>
+    <!-- {{ pesquisa }} -->
+    <button @click="routebutton(this.$route.pesquisaid)" class="btn">
+      Adicionar Registro
+      <i class="bi bi-image"></i>
+    </button>
+
+    <RegistroCard :workregs="workreg" />
+  </div>
 </template>
 
 <script>
-    import SaveAndCancel from "../../components/SaveAndCancel.vue";
-    import RegistroCamp from "../../components/RegistroComp.vue";
-    export default {
-    components: {
-        RegistroCamp,
-        SaveAndCancel,
+import headerEmpresa from "../../components/headerEmpresa.vue";
+import RegistroCard from "../../components/RegistroCard.vue";
+import axios from 'axios';
+
+export default {
+  data() {
+    return {
+      id: this.$route.params.pesquisaid,
+      pesquisa: {},
+      workreg: {}
     }
+  },
+  components: {
+    headerEmpresa,
+    RegistroCard,
+  },
+  methods: {
+    async fetchPesquisa() {
+      let response = axios.get('/pesquisas/' + this.id)
+      this.pesquisa = (await response).data;
+      console.log('Dados da pesquisa:', this.pesquisa);
+    },
+
+    routebutton(id) {
+      this.$router.push({ name: 'newReg', params: { id: id } });
+    },
+
+    async fetchWorkReg() {
+      let response = axios.get('/workreg/pesquisa/' + this.id)
+      this.workreg = (await response).data;
+      console.log('Dados da workreg:', this.workreg);
+    },
+  },
+  mounted() {
+    this.fetchPesquisa();
+    this.fetchWorkReg();
+  }
 }
 </script>
 
 <style>
-    #app{
-        padding-bottom: 0vh;
-    }
-    .page{
-        background-color: #000000;
-    }
-    .save{
-        background-color: #ffffff;
-        color: #2C9AFF;
-    }
-    .cancel{
-        background-color: #2C9AFF;
-        color: #ffffff;
-        border: solid #fff 0.3vh;
-    }
-    .space{
-        width: 0;
-        height: 0;
-    }
-    .SaveCancel .butArea{
-        box-shadow: 0.0vh 0.0vh 0.0vh 0.0vh #979797;
-        background-color: #2C9AFF;
-    }
+.btn {
+  background-color: #f0f0f0;
+  box-shadow: 0vh 0.5vh 0.5vh 0.1vh #979797;
+  font-weight: bold;
+  font-size: medium;
+  margin-top: 1vh;
+  color: #2c9aff;
+  height: 5vh;
+  width: 30vh;
+}
+
+.name {
+  text-align: left;
+  color: #a0a0a0;
+  font-size: 2vh;
+  margin-left: 2vh;
+  margin-top: 2.5vh;
+}
 </style>
