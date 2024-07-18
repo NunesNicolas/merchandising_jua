@@ -37,3 +37,4 @@ Route::resource('pesquisas', PromoterRouterController::class);
 Route::get('pesquisas/promotor/{promotor_id}', [PromoterRouterController::class, 'showByPromotorId']);
 
 Route::resource('workreg', WorkRegisterController::class);
+Route::get('workreg/pesquisa/{routeId}', [WorkRegisterController::class, 'showByRoute']);
