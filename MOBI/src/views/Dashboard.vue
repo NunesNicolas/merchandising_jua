@@ -10,7 +10,7 @@ import axios from "axios";
         <ActionRouter route="/create" color="primary" label="Adicionar" />
       </ActionListWrapper>
     </div>
-    <h5>Roteiro de Clientes</h5>
+    <h5 class="text-3xl font-bold underline">Roteiro de Clientes</h5>
     <div class="containercards" v-for="visita in visitas">
       <VisitasCard :visita="visita" :cliente="visita.cliente">
         <slot>
