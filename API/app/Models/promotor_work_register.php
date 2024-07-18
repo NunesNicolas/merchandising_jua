@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class WorkRegister extends Model
+class promotor_work_register extends Model
 {
     use HasFactory;
 

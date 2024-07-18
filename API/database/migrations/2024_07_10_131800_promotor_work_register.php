@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('promotor_work_register', function (blueprint $table) {
+        Schema::create('promotor_work_registers', function (blueprint $table) {
             $table->id();
             $table->string("title", 100)->nullable();
             $table->string("type", 150)->nullable();

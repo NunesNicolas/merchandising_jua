@@ -5,12 +5,13 @@
 
   <h5 class="name">Registro de Trabalho</h5>
   <div>
+    <!-- {{ pesquisa }} -->
     <button @click="routebutton(this.$route.pesquisaid)" class="btn">
       Adicionar Registro
       <i class="bi bi-image"></i>
     </button>
 
-    <RegistroCard />
+    <RegistroCard :workregs="workreg" />
   </div>
 </template>
 
@@ -23,7 +24,8 @@ export default {
   data() {
     return {
       id: this.$route.params.pesquisaid,
-      pesquisa: {}
+      pesquisa: {},
+      workreg: {}
     }
   },
   components: {
@@ -39,10 +41,17 @@ export default {
 
     routebutton(id) {
       this.$router.push({ name: 'newReg', params: { id: id } });
-    }
+    },
+
+    async fetchWorkReg() {
+      let response = axios.get('/workreg/pesquisa/' + this.id)
+      this.workreg = (await response).data;
+      console.log('Dados da workreg:', this.workreg);
+    },
   },
   mounted() {
     this.fetchPesquisa();
+    this.fetchWorkReg();
   }
 }
 </script>
