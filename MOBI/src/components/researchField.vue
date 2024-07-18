@@ -1,5 +1,5 @@
 <template>
-    <div class="separator">
+    <div id="separator" class="animate-fade-up">
         <label>Desenfetante 2L</label>
         <input type="text" id="desc" name="description" placeholder="Descreva as condições do produto">
         <p>Não Consta</p>
@@ -8,7 +8,7 @@
     
 </template>
 <style>
-    .separator{
+    #separator{
         display: flex;
         flex-wrap: wrap;
         justify-content: end;
@@ -18,7 +18,7 @@
         margin-inline: 10vw;
         margin-top: 3vh;
     }
-    .separator label{
+    #separator label{
         text-align: start;
         width: 100%;
         height: 3vh;
@@ -27,7 +27,7 @@
         font-size: 2.5vh;
 
     }
-    .separator input{
+    #separator input{
         background-color: #D9D9D9;
         color: black;
         border: none;
@@ -45,7 +45,7 @@
         margin: 0;
         height: 5vh;
     }
-    .separator p{
+    #separator p{
         width: 23vw;
         margin-top: 1.5vh;
         color: #b0b0b0;

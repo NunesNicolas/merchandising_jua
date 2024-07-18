@@ -20,6 +20,9 @@ export default {
 </script>
 
 <style>
+    #app{
+        padding-bottom: 0;
+    }
     section{
         flex-wrap: wrap;
         height: 100vh;

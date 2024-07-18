@@ -10,7 +10,7 @@
       <i class="bi bi-image"></i>
     </button>
 
-    <RegistroCard />
+    <RegistroCard/>
   </div>
 </template>
 
@@ -20,6 +20,7 @@ import RegistroCard from "../../components/RegistroCard.vue";
 import axios from 'axios';
 
 export default {
+  
   data() {
     return {
       id: this.$route.params.pesquisaid,
