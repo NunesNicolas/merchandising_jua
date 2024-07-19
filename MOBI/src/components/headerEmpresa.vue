@@ -39,6 +39,9 @@ export default {
         align-items: center;
         position: absolute;
         z-index: 1;
+        overflow: hidden;
+        animation-name: startAnimation;
+        animation-duration: 1s;
     }
     .header-empresa div{
         display: flex;
@@ -61,5 +64,9 @@ export default {
         width: 100%;
         font-weight: bold;
         padding: 0;
+    }
+    @keyframes startAnimation{
+        0% {height: 0vh;};
+        100% {height: 6vh;}
     }
 </style>

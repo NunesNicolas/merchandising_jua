@@ -17,6 +17,12 @@
         height: 12vh;
         margin-inline: 10vw;
         margin-top: 3vh;
+        animation-name: animationStart;
+        animation-duration: 1s;
+    }
+    @keyframes animationStart{
+        0% {width: 0vw;};
+        100% {width: 80vw;}
     }
     #separator label{
         text-align: start;
