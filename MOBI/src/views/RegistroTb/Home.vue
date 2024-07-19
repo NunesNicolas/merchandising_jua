@@ -1,17 +1,14 @@
 <template>
     <div class="SaveCancel">
         <RegistroCamp/>
-        <SaveAndCancel/>
     </div>
 </template>
 
 <script>
-    import SaveAndCancel from "../../components/SaveAndCancel.vue";
     import RegistroCamp from "../../components/RegistroComp.vue";
     export default {
     components: {
         RegistroCamp,
-        SaveAndCancel,
     }
 }
 </script>
@@ -37,7 +34,6 @@
         height: 0;
     }
     .SaveCancel .butArea{
-        box-shadow: 0.0vh 0.0vh 0.0vh 0.0vh #979797;
-        background-color: #2C9AFF;
+        background-color: transparent;
     }
 </style>
