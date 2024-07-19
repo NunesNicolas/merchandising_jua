@@ -1,6 +1,7 @@
 <template>
     <section>
         <div class="view">
+            
             <img src="../../assets/nova-logo.png">
             <div class="login">
                 <input type="textarea" placeholder=" Nome de Usuário">
@@ -19,6 +20,9 @@ export default {
 </script>
 
 <style>
+    #app{
+        padding-bottom: 0;
+    }
     section{
         flex-wrap: wrap;
         height: 100vh;
