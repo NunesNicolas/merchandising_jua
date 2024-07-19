@@ -32,7 +32,6 @@ export default {
     height: 15vh;
     width: 100%;
     background-size: cover;
-    background-color: #ffffff;
 }
 .butArea{
     box-shadow: 0.0vh 0.0vh 0.9vh 0.0vh #979797;

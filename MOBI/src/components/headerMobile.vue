@@ -11,7 +11,7 @@
       </router-link>
     </div>
 </template>
-<style>
+<style scoped>
 .header-mobile{
     display: flex;
     flex-wrap: wrap;
@@ -27,6 +27,7 @@
   }
   .header-mobile p{
     flex-wrap: wrap;
-
+    display: flex;
+    align-items: center;
   }
 </style>

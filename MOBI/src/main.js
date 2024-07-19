@@ -3,7 +3,7 @@ import { createWebHistory, createRouter } from 'vue-router';
 import { BootstrapVue3 } from 'bootstrap-vue-3';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap-vue-3/dist/bootstrap-vue-3.css';
-import './style.css'
+import './assets/style.css'
 import App from './App.vue'
 
 import sistemaLayout from './views/layouts/sistema.vue';
@@ -11,13 +11,14 @@ import authLayout from './views/layouts/auth.vue';
 import pesquisaLayout from './views/layouts/pesquisa.vue'
 
 import InicialAuth from './views/auth/login.vue';
-import InicialSistema from './views/PesquisaHome.vue';
+import InicialSistema from './views/Pesquisa/Home.vue';
 import InicialInfo from './views/Dashboard.vue';
+import Checkin from './views/Checkin.vue';
 
-import CreateAtendimentos from './views/RegistroTb/Create.vue';
-import RegistroCreate from './views/RegistroTb/Home.vue';
+import CreateAtendimentos from './views/Pesquisa/Create.vue';
+import RegistroCreate from './views/RegistroTb/Create.vue';
 
-import RegistroHome from './views/PesquisaJua/Home.vue';
+import RegistroHome from './views/RegistroTb/Home.vue';
 import VisitasCheck from './views/PesquisaJua/CheckCamp.vue';
 
 
@@ -35,6 +36,7 @@ const routes = [
         component: sistemaLayout,
         children: [
             { path: ':pesquisaid', name: 'pesquisa', component: InicialSistema},
+            { path: '/checkin/:pesquisaid', name: 'checkin', component: Checkin},
             { path: 'registro/create/:pesquisaid', name: 'newReg', component: RegistroCreate },
             { path: 'registro/:pesquisaid', name: 'registro', component: RegistroHome },
         ]
