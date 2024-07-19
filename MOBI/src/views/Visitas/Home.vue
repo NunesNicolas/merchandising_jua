@@ -4,15 +4,11 @@
     </div>
     
     <h5 class="name">Registro de Trabalho</h5>
-    <div class="tamanho">
-        <button class="btn">Adicionar Registro
+    <div>
+        <button @click="routebutton(this.$route.pesquisaid)" class="btn">Adicionar Registro
             <i class="bi bi-image"></i>
         </button>
 
-        <RegistroCard/>
-        <RegistroCard/>
-        <RegistroCard/>
-        <RegistroCard/>
         <RegistroCard/>
 
     </div>
@@ -26,9 +22,13 @@ export default {
     components: {
         headerEmpresa,
         RegistroCard,
+    },
+    methods: {
+        routebutton(id) {
+            this.$router.push({ name: 'newReg', params: { id: id } });
     }
+},
 }
-
 </script>
 
 <style>
