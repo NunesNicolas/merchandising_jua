@@ -54,6 +54,8 @@ export default {
 .SaveCancel{
   background-color: #2c9aff;
   height: 100vh;
+  font-weight: bold;
+  font-size: small;
   
 }
 
