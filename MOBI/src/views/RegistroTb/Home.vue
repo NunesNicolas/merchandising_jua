@@ -34,7 +34,7 @@ export default {
     return {
       id: this.$route.params.pesquisaid,
       pesquisa: {},
-      workreg: []
+      workreg: {}
     }
   },
   components: {
@@ -58,7 +58,6 @@ export default {
       console.log('Dados da workreg:', this.workreg);
     },
     confirmDelete(work) {
-        console.log(work)
             if (confirm(`Você tem certeza que deseja excluir o Registro de trabalho ${work.title}?`)) {
                 this.deleteWorkRegister(work.id);
             }
@@ -86,9 +85,13 @@ export default {
 
 .buttondel{
   width: 54px;
+  height: 54px;
   background-color: rgba(255, 0, 0, 0);
   display: flex ;
+  border: none;
+  align-items: center;
   justify-content: center;
+
   
 }
 
