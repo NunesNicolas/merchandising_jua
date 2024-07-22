@@ -1,6 +1,6 @@
 <template>
 
-    <div class="registro-card" v-for="work in workregs">
+    <div class="registro-card" v-for="work in workregs" :key="work.id">
 
         <img v-if="work.img" :src=work.img />
         <img v-else src="https://media.istockphoto.com/id/1409329028/vector/no-picture-available-placeholder-thumbnail-icon-illustration-design.jpg?s=612x612&w=0&k=20&c=_zOuJu755g2eEUioiOUdz_mHKJQJn-tDgIAhQzyeKUQ=">
@@ -16,7 +16,8 @@
                 <p> {{ work.type }}  </p>
             </div>
         </div>
-        <i class="bi bi-trash" style="font-size: 25px; color: red"></i>
+        <slot name="actions" :work="work"></slot>
+        <!-- <i class="bi bi-trash" style="font-size: 25px; color: red"></i> -->
     </div>
 
 </template>
@@ -25,9 +26,11 @@
 
 export default {
     props: {
-        workregs: {type: Array,
+        workregs: {
+            type: Array,
             requerid: true,
         },
+        
     },
 }
 
