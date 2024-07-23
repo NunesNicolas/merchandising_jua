@@ -11,7 +11,16 @@
       <i class="bi bi-image"></i>
     </button>
 
-    <RegistroCard :workregs="workreg" />
+    <RegistroCard :workregs="workreg">
+
+      <template v-slot:actions="{ work }">
+        <button @click="confirmDelete(work)" class="buttondel">
+          <i class="bi-trash"></i>
+      </button>
+      
+      </template>
+    
+    </RegistroCard>
   </div>
 </template>
 
@@ -48,6 +57,22 @@ export default {
       this.workreg = (await response).data;
       console.log('Dados da workreg:', this.workreg);
     },
+    confirmDelete(work) {
+            if (confirm(`Você tem certeza que deseja excluir o Registro de trabalho ${work.title}?`)) {
+                this.deleteWorkRegister(work.id);
+            }
+        },
+        deleteWorkRegister(workregId) {
+            axios.delete(`/workreg/${workregId}`)
+                .then(response => {
+                    alert('workreg excluído com sucesso!');
+                    this.fetchWorkReg(); // Atualiza a lista de workregs após exclusão
+                })
+                .catch(error => {
+                    console.error('Erro ao excluir workregister: ', error);
+                    alert('Ocorreu um erro ao tentar excluir o workregister.');
+                });
+        }
   },
   mounted() {
     this.fetchPesquisa();
@@ -57,6 +82,25 @@ export default {
 </script>
 
 <style>
+
+.buttondel{
+  width: 54px;
+  height: 54px;
+  background-color: rgba(255, 0, 0, 0);
+  display: flex ;
+  border: none;
+  align-items: center;
+  justify-content: center;
+
+  
+}
+
+.bi-trash{
+  text-align: center;
+  font-size: 2rem;
+  color: red
+}
+
 .btn {
   background-color: #f0f0f0;
   box-shadow: 0vh 0.5vh 0.5vh 0.1vh #979797;

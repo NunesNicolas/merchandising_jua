@@ -1,7 +1,7 @@
 <template>
   <div class="SaveCancel">
 
-    <Form :title="'Novo registro'" :values="values" :submitLabel="'Criar Registro'" :onSave="saveRegistro" />
+    <Form :title="'Novo registro'" :values="values" :submitLabel="'Salvar'" :onSave="saveRegistro" />
     <!-- <SaveAndCancel :nosubmit="'Cancelar'" :submitLabel="'Salvar'" :onSave="saveRegistro"/> -->
   </div>
 </template>
@@ -50,27 +50,12 @@ export default {
 </script>
 
 <style>
-#app {
-  padding-bottom: 0vh;
-}
-.page {
-  background-color: #000000;
-}
-.save {
-  background-color: #ffffff;
-  color: #2c9aff;
-}
-.cancel {
+
+.SaveCancel{
   background-color: #2c9aff;
-  color: #ffffff;
-  border: solid #fff 0.3vh;
+  height: 100vh;
 }
-.space {
-  width: 0;
-  height: 0;
-}
-.SaveCancel .butArea {
-  box-shadow: 0vh 0vh 0vh 0vh #979797;
-  background-color: #2c9aff;
-}
+
+
+
 </style>

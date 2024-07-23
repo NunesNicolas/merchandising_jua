@@ -1,6 +1,6 @@
 <template>
-    <div class="page">
-      <div class="container mt-4 ml-5 mr-5" style="text-align: justify;">
+    <div class="DefaultForm">
+      <div class="ml-4 mr-4" style="text-align: justify;">
         <div class="alert alert-danger mt-4" v-if="errors.length">
           <ul class="mb-0">
             <li v-for="(error, index) in errors" :key="index">
@@ -11,7 +11,7 @@
         <form @submit.prevent="handleSubmit" novalidate>
           <slot :formValues="formValues" :updateFormValue="updateFormValue"></slot>
           <div class="form-group">
-            <button type="submit" class="btn btn-primary" :style="{ height: '8vh', marginTop: '3vh' }">
+            <button type="submit" class="btn btn-primary" :style="{ height: '8vh', marginTop: '3vh', marginLeft: '5.5vh', fontSize: '3vh'}">
               {{ submitLabel }}
             </button>
           </div>

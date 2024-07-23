@@ -1,10 +1,10 @@
 <template>
     <div class="form-group">
         <label :for="name">{{ label }}</label>
-        <select class="form-control" :name="name" :value="modelValue"
+        <select class="form-control"  :name="name" :value="modelValue"
             @change="$emit('update:modelValue', $event.target.value)">
-            <option value="" disabled selected hidden>Selecione...</option>
-            <option v-for="option in options" :key="option.value" :value="option.value">
+            <option value="" disabled selected hidden >Selecione...</option>
+            <option v-for="option in options" :key="option.value" :value="option.value" style="width: 40vw;">
                 {{ option.text }}
             </option>
         </select>

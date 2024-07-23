@@ -15,7 +15,9 @@ import axios from "axios";
       <VisitasCard :visita="visita" :cliente="visita.cliente">
         <slot>
 
-          <button @click="RouterButton(visita.id)" class="routerbutton">Checkout</button>
+          <button @click="RouterButton(visita.checkin_datetime, visita.id)"
+            :class="[getButtonClass(visita.routeName)]">{{ visita.routeName
+            }}</button>
 
         </slot>
       </VisitasCard>
@@ -32,28 +34,47 @@ import ActionRouterBack from "../components/ActionRouterBack.vue";
 export default {
   data() {
     return {
-      // visita: {
-      //     data: '12/01/12'
-      // },
-      cliente: {
-        nome: 'nome exemplo',
-        endereco: 'endereco exemplo',
-      },
-      visitas: [],
+      visitas: []
     }
   },
 
 
   methods: {
-    async iniciar() {
-      let response = axios.get('/pesquisas/promotor/' + 1);
-      this.visitas = (await response).data;
+    iniciar() {
+      axios.get('/pesquisas/promotor/' + 1)
+  .then(response => {
+    const visitasData = response.data;
+    this.visitas = Object.entries(visitasData).map(([key, visita]) => ({
+      ...visita,
+      routeName: visita.checkin_datetime ? 'Continue' : 'Check-in',
+    }));
+  })
+  .catch(error => {
+    console.error(error);
+  });
+  },
+
+    getButtonClass(routeName) {
+      switch (routeName) {
+        case 'Continue':
+          return 'button-checkin';
+        case 'Check-in':
+          return 'button-pesquisa';
+        default:
+          return 'button-default';
+      }
     },
 
-    RouterButton(id){
-      this.$router.push({ name: 'checkin', params: { pesquisaid: id} });
-    }
+    RouterButton(checkin, id) {
+      const routerName = checkin ? 'pesquisa' : 'checkin';
+      this.$router.push({ name: routerName, params: { pesquisaid: id } });
+    },
   },
+
+  computed() {
+
+  },
+
   mounted() {
     this.iniciar();
   },
@@ -92,5 +113,20 @@ export default {
   margin-left: 40px;
   margin-top: 2vh;
   color: #fff;
+}
+
+.button-checkin {
+  background-color: #2C9AFF;
+  /* pink */
+}
+
+.button-pesquisa {
+  background-color: #57be71;
+  /* green */
+}
+
+.button-default {
+  background-color: #2C9AFF;
+  /* default blue */
 }
 </style>

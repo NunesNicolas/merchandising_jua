@@ -2,14 +2,17 @@
     <DefaultForm :values="formValues" :validations="validations" :onSave="handleSave" :submitLabel="submitLabel">
   
       <template v-slot="{ formValues, updateFormValue }">
+        <div class="forminput">
         <h1>{{ title }}</h1>
         <hr>
-        <TextInput label="Titulo" name="titulo" :modelValue="formValues.title"
+        
+        <TextInput label="Titulo do Registro:" name="titulo" :modelValue="formValues.title"
           @update:modelValue="updateFormValue('title', $event)" />
-        <SelectInput label="Tipos" name="type" :modelValue="formValues.type" :options="tiposOptions"
+        <SelectInput label="Selecionar o Tipo de Registro:" name="type" :modelValue="formValues.type" :options="tiposOptions"
           @update:modelValue="updateFormValue('type', $event)" />
-        <ImageUploadInput label="Imagem" name="img" :modelValue="formValues.img" 
+        <ImageUploadInput label="Adicionar Imagem" name="img" :modelValue="formValues.img" 
           @update:modelValue="updateFormValue('img', $event)" />
+        </div>
       </template>
     </DefaultForm>
   </template>
@@ -65,4 +68,32 @@
     }
   };
   </script>
+
+  <style scoped> 
+
+
+  .forminput{
+    width: 100%;
+    font-weight: bold;
+    font-size: 2.5vh;
+    color: white;
+    background-color: #2c9aff;
+  }
+
+  h1{
+    font-size: 4vh;
+    padding-top: 3vh;
+    padding-bottom: 1.5vh;
+  }
+  .forminput hr{
+    border-width: 0.5vh;
+    padding-bottom: 1.5vh;
+    color: white;
+    opacity: 100;
+  }
+  .forminput ImageUploadInput{
+   display: flex;
+  }
+
+</style>
   

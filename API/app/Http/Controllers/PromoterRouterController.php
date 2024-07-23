@@ -24,10 +24,9 @@ class PromoterRouterController extends Controller
         return response()->json($PromoterRouter, 201);
     }
 
-   public function showByPromotorId($promotor_id)
+    public function showByPromotorId($promotor_id)
     {
         $promoterRouters = promotor_router::where('promotor_id', $promotor_id)->get();
-
         foreach ($promoterRouters as $promoterRouter) {
             $promoterRouter->promotor = Promotores::find($promoterRouter->promotor_id);
             $promoterRouter->cliente = Cliente::find($promoterRouter->cliente_id);
@@ -35,8 +34,19 @@ class PromoterRouterController extends Controller
         if ($promoterRouters->isEmpty()) {
             return response()->json(['message' => 'PromoterRouter not found'], 404);
         }
+    
+        $sortedPromoterRouters = $promoterRouters->sortByDesc(function($promoterRouter) {
+            return $promoterRouter->checkin_datetime?: PHP_INT_MAX;
+        });
+    
+        return response()->json($sortedPromoterRouters->values());
+    }
 
-        return response()->json($promoterRouters);
+    public function update(Request $request, $id)
+    {
+        $PromoterRouter = promotor_router::find($id);
+        $PromoterRouter->update($request->all());
+        return response()->json($PromoterRouter);
     }
 
 }
