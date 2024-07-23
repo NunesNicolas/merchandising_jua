@@ -37,6 +37,7 @@ export default {
     margin-top: -5vh;
     border-radius: 1vh;
     box-shadow: 0vh 0vh 0.5vh 0vh;
+    
 }
 .visitasCard div h6{
     background-color: #d0d0d0;
@@ -59,19 +60,17 @@ export default {
     width: 100%;
     text-align: start;
     padding-inline: 3vw;
-
 }
   .visitasCard p{
-    padding-top: 2vw;
     height: 9vh;
     font-size: 2.0vh;
 }
   .visitasCard button{
     text-align: center;
+    color: white;
     width: 30%;
     height: 14vh;
     border-radius: 0 1vh 1vh 0vh;
-    background-color: #2C9AFF;
     padding: 0;
     margin: 0;
     display: flex;
