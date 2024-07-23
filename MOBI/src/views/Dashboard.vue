@@ -15,7 +15,7 @@ import axios from "axios";
       <VisitasCard :visita="visita" :cliente="visita.cliente">
         <slot>
 
-          <button @click="RouterButton(visita.id)" class="routerbutton">Checkout</button>
+          <button @click="RouterButton(visita.id)" class="routerbutton">Check-in</button>
 
         </slot>
       </VisitasCard>

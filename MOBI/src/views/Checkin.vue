@@ -15,13 +15,20 @@
 <script>
 import RouterBack from '../components/ActionRouterBack.vue'
 export default {
+    data() {
+        return {
+            datetime: null
+        }
+    },
     methods: {
         getGeoLocation() {
+            this.datetime = new Date();
             window.navigator.geolocation.getCurrentPosition(this.navtrue, this.navfalse);
         },
 
         navtrue(geoloc) {
-            console.log(geoloc);
+            console.log('Geolocation:', geoloc);
+            console.log('Datetime:', this.datetime);
             this.RouterButton(this.$route.pesquisaid);
         },
 
