@@ -20,6 +20,9 @@ export default {
 </script>
 
 <style>
+    #app{
+        padding-bottom: 0;
+    }
     section{
         flex-wrap: wrap;
         height: 100vh;
@@ -33,17 +36,22 @@ export default {
         align-items: center;
         width: 100%;
         height: 70vh;
-
+        animation-name: startAnimation;
+        animation-duration: 1s;
+        
     }
     .view img{
         width: 60vw;
         height: 17vh;
         margin-top: 22vh;
         margin-bottom: 3vh;
+        margin-inline: 15vw;
+
     }
     .login{
-        height: 10%;
+        height: 17vh;
         width: 100%;
+        overflow: hidden;
     }
     .login input{
         margin-bottom: 20px;
@@ -55,15 +63,23 @@ export default {
         border-radius: 1.5vh;
         box-shadow: 0vh 0vh 0.5vh 0vh #000;
         padding-inline-start: 3vw;
+
+    }
+    @keyframes startAnimation{
+        0% {height: 0vh};
+        100% {height: 6vh};
     }
     .view a{  
         display: flex;
         justify-content: center;
         text-align: left;
-        margin-right: 40vw;
-        margin-top: 7vh;
+        margin-right: 37vw;
+        margin-bottom: 3vh;
+        height: 4vh;
+        width: 40vw;
         color: #fff;
         text-decoration: underline;
+        overflow: hidden;
     }
     .view button{
         width: 35%;

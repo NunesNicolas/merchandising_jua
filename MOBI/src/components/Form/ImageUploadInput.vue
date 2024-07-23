@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="Imageupl">
       <label for="imageUploadInput" class="btn btn-primary">
         Selecionar Imagem
         <input id="imageUploadInput" @change="handleImage" class="image-upload-input" type="file" accept="image/*"
@@ -8,7 +8,7 @@
   
       <!-- Preview da imagem -->
       <div v-if="image" class="mt-3">
-        <img :src="image" alt="Preview da imagem" style="max-width: 100%; max-height: 300px;">
+        <img :src="image" alt="Preview da imagem" style="max-width: 50%; max-height: 300px;">
       </div>
   
       <!-- Mostrar URL remota após o upload -->
@@ -66,8 +66,20 @@
   
   <style scoped>
   /* Estilos opcionais para personalização */
-  .image-upload-input {
-    display: none;
+  .Imageupl {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    font-weight: bold;
+  }
+  .Imageupl img{
+    margin-left: 10vh;
+    border-radius: 2vh;
+  }
+  .Imageupl label{
+    background-color: white;
+    font-size: 2vh;
   }
   </style>
   
