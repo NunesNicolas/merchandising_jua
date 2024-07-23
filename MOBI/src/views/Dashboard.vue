@@ -15,7 +15,7 @@ import axios from "axios";
       <VisitasCard :visita="visita" :cliente="visita.cliente">
         <slot>
 
-          <button @click="RouterButton(visita.id)" class="routerbutton">Checkout</button>
+          <button @click="RouterButton(visita.checkin_datetime,visita.id)" class="routerbutton">Check-in</button>
 
         </slot>
       </VisitasCard>
@@ -32,13 +32,6 @@ import ActionRouterBack from "../components/ActionRouterBack.vue";
 export default {
   data() {
     return {
-      // visita: {
-      //     data: '12/01/12'
-      // },
-      cliente: {
-        nome: 'nome exemplo',
-        endereco: 'endereco exemplo',
-      },
       visitas: [],
     }
   },
@@ -50,9 +43,10 @@ export default {
       this.visitas = (await response).data;
     },
 
-    RouterButton(id){
-      this.$router.push({ name: 'checkin', params: { pesquisaid: id} });
-    }
+     RouterButton(checkin, id) {
+  const routeName = checkin ? 'pesquisa' : 'checkin';
+  this.$router.push({ name: routeName, params: { pesquisaid: id } });
+},
   },
   mounted() {
     this.iniciar();
