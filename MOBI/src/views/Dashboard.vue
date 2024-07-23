@@ -32,13 +32,6 @@ import ActionRouterBack from "../components/ActionRouterBack.vue";
 export default {
   data() {
     return {
-      // visita: {
-      //     data: '12/01/12'
-      // },
-      cliente: {
-        nome: 'nome exemplo',
-        endereco: 'endereco exemplo',
-      },
       visitas: [],
     }
   },
