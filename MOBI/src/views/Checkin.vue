@@ -1,3 +1,6 @@
+<script setup>
+import { useDateFormat, useNow } from '@vueuse/core'
+</script>
 <template>
     <div id="all">
         <div class="textbox">
@@ -14,10 +17,13 @@
 </template>
 <script>
 import RouterBack from '../components/ActionRouterBack.vue'
+import axios from 'axios'
+
 export default {
     data() {
         return {
-            datetime: null
+            datetime: null,
+            pesquisaid: this.$route.params.pesquisaid,
         }
     },
     methods: {
@@ -28,7 +34,8 @@ export default {
 
         navtrue(geoloc) {
             console.log('Geolocation:', geoloc);
-            console.log('Datetime:', this.datetime);
+            const formatted = useDateFormat(useNow(), 'YYYY-MM-DD HH:mm:ss')
+            this.iniPesquisa(formatted.value);
             this.RouterButton(this.$route.pesquisaid);
         },
 
@@ -36,9 +43,16 @@ export default {
             console.error(geoloc);
         },
 
+        async iniPesquisa(datetime) {
+            console.log(datetime)
+            let updateData = { checkin_datetime: datetime};
+            
+            axios.put('/pesquisas/' +  this.pesquisaid,  updateData)
+        },
+
         RouterButton(id) {
             this.$router.push({ name: 'pesquisa', params: { pesquisaid: id } });
-        }
+        },
     },
     components: {
         RouterBack,
