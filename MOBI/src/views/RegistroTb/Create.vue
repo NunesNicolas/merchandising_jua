@@ -52,7 +52,7 @@ export default {
 <style>
 
 .SaveCancel{
-  background-color: #2c9aff;
+  background-color: white;
   height: 100vh;
 }
 

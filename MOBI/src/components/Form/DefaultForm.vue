@@ -63,4 +63,13 @@
     }
   };
   </script>
+
+  <style scoped>
+
+  button{
+    background-color: #2c9aff;
+    color: white;
+  }
+
+  </style>
   

@@ -74,10 +74,10 @@
 
   .forminput{
     width: 100%;
-    font-weight: bold;
     font-size: 2.5vh;
-    color: white;
-    background-color: #2c9aff;
+    color: black;
+    background-color: white;
+    font-weight: 500;
   }
 
   h1{
@@ -86,9 +86,8 @@
     padding-bottom: 1.5vh;
   }
   .forminput hr{
-    border-width: 0.5vh;
+    border-width: 0.3vh;
     padding-bottom: 1.5vh;
-    color: white;
     opacity: 100;
   }
   .forminput ImageUploadInput{
