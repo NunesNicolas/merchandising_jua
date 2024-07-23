@@ -15,7 +15,7 @@ import axios from "axios";
       <VisitasCard :visita="visita" :cliente="visita.cliente">
         <slot>
 
-          <button @click="RouterButton(visita.id)" class="routerbutton">Check-in</button>
+          <button @click="RouterButton(visita.checkin_datetime,visita.id)" class="routerbutton">Check-in</button>
 
         </slot>
       </VisitasCard>
@@ -50,9 +50,10 @@ export default {
       this.visitas = (await response).data;
     },
 
-    RouterButton(id){
-      this.$router.push({ name: 'checkin', params: { pesquisaid: id} });
-    }
+     RouterButton(checkin, id) {
+  const routeName = checkin ? 'pesquisa' : 'checkin';
+  this.$router.push({ name: routeName, params: { pesquisaid: id } });
+},
   },
   mounted() {
     this.iniciar();
