@@ -10,7 +10,7 @@ import axios from "axios";
         <h5>O que deseja fazer?</h5>
         <OptionButtons :id="this.$route.pesquisaid" />
     </div>
-    <div class="check">
+    <div class="boxcheck">
         <ActionRouter @click="statusChekout();" class="check" route="/" label="Checkout" />
     </div>
     
@@ -65,5 +65,14 @@ export default {
     font-size: 2.5vh;
     margin-left: 40px;
     margin-top: 30px;
+}
+
+.boxcheck button{
+    background-color: #2c9aff;
+    color: white; 
+    height: 7vh; 
+    border: 1px solid; 
+    margin-top: 3vh; 
+    font-size: 2.5vh;
 }
 </style>
