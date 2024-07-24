@@ -28,6 +28,7 @@ export default {
 
 <style>
 .page {
+    background-color: rgb(246, 246, 246);
     flex-wrap: wrap;
     height: 15vh;
     width: 100%;
