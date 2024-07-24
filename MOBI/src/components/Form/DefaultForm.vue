@@ -11,7 +11,7 @@
         <form @submit.prevent="handleSubmit" novalidate>
           <slot :formValues="formValues" :updateFormValue="updateFormValue"></slot>
           <div class="form-group">
-            <button type="submit" class="btn btn-primary" :style="{ height: '8vh', marginTop: '3vh', marginLeft: '5.5vh', fontSize: '3vh'}">
+            <button type="submit" class="btn btn-primary" :style="{ height: '7vh', marginTop: '3vh', marginLeft: '5.5vh', fontSize: '3vh'}">
               {{ submitLabel }}
             </button>
           </div>
