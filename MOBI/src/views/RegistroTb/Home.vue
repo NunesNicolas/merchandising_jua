@@ -102,8 +102,10 @@ export default {
 }
 
 .btn {
-  background-color: #f0f0f0;
-  box-shadow: 0vh 0.5vh 0.5vh 0.1vh #979797;
+  background-color: #ffffff;
+  border: 1px solid #ebebeb;
+  color: #2C9AFF;
+  box-shadow: 0vh 0.2vh 0.2vh 0vh #d2d1d1;
   font-weight: bold;
   font-size: medium;
   margin-top: 1vh;

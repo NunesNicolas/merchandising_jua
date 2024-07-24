@@ -45,7 +45,7 @@ export default {
 
         async iniPesquisa(datetime) {
             console.log(datetime)
-            let updateData = { checkin_datetime: datetime};
+            let updateData = { checkin_datetime: datetime, status: 'ABERTO'};
             
             axios.put('/pesquisas/' +  this.pesquisaid,  updateData)
         },
