@@ -91,8 +91,7 @@ export default {
   border: none;
   align-items: center;
   justify-content: center;
-
-  
+  margin-left: 10%;
 }
 
 .bi-trash{
