@@ -10,10 +10,14 @@ import axios from "axios";
         <h5>O que deseja fazer?</h5>
         <OptionButtons :id="this.$route.pesquisaid" />
     </div>
-
+    <div class="check">
+        <ActionRouter @click="statusChekout();" class="check" route="/" label="Checkout" />
+    </div>
+    
 </template>
 
 <script>
+import ActionRouter from '../../components/ActionRouter.vue'
 import OptionButtons from '../../components/OpitionButtons.vue'
 import headerEmpresa from "../../components/headerEmpresa.vue";
 import axios from 'axios';
@@ -31,6 +35,10 @@ export default {
             this.pesquisa = (await response).data;
             console.log('Dados da pesquisa:', this.pesquisa);
         },
+        async statusChekout() {
+            let updateData = { status: 'CONCLUIDO'};
+            axios.put('/pesquisas/' +  this.id,  updateData) 
+        }
     },
     mounted() {
         this.fetchPesquisa();
@@ -39,6 +47,7 @@ export default {
     components: {
         OptionButtons,
         headerEmpresa,
+        ActionRouter
     },
 
 }
