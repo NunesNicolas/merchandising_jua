@@ -18,7 +18,7 @@
 <style>
 
 .icone {
-  font-size: 200%;
+  font-size: 220%;
 }
 
 .active-icon i {
@@ -30,6 +30,7 @@
   border-width: 2px;/* adicionar borda arredondada */
   padding-left: 10px;
   padding-right: 10px;
+  margin-left: -10px;
 }
 
 .navbar-mobile {
@@ -47,7 +48,7 @@
   z-index: 1;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
-
+gap: 5%;
 }
 
 .navbar-mobile a {
