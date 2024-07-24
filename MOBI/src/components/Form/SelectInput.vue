@@ -23,3 +23,11 @@ export default {
     }
 };
 </script>
+<style scoped>option{
+    height: 100px;
+}
+.form-group{
+margin-top: 15px;
+}
+
+</style>

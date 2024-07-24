@@ -29,7 +29,7 @@ export default {
 <style>
 .visitasCard {
   width: 85vw;
-  background-color: #ffffff;
+  background-color: #fbfbfb;
   display: flex;
   flex-wrap: wrap;
   height: 14vh;
