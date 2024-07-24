@@ -45,6 +45,9 @@
   bottom: 0;
   color: #ffffff;
   z-index: 1;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+
 }
 
 .navbar-mobile a {
