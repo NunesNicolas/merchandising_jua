@@ -3,9 +3,6 @@
 
     <Form :title="'Novo registro'" :values="values" :submitLabel="'Salvar'" :onSave="saveRegistro" />
     <ActionRouterBack/>
-    <button type="submit" class="btn btn-primary" :style="{ height: '7vh', fontSize: '3vh'}">
-    Voltar
-    </button>
     <!-- <SaveAndCancel :nosubmit="'Cancelar'" :submitLabel="'Salvar'" :onSave="saveRegistro"/> -->
   </div>
 </template>
@@ -58,16 +55,18 @@ export default {
 <style scoped>
 
 .SaveCancel{
-  background-color: white;
   height: 100vh;
 }
 
 .SaveCancel a{
-  border-radius: 20px;
-  border:solid #858585 0.2vh;
+  border-radius: 1px;
   color:#2c9aff;
+  text-align: center;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 7vh;
   font-weight: bold;
-  font-size:5vh;
+  font-size:3vh;
 }
 
 </style>

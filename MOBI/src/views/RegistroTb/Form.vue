@@ -76,7 +76,7 @@
     width: 100%;
     font-size: 2.5vh;
     color: black;
-    background-color: white;
+    background-color: rgb(246, 246, 246);
     font-weight: 500;
   }
 
