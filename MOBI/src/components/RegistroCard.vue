@@ -17,7 +17,6 @@
             </div>
         </div>
         <slot name="actions" :work="work"></slot>
-        <!-- <i class="bi bi-trash" style="font-size: 25px; color: red"></i> -->
     </div>
 
 </template>
@@ -36,7 +35,10 @@ export default {
 
 </script>
 
-<style>
+<style scoped>
+.d-flex:not(:last-child) {
+    margin-bottom: 10px;
+  }
 
 .label{
     color: grey;
@@ -46,13 +48,13 @@ export default {
     margin-inline: 5%;
     flex-wrap: wrap;
     display: flex;
-    background-color: #f0f0f0;
+    background-color: #ffffff;
     color: #2C9AFF;
     width: 90%;
     height: 10vh;
     margin-top: 3vh;
     border-radius: 20px;
-    box-shadow: 0vh 0.5vh 0.5vh 0.1vh #979797;
+    box-shadow: 0vh 0.2vh 0.2vh 0vh #d2d1d1;
     text-align: left;
     align-items: center;
 }

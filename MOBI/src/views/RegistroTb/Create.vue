@@ -2,6 +2,7 @@
   <div class="SaveCancel">
 
     <Form :title="'Novo registro'" :values="values" :submitLabel="'Salvar'" :onSave="saveRegistro" />
+    <ActionRouterBack/>
     <!-- <SaveAndCancel :nosubmit="'Cancelar'" :submitLabel="'Salvar'" :onSave="saveRegistro"/> -->
   </div>
 </template>
@@ -11,6 +12,7 @@ import axios from 'axios';
 import Form from "./Form.vue";
 import SaveAndCancel from "../../components/SaveAndCancel.vue";
 import RegistroCamp from "../../components/RegistroComp.vue";
+import ActionRouterBack from "../../components/ActionRouterBack.vue"
 
 export default {
   name: 'CreateRegistro',
@@ -45,17 +47,26 @@ export default {
     RegistroCamp,
     SaveAndCancel,
     Form,
+    ActionRouterBack,
   },
 };
 </script>
 
-<style>
+<style scoped>
 
 .SaveCancel{
-  background-color: #2c9aff;
   height: 100vh;
 }
 
-
+.SaveCancel a{
+  border-radius: 1px;
+  color:#2c9aff;
+  text-align: center;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 7vh;
+  font-weight: bold;
+  font-size:3vh;
+}
 
 </style>

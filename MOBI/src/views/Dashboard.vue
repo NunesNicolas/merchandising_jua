@@ -105,14 +105,19 @@ export default {
   margin-bottom: 8vh;
 }
 
-.add-but a {
+.add-but button {
   display: flex;
-  justify-content: left;
-  text-align: left;
-  width: 50%;
+  justify-content: space-evenly;
+  align-items: center;
   margin-left: 40px;
-  margin-top: 2vh;
-  color: #fff;
+  background-color: #2c9aff; 
+  color: white;
+  border-radius: 30px; 
+  margin-right: 20px; 
+  margin-top: 30px;
+  border: none;
+  font-size: 2vh;
+  width: 20vh;
 }
 
 .button-checkin {
