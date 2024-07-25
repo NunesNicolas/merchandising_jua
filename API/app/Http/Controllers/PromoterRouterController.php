@@ -24,12 +24,19 @@ class PromoterRouterController extends Controller
         return response()->json($PromoterRouter, 201);
     }
 
-    public function showByPromotorId($promotor_id)
+    public function update(Request $request, $id)
+    {
+        $PromoterRouter = promotor_router::find($id);
+        $PromoterRouter->update($request->all());
+        return response()->json($PromoterRouter);
+    }
+
+    public function opened($promotor_id)
     {
         $promoterRouters = promotor_router::where('promotor_id', $promotor_id)
 
             ->where('status', '!=', 'concluido') // filter out concluded promoter routers
-            ->where('status', '!=', 'CONCLUIDO') 
+            ->where('status', '!=', 'CONCLUIDO')
             ->get();
 
         foreach ($promoterRouters as $promoterRouter) {
@@ -44,36 +51,35 @@ class PromoterRouterController extends Controller
         $sortedPromoterRouters = $promoterRouters->sortByDesc(function ($promoterRouter) {
             return $promoterRouter->checkin_datetime ?: PHP_INT_MAX;
         })
-        ->sortBy(function ($promoterRouter) {
+            ->sortBy(function ($promoterRouter) {
                 // prioritize those with status "aberto" over those with status "a fazer"
                 return $promoterRouter->status === 'ABERTO' ? 0 : 1;
             })->sortBy(function ($promoterRouter) {
-            if ($promoterRouter->status == 'ABERTO') {
-                return 0;
-            } elseif ($promoterRouter->status == 'A FAZER') {
-                return 1;
-            } else {
-                return 2;
-            }
-        });
+                if ($promoterRouter->status == 'ABERTO') {
+                    return 0;
+                } elseif ($promoterRouter->status == 'A FAZER') {
+                    return 1;
+                } else {
+                    return 2;
+                }
+            });
 
         return response()->json($sortedPromoterRouters->values());
     }
-    public function update(Request $request, $id)
-    {
-        $PromoterRouter = promotor_router::find($id);
-        $PromoterRouter->update($request->all());
-        return response()->json($PromoterRouter);
-    }
-    public function finals($promotor_id){
-        $promoterRouters = promotor_router::where('promotor_id', $promotor_id)
 
-            ->where('status', '==', 'concluido') // filter out concluded promoter routers
-            ->where('status', '==', 'CONCLUIDO') 
+    public function finals($promotor_id)
+    {
+        $promoterRouters = promotor_router::where('promotor_id', $promotor_id)
+            ->whereIn('status', ['concluido', 'CONCLUIDO'])
             ->get();
-            $sortedPromoterRouters = $promoterRouters->sortByDesc(function ($promoterRouter) {
-                return $promoterRouter->checkin_datetime ?: PHP_INT_MAX;
-            });
-            return response()->json($sortedPromoterRouters->values());
+
+        foreach ($promoterRouters as $promoterRouter) {
+            $promoterRouter->cliente = Cliente::find($promoterRouter->cliente_id);
+        }
+
+        $sortedPromoterRouters = $promoterRouters->sortByDesc(function ($promoterRouter) {
+            return $promoterRouter->checkin_datetime ?: PHP_INT_MAX;
+        });
+        return response()->json($sortedPromoterRouters->values());
     }
 }

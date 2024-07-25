@@ -1,5 +1,6 @@
 <script setup>
 import axios from "axios";
+
 </script>
 
 <template>
@@ -26,19 +27,19 @@ import axios from "axios";
         padding: 15px;
         padding-top: 0;
       ">
-      <CardList :textBox="true" :items="promotores" :fields="{  
+      <CardList :textBox="true" :items="promotores" :fields="{
         nome: 'Promotor',
         email: 'Email',
         status: 'status',
       }">
-      <template v-slot:topactions="{ item }">
-      <RouterLink  :to="{
-        name: 'UpdatePromotores',
-        params: { id: this.$route.params.id },
-      }">
-        <i class="bi bi-pencil-square" style="font-size: 3.5vh; margin-left:1vw;"></i>
-      </RouterLink>
-    </template>
+        <template v-slot:topactions="{ item }">
+          <RouterLink :to="{
+            name: 'UpdatePromotores',
+            params: { id: this.$route.params.id },
+          }">
+            <i class="bi bi-pencil-square" style="font-size: 3.5vh; margin-left:1vw;"></i>
+          </RouterLink>
+        </template>
       </CardList>
 
       <div class="d-flex" style="
@@ -92,9 +93,9 @@ import axios from "axios";
         color: #858585;
         font-weight: bold;
       ">
-      <TableInfo title="VISITAS DO PROMOTOR" :items="promotores" :fields="{
+      <TableInfo title="VISITAS DO PROMOTOR" :items="lastpesquisas" :fields="{
         nome: 'Promotor',
-        telefone: 'Telefone',
+        checkin: 'Check-in',
       }"></TableInfo>
 
       <TableInfo title="ROTEIRO DO PROMOTOR" :items="clientes" :fields="{
@@ -103,7 +104,8 @@ import axios from "axios";
         ultima_visita: 'ÚLTIMA VISITA',
       }">
         <template v-slot:tableactions="{ table }">
-          <i class="bi bi-pencil-square" style="font-size: 3.5vh; color: blue; padding-inline: 0.5vw; cursor: pointer;"></i>
+          <i class="bi bi-pencil-square"
+            style="font-size: 3.5vh; color: blue; padding-inline: 0.5vw; cursor: pointer;"></i>
         </template>
         <template v-slot:itemactions="{ item }">
           <router-link :to="{
@@ -135,6 +137,7 @@ export default {
       id: this.$route.params.id,
       promotor: "",
       promotores: [],
+      lastpesquisas: [],
       clientes: [
         {
           id: 1,
@@ -159,10 +162,24 @@ export default {
       this.promotor = (await response).data.promotor;
       this.promotores.push(this.promotor);
     },
+
+    async fetchPesquisas() {
+      let response = axios.get("/pesquisas/finals/" + this.id);
+      const cache = (await response).data
+      console.log(cache)
+      this.lastpesquisas = cache.slice(0, 5).map(pesquisa => ({
+        id: pesquisa.id,
+        nome: pesquisa.cliente.nome,
+        checkin: pesquisa.checkin_datetime
+      }));
+      console.log(this.lastpesquisas)
+    }
   },
+
 
   mounted() {
     this.getPromotores();
+    this.fetchPesquisas();
   },
 };
 </script>

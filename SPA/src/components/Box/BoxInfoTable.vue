@@ -60,7 +60,7 @@ export default {
     color: #858585;
     width: 95%;
     height: 10vh;
-    margin-top: 1.5vh;
+    margin-top: 1vh;
     border-radius: 0.5vh;
     align-items: center;
     justify-content: space-evenly;
