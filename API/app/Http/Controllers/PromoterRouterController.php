@@ -47,9 +47,7 @@ class PromoterRouterController extends Controller
             ->sortBy(function ($promoterRouter) {
                 // prioritize those with status "aberto" over those with status "a fazer"
                 return $promoterRouter->status === 'ABERTO' ? 0 : 1;
-            });
-
-        })->sortBy(function ($promoterRouter) {
+            })->sortBy(function ($promoterRouter) {
             if ($promoterRouter->status == 'ABERTO') {
                 return 0;
             } elseif ($promoterRouter->status == 'A FAZER') {
