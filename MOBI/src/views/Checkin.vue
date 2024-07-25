@@ -11,7 +11,7 @@ import { useDateFormat, useNow } from '@vueuse/core'
         <div class="d-grid" style="gap:25px; width:100%; justify-content:center">
             <RouterBack style="font-size:20px" />
             <a type="button" @click="getGeoLocation();" id="routerbutton"
-                class="btn btn-light align-self-center">Iniciar</a>
+                class="btn btn-light align-self-center" style="border-radius: 10px">Iniciar</a>
         </div>
     </div>
 </template>

@@ -19,7 +19,10 @@ import VisitasCheck from './views/PesquisaJua/CheckCamp.vue';
 import Checkin from './views/Checkin.vue';
 </script>
 
-<style scoped>
+<style>
+button {
+  border-radius: 10px;
+}
 body {
   background-color: #ff0000;
 }

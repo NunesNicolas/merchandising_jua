@@ -1,6 +1,6 @@
 <template>
     <router-link :to="route">
-      <button :class="['btn', colorClass]">
+      <button :class="['btn', colorClass]" style="border-radius: 10px;">
         <span>{{ label }}</span>
       </button>
     </router-link>
@@ -32,5 +32,4 @@
   </script>
   
   <style>
-  /* Estilos opcionais específicos do componente */
   </style>
