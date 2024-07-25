@@ -27,7 +27,9 @@ class PromoterRouterController extends Controller
     public function showByPromotorId($promotor_id)
     {
         $promoterRouters = promotor_router::where('promotor_id', $promotor_id)
+
             ->where('status', '!=', 'concluido') // filter out concluded promoter routers
+            ->where('status', '!=', 'CONCLUIDO') 
             ->get();
 
         foreach ($promoterRouters as $promoterRouter) {
@@ -47,6 +49,15 @@ class PromoterRouterController extends Controller
                 return $promoterRouter->status === 'ABERTO' ? 0 : 1;
             });
 
+        })->sortBy(function ($promoterRouter) {
+            if ($promoterRouter->status == 'ABERTO') {
+                return 0;
+            } elseif ($promoterRouter->status == 'A FAZER') {
+                return 1;
+            } else {
+                return 2;
+            }
+        });
 
         return response()->json($sortedPromoterRouters->values());
     }
