@@ -22,12 +22,14 @@ import axios from "axios";
       padding-right: 20px;
     ">
     <div class="d-flex" style="
+        gap: 10px;
         height: 100%;
         justify-content: space-between;
         padding: 15px;
         padding-top: 0;
       ">
-      <CardList :textBox="true" :items="promotores" :fields="{
+      <div style="width: 25%;">
+      <CardList :textBox="true" :item="promotor" :fields="{
         nome: 'Promotor',
         email: 'Email',
         status: 'status',
@@ -41,6 +43,7 @@ import axios from "axios";
           </RouterLink>
         </template>
       </CardList>
+    </div>
 
       <div class="d-flex" style="
           padding: 0;
