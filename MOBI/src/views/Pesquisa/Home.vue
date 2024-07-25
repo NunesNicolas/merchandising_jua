@@ -36,8 +36,15 @@ export default {
             console.log('Dados da pesquisa:', this.pesquisa);
         },
         async statusChekout() {
-            let updateData = { status: 'CONCLUIDO'};
-            axios.put('/pesquisas/' +  this.id,  updateData) 
+            if (confirm(`Você tem certeza que deseja finalizar o atendimento?`)) {
+                let updateData = { status: 'CONCLUIDO'};
+                axios.put('/pesquisas/' +  this.id,  updateData);
+                alert('Atendimento Finalizado.')
+                this.$router.push({ path: '/' }); 
+            }
+            else{
+                alert('Atendimento não Finalizado.')
+            }
         }
     },
     mounted() {
