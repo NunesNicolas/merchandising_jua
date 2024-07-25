@@ -44,7 +44,7 @@ class PromoterRouterController extends Controller
         $sortedPromoterRouters = $promoterRouters->sortByDesc(function ($promoterRouter) {
             return $promoterRouter->checkin_datetime ?: PHP_INT_MAX;
         })
-            ->sortBy(function ($promoterRouter) {
+        ->sortBy(function ($promoterRouter) {
                 // prioritize those with status "aberto" over those with status "a fazer"
                 return $promoterRouter->status === 'ABERTO' ? 0 : 1;
             })->sortBy(function ($promoterRouter) {
@@ -64,5 +64,16 @@ class PromoterRouterController extends Controller
         $PromoterRouter = promotor_router::find($id);
         $PromoterRouter->update($request->all());
         return response()->json($PromoterRouter);
+    }
+    public function finals($promotor_id){
+        $promoterRouters = promotor_router::where('promotor_id', $promotor_id)
+
+            ->where('status', '==', 'concluido') // filter out concluded promoter routers
+            ->where('status', '==', 'CONCLUIDO') 
+            ->get();
+            $sortedPromoterRouters = $promoterRouters->sortByDesc(function ($promoterRouter) {
+                return $promoterRouter->checkin_datetime ?: PHP_INT_MAX;
+            });
+            return response()->json($sortedPromoterRouters->values());
     }
 }
