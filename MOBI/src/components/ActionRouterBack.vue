@@ -10,5 +10,5 @@
   </script>
   
   <style scoped>
-  /* Estilos opcionais específicos do componente */
+
   </style>

@@ -12,28 +12,27 @@ import axios from "axios";
             <ActionRouter route="/produtos/Create" color="primary" label="Adicionar" />
             <ActionRouterBack />
         </ActionListWrapper>
-        
+
         <nav id="main-container" style="text-align: center; ">
             <div class="d-flex" style="padding: 20px; gap:50px; flex-wrap: wrap; ">
-            <CardList :textBox="false" :items="produtos" :fields="{
-                nome: 'Produto',
-                img: 'img'
-                
-            }">
-                <template class="tp" v-slot:actions="{ item }">
-                    <router-link :to="'produtos/' + item.id" class="d-flex flex-wrap mb-3">
-                    <div class="dtbutton">
-                       <h6 class="mt-2">DETALHES</h6>
-                    </div>
-                    </router-link>
-                    
-                    
-                </template>
-            </CardList> 
-        </div>
-        </nav>
+                <div v-for="produto in produtos" :key="produto.id" class="card-container"
+                    style="display: flex; width: 13vw;">
+                <CardList :textBox="true" :item="produto" :fields="{
+                    nome: 'Produto',
+                }">
+                    <template class="tp" v-slot:actions="{ item }">
+                        <router-link :to="'produtos/' + item.id" class="d-flex flex-wrap mb-3">
+                            <div class="dtbutton">
+                                <h6 class="mt-2">DETALHES</h6>
+                            </div>
+                        </router-link>
 
 
+                    </template>
+                </CardList>
+            </div>
+    </div>
+    </nav>
     </div>
 
 </template>
@@ -60,8 +59,8 @@ export default {
             let response = axios.get('/produtos');
             this.produtos = (await response).data;
         },
-       
-        
+
+
     },
 
     components: {
@@ -77,10 +76,11 @@ export default {
 </script>
 
 <style scoped>
-.tp{
+.tp {
     margin-bottom: 15px;
 }
-.dtbutton{
+
+.dtbutton {
     color: white;
     background-color: rgb(13, 141, 214);
     text-align: center;
@@ -90,9 +90,10 @@ export default {
     border-radius: 10px;
     margin-bottom: 15px;
     margin-left: 10%;
-    
-    
+
+
 }
+
 .li {
     width: 100%;
 }

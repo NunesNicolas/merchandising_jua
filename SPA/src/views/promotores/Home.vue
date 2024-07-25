@@ -16,7 +16,8 @@ import axios from "axios";
 
         <nav id="main-container" style="text-align: center;">
            <div class="d-flex" style="padding: 20px;  gap:50px; flex-wrap: wrap;">
-            <CardList :thisuser="true" :textBox="true" :items="promotores" :fields="{
+            <div v-for="promotor in promotores" :key="promotor.id" class="card-container" style="display: flex; width: 13vw;">
+            <CardList :thisuser="true" :textBox="true" :item="promotor" :fields="{
                 nome: 'Promotor',
                 telefone: 'Telefone',
             }">
@@ -33,6 +34,7 @@ import axios from "axios";
                     </router-link>
                 </template>
             </CardList>
+        </div>
         </div>
         </nav>
 

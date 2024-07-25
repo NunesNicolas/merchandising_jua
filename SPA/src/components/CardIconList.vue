@@ -1,12 +1,9 @@
 <template>
-    <div v-if="items.length === 0" style="width: 100%;">
+    <div v-if="!item" style="width: 100%;">
         <h3>Não há dados disponíveis.</h3>
     </div>
 
-    <div v-else v-for="item in items" :key="item.id" class="card-container"
-        style="display: flex;">
-        <div class="card"
-            style="justify-content: center; border-radius: 10px; width: 235px; display: flex; text-align: left;">
+        <div v-else class="card">            
             <div class="card-body">
                 <slot name="topactions" :item="item">
                 </slot>
@@ -31,27 +28,26 @@
                             height="200" clip-path="url(#clipCircle)" y="-20" />
                     </svg>
             
-                     <img  v-else class="" style="height: 33vh; width: 33vh;" :src=item.img alt="imagem não encontrada" />
+                     <img  v-else class="" style="height: 80%; width: 100%; margin-top: auto; margin-bottom: 0px;" :src=item.img alt="imagem não encontrada" />
                       
                 </div>
-                <table v-if="textBox">
+                <table v-if="textBox" class="mb-0" style="margin-top: auto;">
                     <tr v-for="(label, field) in fields" :key="field">
-                        <th v-if="field != 'img'">{{ label }}:</th>
-                        <td v-if="field != 'img'">{{ item[field] }}</td>
+                      <th v-if="field != 'img'">{{ label }}:</th>
+                      <td v-if="field != 'img'">{{ item[field] }}</td>
                     </tr>
-                </table>
+                  </table>
             </div>
             <slot name="actions" :item="item"></slot>
         </div>
-    </div>
 </template>
 
 
 <script>
 export default {
     props: {
-        items: {
-            type: Array,
+        item: {
+            type: Object,
             required: true
         },
         textBox: {
@@ -70,7 +66,11 @@ export default {
 </script>
 
 <style scoped>
+.card{
+    width: 100%;
+}
 .card-body {
+    width: 100%;
     height: 100%;
     padding: 0;
     padding-top: 10px;
@@ -81,6 +81,8 @@ table {
     border-top-right-radius: 8px;
     background-color: #E7E7E7;
     display: grid;
+    width: 100%;
+    margin-top: auto;
 }
 
 .tablet {
