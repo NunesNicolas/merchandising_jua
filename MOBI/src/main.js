@@ -14,6 +14,7 @@ import InicialAuth from './views/auth/login.vue';
 import InicialSistema from './views/Pesquisa/Home.vue';
 import InicialInfo from './views/Dashboard.vue';
 import Checkin from './views/Checkin.vue';
+import CheckoutSucess from './views/CheckoutSucess.vue';
 
 import CreateAtendimentos from './views/Pesquisa/Create.vue';
 import RegistroCreate from './views/RegistroTb/Create.vue';
@@ -47,6 +48,7 @@ const routes = [
       children: [
           { path: '', name: 'dashboard', component: InicialInfo },
           { path: 'create', name: 'CreateAtendimentos', component: CreateAtendimentos },
+          { path: 'sucess', name: 'CheckoutSucess', component: CheckoutSucess },
       ]
   },
     {

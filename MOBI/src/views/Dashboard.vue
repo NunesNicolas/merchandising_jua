@@ -4,21 +4,22 @@ import axios from "axios";
 
 <template>
   <div class="roteiro-info">
-
     <div class="add-but">
       <ActionListWrapper>
         <ActionRouter route="/create" color="primary" label="Adicionar" />
+        <ActionRouter route="/sucess" label="Roteiros Concluidos" />
       </ActionListWrapper>
     </div>
     <h5 class="text-3xl font-bold underline">Roteiro de Clientes</h5>
     <div class="containercards" v-for="visita in visitas">
       <VisitasCard :visita="visita" :cliente="visita.cliente">
         <slot>
-
-          <button @click="RouterButton(visita.checkin_datetime, visita.id)"
-            :class="[getButtonClass(visita.routeName)]">{{ visita.routeName
-            }}</button>
-
+          <button
+            @click="RouterButton(visita.checkin_datetime, visita.id)"
+            :class="[getButtonClass(visita.routeName)]"
+          >
+            {{ visita.routeName }}
+          </button>
         </slot>
       </VisitasCard>
     </div>
@@ -34,46 +35,44 @@ import ActionRouterBack from "../components/ActionRouterBack.vue";
 export default {
   data() {
     return {
-      visitas: []
-    }
+      visitas: [],
+    };
   },
-
 
   methods: {
     iniciar() {
-      axios.get('/pesquisas/promotor/' + 1)
-  .then(response => {
-    const visitasData = response.data;
-    this.visitas = Object.entries(visitasData).map(([key, visita]) => ({
-      ...visita,
-      routeName: visita.checkin_datetime ? 'Continue' : 'Check-in',
-    }));
-  })
-  .catch(error => {
-    console.error(error);
-  });
-  },
+      axios
+        .get("/pesquisas/promotor/" + 1)
+        .then((response) => {
+          const visitasData = response.data;
+          this.visitas = Object.entries(visitasData).map(([key, visita]) => ({
+            ...visita,
+            routeName: visita.checkin_datetime ? "Continue" : "Check-in",
+          }));
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+    },
 
     getButtonClass(routeName) {
       switch (routeName) {
-        case 'Continue':
-          return 'button-checkin';
-        case 'Check-in':
-          return 'button-pesquisa';
+        case "Continue":
+          return "button-checkin";
+        case "Check-in":
+          return "button-pesquisa";
         default:
-          return 'button-default';
+          return "button-default";
       }
     },
 
     RouterButton(checkin, id) {
-      const routerName = checkin ? 'pesquisa' : 'checkin';
+      const routerName = checkin ? "pesquisa" : "checkin";
       this.$router.push({ name: routerName, params: { pesquisaid: id } });
     },
   },
 
-  computed() {
-
-  },
+  computed() {},
 
   mounted() {
     this.iniciar();
@@ -81,9 +80,11 @@ export default {
 
   components: {
     VisitasCard,
+    ActionRouter,
+    ActionListWrapper,
+    ActionRouterBack,
   },
-}
-
+};
 </script>
 
 <style>
@@ -110,10 +111,10 @@ export default {
   justify-content: space-evenly;
   align-items: center;
   margin-left: 40px;
-  background-color: #2c9aff; 
+  background-color: #2c9aff;
   color: white;
-  border-radius: 30px; 
-  margin-right: 20px; 
+  border-radius: 30px;
+  margin-right: 20px;
   margin-top: 30px;
   border: none;
   font-size: 2vh;
@@ -121,7 +122,7 @@ export default {
 }
 
 .button-checkin {
-  background-color: #2C9AFF;
+  background-color: #2c9aff;
   /* pink */
 }
 
@@ -131,7 +132,7 @@ export default {
 }
 
 .button-default {
-  background-color: #2C9AFF;
+  background-color: #2c9aff;
   /* default blue */
 }
 </style>
