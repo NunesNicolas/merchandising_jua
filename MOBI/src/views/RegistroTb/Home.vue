@@ -2,8 +2,10 @@
   <div style="height: 25vh; width: 100%">
     <headerEmpresa :visita="pesquisa" />
   </div>
-
+  <ArrowBack/>
   <h5 class="name">Registro de Trabalho</h5>
+ 
+  
   <div>
     <!-- {{ pesquisa }} -->
     <button @click="routebutton(this.$route.pesquisaid)" class="btn">
@@ -27,7 +29,9 @@
 <script>
 import headerEmpresa from "../../components/headerEmpresa.vue";
 import RegistroCard from "../../components/RegistroCard.vue";
+import ArrowBack from "../../components/ArrowBack.vue";
 import axios from 'axios';
+
 
 export default {
   data() {
@@ -40,6 +44,7 @@ export default {
   components: {
     headerEmpresa,
     RegistroCard,
+    ArrowBack
   },
   methods: {
     async fetchPesquisa() {
