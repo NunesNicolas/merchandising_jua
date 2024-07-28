@@ -5,19 +5,20 @@ import axios from "axios";
 <template>
   <div class="roteiro-info">
     <div class="add-but">
-      <ActionListWrapper>
-        <ActionRouter route="/create" color="primary" label="Adicionar" />
-        <ActionRouter route="/sucess" label="Roteiros Concluidos" />
-      </ActionListWrapper>
+      <ActionRouter route="/create" :color="'success'" label="Adicionar">
+        <slot><i class="bi bi-plus-circle ml-2" style="font-size:20px"></i></slot>
+      </ActionRouter>
     </div>
-    <h5 class="text-3xl font-bold underline">Roteiro de Clientes</h5>
+    <div class="ActionContainer">
+      <h5 class="font-bold underline">Roteiro de Clientes</h5>
+      <ActionRouter style="margin-top: 20px; margin-right: 30px" route="/sucess" :color="'primary'" label="">
+        <slot><i class="bi bi-list-check" style="font-size:20px; "></i></slot>
+      </ActionRouter>
+    </div>
     <div class="containercards" v-for="visita in visitas">
       <VisitasCard :visita="visita" :cliente="visita.cliente">
         <slot>
-          <button
-            @click="RouterButton(visita.checkin_datetime, visita.id)"
-            :class="[getButtonClass(visita.routeName)]"
-          >
+          <button @click="RouterButton(visita.checkin_datetime, visita.id)" :class="[getButtonClass(visita.routeName)]">
             {{ visita.routeName }}
           </button>
         </slot>
@@ -72,7 +73,7 @@ export default {
     },
   },
 
-  computed() {},
+  computed() { },
 
   mounted() {
     this.iniciar();
@@ -87,7 +88,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .containercards {
   margin-bottom: 70px;
 }
@@ -106,19 +107,10 @@ export default {
   margin-bottom: 8vh;
 }
 
-.add-but button {
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-  margin-left: 40px;
-  background-color: #2c9aff;
-  color: white;
-  border-radius: 30px;
-  margin-right: 20px;
-  margin-top: 30px;
-  border: none;
-  font-size: 2vh;
-  width: 20vh;
+.add-but {
+  text-align: left;
+  padding-top: 20px;
+  padding-left: 40px;
 }
 
 .button-checkin {
@@ -134,5 +126,12 @@ export default {
 .button-default {
   background-color: #2c9aff;
   /* default blue */
+}
+
+.ActionContainer {
+  justify-content: space-between;
+  display: flex;
+  height: auto;
+  row-gap: 20px;
 }
 </style>

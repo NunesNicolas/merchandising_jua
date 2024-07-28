@@ -40,7 +40,7 @@ export default {
 
         navtrue(geoloc) {
             this.geoloc = geoloc;
-            this.calculateDistance();
+            this.calculateDistance();   
             if (this.distance <= 4) {
                 console.log('distance', this.distance, 'Geolocation:', geoloc);
             const formatted = useDateFormat(useNow(), 'YYYY-MM-DD HH:mm:ss')

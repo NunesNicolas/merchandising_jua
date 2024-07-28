@@ -71,3 +71,49 @@ export default {
   },
 };
 </script>
+<style scoped>
+.containercards {
+  margin-bottom: 70px;
+}
+
+.roteiro-info {
+  text-align: center;
+  justify-content: space-evenly;
+}
+
+.roteiro-info h5 {
+  text-align: left;
+  color: #a0a0a0;
+  font-size: 2.5vh;
+  margin-left: 40px;
+  margin-top: 30px;
+  margin-bottom: 8vh;
+}
+
+.add-but {
+  text-align: left;
+  padding-top: 20px;
+  padding-left: 40px;
+}
+
+.button-checkin {
+  background-color: #2c9aff;
+  /* pink */
+}
+
+.button-pesquisa {
+  background-color: #57be71;
+  /* green */
+}
+
+.button-default {
+  background-color: #2c9aff;
+  /* default blue */
+}
+
+.ActionContainer {
+  justify-content: space-between;
+  display: flex;
+  height: auto;
+  row-gap: 20px;
+}</style>
