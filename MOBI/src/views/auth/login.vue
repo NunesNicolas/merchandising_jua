@@ -1,90 +1,180 @@
 <template>
-    <section>
-        <div class="view">
-            
-            <img src="../../assets/nova-logo.png">
-            <div class="login">
-                <input type="textarea" placeholder=" Nome de Usuário">
-                <input type="password" placeholder=" Senha">
-            </div>
-            <a href="">Esqueci minha senha</a>
-            <button>Entrar</button>
-        </div>     
-    </section>
-</template>
+    <div class="login-container">
+      <div class="logo-container">
+        <img src="https://sabaojua.com.br/Assets/img/nova-logo.png" alt="Logo" />
+      </div>
+  
+      <div class="form-container">
+        <form @submit.prevent="login">
+          <h2 class="text-center">Bem-vindo ao sistema</h2>
+  
+          <div class="input-container">
+            <input type="email" v-model="email" required placeholder="Email" />
+          </div>
+  
+          <div class="input-container">
+            <input :type="senhaVisivel ? 'text' : 'password'" v-model="senha" required placeholder="Senha" />
+            <i class="bi bi-eye-fill" @click="mostrarSenha"></i>
+          </div>
+  
+          <div class="form-link">
+            <router-link to="#">Esqueceu sua senha?</router-link>
+          </div>
+  
+          <button type="submit" class="btn-login">
+            Entrar
+          </button>
+        </form>
+      </div>
+    </div>
+  </template>
+  
+  
+  <script>
+  import axios from 'axios';
+  import { useRouter } from 'vue-router';
+  
+  export default {
+    data() {
+      return {
+        email: '',
+        senha: '',
+        senhaVisivel: false,
+      };
+    },
+    methods: {
+      mostrarSenha() {
+        this.senhaVisivel = !this.senhaVisivel
+    },
+      async login() {
+        const domain = import.meta.env.VITE_API_DOMAIN ?? 'http://localhost:8000';
+  
+        try {
+          const response = await axios.get(domain + '/sanctum/csrf-cookie');
+          const csrfToken = this.getTokenFromCookie();
+  
+          const formData = new FormData();
+          formData.append('email', this.email);
+          formData.append('password', this.senha);
+  
+          const loginResponse = await axios.post(domain + '/login', formData, {
+            headers: {
+              Accept: 'application/json',
+              'X-CSRF-TOKEN': csrfToken,
+            },
+          });
+  
+          localStorage.setItem('token', csrfToken);
+  
+          console.log('Login successful:', loginResponse.data);
+  
+          this.$router.push('/'); // Redirecionar após o login
+  
+        } catch (error) {
+          console.error('Erro ao fazer login:', error);
+          if (error.response && error.response.data && error.response.data.message) {
+            console.log('Error message:', error.response.data.message);
+          } else {
+            console.log('Ocorreu um erro ao fazer o login.');
+          }
+        }
+      },
+      getTokenFromCookie() {
+        let csrfToken = '';
+        const cookies = document.cookie.split('; ');
+        cookies.forEach((cookie) => {
+          if (cookie.startsWith('XSRF-TOKEN=')) {
+            csrfToken = decodeURIComponent(cookie.split('=')[1]);
+          }
+        });
+        return csrfToken;
+      },
+    },
+  };
+  </script>
+  
+  <style scoped>
+  /* Estilos CSS permanecem os mesmos */
+  </style>
+  
+  
+  <style scoped>
+  .login-container {
+    height: 100%;
+    width: 100%;
+  }
 
-<script>
-export default {
-    
-}
-</script>
-
-<style>
-    #app{
-        padding-bottom: 0;
-    }
-    section{
-        flex-wrap: wrap;
-        height: 100vh;
-        width: 100%;
-        background-color: #2C9AFF;
-    }
-    .view{
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-evenly;
-        align-items: center;
-        width: 100%;
-        height: 70vh;
-        animation-name: startAnimation;
-        animation-duration: 1s;
-        
-    }
-    .view img{
-        width: 60vw;
-        height: 17vh;
-        margin-top: 22vh;
-        margin-bottom: 3vh;
-        margin-inline: 15vw;
-
-    }
-    .login{
-        height: 17vh;
-        width: 100%;
-        overflow: hidden;
-    }
-    .login input{
-        margin-bottom: 20px;
-        width: 75%;
-        background-color: #fff;
-        height: 6vh;
-        color: #000;
-        border: none;
-        border-radius: 1.5vh;
-        box-shadow: 0vh 0vh 0.5vh 0vh #000;
-        padding-inline-start: 3vw;
-
-    }
-    @keyframes startAnimation{
-        0% {height: 0vh};
-        100% {height: 6vh};
-    }
-    .view a{  
-        display: flex;
-        justify-content: center;
-        text-align: left;
-        margin-right: 37vw;
-        margin-bottom: 3vh;
-        height: 4vh;
-        width: 40vw;
-        color: #fff;
-        text-decoration: underline;
-        overflow: hidden;
-    }
-    .view button{
-        width: 35%;
-        margin-inline: 10%;
-        background-color: transparent;
-        border: 0.1vh solid #fff;
-    }
-</style>
+  .logo-container {
+    background-color: #2483dd;
+    min-width: 50vw;
+    height: 35vh;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .logo-container img {
+    width: 35vw;
+  }
+  
+  .form-container {
+    margin-top: 20px;
+    height: auto;
+    display: flex;
+    justify-content:baseline;
+    align-items: center;
+    flex-direction: column;
+  }
+  
+  .form-container form {
+    width: 80%;
+    max-width: 400px;
+  }
+  
+  .text-center {
+    text-align: center;
+  }
+  
+  .input-container {
+    margin-top: 2rem;
+    position: relative;
+  }
+  
+  .input-container input {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: white;
+    color: black;
+    box-shadow: 0vw 0vw 0.4vw 0vw;
+  }
+  
+  .input-container i {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 10px;
+    cursor: pointer;
+  }
+  
+  .form-link {
+    margin-top: 1rem;
+    text-align: right;
+  }
+  
+  .btn-login {
+    margin-top: 2rem;
+    width: 100%;
+    max-width: 200px;
+    padding: 0.75rem;
+    background-color: #0b7de7;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  </style>
+  

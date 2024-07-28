@@ -3,52 +3,46 @@ import axios from "axios";
 </script>
 
 <template>
-  <div class="roteiro-info">
-    <div class="add-but">
-      <ActionRouter route="/create" :color="'success'" label="Adicionar">
-        <slot><i class="bi bi-plus-circle ml-2" style="font-size:20px"></i></slot>
-      </ActionRouter>
-    </div>
-    <div class="ActionContainer">
-      <h5 class="font-bold underline">Roteiro de Clientes</h5>
-      <ActionRouter style="margin-top: 20px; margin-right: 30px" route="/sucess" :color="'primary'" label="">
-        <slot><i class="bi bi-list-check" style="font-size:20px; "></i></slot>
-      </ActionRouter>
-    </div>
-    <div class="containercards" v-for="visita in visitas">
-      <VisitasCard :visita="visita" :cliente="visita.cliente">
-        <slot>
-          <button @click="RouterButton(visita.checkin_datetime, visita.id)" :class="[getButtonClass(visita.routeName)]">
-            {{ visita.routeName }}
-          </button>
-        </slot>
-      </VisitasCard>
-    </div>
-  </div>
+    <div class="roteiro-info">
+        <h5 class="text-3xl font-bold underline">Roteiro Concluidos <i class="bi bi-bookmark-check"></i> </h5>
+        <div class="containercards" v-for="visita in visitas">
+          <VisitasCard :visita="visita" :cliente="visita.cliente">
+            <slot>
+              <button
+                :class="[getButtonClass(visita.routeName)]">
+                {{ visita.routeName }}
+              </button>
+            </slot>
+          </VisitasCard>
+        </div>
+      </div>
 </template>
 
 <script>
 import VisitasCard from "../components/VisitasCard.vue";
 import ActionListWrapper from "../components/ActionListWrapper.vue";
 import ActionRouter from "../components/ActionRouter.vue";
-import ActionRouterBack from "../components/ActionRouterBack.vue";
+
+
 
 export default {
   data() {
     return {
+    //   id: this.$route.params.id,
       visitas: [],
+      lastpesquisas: [],
     };
   },
 
   methods: {
     iniciar() {
       axios
-        .get("/pesquisas/promotor/" + 1)
+        .get("/pesquisas/finals/" + 1)
         .then((response) => {
           const visitasData = response.data;
           this.visitas = Object.entries(visitasData).map(([key, visita]) => ({
             ...visita,
-            routeName: visita.checkin_datetime ? "Continue" : "Check-in",
+            routeName: visita.status === 'CONCLUIDO' ? "Concluido" : null
           }));
         })
         .catch((error) => {
@@ -58,22 +52,13 @@ export default {
 
     getButtonClass(routeName) {
       switch (routeName) {
-        case "Continue":
-          return "button-checkin";
-        case "Check-in":
-          return "button-pesquisa";
-        default:
+        case "Concluido":
           return "button-default";
       }
     },
-
-    RouterButton(checkin, id) {
-      const routerName = checkin ? "pesquisa" : "checkin";
-      this.$router.push({ name: routerName, params: { pesquisaid: id } });
-    },
   },
 
-  computed() { },
+  computed() {},
 
   mounted() {
     this.iniciar();
@@ -83,11 +68,9 @@ export default {
     VisitasCard,
     ActionRouter,
     ActionListWrapper,
-    ActionRouterBack,
   },
 };
 </script>
-
 <style scoped>
 .containercards {
   margin-bottom: 70px;
@@ -133,5 +116,4 @@ export default {
   display: flex;
   height: auto;
   row-gap: 20px;
-}
-</style>
+}</style>

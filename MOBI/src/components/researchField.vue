@@ -1,6 +1,6 @@
 <template>
     <div id="separator" class="animate-fade-up">
-        <label>Desenfetante 2L</label>
+        <label>Desinfetante 2L</label>
         <input type="text" id="desc" name="description" placeholder="Descreva as condições do produto">
         <p>Não Consta</p>
         <input type="checkbox" id="check" name="Check">

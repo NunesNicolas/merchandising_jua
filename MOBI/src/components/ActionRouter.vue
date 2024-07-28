@@ -1,7 +1,10 @@
 <template>
     <router-link :to="route">
-      <button :class="['btn', colorClass]" style="border-radius: 10px;">
+      <button :class="`btn-${color}`" style="border-radius: 10px;">
         <span>{{ label }}</span>
+        <slot>
+          
+        </slot>
       </button>
     </router-link>
   </template>
@@ -20,7 +23,6 @@
       },
       label: {
         type: String,
-        required: true
       }
     },
     computed: {
@@ -31,5 +33,8 @@
   };
   </script>
   
-  <style>
+  <style scoped>
+button{
+  width: auto;
+}
   </style>
