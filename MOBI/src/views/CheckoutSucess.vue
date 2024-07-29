@@ -8,7 +8,7 @@ import axios from "axios";
         <div class="containercards" v-for="visita in visitas">
           <VisitasCard :visita="visita" :cliente="visita.cliente">
             <slot>
-              <button
+              <button  @click="routerButton(visita);"
                 :class="[getButtonClass(visita.routeName)]">
                 {{ visita.routeName }}
               </button>
@@ -49,6 +49,10 @@ export default {
           console.error(error);
         });
     },
+
+    routerButton(visita) {
+  this.$router.push({ name: 'registro', params: { pesquisaid: visita.id } });
+},
 
     getButtonClass(routeName) {
       switch (routeName) {

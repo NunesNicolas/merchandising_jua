@@ -18,7 +18,7 @@ export default {
           this.$router.push({ name: 'registro', params: { pesquisaid: this.$route.pesquisaid } });
           break;
         case 'RT2':
-        this.$router.push({ name: 'check', params: { pesquisaid: this.$route.pesquisaid } });
+          this.$router.push({ name: 'check', params: { pesquisaid: this.$route.pesquisaid } });
         break;
         default:
           break;
