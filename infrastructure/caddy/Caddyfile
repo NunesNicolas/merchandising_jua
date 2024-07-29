@@ -1,7 +1,14 @@
 ## colocar variavel de ambiente para SPA DOMAIN
 
 {$API_DOMAIN} {
-    reverse_proxy api:80
+    reverse_proxy api:80 {
+        header_up Origin {http.request.header.Origin}
+        header_up Host {http.request.host}
+        header_up X-Real-IP {http.request.remote}
+        header_up X-Forwarded-For {http.request.remote}
+        header_up X-Forwarded-Proto {http.request.scheme}
+    }
+    
     tls {$EMAIL}
 }
 
