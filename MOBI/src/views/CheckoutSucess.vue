@@ -51,7 +51,7 @@ export default {
     },
 
     routerButton(visita) {
-  this.$router.push({ name: 'registro', params: { pesquisaid: visita.id } });
+  this.$router.push({ name: 'pesquisa', params: { pesquisaid: visita.id } });
 },
 
     getButtonClass(routeName) {
