@@ -96,6 +96,8 @@ export default {
 .roteiro-info {
   text-align: center;
   justify-content: space-evenly;
+  padding-bottom: 8vh;
+  background-color: rgb(246, 246, 246);
 }
 
 .roteiro-info h5 {
