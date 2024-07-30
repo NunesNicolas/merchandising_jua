@@ -18,7 +18,8 @@ class DefaultUsersSeeder extends Seeder
             ['email' => 'teste@teste.com'],
             [
                 'name' => 'Usuário de teste',
-                'password' => Hash::make('123456')
+                'password' => Hash::make('123456'),
+                'role' => 'manager'
             ]
         );
 
@@ -27,6 +28,7 @@ class DefaultUsersSeeder extends Seeder
             [
                 'name' => 'admin',
                 'password' => Hash::make('123456'),
+                'role' => 'manager'
             ]
         );
     }
