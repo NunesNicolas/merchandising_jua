@@ -6,18 +6,24 @@ import Navbar from '../../components/header/navbar.vue'; // Certifique-se de imp
 const user = ref(null);
 
 onMounted(async () => {
-
-
-
-  try {
-    //@todo verificar depois
-    // const response = await axios.get('/user');
-    // user.value = response.data; // Armazena os dados do usuário na variável reativa 'user'
-    user.value = { name: "Usuário de teste" }
-  } catch (error) {
-    console.error('Erro ao obter dados do usuário:', error);
-  }
-});
+      const cachedUser = localStorage.getItem('user');
+      
+      if (cachedUser) {
+        // Se há dados no localStorage, use-os
+        user.value = JSON.parse(cachedUser);
+      } else {
+        // Se não há dados no localStorage, faça uma requisição à API
+        try {
+          const response = await axios.get('/user');
+          user.value = response.data;
+          
+          // Armazene os dados no localStorage
+          localStorage.setItem('user', JSON.stringify(response.data));
+        } catch (error) {
+          console.error('Erro ao obter dados do usuário:', error);
+        }
+      }
+    });
 </script>
 
 <template>

@@ -42,34 +42,30 @@ export default {
     };
   },
   methods: {
-    mostrarSenha() {
-      // Lógica para mostrar a senha
-    },
     async login() {
       const domain = import.meta.env.VITE_API_DOMAIN ?? 'http://localhost:8000';
 
       try {
-        const response = await axios.get(domain + '/sanctum/csrf-cookie');
-        const csrfToken = this.getTokenFromCookie();
-
+        
         const formData = new FormData();
         formData.append('email', this.email);
         formData.append('password', this.senha);
 
-        const loginResponse = await axios.post(domain + '/login', formData, {
+        const loginResponse = await axios.post(domain + '/api/auth/login', formData, {
           headers: {
             Accept: 'application/json',
-            'X-CSRF-TOKEN': csrfToken,
+            
           },
         });
 
-        localStorage.setItem('token', csrfToken);
-
         console.log('Login successful:', loginResponse.data);
+
+        localStorage.setItem('token', loginResponse?.data?.access_token);
 
         this.$router.push('/'); // Redirecionar após o login
 
       } catch (error) {
+        alert('Erro ao tentar realizar login');
         console.error('Erro ao fazer login:', error);
         if (error.response && error.response.data && error.response.data.message) {
           console.log('Error message:', error.response.data.message);
@@ -78,16 +74,25 @@ export default {
         }
       }
     },
-    getTokenFromCookie() {
-      let csrfToken = '';
-      const cookies = document.cookie.split('; ');
-      cookies.forEach((cookie) => {
-        if (cookie.startsWith('XSRF-TOKEN=')) {
-          csrfToken = decodeURIComponent(cookie.split('=')[1]);
-        }
-      });
-      return csrfToken;
-    },
+    async logout() {
+      const domain = import.meta.env.VITE_API_DOMAIN ?? 'http://localhost:8000';
+
+      try {
+               
+        const logoutResponse = await axios.get(domain + '/api/auth/login');
+
+        console.log('Logout successful:', logoutResponse?.data);
+
+        localStorage.removeItem('token');
+        localStorage.removeItem('user');
+
+        this.$router.push('/login'); // Redirecionar após o login
+
+      } catch (error) {
+        alert('Erro ao tentar realizar logout');
+        this.$router.push('/logout'); 
+      }
+    }
   },
 };
 </script>
