@@ -8,7 +8,7 @@ import axios from "axios";
     </div>
     <div class="info">
         <h5>O que deseja fazer?</h5>
-        <OptionButtons :id="this.$route.pesquisaid" />
+        <OptionButtons :id="this?.$route?.pesquisaid" />
     </div>
     <div class="boxcheck">
         <ActionRouter @click="statusChekout();" class="check" route="/" label="Checkout" />
@@ -24,8 +24,11 @@ import axios from 'axios';
 
 export default {
     data() {
+
+        console.log('[home pesquisas] route',this?.$route)
+
         return {
-            id: this.$route.params.pesquisaid,
+            id: this?.$route?.params?.pesquisaid,
             pesquisa: {},
         }
     },
