@@ -73,25 +73,6 @@ export default {
           console.log('Ocorreu um erro ao fazer o login.');
         }
       }
-    },
-    async logout() {
-      const domain = import.meta.env.VITE_API_DOMAIN ?? 'http://localhost:8000';
-
-      try {
-               
-        const logoutResponse = await axios.get(domain + '/api/auth/login');
-
-        console.log('Logout successful:', logoutResponse?.data);
-
-        localStorage.removeItem('token');
-        localStorage.removeItem('user');
-
-        this.$router.push('/login'); // Redirecionar após o login
-
-      } catch (error) {
-        alert('Erro ao tentar realizar logout');
-        this.$router.push('/logout'); 
-      }
     }
   },
 };
