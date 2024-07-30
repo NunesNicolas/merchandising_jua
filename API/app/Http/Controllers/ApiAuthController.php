@@ -33,7 +33,6 @@ class ApiAuthController extends Controller
 
     public function logout()
     {
-        
         auth()->user()->tokens()->delete();
     
         return response()->json([
