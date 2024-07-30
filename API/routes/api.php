@@ -43,7 +43,7 @@ Route::resource('promotores', PromotoresController::class);
 
 Route::resource('competitors', CompetitorsController::class);
 
-Route::resource('clientesx', ClientesController::class);
+Route::resource('clientes', ClientesController::class);
 
 Route::resource('pesquisas', PromoterRouterController::class);
 Route::get('pesquisas/promotor/{promotor_id}', [PromoterRouterController::class, 'opened']);
