@@ -18,6 +18,8 @@ check_and_start_container "mariadb" 'mariadb'
 
 docker compose up -d --build spa
 
+docker compose up -d --build mobi
+
 # Inicia ou reconstrói o contêiner da API
 docker compose up -d --build api
 
