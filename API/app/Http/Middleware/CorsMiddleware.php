@@ -15,7 +15,7 @@ class CorsMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-        $allowedOrigins = explode(',', env('FRONTEND_URL'));
+        $allowedOrigins = config('cors.allowed_origins');
         $origin = $request->header('Origin');
 
         if (in_array($origin, $allowedOrigins)) {
