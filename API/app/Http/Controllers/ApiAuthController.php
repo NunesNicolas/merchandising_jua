@@ -16,7 +16,7 @@ class ApiAuthController extends Controller
             'password' => 'required|string',
         ]);
 
-        $user = User::where('email',$loginUserData['email'])->first();
+        $user = User::with('promotores')->where('email',$loginUserData['email'])->first();
     
         if(!$user || !Hash::check($loginUserData['password'],$user->password)){
             return response()->json([
@@ -28,6 +28,7 @@ class ApiAuthController extends Controller
         return response()->json([
             'token_type' => 'Bearer',
             'access_token' => $token,
+            'promoter' => $user->promotores()->first(),
         ]);
     }
 
