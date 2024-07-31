@@ -11,6 +11,7 @@ import authLayout from './views/layouts/auth.vue';
 import pesquisaLayout from './views/layouts/pesquisa.vue'
 
 import InicialAuth from './views/auth/login.vue';
+import Logout from './views/auth/logout.vue';
 import InicialSistema from './views/Pesquisa/Home.vue';
 import InicialInfo from './views/Dashboard.vue';
 import Checkin from './views/Checkin.vue';
@@ -49,13 +50,14 @@ const routes = [
       { path: '', name: 'dashboard', component: InicialInfo, meta: { requiresAuth: true } },
       { path: 'create', name: 'CreateAtendimentos', component: CreateAtendimentos, meta: { requiresAuth: true } },
       { path: 'sucess', name: 'CheckoutSucess', component: CheckoutSucess, meta: { requiresAuth: true } },
-    ]
+    ],
+    meta: { requiresAuth: true }
   },
   {
     path: '/visitas/check',
     component: pesquisaLayout,
     children: [
-      { path: '', name: 'check', component: VisitasCheck , meta: { requiresAuth: true }},
+      { path: '', name: 'check', component: VisitasCheck, meta: { requiresAuth: true } },
     ]
   },
   {
@@ -64,6 +66,11 @@ const routes = [
     children: [
 
     ]
+  },
+  {
+    path: '/logout', // Define a rota de logout
+    name: 'logout',
+    component: Logout
   }
 ]
 const router = createRouter({
@@ -74,7 +81,7 @@ const router = createRouter({
 
 // Adicione o guard de navegação global
 router.beforeEach((to, from, next) => {
-  
+
   const token = localStorage.getItem('token');
 
   // Verifica se a rota requer autenticação

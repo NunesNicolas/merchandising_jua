@@ -62,12 +62,18 @@
           },
         });
 
+        if (!loginResponse?.data?.promoter){
+          alert('Erro ao tentar realizar login. Não é usuário promotor');
+          this.$router.push('/login'); 
+        }else{
+
         console.log('Login successful:', loginResponse.data);
 
         localStorage.setItem('token', loginResponse?.data?.access_token);
         localStorage.setItem('promoter', JSON.stringify(loginResponse?.data?.promoter));
 
         this.$router.push('/'); // Redirecionar após o login
+        }
 
       } catch (error) {
         alert('Erro ao tentar realizar login');
