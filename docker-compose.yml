@@ -62,6 +62,17 @@
       volumes:
         - spa_data:/var/www
 
+    mobi:
+      build:
+        context: ./MOBI
+        dockerfile: Dockerfile
+        args:
+          VITE_API_DOMAIN: ${API_DOMAIN}
+
+      container_name: mobi
+      volumes:
+        - mobi_data:/var/www
+
     caddy:
       image: caddy:latest
       container_name: caddy
@@ -75,6 +86,9 @@
       volumes:
         - ./infrastructure/caddy/Caddyfile:/etc/caddy/Caddyfile
         - spa_data:/var/www/spa
+        - mobi_data:/var/www/mobi
+        - caddy_data:/data
+        - caddy_config:/config
 
       depends_on:
         - api
@@ -91,6 +105,9 @@
   volumes:
     mariadb_data:
     spa_data:
+    mobi_data:
+    caddy_data:
+    caddy_config:
 
   networks:
     internal:

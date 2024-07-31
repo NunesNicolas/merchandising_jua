@@ -42,8 +42,11 @@ export default {
 
   methods: {
     iniciar() {
+
+      const promoter = JSON.parse(localStorage.getItem('promoter'));
+
       axios
-        .get("/pesquisas/promotor/" + 1)
+        .get("/pesquisas/promotor/" + promoter?.id)
         .then((response) => {
           const visitasData = response.data;
           this.visitas = Object.entries(visitasData).map(([key, visita]) => ({
