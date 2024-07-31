@@ -11,9 +11,9 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         $this->call([
-            PromotoresSeeder::class,
+            DefaultUsersSeeder::class,
             ClienteSeeder::class,
-            DefaultUsersSeeder::class
+            PromotoresSeeder::class
         ]);
 
     }

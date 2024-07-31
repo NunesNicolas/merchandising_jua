@@ -5,35 +5,57 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\Promotores;
+use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 
 class PromotoresSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     *
-     * @return void
-     */
     public function run()
     {
-        Promotores::firstOrCreate(
-            ['email' => 'john.doe@example.com'],
+        $promotoresData = [
             [
-                'nome' => 'John Doe',
-                'senha' => Hash::make('password123'),
+                'email' => 'john@promotor.com',
+                'nome' => 'Promotor John Doe',
                 'telefone' => '1234567890',
                 'img' => 'john_doe.png',
+                'senha' => '123456'
+            ],
+            [
+                'email' => 'jane@promotor.com',
+                'nome' => 'Promotor Jane Smith',
+                'telefone' => '0987654321',
+                'img' => 'jane_smith.png',
+                'senha' => '123456'
+            ]
+        ];
+
+        foreach ($promotoresData as $data) {
+            $this->createPromotorAndUser($data);
+        }
+    }
+
+    private function createPromotorAndUser($data)
+    {
+        $promotor = Promotores::firstOrCreate(
+            ['email' => $data['email']],
+            [
+                'nome' => $data['nome'],
+                'telefone' => $data['telefone'],
+                'img' => $data['img']
             ]
         );
 
-        Promotores::firstOrCreate(
-            ['email' => 'jane.smith@example.com'],
+        $user = User::firstOrCreate(
+            ['email' => $promotor->email],
             [
-                'nome' => 'Jane Smith',
-                'senha' => Hash::make('password123'),
-                'telefone' => '0987654321',
-                'img' => 'jane_smith.png',
+                'name' => $promotor->nome,
+                'password' => Hash::make($data['senha']),
+                'role' => 'promoter'
             ]
         );
+
+        // Associa o usuário com o promotor
+        $promotor->user_id = $user->id;
+        $promotor->save();
     }
 }

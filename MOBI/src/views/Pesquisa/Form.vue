@@ -6,8 +6,8 @@
       <hr>
       <SelectInput label="ID do cliente" name="id_cli" :modelValue="formValues.cliente_id" :options="this.clientes"
         @update:modelValue="updateFormValue('cliente_id', $event)" />
-      <SelectInput label="ID do promotor" name="id_pro" :modelValue="formValues.promotor_id" :options="this.promotores"
-        @update:modelValue="updateFormValue('promotor_id', $event)" />
+      <!-- <SelectInput label="ID do promotor" name="id_pro" :modelValue="formValues.promotor_id" :options="this.promotores"
+        @update:modelValue="updateFormValue('promotor_id', $event)" /> -->
       <DateInput label="Data:" name="data" :modelValue="formValues.route_date"
         @update:modelValue="updateFormValue('route_date', $event)" />
     </template>
@@ -56,7 +56,7 @@ export default {
 
       validations: {
         cliente_id: value => (!value ? 'ID do cliente é obrigatório' : ''),
-        promotor_id: value => (!value ? 'ID do cliente é obrigatório' : ''),
+        // promotor_id: value => (!value ? 'ID do cliente é obrigatório' : ''),
         route_date: value => {
           if (!value) return 'Data é obrigatório';
           const date = new Date(value);
@@ -71,6 +71,9 @@ export default {
   },
   methods: {
     handleSave(formData) {
+      const promoter = JSON.parse(localStorage.getItem('promoter'));
+      formData.promotor_id = promoter?.id;
+      console.log('saving promoter ', formData);
       this.onSave(formData);
     },
     getSelects() {
