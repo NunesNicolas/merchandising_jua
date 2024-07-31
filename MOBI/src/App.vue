@@ -25,7 +25,7 @@ button {
   border-radius: 10px;
 }
 body {
-  background-color: #ff0000;
+  background-color: (246, 246, 246);
 }
 #app {
   padding: 0;
