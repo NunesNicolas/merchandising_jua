@@ -25,55 +25,73 @@ import VisitasCheck from './views/PesquisaJua/CheckCamp.vue';
 
 
 const routes = [
-    {
-      path: '/login',
-      component: authLayout,
-      children: [
-        { path: '', name: 'login', component: InicialAuth },
-      ]
-    },
-    {
-        path: '/pesquisas',
-        component: sistemaLayout,
-        children: [
-            { path: ':pesquisaid', name: 'pesquisa', component: InicialSistema},
-            { path: '/checkin/:pesquisaid', name: 'checkin', component: Checkin},
-            { path: 'registro/create/:pesquisaid', name: 'newReg', component: RegistroCreate },
-            { path: 'registro/:pesquisaid', name: 'registro', component: RegistroHome },
-        ]
-    },
-    {
-      path: '/',
-      component: sistemaLayout,
-      children: [
-          { path: '', name: 'dashboard', component: InicialInfo },
-          { path: 'create', name: 'CreateAtendimentos', component: CreateAtendimentos },
-          { path: 'sucess', name: 'CheckoutSucess', component: CheckoutSucess },
-      ]
+  {
+    path: '/login',
+    component: authLayout,
+    children: [
+      { path: '', name: 'login', component: InicialAuth },
+    ]
   },
-    {
-      path: '/visitas/check',
-      component: pesquisaLayout,
-      children: [
-          { path: '', name: 'check', component: VisitasCheck },
-      ]
-    },
-    {
-      path: '/visitas/registro',
-      component: pesquisaLayout,
-      children: [
-         
-      ]
-    }
+  {
+    path: '/pesquisas',
+    component: sistemaLayout,
+    children: [
+      { path: ':pesquisaid', name: 'pesquisa', component: InicialSistema, meta: { requiresAuth: true } },
+      { path: '/checkin/:pesquisaid', name: 'checkin', component: Checkin, meta: { requiresAuth: true } },
+      { path: 'registro/create/:pesquisaid', name: 'newReg', component: RegistroCreate, meta: { requiresAuth: true } },
+      { path: 'registro/:pesquisaid', name: 'registro', component: RegistroHome, meta: { requiresAuth: true } },
+    ]
+  },
+  {
+    path: '/',
+    component: sistemaLayout,
+    children: [
+      { path: '', name: 'dashboard', component: InicialInfo, meta: { requiresAuth: true } },
+      { path: 'create', name: 'CreateAtendimentos', component: CreateAtendimentos, meta: { requiresAuth: true } },
+      { path: 'sucess', name: 'CheckoutSucess', component: CheckoutSucess, meta: { requiresAuth: true } },
+    ]
+  },
+  {
+    path: '/visitas/check',
+    component: pesquisaLayout,
+    children: [
+      { path: '', name: 'check', component: VisitasCheck , meta: { requiresAuth: true }},
+    ]
+  },
+  {
+    path: '/visitas/registro',
+    component: pesquisaLayout,
+    children: [
+
+    ]
+  }
 ]
 const router = createRouter({
-    history: createWebHistory(),
-    routes
-  });
+  history: createWebHistory(),
+  routes
+});
+
+
+// Adicione o guard de navegação global
+router.beforeEach((to, from, next) => {
   
-  createApp(App)
-    .use(router)
-    .use(BootstrapVue3)
-    .mount('#app');
-  
-  export default router;
+  const token = localStorage.getItem('token');
+
+  // Verifica se a rota requer autenticação
+  const requiresAuth = to.matched.some(record => record.meta.requiresAuth);
+
+  if (requiresAuth && !token) {
+    // Se a rota requer autenticação e o token não está presente, redirecione para o login
+    next('/login');
+  } else {
+    // Caso contrário, continue para a rota desejada
+    next();
+  }
+});
+
+createApp(App)
+  .use(router)
+  .use(BootstrapVue3)
+  .mount('#app');
+
+export default router;

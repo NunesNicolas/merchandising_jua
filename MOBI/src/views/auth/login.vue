@@ -46,49 +46,39 @@
       mostrarSenha() {
         this.senhaVisivel = !this.senhaVisivel
     },
-      async login() {
-        const domain = import.meta.env.VITE_API_DOMAIN ?? 'http://localhost:8000';
-  
-        try {
-          const response = await axios.get(domain + '/sanctum/csrf-cookie');
-          const csrfToken = this.getTokenFromCookie();
-  
-          const formData = new FormData();
-          formData.append('email', this.email);
-          formData.append('password', this.senha);
-  
-          const loginResponse = await axios.post(domain + '/login', formData, {
-            headers: {
-              Accept: 'application/json',
-              'X-CSRF-TOKEN': csrfToken,
-            },
-          });
-  
-          localStorage.setItem('token', csrfToken);
-  
-          console.log('Login successful:', loginResponse.data);
-  
-          this.$router.push('/'); // Redirecionar após o login
-  
-        } catch (error) {
-          console.error('Erro ao fazer login:', error);
-          if (error.response && error.response.data && error.response.data.message) {
-            console.log('Error message:', error.response.data.message);
-          } else {
-            console.log('Ocorreu um erro ao fazer o login.');
-          }
-        }
-      },
-      getTokenFromCookie() {
-        let csrfToken = '';
-        const cookies = document.cookie.split('; ');
-        cookies.forEach((cookie) => {
-          if (cookie.startsWith('XSRF-TOKEN=')) {
-            csrfToken = decodeURIComponent(cookie.split('=')[1]);
-          }
+    async login() {
+      const domain = import.meta.env.VITE_API_DOMAIN ?? 'http://localhost:8000';
+
+      try {
+        
+        const formData = new FormData();
+        formData.append('email', this.email);
+        formData.append('password', this.senha);
+
+        const loginResponse = await axios.post(domain + '/api/auth/login', formData, {
+          headers: {
+            Accept: 'application/json',
+            
+          },
         });
-        return csrfToken;
-      },
+
+        console.log('Login successful:', loginResponse.data);
+
+        localStorage.setItem('token', loginResponse?.data?.access_token);
+        localStorage.setItem('promoter', JSON.stringify(loginResponse?.data?.promoter));
+
+        this.$router.push('/'); // Redirecionar após o login
+
+      } catch (error) {
+        alert('Erro ao tentar realizar login');
+        console.error('Erro ao fazer login:', error);
+        if (error.response && error.response.data && error.response.data.message) {
+          console.log('Error message:', error.response.data.message);
+        } else {
+          console.log('Ocorreu um erro ao fazer o login.');
+        }
+      }
+    }
     },
   };
   </script>
