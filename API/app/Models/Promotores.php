@@ -12,9 +12,13 @@ class Promotores extends Model
     protected $fillable = [
         'nome',
         'email',
-        'senha',
         'telefone',
         'img',
+        'user_id'
     ];
 
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

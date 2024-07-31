@@ -44,26 +44,26 @@ const routes = [
     path: '/',
     component: sistemaLayout,
     children: [
-      { path: 'produtos', name: 'homeProdutos', component: homeProdutos },
-      { path: 'produtos/:id', name: 'infoProdutos', component: infoProdutos },
-      { path: 'produtos/create', name: 'CreateProdutos  ', component: CreateProdutos },
-      { path: 'produtos/:id/update', name: 'UpdateProdutos', component: UpdateProdutos },
-      { path: 'produtos/:id/competitors/create', name: 'CreateCompetitors', component: CreateCompetitors },
-      { path: 'produtos/:id/competitors/update/:compid', name: 'UpdateCompetitors', component: UpdateCompetitors },
+      { path: 'produtos', name: 'homeProdutos', component: homeProdutos, meta: { requiresAuth: true } },
+      { path: 'produtos/:id', name: 'infoProdutos', component: infoProdutos, meta: { requiresAuth: true } },
+      { path: 'produtos/create', name: 'CreateProdutos  ', component: CreateProdutos, meta: { requiresAuth: true } },
+      { path: 'produtos/:id/update', name: 'UpdateProdutos', component: UpdateProdutos, meta: { requiresAuth: true } },
+      { path: 'produtos/:id/competitors/create', name: 'CreateCompetitors', component: CreateCompetitors, meta: { requiresAuth: true } },
+      { path: 'produtos/:id/competitors/update/:compid', name: 'UpdateCompetitors', component: UpdateCompetitors, meta: { requiresAuth: true } },
 
-      { path: 'promotores', name: 'homePromotores', component: homePromotores },
-      { path: 'promotores/:id', name: 'infoPromotores', component: infoPromotores },
-      { path: 'promotores/create', name: 'createPromotores', component: createPromotores },
-      { path: 'promotores/:id/update', name: 'UpdatePromotores', component: updatePromotores },
+      { path: 'promotores', name: 'homePromotores', component: homePromotores , meta: { requiresAuth: true } },
+      { path: 'promotores/:id', name: 'infoPromotores', component: infoPromotores , meta: { requiresAuth: true } },
+      { path: 'promotores/create', name: 'createPromotores', component: createPromotores , meta: { requiresAuth: true } },
+      { path: 'promotores/:id/update', name: 'UpdatePromotores', component: updatePromotores , meta: { requiresAuth: true } },
 
-      { path: 'empresas', name: 'homeEmpresas', component: homeEmpresas },
-      { path: 'empresas/:id', name: 'infoEmpresas', component: infoEmpresas },
-      { path: 'empresas/create', name: 'createEmpresas', component: createEmpresas },
+      { path: 'empresas', name: 'homeEmpresas', component: homeEmpresas , meta: { requiresAuth: true } },
+      { path: 'empresas/:id', name: 'infoEmpresas', component: infoEmpresas , meta: { requiresAuth: true } },
+      { path: 'empresas/create', name: 'createEmpresas', component: createEmpresas , meta: { requiresAuth: true } },
 
-      { path: 'clientes', name: 'clientes', component: HomeClientes },
-      { path: 'clientes/create', name: 'CreateClientes', component: CreateClientes },
-      { path: 'clientes/:id', name: 'ShowClientes', component: ShowClientes },
-      { path: 'clientes/:id/update', name: 'UpdateClientes', component: UpdateClientes },
+      { path: 'clientes', name: 'clientes', component: HomeClientes , meta: { requiresAuth: true } },
+      { path: 'clientes/create', name: 'CreateClientes', component: CreateClientes , meta: { requiresAuth: true } },
+      { path: 'clientes/:id', name: 'ShowClientes', component: ShowClientes , meta: { requiresAuth: true } },
+      { path: 'clientes/:id/update', name: 'UpdateClientes', component: UpdateClientes , meta: { requiresAuth: true } },
     ]
   }
 ];
@@ -71,6 +71,23 @@ const routes = [
 const router = createRouter({
   history: createWebHistory(),
   routes
+});
+
+// Adicione o guard de navegação global
+router.beforeEach((to, from, next) => {
+  
+  const token = localStorage.getItem('token');
+
+  // Verifica se a rota requer autenticação
+  const requiresAuth = to.matched.some(record => record.meta.requiresAuth);
+
+  if (requiresAuth && !token) {
+    // Se a rota requer autenticação e o token não está presente, redirecione para o login
+    next('/login');
+  } else {
+    // Caso contrário, continue para a rota desejada
+    next();
+  }
 });
 
 createApp(App)

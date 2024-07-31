@@ -1,6 +1,11 @@
 import axios from "axios";
 axios.defaults.withCredentials = true;
-axios.defaults.baseURL = 'http://localhost:8000/api'
+const domain = import.meta.env.VITE_API_DOMAIN ?? 'http://localhost:8000';
+console.log('env mobi',import.meta.env)
+
+axios.defaults.baseURL = domain + '/api';
+axios.defaults.headers.common['Content-Type'] = 'application/json';
+axios.defaults.headers.common['Accept'] = 'application/json';
 
 axios.interceptors.request.use(
     config => {
