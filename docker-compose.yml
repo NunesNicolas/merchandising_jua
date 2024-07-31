@@ -87,6 +87,8 @@
         - ./infrastructure/caddy/Caddyfile:/etc/caddy/Caddyfile
         - spa_data:/var/www/spa
         - mobi_data:/var/www/mobi
+        - caddy_data:/data
+        - caddy_config:/config
 
       depends_on:
         - api
