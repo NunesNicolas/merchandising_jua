@@ -2,7 +2,7 @@ import axios from "axios";
 axios.defaults.withCredentials = true;
 
 const domain = import.meta.env.VITE_API_DOMAIN ?? 'http://localhost:8000';
-console.log('env3',import.meta.env)
+console.log('env SPA',import.meta.env)
 
 axios.defaults.baseURL = domain + '/api';
 axios.defaults.headers.common['Content-Type'] = 'application/json';

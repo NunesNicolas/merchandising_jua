@@ -8,10 +8,12 @@ import axios from "axios";
     </div>
     <div class="info">
         <h5>O que deseja fazer?</h5>
-        <OptionButtons :id="this.$route.pesquisaid" />
+        <OptionButtons :id="this?.$route?.pesquisaid" />
     </div>
     <div class="boxcheck">
-        <ActionRouter @click="statusChekout();" class="check" route="/" label="Checkout" />
+        <ActionRouter
+        :disabled="isPromotorConcluido" 
+        @click="statusChekout();" class="check" route="/" label="Checkout" />
     </div>
     
 </template>
@@ -24,8 +26,11 @@ import axios from 'axios';
 
 export default {
     data() {
+
+        console.log('[home pesquisas] route',this?.$route)
+
         return {
-            id: this.$route.params.pesquisaid,
+            id: this?.$route?.params?.pesquisaid,
             pesquisa: {},
         }
     },
@@ -56,6 +61,16 @@ export default {
         headerEmpresa,
         ActionRouter
     },
+
+    computed: {
+    isPromotorConcluido() {
+        if(this.pesquisa.status == 'CONCLUIDO'){
+      return true;}else{
+        return false;
+      }
+      
+    }
+  }
 
 }
 </script>

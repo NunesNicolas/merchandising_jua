@@ -2,12 +2,15 @@
 namespace App\Http\Controllers;
 
 use App\Models\Promotores;
+use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Validation\Validator;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\ValidationException;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
 use Illuminate\Support\MessageBag;
 use App\Http\Requests\PromotoreStore;
+
 
 class PromotoresController extends Controller
 {
@@ -32,7 +35,36 @@ class PromotoresController extends Controller
 
     public function store(Request $request)
     {
-        $promotor = Promotores::create($request->all());
+        // $promotor = Promotores::create($request->all());
+        // return response()->json($promotor, 201);
+
+        $validator = Validator::make($request->all(), [
+            'nome' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255',
+            'senha' => 'required|string|min:4',
+            'telefone' => 'nullable|string|max:255',
+            'img' => 'nullable|string|max:255',
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json(['errors' => $validator->errors()], 422);
+        }
+
+        $promotorData = $request->only(['nome','email', 'senha', 'telefone', 'img']);
+
+        $user = User::firstOrCreate([
+            'email' => $promotorData['email'],
+        ],[
+            'name' => $promotorData['nome'],
+            'password' => $promotorData['senha'],
+            'role' => 'promoter',
+        ]);
+       
+        $promotorData['senha'] = Hash::make($promotorData['senha']);
+        $promotorData['user_id'] = $user->id;
+
+        $promotor = Promotores::create($promotorData);
+       
         return response()->json($promotor, 201);
     }
     

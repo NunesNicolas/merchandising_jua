@@ -45,7 +45,7 @@ class PromoterRouterController extends Controller
         }
 
         if ($promoterRouters->isEmpty()) {
-            return response()->json(['message' => 'PromoterRouter not found'], 404);
+            return response()->json([], 200);
         }
 
         $sortedPromoterRouters = $promoterRouters->sortByDesc(function ($promoterRouter) {

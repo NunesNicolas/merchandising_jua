@@ -5,6 +5,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\ClientesController;
+use App\Http\Controllers\ApiAuthController;
 use App\Http\Controllers\ProdutosController;
 use App\Http\Controllers\PromotoresController;
 use App\Http\Controllers\CompetitorsController;
@@ -20,6 +21,17 @@ use App\Http\Controllers\WorkRegisterController;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+
+
+Route::group(['prefix' => 'auth'], function () {
+    Route::post('login', [ApiAuthController::class, 'login']);
+
+    Route::group(['middleware' => 'auth:sanctum'], function() {
+      Route::get('logout', [ApiAuthController::class, 'logout']);
+      Route::get('user', [ApiAuthController::class, 'user']);
+    });
+});
+
 
 Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
     return $request->user();
