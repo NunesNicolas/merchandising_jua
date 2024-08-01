@@ -11,6 +11,8 @@ use App\Http\Controllers\PromotoresController;
 use App\Http\Controllers\CompetitorsController;
 use App\Http\Controllers\PromoterRouterController;
 use App\Http\Controllers\WorkRegisterController;
+use App\Http\Controllers\product_surveyController;
+use App\Http\Controllers\competitor_surveyController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -51,3 +53,10 @@ Route::get('pesquisas/finals/{promotor_id}', [PromoterRouterController::class, '
 
 Route::resource('workreg', WorkRegisterController::class);
 Route::get('workreg/pesquisa/{routeId}', [WorkRegisterController::class, 'showByRoute']);
+
+Route::resource('product_survey', product_surveyController::class);
+Route::get('product_survey/pesquisa/{routeId}', [product_surveyController::class, 'showByRoute']);
+
+Route::resource('competitor_survey', competitor_surveyController::class);
+Route::get('competitor_survey/pesquisa/{routeId}', [competitor_surveyController::class, 'showByRoute']);
+
