@@ -46,8 +46,8 @@ export default {
 
 .registro-card{
     margin-inline: 5%;
-    flex-wrap: wrap;
     display: flex;
+    justify-content: space-between;
     background-color: #ffffff;
     color: #2C9AFF;
     width: 90%;
@@ -63,17 +63,19 @@ export default {
     margin-left: 10px;
     border-radius: 20px;
     width: 22%;
-    height: 80%;
+    height: 85%;
 }
 
 .registro-card h5 {
     font-weight: bold;
     font-size:medium;
-    margin-left: 25px;
+    margin-left: 13px;
     margin-top: 10px;
 }
+
 .registro-card p {
-    margin-left: 25px;
+    margin-left: 13px;
+    margin-bottom: 1vh;
 }
 .registro-card i {
     margin-left: 60px;
