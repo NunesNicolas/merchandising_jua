@@ -1,5 +1,5 @@
 <template>
-    <i @click="$router.go(-1)" class="bi bi-arrow-left-square icon-right" title="Voltar"></i>
+    <i @click="$router.back()" class="bi bi-arrow-left-square icon-right" title="Voltar"></i>
 </template>
   
 <script>
@@ -10,7 +10,7 @@
   
 <style scoped>
 .icon-right {
-    position: fixed; /* Ajuste conforme necessário */
+    position: absolute; /* Ajuste conforme necessário */
     right: 10px; /* Ajuste conforme necessário */
     font-size: 28px; /* Tamanho do ícone */
 }

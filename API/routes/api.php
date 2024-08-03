@@ -40,6 +40,7 @@ Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
 });
 
 Route::resource('produtos', ProdutosController::class);
+Route::get('all/produtos', [ProdutosController::class, 'indexAll']);
 
 Route::resource('promotores', PromotoresController::class);
 
@@ -51,11 +52,13 @@ Route::resource('pesquisas', PromoterRouterController::class);
 Route::get('pesquisas/promotor/{promotor_id}', [PromoterRouterController::class, 'opened']);
 Route::get('pesquisas/finals/{promotor_id}', [PromoterRouterController::class, 'finals']);
 
+
 Route::resource('workreg', WorkRegisterController::class);
 Route::get('workreg/pesquisa/{routeId}', [WorkRegisterController::class, 'showByRoute']);
 
 Route::resource('product_survey', product_surveyController::class);
 Route::get('product_survey/pesquisa/{routeId}', [product_surveyController::class, 'showByRoute']);
+Route::get('product_survey/cliente_products/{cliente_id}', [product_surveyController::class, 'showByCliente']);
 
 Route::resource('competitor_survey', competitor_surveyController::class);
 Route::get('competitor_survey/pesquisa/{routeId}', [competitor_surveyController::class, 'showByRoute']);

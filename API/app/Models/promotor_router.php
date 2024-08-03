@@ -23,4 +23,9 @@ class promotor_router extends Model
         'competitor_survey_datetime',
     ];
 
+    public function productSurveys()
+{
+    return $this->hasMany(product_survey::class, 'promotor_route_id');
+}
+
 }

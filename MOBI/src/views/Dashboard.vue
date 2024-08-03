@@ -4,6 +4,7 @@ import axios from "axios";
 
 <template>
   <div class="roteiro-info">
+    {{ teste }}
     <div class="add-but">
       <ActionRouter route="/create" :color="'success'" label="Adicionar">
         <slot><i class="bi bi-plus-circle ml-2" style="font-size:20px"></i></slot>
@@ -49,6 +50,7 @@ export default {
         .get("/pesquisas/promotor/" + promoter?.id)
         .then((response) => {
           const visitasData = response.data;
+          console.log(visitasData)
           this.visitas = Object.entries(visitasData).map(([key, visita]) => ({
             ...visita,
             routeName: visita.checkin_datetime ? "Continue" : "Check-in",
