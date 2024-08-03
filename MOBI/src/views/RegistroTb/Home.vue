@@ -19,14 +19,14 @@
 
   <div>
     <!-- {{ pesquisa }} -->
-    <button @click="routebutton(this.$route.pesquisaid)" class="btn">
+    <button @click="routebutton(this.$route.pesquisaid)" class="btn" :disabled="isPesquisaConcluida">
       Adicionar Registro
       <i class="bi bi-image"></i>
     </button>
 
     <RegistroCard :workregs="workreg">
       <template v-slot:actions="{ work }">
-        <button @click="confirmDelete(work)" class="buttondel">
+        <button @click="confirmDelete(work)" class="buttondel" :disabled="isPesquisaConcluida">
           <i class="bi-trash"></i>
         </button>
       </template>
@@ -93,7 +93,12 @@ export default {
         });
     },
   },
-  mounted() {
+  computed: {
+    isPesquisaConcluida() {
+       return this.pesquisa.status == 'CONCLUIDO';
+    }
+  },
+    mounted() {
     this.fetchPesquisa();
     this.fetchWorkReg();
   },

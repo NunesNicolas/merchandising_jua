@@ -14,9 +14,14 @@
         <div style="position: relative;">
             <nav>
                 <ActionRouterBack style="margin-top: -15px;margin-bottom: -15px " />
-                <ActionRouter @click="finalizar()" :color="'primary'" :label="'Salvar'"
-                    :route="{ name: 'pesquisa', params: { pesquisaid: $route.params.pesquisaid } }" />
-            </nav>
+                <ActionRouter 
+    @click="finalizar()" 
+    :color="'primary'" 
+    :label="'Salvar'" 
+    :route="{ name: 'pesquisa', params: { pesquisaid: $route.params.pesquisaid } }" 
+    :disabled="isPesquisaConcluida"
+  />
+ </nav>
         </div>
     </div>
 
@@ -112,7 +117,11 @@ export default {
             this.onSave(this.formValues);
         },
     },
-
+    computed: {
+    isPesquisaConcluida() {
+       return this.pesquisa.status == 'CONCLUIDO';
+    }
+  },
     mounted() {
         this.fetchPesquisa();
         this.fetchProdutos();
