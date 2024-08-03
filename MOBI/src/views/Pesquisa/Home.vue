@@ -11,7 +11,9 @@ import axios from "axios";
         <OptionButtons :id="this?.$route?.pesquisaid" />
     </div>
     <div class="boxcheck">
-        <ActionRouter @click="statusChekout();" class="check" route="/" label="Checkout" />
+        <ActionRouter
+        :disabled="isPromotorConcluido" 
+        @click="statusChekout();" class="check" route="/" label="Checkout" />
     </div>
     
 </template>
@@ -59,6 +61,16 @@ export default {
         headerEmpresa,
         ActionRouter
     },
+
+    computed: {
+    isPromotorConcluido() {
+        if(this.pesquisa.status == 'CONCLUIDO'){
+      return true;}else{
+        return false;
+      }
+      
+    }
+  }
 
 }
 </script>

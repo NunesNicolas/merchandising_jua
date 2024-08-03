@@ -21,7 +21,9 @@ import CreateAtendimentos from './views/Pesquisa/Create.vue';
 import RegistroCreate from './views/RegistroTb/Create.vue';
 
 import RegistroHome from './views/RegistroTb/Home.vue';
-import VisitasCheck from './views/PesquisaJua/CheckCamp.vue';
+import VisitasCheck from './views/PesquisaJua/Create.vue';
+import CompetitorsCheck from './views/PesquisaCompetitors/Create.vue';
+
 
 
 
@@ -41,6 +43,8 @@ const routes = [
       { path: '/checkin/:pesquisaid', name: 'checkin', component: Checkin, meta: { requiresAuth: true } },
       { path: 'registro/create/:pesquisaid', name: 'newReg', component: RegistroCreate, meta: { requiresAuth: true } },
       { path: 'registro/:pesquisaid', name: 'registro', component: RegistroHome, meta: { requiresAuth: true } },
+      { path: '/pesquisajua/:pesquisaid', name: 'pesquisajua', component: VisitasCheck, meta: { requiresAuth: true } },
+      { path: '/pesquisacompetitors/:pesquisaid', name: 'pesquisacompetitors', component: CompetitorsCheck, meta: { requiresAuth: true } },
     ]
   },
   {
@@ -57,16 +61,10 @@ const routes = [
     path: '/visitas/check',
     component: pesquisaLayout,
     children: [
-      { path: '', name: 'check', component: VisitasCheck, meta: { requiresAuth: true } },
+      
     ]
   },
-  {
-    path: '/visitas/registro',
-    component: pesquisaLayout,
-    children: [
-
-    ]
-  },
+  
   {
     path: '/logout', // Define a rota de logout
     name: 'logout',

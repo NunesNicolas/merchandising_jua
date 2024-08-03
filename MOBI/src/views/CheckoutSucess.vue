@@ -8,7 +8,7 @@ import axios from "axios";
         <div class="containercards" v-for="visita in visitas">
           <VisitasCard :visita="visita" :cliente="visita.cliente">
             <slot>
-              <button
+              <button  @click="routerButton(visita);"
                 :class="[getButtonClass(visita.routeName)]">
                 {{ visita.routeName }}
               </button>
@@ -53,6 +53,10 @@ export default {
         });
     },
 
+    routerButton(visita) {
+  this.$router.push({ name: 'pesquisa', params: { pesquisaid: visita.id } });
+},
+
     getButtonClass(routeName) {
       switch (routeName) {
         case "Concluido":
@@ -82,6 +86,8 @@ export default {
 .roteiro-info {
   text-align: center;
   justify-content: space-evenly;
+  background-color: rgb(246, 246, 246);
+  padding-bottom: 8vh;
 }
 
 .roteiro-info h5 {

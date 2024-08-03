@@ -1,6 +1,6 @@
 <template>
     <router-link :to="route">
-      <button :class="`btn-${color}`" style="border-radius: 10px;">
+      <button :disabled="disabled" :class="`btn-${color}`" style="border-radius: 10px;">
         <span>{{ label }}</span>
         <slot>
           
@@ -23,6 +23,10 @@
       },
       label: {
         type: String,
+      },
+      disabled: {
+        type: Boolean,
+        default: false
       }
     },
     computed: {
