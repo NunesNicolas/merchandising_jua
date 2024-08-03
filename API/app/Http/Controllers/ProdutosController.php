@@ -17,7 +17,7 @@ class ProdutosController extends Controller
     public function index()
     {
 
-        $produtos = Produto::select('nome', 'id', 'img')
+        $produtos = Produto::select('nome', 'id', 'img', 'weight')
             ->whereIn('id', function ($query) {
                 $query->select(Produto::raw('MIN(id)'))
                     ->from('produtos')
@@ -25,6 +25,12 @@ class ProdutosController extends Controller
             })
             ->get();
 
+        return response()->json($produtos);
+    }
+
+    public function indexAll()
+    {
+        $produtos = produto::all();
         return response()->json($produtos);
     }
 

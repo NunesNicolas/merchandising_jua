@@ -40,6 +40,7 @@ Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
 });
 
 Route::resource('produtos', ProdutosController::class);
+Route::get('all/produtos', [ProdutosController::class, 'indexAll']);
 
 Route::resource('promotores', PromotoresController::class);
 

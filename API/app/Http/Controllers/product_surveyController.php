@@ -13,12 +13,14 @@ class product_surveyController extends Controller
     }
 
     public function store(Request $request)
-    {
-        
-        $product_survey = product_survey::create($request->all());
-        return response()->json($product_survey, 201);
-
+{
+    $productSurveys = [];
+    foreach ($request->all() as $surveyData) {
+        $productSurvey = product_survey::create($surveyData);
+        $productSurveys[] = $productSurvey;
     }
+    return response()->json($productSurveys, 201);
+}
 
     public function showByRoute($routeId)
     {

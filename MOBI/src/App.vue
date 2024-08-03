@@ -15,7 +15,7 @@ import InicialSistema from './views/Pesquisa/Home.vue';
 import InicialInfo from './views/Dashboard.vue';
 import RegistroHome from './views/RegistroTb/Home.vue';
 import Registro from './views/RegistroTb/Create.vue';
-import VisitasCheck from './views/PesquisaJua/CheckCamp.vue';
+import VisitasCheck from './views/PesquisaJua/Create.vue';
 import Checkin from './views/Checkin.vue';
 import CheckoutSucess from './views/CheckoutSucess.vue';
 </script>

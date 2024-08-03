@@ -4,7 +4,7 @@
 
         <main>
             <navbar />
-            <router-view :key="$route.fullPath" />
+            <router-view style=" padding-bottom: 8vh;" :key="$route.fullPath" />
             <div style=" width: 100%;"></div>
         </main>
 
