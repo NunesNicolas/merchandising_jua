@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\product_survey;
+use App\Models\promotor_router;
 use App\Http\Controllers\PromoterRouterController;
 
 class product_surveyController extends Controller
@@ -18,6 +19,22 @@ class product_surveyController extends Controller
     {
         $product_surveys = product_survey::where('router_id', $router_id)->get();
         return $product_surveys;
+    }
+
+    public function showByCliente(int $cliente_id)
+    {
+        $latestPromotorRoute = promotor_router::where('cliente_id', $cliente_id)
+            ->latest()
+            ->first();
+
+        if (!$latestPromotorRoute) {
+            // Handle the case where no promotor route is found
+            return response()->json(['error' => 'No promotor route found'], 404);
+        }
+
+        $latestPromotorRoute->productSurveys;
+
+        return response()->json($latestPromotorRoute->productSurveys);
     }
 
 

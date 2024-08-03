@@ -64,7 +64,7 @@ export default {
                 console.log(this.produtos);
 
                 // Segundo fetch para obter os preços dos produtos relacionados ao cliente
-                let response1 = await axios.get("pesquisas/cliente_products/" + this.pesquisa.cliente_id);
+                let response1 = await axios.get("product_survey/cliente_products/" + this.pesquisa.cliente_id);
                 const auxiliar = response1.data;
                 console.log('testando coisa de louco:' + auxiliar);
 
