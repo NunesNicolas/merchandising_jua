@@ -96,11 +96,12 @@ export default {
   border: none;
   align-items: center;
   justify-content: center;
+  text-align: right;
   margin-left: 10%;
 }
 
 .bi-trash{
-  text-align: center;
+  text-align: right;
   font-size: 2rem;
   color: red
 }
