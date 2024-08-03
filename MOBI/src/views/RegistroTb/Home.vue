@@ -2,7 +2,11 @@
   <div style="height: 25vh; width: 100%">
     <headerEmpresa :visita="pesquisa" />
   </div>
-  <ArrowBack/>
+  <div class="add-but">
+  <ActionRouter :route="{ name: 'pesquisa', params: { pesquisaid: id } }" :color="'primary'">
+    <slot><i class="bi bi-arrow-left-square icon-right" title="Voltar" style="font-size:20px"></i></slot>
+  </ActionRouter>
+</div>
   <h5 class="name">Registro de Trabalho</h5>
  
   
@@ -30,6 +34,7 @@
 import headerEmpresa from "../../components/headerEmpresa.vue";
 import RegistroCard from "../../components/RegistroCard.vue";
 import ArrowBack from "../../components/ArrowBack.vue";
+import ActionRouter from "../../components/ActionRouter.vue";
 import axios from 'axios';
 
 
@@ -44,7 +49,8 @@ export default {
   components: {
     headerEmpresa,
     RegistroCard,
-    ArrowBack
+    ArrowBack,
+    ActionRouter
   },
   methods: {
     async fetchPesquisa() {
@@ -70,7 +76,7 @@ export default {
         deleteWorkRegister(workregId) {
             axios.delete(`/workreg/${workregId}`)
                 .then(response => {
-                    alert('workreg excluído com sucesso!');
+                    alert('Registro de Trabalho excluído com sucesso!');
                     this.fetchWorkReg(); // Atualiza a lista de workregs após exclusão
                 })
                 .catch(error => {
@@ -87,6 +93,11 @@ export default {
 </script>
 
 <style>
+
+.add-but {
+  text-align: right;
+  padding: 10px;
+}
 
 .buttondel{
   width: 54px;
