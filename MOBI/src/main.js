@@ -41,6 +41,7 @@ const routes = [
       { path: '/checkin/:pesquisaid', name: 'checkin', component: Checkin, meta: { requiresAuth: true } },
       { path: 'registro/create/:pesquisaid', name: 'newReg', component: RegistroCreate, meta: { requiresAuth: true } },
       { path: 'registro/:pesquisaid', name: 'registro', component: RegistroHome, meta: { requiresAuth: true } },
+      { path: '/pesquisajua/:pesquisaid', name: 'pesquisajua', component: VisitasCheck, meta: { requiresAuth: true } },
     ]
   },
   {
@@ -57,16 +58,10 @@ const routes = [
     path: '/visitas/check',
     component: pesquisaLayout,
     children: [
-      { path: '', name: 'check', component: VisitasCheck, meta: { requiresAuth: true } },
+      
     ]
   },
-  {
-    path: '/visitas/registro',
-    component: pesquisaLayout,
-    children: [
-
-    ]
-  },
+  
   {
     path: '/logout', // Define a rota de logout
     name: 'logout',

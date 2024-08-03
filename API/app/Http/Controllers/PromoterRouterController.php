@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\promotor_router;
 use App\Models\Promotores;
 use App\Models\Cliente;
-
+use  App\Models\promotor_work_register;
 
 class PromoterRouterController extends Controller
 {
@@ -15,6 +15,7 @@ class PromoterRouterController extends Controller
         $PromoterRouter = promotor_router::find($id);
         $PromoterRouter->promotor = Promotores::find($PromoterRouter->promotor_id);
         $PromoterRouter->cliente = Cliente::find($PromoterRouter->cliente_id);
+        $PromoterRouter->haveReg = promotor_work_register::where('promotor_route_id', $id)->exists();
         return response()->json($PromoterRouter);
     }
 
