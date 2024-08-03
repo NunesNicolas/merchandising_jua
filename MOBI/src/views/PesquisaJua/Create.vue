@@ -16,21 +16,12 @@ export default {
     },
     data() {
         return {
-            teste: {}
+
         };
        
     },
     methods: {
-        async iniciar() {
-            axios.get("pesquisas/cliente_products/" + 2)
-        .then((response1) => {
-          this.teste = response1.data;
-          console.log('testando coisa de louco:' + teste)
-        })
-        .catch((error) => {
-          console.error(error);
-        });
-        },
+        
 
         async savePesquisas(formData) {
             console.log(formData);
@@ -47,8 +38,6 @@ export default {
         }
     },
 
-    mounted() {
-        this.iniciar();
-    },
+   
 };
 </script>

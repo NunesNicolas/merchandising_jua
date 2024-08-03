@@ -34,7 +34,7 @@ class PromoterRouterController extends Controller
 
         $latestPromotorRoute->productSurveys;
 
-        return response()->json($latestPromotorRoute);
+        return response()->json($latestPromotorRoute->productSurveys);
     }
 
     public function store(Request $request)

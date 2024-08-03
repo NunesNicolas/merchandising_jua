@@ -1,7 +1,7 @@
 <template>
     <div id="separator" class="animate-fade-up">
         <label>{{ item[label] }} {{ item[label2] }}</label>
-        <input class="desc" type="text" :id="item.id" name="description" :placeholder="'Valor do ' + item[label]"
+        <input class="desc" type="text" :id="item.id" name="description" :placeholder="placeholder(item[label3])"
             @input="updateValue" />
         <p>Não Consta</p>
         <input type="checkbox" id="check" name="Check" @change="updateValue" />
@@ -23,6 +23,11 @@ export default {
             type: String,
             required: true
         },
+
+        label3: {
+            type: String,
+            required: true
+        },
         preencher: Function
     },
     data() {
@@ -35,6 +40,17 @@ export default {
         }
     },
     methods: {
+
+        placeholder(valor){
+            if (valor) {
+                const result = 'último valor cadastrado: ' + 'R$' + valor.toFixed(2);
+                return result
+            }else
+            {
+                return 'sem valor cadastrado'
+            }
+
+        },
         updateValue(event) {
             this.modelValue.price = event.target.value;
             this.modelValue.promotor_route_id = this.$route.params.pesquisaid;

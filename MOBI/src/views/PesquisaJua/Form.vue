@@ -1,9 +1,8 @@
 <template>
     <div style="margin-bottom: 10vh">
         <headerEmpresa :visita="pesquisa" />
-
         <div v-for="produto in produtos">
-            <researchField @preencher="adicionarProduto($event)" :item="produto" :label="'nome'" :label2="'weight'"
+            <researchField @preencher="adicionarProduto($event)" :item="produto" :label="'nome'" :label2="'weight'" :label3="'price'"
                 :key="produto.id" :fields="{
                     nome: 'Nome',
                     price: 'Preço',
@@ -40,8 +39,7 @@ export default {
             pesquisa: {},
             produtos: [],
             juapesquisas: [],
-            formValues: []
-
+            formValues: [],
         }
     },
     components: {
@@ -57,11 +55,30 @@ export default {
             this.pesquisa = (await response).data;
             console.log('Dados da pesquisa:', this.pesquisa);
         },
+
         async fetchProdutos() {
-            let response = axios.get('/all/produtos')
-            this.produtos = (await response).data;
-            console.log(this.produtos);
+            try {
+                // Primeiro fetch para obter os produtos
+                let response = await axios.get('/all/produtos');
+                this.produtos = response.data;
+                console.log(this.produtos);
+
+                // Segundo fetch para obter os preços dos produtos relacionados ao cliente
+                let response1 = await axios.get("pesquisas/cliente_products/" + this.pesquisa.cliente_id);
+                const auxiliar = response1.data;
+                console.log('testando coisa de louco:' + auxiliar);
+
+                // Atualizar os produtos com os preços
+                this.produtos = this.produtos.map((produto) => {
+                    const produtoAuxiliar = auxiliar.find((item) => item.product_id === produto.id);
+                    return { ...produto, price: produtoAuxiliar ? produtoAuxiliar.price : null };
+                });
+            } catch (error) {
+                console.error(error);
+            }
         },
+
+
         pushJuaPesquisas(object) {
             this.juapesquisas.push(object);
         },
@@ -83,7 +100,7 @@ export default {
         },
 
         finalizar() {
-        this.onSave(this.formValues);
+            this.onSave(this.formValues);
         },
     },
 
