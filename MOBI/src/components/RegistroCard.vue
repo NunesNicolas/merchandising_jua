@@ -2,6 +2,7 @@
 
     <div class="registro-card" v-for="work in workregs" :key="work.id">
 
+        <div class="componentes">
         <img v-if="work.img" :src=work.img />
         <img v-else src="https://media.istockphoto.com/id/1409329028/vector/no-picture-available-placeholder-thumbnail-icon-illustration-design.jpg?s=612x612&w=0&k=20&c=_zOuJu755g2eEUioiOUdz_mHKJQJn-tDgIAhQzyeKUQ=">
         
@@ -9,13 +10,14 @@
         <div>
             <div class="d-flex">
             <h5 class="label">TÍTULO:</h5>
-            <h5> {{ work.title }} </h5>
+            <h5 v-if="work && work.title">{{formatarNome(work.title, 2) }}</h5>
             </div>
             <div class="d-flex">
                 <p class="label">CATEGORIA:</p>
                 <p> {{ work.type }}  </p>
             </div>
         </div>
+    </div>
         <slot name="actions" :work="work"></slot>
     </div>
 
@@ -31,6 +33,18 @@ export default {
         },
         
     },
+    methods: {
+    iniciar(){
+      this.work = JSON.parse(localStorage.getItem('worker'));
+    },
+    formatarNome(nome, limite) {
+        const palavras = nome.split(' ');
+        return palavras.slice(0, limite).join(' ');
+    }
+    },
+    mounted() {
+        this.iniciar();
+        },
 }
 
 </script>
@@ -46,7 +60,6 @@ export default {
 
 .registro-card{
     margin-inline: 5%;
-    flex-wrap: wrap;
     display: flex;
     background-color: #ffffff;
     color: #2C9AFF;
@@ -55,28 +68,33 @@ export default {
     margin-top: 3vh;
     border-radius: 20px;
     box-shadow: 0vh 0.2vh 0.2vh 0vh #d2d1d1;
-    text-align: left;
     align-items: center;
 }
 
-.registro-card img{
-    margin-left: 10px;
-    border-radius: 20px;
-    width: 22%;
-    height: 80%;
+.componentes{
+    display: flex;
+    text-align: left;
+    align-items: center;
+    justify-content: flex-start;
 }
 
-.registro-card h5 {
+.componentes img{
+    margin-left: 10px;
+    border-radius: 20px;
+    width: 25%;
+    height: 85%;
+}
+
+.componentes h5 {
     font-weight: bold;
     font-size:medium;
-    margin-left: 25px;
+    margin-left: 13px;
     margin-top: 10px;
 }
-.registro-card p {
-    margin-left: 25px;
-}
-.registro-card i {
-    margin-left: 60px;
+
+.componentes p {
+    margin-left: 13px;
+    margin-bottom: 1vh;
 }
     
 </style>

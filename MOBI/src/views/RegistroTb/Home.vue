@@ -6,12 +6,12 @@
   <h5 class="name">Registro de Trabalho</h5>
  
   
-  <div>
+  <div style="padding-bottom: 10vh;">
     <!-- {{ pesquisa }} -->
-    <button @click="routebutton(this.$route.pesquisaid)" class="btn">
-      Adicionar Registro
-      <i class="bi bi-image"></i>
-    </button>
+        <button @click="routebutton(this.$route.pesquisaid)" class="btn">
+          Adicionar Registro
+          <i class="bi bi-image"></i>
+        </button>
 
     <RegistroCard :workregs="workreg">
 
@@ -95,12 +95,12 @@ export default {
   display: flex ;
   border: none;
   align-items: center;
-  justify-content: center;
-  margin-left: 10%;
+  text-align: right;
+  justify-content:center;
 }
 
 .bi-trash{
-  text-align: center;
+  text-align: right;
   font-size: 2rem;
   color: red
 }
