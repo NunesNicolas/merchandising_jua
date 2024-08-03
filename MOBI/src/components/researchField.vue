@@ -2,9 +2,9 @@
     <div id="separator" class="animate-fade-up">
         <label>{{ item[label] }} {{ item[label2] }}</label>
         <input class="desc" type="text" :id="item.id" name="description" :placeholder="placeholder(item[label3])"
-            @input="updateValue" />
+            @input="updateValue" :disabled="isDisabled" :value="modelValue.price" />
         <p>Não Consta</p>
-        <input type="checkbox" id="check" name="Check" @change="updateValue" />
+        <input type="checkbox" id="check" name="Check" @change="toggleDisabled" />
     </div>
 </template>
 
@@ -28,25 +28,28 @@ export default {
             type: String,
             required: true
         },
-        preencher: Function
+        excluirModelValue: Function,
+        preencher: Function,
+
+       
     },
     data() {
         return {
-            modelValue:{
+            modelValue: {
                 price: '',
                 promotor_route_id: '',
                 product_id: '',
-            }
+            },
+            isDisabled: false
         }
     },
     methods: {
 
-        placeholder(valor){
+        placeholder(valor) {
             if (valor) {
                 const result = 'último valor cadastrado: ' + 'R$' + valor.toFixed(2);
                 return result
-            }else
-            {
+            } else {
                 return 'sem valor cadastrado'
             }
 
@@ -56,6 +59,13 @@ export default {
             this.modelValue.promotor_route_id = this.$route.params.pesquisaid;
             this.modelValue.product_id = this.item.id;
             this.$emit('preencher', this.modelValue);
+        },
+        toggleDisabled(event) {
+            this.isDisabled = event.target.checked;
+            if (this.isDisabled) {
+                this.modelValue.price = '';
+                this.$emit('excluirModelValue', this.modelValue);
+            }
         }
     }
 }

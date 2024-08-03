@@ -2,7 +2,9 @@
     <div style="margin-bottom: 10vh">
         <headerEmpresa :visita="pesquisa" />
         <div v-for="produto in produtos">
-            <researchField @preencher="adicionarProduto($event)" :item="produto" :label="'nome'" :label2="'weight'" :label3="'price'"
+            <researchField @preencher="adicionarProduto($event)"
+            @excluirModelValue="excluirModelValue" 
+            :item="produto" :label="'nome'" :label2="'weight'" :label3="'price'"
                 :key="produto.id" :fields="{
                     nome: 'Nome',
                     price: 'Preço',
@@ -96,6 +98,13 @@ export default {
             } else {
                 // Caso o array esteja vazio, criar um novo array com o item
                 this.formValues = [index];
+            }
+        },
+
+        excluirModelValue(modelValue) {
+            const index = this.formValues.indexOf(modelValue);
+            if (index !== -1) {
+                this.formValues.splice(index, 1);
             }
         },
 
