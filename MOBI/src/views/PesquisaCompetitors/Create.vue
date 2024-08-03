@@ -1,18 +1,18 @@
 <template>
-
-    <FormPesquisaJua :submitLabel="'Criar Pesquisa'" :onSave="savePesquisas" />
-
+    <h1>Pesquisa Concorrentes</h1>
+    <FormPesquisaCompetitors :submitLabel="'Criar Pesquisa'" :onSave="savePesquisas" />
+    
 </template>
 
 <script>
 import axios from "axios";
-import FormPesquisaJua from './Form.vue';
+import FormPesquisaCompetitors from './Form.vue';
 
 
 export default {
-    name: 'CreatePesquisaJua',
+    name: 'CreatePesquisaCompetitors',
     components: {
-        FormPesquisaJua,
+        FormPesquisaCompetitors,
     },
     data() {
         return {
@@ -23,7 +23,7 @@ export default {
             console.log(formData);
             try {
                
-                const response = await axios.post('/product_survey', formData);
+                const response = await axios.post('/competitor_survey', formData);
                 if (response.status === 201) {
                     alert('Pesquisas Salvas')
                     this.$router.push('/');
