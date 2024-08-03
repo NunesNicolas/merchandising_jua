@@ -1,12 +1,15 @@
 <template>
   <button @click="routerbutton('RT')" class="optionBut">
-    <i class="bi bi-images iconP"></i><p>Registros de Trabalho</p>
+    <i class="bi bi-images iconP"></i>
+    <p>Registros de Trabalho</p>
   </button>
   <button @click="routerbutton('RT2')" class="optionBut">
-    <i class="bi bi-search iconP"></i> <p>Pesquisa Juá</p> 
+    <i class="bi bi-search iconP"></i>
+    <p>Pesquisa Juá</p>
   </button>
-  <button class="optionBut">
-    <i class="bi bi-search iconP"></i><p>Pesquisa de Concorrentes</p>
+  <button @click="routerbutton('RT3')" class="optionBut">
+    <i class="bi bi-search iconP"></i>
+    <p>Pesquisa de Concorrentes</p>
   </button>
 </template>
 <script>
@@ -14,18 +17,30 @@ export default {
   methods: {
     routerbutton(route) {
       switch (route) {
-        case 'RT':
-          this.$router.push({ name: 'registro', params: { pesquisaid: this.$route.pesquisaid } });
+        case "RT":
+          this.$router.push({
+            name: "registro",
+            params: { pesquisaid: this.$route.pesquisaid },
+          });
           break;
-        case 'RT2':
-          this.$router.push({ name: 'pesquisajua', params: { pesquisaid: this.$route.pesquisaid } });
-        break;
+        case "RT2":
+          this.$router.push({
+            name: "pesquisajua",
+            params: { pesquisaid: this.$route.pesquisaid },
+          });
+          break;
+        case "RT3":
+          this.$router.push({
+            name: "pesquisacompetitors",
+            params: { pesquisaid: this.$route.pesquisaid },
+          });
+          break;
         default:
           break;
       }
     },
-  }
-}
+  },
+};
 </script>
 <style scoped>
 .iconP {
@@ -39,7 +54,7 @@ export default {
   text-align: start;
   background-color: #ffffff;
   border: 1px solid #ebebeb;
-  color: #2C9AFF;
+  color: #2c9aff;
   box-shadow: 0vh 0.2vh 0.2vh 0vh #d2d1d1;
   width: 80%;
   height: 10vh;
@@ -48,9 +63,9 @@ export default {
   margin-right: 10%;
 }
 
-p{
+p {
   font-size: 100%;
-    font: bold;
-    margin-top: 20px;
+  font: bold;
+  margin-top: 20px;
 }
 </style>

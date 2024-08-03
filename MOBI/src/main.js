@@ -22,6 +22,8 @@ import RegistroCreate from './views/RegistroTb/Create.vue';
 
 import RegistroHome from './views/RegistroTb/Home.vue';
 import VisitasCheck from './views/PesquisaJua/Create.vue';
+import CompetitorsCheck from './views/PesquisaCompetitors/Create.vue';
+
 
 
 
@@ -42,6 +44,7 @@ const routes = [
       { path: 'registro/create/:pesquisaid', name: 'newReg', component: RegistroCreate, meta: { requiresAuth: true } },
       { path: 'registro/:pesquisaid', name: 'registro', component: RegistroHome, meta: { requiresAuth: true } },
       { path: '/pesquisajua/:pesquisaid', name: 'pesquisajua', component: VisitasCheck, meta: { requiresAuth: true } },
+      { path: '/pesquisacompetitors/:pesquisaid', name: 'pesquisacompetitors', component: CompetitorsCheck, meta: { requiresAuth: true } },
     ]
   },
   {

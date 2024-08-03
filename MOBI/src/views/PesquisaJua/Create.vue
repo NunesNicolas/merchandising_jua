@@ -33,7 +33,6 @@ export default {
         },
 
         async savePesquisas(formData) {
-            alert('aaaaa')
             console.log(formData);
             try {
                
