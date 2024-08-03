@@ -6,7 +6,9 @@ use Illuminate\Http\Request;
 use App\Models\promotor_router;
 use App\Models\Promotores;
 use App\Models\Cliente;
+use  App\Models\product_survey;
 use  App\Models\promotor_work_register;
+use App\Http\Controllers\product_surveyController;
 
 class PromoterRouterController extends Controller
 {
@@ -17,6 +19,22 @@ class PromoterRouterController extends Controller
         $PromoterRouter->cliente = Cliente::find($PromoterRouter->cliente_id);
         $PromoterRouter->haveReg = promotor_work_register::where('promotor_route_id', $id)->exists();
         return response()->json($PromoterRouter);
+    }
+
+    public function showByCliente(int $cliente_id)
+    {
+        $latestPromotorRoute = promotor_router::where('cliente_id', $cliente_id)
+            ->latest()
+            ->first();
+
+        if (!$latestPromotorRoute) {
+            // Handle the case where no promotor route is found
+            return response()->json(['error' => 'No promotor route found'], 404);
+        }
+
+        $latestPromotorRoute->productSurveys;
+
+        return response()->json($latestPromotorRoute);
     }
 
     public function store(Request $request)
@@ -35,7 +53,6 @@ class PromoterRouterController extends Controller
     public function opened($promotor_id)
     {
         $promoterRouters = promotor_router::where('promotor_id', $promotor_id)
-
             ->where('status', '!=', 'concluido') // filter out concluded promoter routers
             ->where('status', '!=', 'CONCLUIDO')
             ->get();
@@ -82,5 +99,11 @@ class PromoterRouterController extends Controller
             return $promoterRouter->checkin_datetime ?: PHP_INT_MAX;
         });
         return response()->json($sortedPromoterRouters->values());
+    }
+
+    public function showByRouter($router_id)
+    {
+        $product_surveys = product_survey::where('router_id', $router_id)->get();
+        return $product_surveys;
     }
 }
