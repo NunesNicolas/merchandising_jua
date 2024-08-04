@@ -7,6 +7,12 @@ use App\Models\Competitor;
 
 class CompetitorsController extends Controller
 {
+    public function indexAll()
+    {
+        $competitor = Competitor::all();
+        return response()->json($competitor);
+    }
+
     public function show($id)
     {
         $competitor = Competitor::find($id);
