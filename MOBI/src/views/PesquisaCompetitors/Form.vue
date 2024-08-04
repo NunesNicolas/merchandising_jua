@@ -8,7 +8,7 @@
                     nome: 'Nome',
                     price: 'Preço',
                 }" />
-                {{ competitors }}
+                {{ pesquisascompetitor }}
         </div>
 
         <div style="position: relative;">
@@ -64,9 +64,25 @@ export default {
             console.log('Dados da pesquisa:', this.pesquisa);
         },
         async fetchCompetitors() {
-            let response = axios.get('/all/competitors')
-            this.competitors = (await response).data;
-            console.log(this.competitors);
+            try {
+                // Primeiro fetch para obter os produtos
+                let response = await axios.get('/all/competitors');
+                this.competitors = response.data;
+                console.log(this.competitors);
+
+                // Segundo fetch para obter os preços dos produtos relacionados ao cliente
+                let response1 = await axios.get("competitor_survey/cliente_competitors/" + this.pesquisa.cliente_id);
+                const auxiliar = response1.data;
+                console.log('testando coisa de louco:' + auxiliar);
+
+                // Atualizar os produtos com os preços
+                this.competitors = this.competitors.map((competitor) => {
+                    const competitorAuxiliar = auxiliar.find((item) => item.competitor_id === competitor.id);
+                    return { ...competitor, price: competitorAuxiliar ? competitorAuxiliar.price : null };
+                });
+            } catch (error) {
+                console.error(error);
+            }
         },
         pushPesquisasCompetitor(object) {
             this.pesquisascompetitor.push(object);
