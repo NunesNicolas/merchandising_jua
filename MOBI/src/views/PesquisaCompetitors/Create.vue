@@ -1,5 +1,4 @@
 <template>
-    <h1>Pesquisa Concorrentes</h1>
     <FormPesquisaCompetitors :submitLabel="'Criar Pesquisa'" :onSave="savePesquisas" />
     
 </template>

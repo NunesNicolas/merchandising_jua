@@ -2,15 +2,15 @@
     <div style="margin-bottom: 10vh">
         <headerEmpresa :visita="pesquisa" />
 
+        <h5 class="name">Pesquisa Concorrentes</h5>
+
         <div v-for="competitor in competitors">
             <researchField @preencher="adicionarCompetitor($event)" :item="competitor" :label="'nome'" :label2="'brand'"
                 :key="competitor.id" :fields="{
                     nome: 'Nome',
                     price: 'Preço',
                 }" />
-                {{ pesquisascompetitor }}
         </div>
-
         <div style="position: relative;">
             <nav>
                 <ActionRouterBack style="margin-top: -15px;margin-bottom: -15px " />
@@ -146,4 +146,12 @@ nav {
 button {
     width: 100%;
 }
+
+.name {
+    text-align: left;
+    color: #a0a0a0;
+    font-size: 2vh;
+    margin-left: 2vh;
+    margin-top: 2.5vh;
+  }
 </style>
