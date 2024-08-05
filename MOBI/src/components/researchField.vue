@@ -11,6 +11,10 @@
 <script>
 export default {
     props: {
+        clienteid: {
+            type: Number,
+            required: true
+        },
         item: {
             type: Object,
             required: true
@@ -56,6 +60,7 @@ export default {
         },
         updateValue(event) {
             this.modelValue.price = event.target.value;
+            this.modelValue.cliente_id = this.clienteid;
             this.modelValue.promotor_route_id = this.$route.params.pesquisaid;
             this.modelValue.product_id = this.item.id;
             this.$emit('preencher', this.modelValue);
