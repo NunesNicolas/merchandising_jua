@@ -14,4 +14,9 @@ class Produto extends Model
         'img',
         'weight',
     ];
+
+    public function productSurveys()
+    {
+        return $this->hasMany(product_survey::class, 'product_id');
+    }
 }
