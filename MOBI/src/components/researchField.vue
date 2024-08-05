@@ -32,10 +32,15 @@ export default {
             type: String,
             required: true
         },
+
+        product_or_competitor: {
+            type: String,
+            required: true
+        },
         excluirModelValue: Function,
         preencher: Function,
 
-       
+
     },
     data() {
         return {
@@ -59,11 +64,21 @@ export default {
 
         },
         updateValue(event) {
-            this.modelValue.price = event.target.value;
-            this.modelValue.cliente_id = this.clienteid;
-            this.modelValue.promotor_route_id = this.$route.params.pesquisaid;
-            this.modelValue.product_id = this.item.id;
-            this.$emit('preencher', this.modelValue);
+            if (this.product_or_competitor == 'product') {
+
+
+                this.modelValue.price = event.target.value;
+                this.modelValue.cliente_id = this.clienteid;
+                this.modelValue.promotor_route_id = this.$route.params.pesquisaid;
+                this.modelValue.product_id = this.item.id;
+                this.$emit('preencher', this.modelValue);
+            }else if(this.product_or_competitor == 'competitor'){
+                this.modelValue.price = event.target.value;
+                this.modelValue.cliente_id = this.clienteid;
+                this.modelValue.promotor_route_id = this.$route.params.pesquisaid;
+                this.modelValue.competitor_id = this.item.id;
+                this.$emit('preencher', this.modelValue);
+            }
         },
         toggleDisabled(event) {
             this.isDisabled = event.target.checked;

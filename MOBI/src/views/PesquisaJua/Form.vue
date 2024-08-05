@@ -6,10 +6,8 @@
             @excluirModelValue="excluirModelValue" 
             :item="produto" :label="'nome'" :label2="'weight'" :label3="'price'"
             :clienteid="pesquisa.cliente_id"
-            :key="produto.id" :fields="{
-                    nome: 'Nome',
-                    price: 'Preço',
-                }" />
+            :product_or_competitor="'product'"
+            :key="produto.id"/>
         </div>
 
         <div style="position: relative;">

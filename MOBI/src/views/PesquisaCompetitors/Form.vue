@@ -3,12 +3,8 @@
         <headerEmpresa :visita="pesquisa" />
 
         <div v-for="competitor in competitors">
-            <researchField @preencher="adicionarCompetitor($event)" :item="competitor" :label="'nome'" :label2="'brand'"
-                :key="competitor.id" :fields="{
-                    nome: 'Nome',
-                    price: 'Preço',
-                }" />
-                {{ pesquisascompetitor }}
+            <researchField @preencher="adicionarCompetitor($event)" :clienteid="pesquisa.cliente_id" :item="competitor" :label="'nome'" :label2="'brand'"
+                :key="competitor.id" :product_or_competitor="'competitor'" />
         </div>
 
         <div style="position: relative;">
