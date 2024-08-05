@@ -9,8 +9,8 @@
         <i class="bi bi-basket2-fill icone"></i>
       </router-link>
 
-      <router-link to="">
-        <i class="bi bi-building-fill icone"></i>
+      <router-link :to="{ name: 'CheckoutSucess' }" active-class="active-icon">
+        <i class="bi bi-calendar2-check-fill icone"></i>
       </router-link>
     </nav>
   </div>

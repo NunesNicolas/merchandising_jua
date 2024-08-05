@@ -45,18 +45,21 @@ const routes = [
       { path: 'registro/:pesquisaid', name: 'registro', component: RegistroHome, meta: { requiresAuth: true } },
       { path: '/pesquisajua/:pesquisaid', name: 'pesquisajua', component: VisitasCheck, meta: { requiresAuth: true } },
       { path: '/pesquisacompetitors/:pesquisaid', name: 'pesquisacompetitors', component: CompetitorsCheck, meta: { requiresAuth: true } },
+      { path: 'create', name: 'CreateAtendimentos', component: CreateAtendimentos, meta: { requiresAuth: true } },
+      { path: 'sucess', name: 'CheckoutSucess', component: CheckoutSucess, meta: { requiresAuth: true } },
     ]
   },
+
   {
     path: '/',
     component: sistemaLayout,
     children: [
       { path: '', name: 'dashboard', component: InicialInfo, meta: { requiresAuth: true } },
-      { path: 'create', name: 'CreateAtendimentos', component: CreateAtendimentos, meta: { requiresAuth: true } },
-      { path: 'sucess', name: 'CheckoutSucess', component: CheckoutSucess, meta: { requiresAuth: true } },
+    
     ],
     meta: { requiresAuth: true }
   },
+ 
   {
     path: '/visitas/check',
     component: pesquisaLayout,
