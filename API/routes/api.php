@@ -45,6 +45,7 @@ Route::get('all/produtos', [ProdutosController::class, 'indexAll']);
 Route::resource('promotores', PromotoresController::class);
 
 Route::resource('competitors', CompetitorsController::class);
+Route::get('all/competitors', [CompetitorsController::class, 'indexAll']);
 
 Route::resource('clientes', ClientesController::class);
 

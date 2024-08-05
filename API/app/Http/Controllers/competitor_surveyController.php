@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\competitor_survey;
+use App\Models\promotor_router;
 
 class competitor_surveyController extends Controller
 {
@@ -12,11 +13,31 @@ class competitor_surveyController extends Controller
         $this->middleware('auth:sanctum');
     }
 
+    public function showByCliente(int $cliente_id)
+    {
+        $latestPromotorRoute = promotor_router::where('cliente_id', $cliente_id)
+            ->latest()
+            ->first();
+
+        if (!$latestPromotorRoute) {
+            // Handle the case where no promotor route is found
+            return response()->json(['error' => 'No promotor route found'], 404);
+        }
+
+        $latestPromotorRoute->competitorsSurveys;
+
+        return response()->json($latestPromotorRoute->competitorsSurveys);
+    }
+
     public function store(Request $request)
     {
         
-        $competitor_survey = competitor_survey::create($request->all());
-        return response()->json($competitor_survey, 201);
+        $competitorsSurveys = [];
+        foreach ($request->all() as $surveyData) {
+            $competitorsSurvey = competitor_survey::create($surveyData);
+            $competitorsSurveys[] = $competitorsSurvey;
+        }
+        return response()->json($competitorsSurveys, 201);
 
     }
 
