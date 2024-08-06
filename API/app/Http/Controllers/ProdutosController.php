@@ -7,7 +7,8 @@ use App\Models\Produto;
 use Illuminate\Http\Request;
 use  App\Requests\ProdutoStore;
 use App\Models\product_survey;
-use App\Models\promotor_router;
+use App\Models\competitor_survey;
+use App\Models\promotor_router; 
 
 class ProdutosController extends Controller
 {
@@ -51,8 +52,26 @@ class ProdutosController extends Controller
 
         $produtovariants = Produto::where('nome', $produto->nome)->get();
 
+
         $id_jua = $id;
         $competitorsthis = Competitor::where('product_id', $id_jua)->get();
+
+        foreach ($competitorsthis as $competitor) {
+            $latestProductSurveys = product_survey::whereIn('id', function ($query) use ($competitor) {
+                $query->select(product_survey::raw('MAX(id)'))
+                    ->from('product_surveys')
+                    ->where('product_id', $competitor->product_id)
+                    ->groupBy('cliente_id');
+            })
+            ->get();
+        
+            $competitor->prices = $latestProductSurveys->map(function ($survey) {
+                return [
+                    'price' => $survey->price,
+                    'cliente_id' => $survey->cliente_id,
+                ];
+            });
+        }
 
         if ($produto) {
             return response()->json([
