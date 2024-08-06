@@ -2,7 +2,20 @@
     <div class="FormCompetitor">
         <headerEmpresa :visita="pesquisa" />
 
-        <h5 class="name">Pesquisa Concorrentes</h5>
+        <div class="add-but">
+            <ActionRouter
+            :route="{ name: 'pesquisa', params: { pesquisaid: id } }"
+            :color="''"
+            >
+            <slot><i
+                class="bi bi-arrow-left-square icon-right"
+                title="Voltar"
+                style="font-size: 25px; background-color:white;"
+                ></i
+            ></slot>
+            </ActionRouter>
+            <h5 class="name">Pesquisa Concorrentes</h5>
+        </div>
 
         <div v-for="competitor in competitors">
             <researchField @preencher="adicionarCompetitor($event)" :clienteid="pesquisa.cliente_id" :item="competitor" :label="'nome'" :label2="'brand'"
@@ -138,9 +151,13 @@ export default {
     justify-content: center;
 }
 
-button {
-    width: 100%;
-}
+.add-but {
+    height: 5vh;
+    text-align: right;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+  }
 
 .name {
     text-align: left;
