@@ -6,6 +6,8 @@ use App\Models\Competitor;
 use App\Models\Produto;
 use Illuminate\Http\Request;
 use  App\Requests\ProdutoStore;
+use App\Models\product_survey;
+use App\Models\promotor_router;
 
 class ProdutosController extends Controller
 {
@@ -38,21 +40,28 @@ class ProdutosController extends Controller
     {
 
         $produto = Produto::find($id);
+        
+        $latestProductSurveys = product_survey::whereIn('id', function ($query) use ($id) {
+            $query->select(product_survey::raw('MAX(id)'))
+                ->from('product_surveys')
+                ->where('product_id', $id)
+                ->groupBy('cliente_id');
+        })
+        ->get();
 
         $produtovariants = Produto::where('nome', $produto->nome)->get();
 
-        $id_jua = $id; // ID do produto desejado
+        $id_jua = $id;
         $competitorsthis = Competitor::where('product_id', $id_jua)->get();
 
         if ($produto) {
-            // O promotor foi encontrado, faça algo com as informações
             return response()->json([
                 'produto' => $produto,
                 'produtovariants' => $produtovariants,
-                'competitorsthis' => $competitorsthis
+                'competitorsthis' => $competitorsthis,
+                'ultimosprecos' => $latestProductSurveys
             ]);
         } else {
-            // O promotor não foi encontrado, trate o erro
             abort(404);
         }
     }

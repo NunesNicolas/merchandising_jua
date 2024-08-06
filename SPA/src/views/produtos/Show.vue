@@ -10,7 +10,7 @@
             <BoxInfoWrapper>
                 <slot>
                     <div class="topIcons">
-                    <DeleteBT :item="produto" :label="'nome'" :url="'/produtos/'" />
+                        <DeleteBT :item="produto" :label="'nome'" :url="'/produtos/'" />
                         <router-link :to="{
                             name: 'UpdateProdutos',
                             params: { id: this.$route.params.id },
@@ -18,7 +18,7 @@
                             <i class="bi bi-pencil-square ml-1" style="font-size: 25px; color:dodgerblue"></i>
                         </router-link>
                     </div>
-                    <div class="d-flex">
+                    <div class="d-flex" style="gap:20px">
                         <div class="box-line">
                             <img :src="produto.img" height="150px" width="auto" />
                         </div>
@@ -28,14 +28,14 @@
                             </div>
                             <div class="d-flex" style="width: 100%; gap:10px; justify-content:space-between">
                                 <div class="box-line" style="width: 50%">
-                                    <BoxInfo title="Preço médio:"></BoxInfo>
+                                    <BoxInfo title="Preço médio:" :value="'R$' + precoMedio(this.precos).toFixed(2)"></BoxInfo>
                                 </div>
                                 <div class="box-line" style="width: 50%">
                                     <BoxInfo title="Quantidade de concorrentes:" :value="competitors.length"></BoxInfo>
                                 </div>
                             </div>
                         </div>
-                        
+
                     </div>
                     <div class="divFooter" style="width: 100%">
 
@@ -49,7 +49,7 @@
                             <CheckBox @util="updateweights" :options="variants" :value="'id'" :label="'weight'"
                                 :instance="produto" :defaults="weights">
                                 <slot>
-                                <b-button style="height:6vh;margin-top:10px"  v-b-modal.modal-1>Cancelar</b-button>
+                                    <b-button style="height:6vh;margin-top:10px" v-b-modal.modal-1>Cancelar</b-button>
                                 </slot>
                             </CheckBox>
                         </b-modal>
@@ -143,6 +143,7 @@ export default {
             competitors: [],
             variants: [],
             weights: [],
+            precos: [],
             temCompetitors: false,
             modalEdit: "",
             BodyAll: "page",
@@ -165,6 +166,9 @@ export default {
             this.competitors = (await response).data.competitorsthis;
             this.variants = (await response).data.produtovariants;
             this.produto = (await response).data.produto;
+            this.precos = (await response).data.ultimosprecos;
+            console.log(this.precos)
+
             this.paginaAtual = this.produto.weight;
 
             if (this.competitors[0] != null) {
@@ -188,11 +192,17 @@ export default {
             this.$refs.BodyAll.classList.toggle("pageMod");
         },
 
+        precoMedio(values) {
+            const sum = values.reduce((a, b) => a + b.price, 0);
+            const average = sum / values.length;
+            return average;
+        },
+
         updateweights(selecteds) {
             const existem = selecteds.filter(item => !this.variants.find(b => b.weight == item));
             const weights = existem.filter(element => element != this.produto.weight);
-            const formData = {weights: weights, nome: this.produto.nome, img: this.produto.img}
-            
+            const formData = { weights: weights, nome: this.produto.nome, img: this.produto.img }
+
             if (weights.length > 0) {
                 console.log(formData)
                 axios.post('/produtos', formData)
@@ -203,7 +213,7 @@ export default {
                     .catch(error => {
                         console.error(error);
                     });
-                    
+
             }
         }
 
@@ -235,12 +245,14 @@ export default {
     text-align: justify;
     width: 100%;
 }
-.topIcons{
+
+.topIcons {
     display: flex;
     text-align: end;
     justify-content: end;
     gap: 20px;
 }
+
 table {
     width: 100%;
 }

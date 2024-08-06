@@ -1,27 +1,24 @@
 <template>
-    <div style="margin-bottom: 10vh">
+    <div class="FormCompetitor">
         <headerEmpresa :visita="pesquisa" />
 
         <h5 class="name">Pesquisa Concorrentes</h5>
 
         <div v-for="competitor in competitors">
-            <researchField @preencher="adicionarCompetitor($event)" :item="competitor" :label="'nome'" :label2="'brand'"
-                :key="competitor.id" :fields="{
-                    nome: 'Nome',
-                    price: 'Preço',
-                }" />
+            <researchField @preencher="adicionarCompetitor($event)" :clienteid="pesquisa.cliente_id" :item="competitor" :label="'nome'" :label2="'brand'"
+                :key="competitor.id" :product_or_competitor="'competitor'" />
         </div>
         <div style="position: relative;">
-            <nav>
-                <ActionRouterBack style="margin-top: -15px;margin-bottom: -15px " />
+                <div class="SaveCancel">
                 <ActionRouter 
-    @click="finalizar()" 
-    :color="'primary'" 
-    :label="'Salvar'" 
-    :route="{ name: 'pesquisa', params: { pesquisaid: $route.params.pesquisaid } }" 
-    :disabled="isPesquisaConcluida"
-  />
- </nav>
+                    @click="finalizar()" 
+                    :color="'primary'" 
+                    :label="'Salvar'" 
+                    :route="{ name: 'pesquisa', params: { pesquisaid: $route.params.pesquisaid } }" 
+                    :disabled="isPesquisaConcluida"
+                />
+                </div>
+
         </div>
     </div>
 
@@ -130,16 +127,14 @@ export default {
 }
 </script>
 <style scoped>
-nav {
+.FormCompetitor {
+    padding-bottom: 13vh;
     background-color: rgb(252, 252, 252);
-    box-shadow: 0vw 0vw 0.6vw 0vw;
-    position: fixed;
     bottom: 8vh;
     width: 100%;
     height: auto;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
-    display: flex;
     justify-content: center;
 }
 
@@ -154,4 +149,27 @@ button {
     margin-left: 2vh;
     margin-top: 2.5vh;
   }
+
+
+
+.SaveCancel{
+background-color: rgb(252, 252, 252);
+width: 100%;
+position: fixed;
+display: flex;
+justify-content: center;
+align-items: center;
+bottom: 8vh;
+height: 12vh;
+flex-wrap: wrap;
+}
+
+.SaveCancel a{
+color:#2c9aff;
+text-align: center;
+justify-content: space-evenly;
+align-items: center;
+font-weight: bold;
+font-size:3vh;
+}
 </style>

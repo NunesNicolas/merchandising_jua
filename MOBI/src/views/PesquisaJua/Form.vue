@@ -5,10 +5,9 @@
             <researchField @preencher="adicionarProduto($event)"
             @excluirModelValue="excluirModelValue" 
             :item="produto" :label="'nome'" :label2="'weight'" :label3="'price'"
-                :key="produto.id" :fields="{
-                    nome: 'Nome',
-                    price: 'Preço',
-                }" />
+            :clienteid="pesquisa.cliente_id"
+            :product_or_competitor="'product'"
+            :key="produto.id"/>
         </div>
 
         <div style="position: relative;">
@@ -45,7 +44,6 @@ export default {
             id: this?.$route?.params?.pesquisaid,
             pesquisa: {},
             produtos: [],
-            juapesquisas: [],
             formValues: [],
         }
     },
@@ -83,11 +81,6 @@ export default {
             } catch (error) {
                 console.error(error);
             }
-        },
-
-
-        pushJuaPesquisas(object) {
-            this.juapesquisas.push(object);
         },
 
         adicionarProduto(index) {

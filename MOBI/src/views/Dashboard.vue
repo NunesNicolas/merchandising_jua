@@ -6,15 +6,12 @@ import axios from "axios";
   <div class="roteiro-info">
     {{ teste }}
     <div class="add-but">
-      <ActionRouter route="/create" :color="'success'" label="Adicionar">
+      <ActionRouter :route="{ name: 'CreateAtendimentos', params: { pesquisaid: id } }" :color="'success'" label="Adicionar">
         <slot><i class="bi bi-plus-circle ml-2" style="font-size:20px"></i></slot>
       </ActionRouter>
     </div>
     <div class="ActionContainer">
       <h5 class="font-bold underline">Roteiro de Clientes</h5>
-      <ActionRouter style="margin-top: 20px; margin-right: 30px" route="/sucess" :color="'primary'" label="">
-        <slot><i class="bi bi-list-check" style="font-size:20px; "></i></slot>
-      </ActionRouter>
     </div>
     <div class="containercards" v-for="visita in visitas">
       <VisitasCard :visita="visita" :cliente="visita.cliente">
