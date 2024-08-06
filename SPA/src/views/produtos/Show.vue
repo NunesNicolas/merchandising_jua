@@ -242,7 +242,7 @@ export default {
         },
 
         precoEspecifico(competitorSurvey) {
-    const preco = this.precos.find(p => p.cliente_id === competitorSurvey.cliente_id);
+    const preco = this.precos.find(p => p.cliente_id == competitorSurvey.cliente_id);
     return preco ? preco.price : 0;
   },
 

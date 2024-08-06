@@ -57,15 +57,15 @@ class ProdutosController extends Controller
         $competitorsthis = Competitor::where('product_id', $id_jua)->get();
 
         foreach ($competitorsthis as $competitor) {
-            $latestProductSurveys = product_survey::whereIn('id', function ($query) use ($competitor) {
-                $query->select(product_survey::raw('MAX(id)'))
-                    ->from('product_surveys')
-                    ->where('product_id', $competitor->product_id)
+            $latestCompetitorSurveys = competitor_survey::whereIn('id', function ($query) use ($competitor) {
+                $query->select(competitor_survey::raw('MAX(id)'))
+                    ->from('competitor_surveys')
+                    ->where('competitor_id', $competitor->id)
                     ->groupBy('cliente_id');
             })
             ->get();
         
-            $competitor->prices = $latestProductSurveys->map(function ($survey) {
+            $competitor->prices = $latestCompetitorSurveys->map(function ($survey) {
                 return [
                     'price' => $survey->price,
                     'cliente_id' => $survey->cliente_id,
