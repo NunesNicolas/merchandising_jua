@@ -1,21 +1,21 @@
 <template>
   <div class="FormCompetitor">
     <headerEmpresa :visita="pesquisa" />
-
-        <div class="add-but">
-            <ActionRouter
-            :route="{ name: 'pesquisa', params: { pesquisaid: id } }"
-            :color="''"
-            >
-            <slot><i
-                class="bi bi-arrow-left-square icon-right"
-                title="Voltar"
-                style="font-size: 25px; background-color:white;"
-                ></i
-            ></slot>
-            </ActionRouter>
-            <h5 class="name">Pesquisa Concorrentes</h5>
-        </div>
+    <div class="add-but">
+      <ActionRouter
+        :route="{ name: 'pesquisa', params: { pesquisaid: id } }"
+        :color="''"
+      >
+        <slot
+          ><i
+            class="bi bi-arrow-left-square icon-right"
+            title="Voltar"
+            style="font-size: 25px; background-color: white"
+          ></i
+        ></slot>
+      </ActionRouter>
+      <h5 class="name">Pesquisa Concorrentes</h5>
+    </div>
 
     <div v-for="competitor in competitors">
       <researchField
@@ -80,32 +80,33 @@ export default {
       console.log("Dados da pesquisa:", this.pesquisa);
     },
     async fetchCompetitors() {
-      try {
-        // Primeiro fetch para obter os competitors
-        let response = await axios.get("/all/competitors");
-        this.competitors = response.data;
-        console.log(this.competitors);
+  try {
+    // Primeiro fetch para obter os competitors
+    let response = await axios.get("/all/competitors");
+    this.competitors = response.data;
+    console.log(this.competitors);
 
-        // Segundo fetch para obter os preços dos competitors relacionados ao cliente
-        let response1 = await axios.get(
-          "competitor_survey/cliente_competitors/" + this.pesquisa.cliente_id
+    // Segundo fetch para obter os preços dos competitors relacionados ao cliente
+    let response1 = await axios.get(
+      "competitor_survey/cliente_competitors/" + this.pesquisa.cliente_id
+    );
+    const auxiliar = response1.data;
+    console.log("Testando:" + auxiliar);
+
+      this.competitors = this.competitors.map((competitor) => {
+        const competitorAuxiliar = auxiliar.find(
+          (item) => item.competitor_id === competitor.id
         );
-        const auxiliar = response1.data;
-        console.log("Testando:" + auxiliar);
-
-        this.competitors = this.competitors.map((competitor) => {
-          const competitorAuxiliar = auxiliar.find(
-            (item) => item.competitor_id === competitor.id
-          );
-          return {
-            ...competitor,
-            price: competitorAuxiliar ? competitorAuxiliar.price : null,
-          };
-        });
-      } catch (error) {
-        console.error(error);
-      }
-    },
+        return {
+          ...competitor,
+          price: competitorAuxiliar ? competitorAuxiliar.price : null,
+        };
+      });
+  
+  } catch (error) {
+    console.error(error);
+  }
+},
 
     adicionarCompetitor(index) {
       if (this.formValues) {
@@ -162,12 +163,12 @@ export default {
 }
 
 .add-but {
-    height: 5vh;
-    text-align: right;
-    display: flex;
-    flex-direction: row-reverse;
-    justify-content: space-between;
-  }
+  height: 5vh;
+  text-align: right;
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+}
 
 .name {
   text-align: left;
