@@ -28,7 +28,8 @@
                             </div>
                             <div class="d-flex" style="width: 100%; gap:10px; justify-content:space-between">
                                 <div class="box-line" style="width: 50%">
-                                    <BoxInfo title="Preço médio:" :value="'R$' + precoMedio(this.precos).toFixed(2)"></BoxInfo>
+                                    <BoxInfo title="Preço médio:" :value="'R$' + precoMedio(this.precos).toFixed(2)">
+                                    </BoxInfo>
                                 </div>
                                 <div class="box-line" style="width: 50%">
                                     <BoxInfo title="Quantidade de concorrentes:" :value="competitors.length"></BoxInfo>
@@ -105,10 +106,14 @@
                                             <th>JUÁ</th>
                                             <th>MARCA</th>
                                         </tr>
-                                        <td>PEDRO LUCAS MOREIRA</td>
-                                        <td>R$ 15,00</td>
-                                        <td>R$ 15,99</td>
                                     </thead>
+                                    <tbody>
+                                        <tr v-for="competitorSurvey in item.prices" :key="competitorSurvey.cliente_id">
+                                            <td>{{ competitorSurvey.clienteNome }}</td>
+                                            <td>R$ {{ precoEspecifico(competitorSurvey).toFixed(2) }}</td>
+                                            <td>R$ {{competitorSurvey.price.toFixed(2)}}</td>
+                                        </tr>
+                                    </tbody>
                                 </table>
                             </div>
                         </slot>
@@ -164,10 +169,15 @@ export default {
         async getProdutos() {
             let response = axios.get("/produtos/" + this.id);
             this.competitors = (await response).data.competitorsthis;
+            this.competitors.forEach((competitor) => {
+                competitor.prices.forEach((competitorSurvey) => {
+                    this.getClienteNome(competitorSurvey);
+                });
+            });
             this.variants = (await response).data.produtovariants;
             this.produto = (await response).data.produto;
             this.precos = (await response).data.ultimosprecos;
-            console.log(this.precos)
+            console.log(this.competitors)
 
             this.paginaAtual = this.produto.weight;
 
@@ -215,7 +225,26 @@ export default {
                     });
 
             }
-        }
+        },
+
+        async nomeCliente(clienteid) {
+            try {
+                const response = await axios.get('/clientes/' + clienteid);
+                this.cliente = response.data;
+                return this.cliente.nome;
+            } catch (error) {
+                console.error('Error fetching client data:', error);
+            }
+        },
+
+        async getClienteNome(competitorSurvey) {
+            competitorSurvey.clienteNome = await this.nomeCliente(competitorSurvey.cliente_id);
+        },
+
+        precoEspecifico(competitorSurvey) {
+    const preco = this.precos.find(p => p.cliente_id === competitorSurvey.cliente_id);
+    return preco ? preco.price : 0;
+  },
 
     },
 
