@@ -178,16 +178,18 @@ export default {
   margin-top: 2.5vh;
 }
 
-.SaveCancel {
-  background-color: rgb(252, 252, 252);
-  width: 100%;
-  position: fixed;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  bottom: 8vh;
-  height: 12vh;
-  flex-wrap: wrap;
+
+
+.SaveCancel{
+background-color: rgb(252, 252, 252);
+width: 100%;
+position: fixed;
+display: flex;
+justify-content: center;
+align-items: center;
+bottom: 8vh;
+height: 12vh;
+flex-wrap: wrap;
 }
 
 .SaveCancel a {

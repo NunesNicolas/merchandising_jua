@@ -1,6 +1,22 @@
 <template>
-    <div style="margin-bottom: 10vh">
+    <div class="FormJua">
         <headerEmpresa :visita="pesquisa" />
+
+        <div class="add-but">
+            <ActionRouter
+            :route="{ name: 'pesquisa', params: { pesquisaid: id } }"
+            :color="''"
+            >
+            <slot><i
+                class="bi bi-arrow-left-square icon-right"
+                title="Voltar"
+                style="font-size: 25px; background-color:white;"
+                ></i
+            ></slot>
+            </ActionRouter>
+            <h5 class="name">Pesquisa Concorrentes</h5>
+        </div>
+
         <div v-for="produto in produtos">
             <researchField @preencher="adicionarProduto($event)"
             @excluirModelValue="excluirModelValue" 
@@ -11,16 +27,16 @@
         </div>
 
         <div style="position: relative;">
-            <nav>
-                <ActionRouterBack style="margin-top: -15px;margin-bottom: -15px " />
-                <ActionRouter 
-    @click="finalizar()" 
-    :color="'primary'" 
-    :label="'Salvar'" 
-    :route="{ name: 'pesquisa', params: { pesquisaid: $route.params.pesquisaid } }" 
-    :disabled="isPesquisaConcluida"
-  />
- </nav>
+                <div class="SaveCancel">
+                    <ActionRouter 
+                        @click="finalizar()" 
+                        :color="'primary'" 
+                        :label="'Salvar'" 
+                        :route="{ name: 'pesquisa', params: { pesquisaid: $route.params.pesquisaid } }" 
+                        :disabled="isPesquisaConcluida"
+                    />
+                </div>
+
         </div>
     </div>
 
@@ -123,20 +139,42 @@ export default {
 }
 </script>
 <style scoped>
-nav {
-    background-color: rgb(252, 252, 252);
-    box-shadow: 0vw 0vw 0.6vw 0vw;
-    position: fixed;
+.FormJua {
+    padding-bottom: 13vh;
+    background-color: rgb(246, 246, 246);
     bottom: 8vh;
-    width: 100%;
     height: auto;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
-    display: flex;
     justify-content: center;
 }
 
-button {
+.add-but {
+    height: 5vh;
+    text-align: right;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+  }
+
+.SaveCancel{
+    background-color: rgb(246, 246, 246);
     width: 100%;
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    bottom: 8vh;
+    height: 12vh;
+    flex-wrap: wrap;
+}
+
+.SaveCancel a{
+    color:#2c9aff;
+    text-align: center;
+    justify-content: space-evenly;
+    align-items: center;
+    font-weight: bold;
+    font-size:3vh;
 }
 </style>
