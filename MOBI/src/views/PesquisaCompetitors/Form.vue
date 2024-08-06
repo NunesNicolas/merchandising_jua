@@ -142,7 +142,7 @@ export default {
 <style scoped>
 .FormCompetitor {
     padding-bottom: 13vh;
-    background-color: rgb(252, 252, 252);
+    background-color: rgb(246, 246, 246);
     bottom: 8vh;
     width: 100%;
     height: auto;
@@ -170,7 +170,7 @@ export default {
 
 
 .SaveCancel{
-background-color: rgb(252, 252, 252);
+background-color: rgb(246, 246, 246);
 width: 100%;
 position: fixed;
 display: flex;
