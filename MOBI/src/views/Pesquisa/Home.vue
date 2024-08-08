@@ -41,7 +41,8 @@ export default {
         async statusChekout() {
             if (confirm("Você tem certeza que deseja finalizar o atendimento?")) {
                 try {
-                    this.datetime = new Date().toISOString().slice(0, 19).replace('T', ' ');
+                    const offset = new Date().getTimezoneOffset() * 60000; // Resolve as 3h de adiantamento
+                    this.datetime = new Date(Date.now() - offset).toISOString().slice(0, 19).replace('T', ' '); 
                     let updateData = {
                         checkout_datetime: this.datetime,
                         status: "CONCLUIDO",
