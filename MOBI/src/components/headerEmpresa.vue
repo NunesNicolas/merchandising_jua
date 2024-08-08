@@ -3,12 +3,14 @@
         <header class="header-empresa">
             <div>
                 <h6>Cliente:</h6>
-
+        
                 <p>{{ visita?.cliente?.nome }}</p>
                 <h6>Endereço:</h6>
                 <p>{{ visita?.cliente?.endereco }}</p>
                 <h6>Tempo de Pesquisa:</h6>
+                <!-- <p>{{ tempoDePesquisa }}</p> -->
                 <p>{{ timeElapsedString }}</p>
+                
             </div>
             <img src="../assets/nova-logo.png">
         </header>
@@ -27,11 +29,16 @@ export default {
     },
     data() {
         return {
-            timeElapsedString: ''
+            timeElapsedString: '',
         }
     },
     
     computed: {
+        // TEM Q TERMINAR
+        tempoDePesquisa() {
+      const checkoutfim = (this.visita.checkin_datetime - this.visita.chekout_datetime) / 1000 / 60;
+      return `${checkoutfim} minutos`;
+    },
         timeElapsed() {
             const checkinDateTime = new Date(this.visita.checkin_datetime);
             const now = new Date();
