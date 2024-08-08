@@ -16,6 +16,7 @@ class promotor_router extends Model
         'route_date',
         'notes',
         'checkin_datetime',
+        'checkout_datetime',
         'latitude',
         'longitude',
         'status',
