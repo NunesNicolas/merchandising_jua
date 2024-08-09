@@ -37,7 +37,6 @@ export default {
     },
     
     computed: {
-        // TEM Q TERMINAR
         tempoDePesquisa() {
             const checkinDateTime = new Date(this.visita.checkin_datetime);
             const checkoutDateTime = new Date(this.visita.checkout_datetime);
