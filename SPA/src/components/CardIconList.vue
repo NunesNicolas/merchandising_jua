@@ -79,7 +79,7 @@ export default {
 table {
     border-top-left-radius: 8px;
     border-top-right-radius: 8px;
-    background-color: #E7E7E7;
+    font-size: 2vh;
     display: grid;
     width: 100%;
     margin-top: auto;

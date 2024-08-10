@@ -21,13 +21,9 @@ import axios from "axios";
                     nome: 'Produto',
                 }">
                     <template class="tp" v-slot:actions="{ item }">
-                        <router-link :to="'produtos/' + item.id" class="d-flex flex-wrap mb-3">
-                            <div class="dtbutton">
-                                <h6 class="mt-2">DETALHES</h6>
-                            </div>
+                        <router-link :to="'produtos/' + item.id" class="d-flex flex-wrap">
+                            <h5 class="dtbutton">DETALHES</h5>
                         </router-link>
-
-
                     </template>
                 </CardList>
             </div>
@@ -85,13 +81,10 @@ export default {
     background-color: rgb(13, 141, 214);
     text-align: center;
     margin-bottom: 0;
-    height: 70%;
-    width: 80%;
-    border-radius: 10px;
-    margin-bottom: 15px;
-    margin-left: 10%;
-
-
+    width: 100%;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    padding-block: 1vh;
 }
 
 .li {

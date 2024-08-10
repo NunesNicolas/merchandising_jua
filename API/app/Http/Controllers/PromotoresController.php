@@ -43,7 +43,6 @@ class PromotoresController extends Controller
             'email' => 'required|string|email|max:255',
             'senha' => 'required|string|min:4',
             'telefone' => 'nullable|string|max:255',
-            'img' => 'nullable|string|max:255',
         ]);
 
         if ($validator->fails()) {
@@ -71,8 +70,16 @@ class PromotoresController extends Controller
     public function destroy($id)
     {
         $promotor = Promotores::find($id);
+        if ($promotor) {
+        $userId = $promotor->user_id;
+        $user = User::find($userId);
         $promotor->delete();
+        $user->delete();
         return response()->json(null, 204);
+        } else {
+            // O promotor não foi encontrado, trate o erro
+            abort(404);
+            }
     }
 
     public function update(Request $request, $id)
