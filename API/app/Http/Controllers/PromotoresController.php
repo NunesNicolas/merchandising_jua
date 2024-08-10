@@ -43,7 +43,6 @@ class PromotoresController extends Controller
             'email' => 'required|string|email|max:255',
             'senha' => 'required|string|min:4',
             'telefone' => 'nullable|string|max:255',
-            'img' => 'nullable|string|max:255',
         ]);
 
         if ($validator->fails()) {
