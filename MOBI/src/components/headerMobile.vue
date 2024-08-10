@@ -1,17 +1,18 @@
 <template>
   <div class="header-mobile">
     <p>
-      <svg xmlns="http://www.w3.org/2000/svg" style="height: 3vh; margin-right: 1vw;" fill="currentColor"
-        class="bi bi-person-fill animate-pulse" viewBox="0 0 16 16">
-        <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6" />
+        <svg v-if="promotor && promotor.img" viewBox="0 0 250 210" style="height: 20%; width: 20%;">
+          <clipPath id="clipCircle">
+              <circle cx="90" cy="105" r="86" />
+          </clipPath>
+          <circle cx="90" cy="105" r="86" fill="none" stroke="grey" stroke-width="3" />
+          <image :xlink:href=promotor.img width="200"
+              height="200" clip-path="url(#clipCircle)" y="-1" x="-10" />
       </svg>
       <strong v-if="promotor && promotor.nome">{{formatarNome(promotor.nome, 2) }}</strong>
     </p>
-    <router-link :to="{ name: 'dashboard' }">
-      <p><strong>Home</strong></p>
-    </router-link>
     <router-link :to="{ name: 'logout' }">
-      <p><strong>Sair</strong></p>
+      <p><strong style="color: red;">Sair</strong></p>
     </router-link>
   </div>
 </template>
@@ -39,8 +40,7 @@ export default{
 <style scoped>
 .header-mobile {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: space-evenly;
   align-items: center;
   padding-inline: 2vw;
   padding-block: 1vh;
@@ -55,7 +55,7 @@ export default{
 }
 
 .header-mobile p {
-  flex-wrap: wrap;
+  width: auto;
   display: flex;
   align-items: center;
 }
