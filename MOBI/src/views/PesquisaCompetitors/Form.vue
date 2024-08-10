@@ -152,7 +152,7 @@ export default {
 <style scoped>
 .FormCompetitor {
   padding-bottom: 14vh;
-  background-color: rgb(252, 252, 252);
+  background-color: rgb(246, 246, 246);
   bottom: 8vh;
   width: 100%;
   height: auto;

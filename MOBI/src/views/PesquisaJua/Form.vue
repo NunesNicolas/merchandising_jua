@@ -159,8 +159,7 @@ export default {
 
 .SaveCancel{
     border-top: 0.2vh solid rgb(170, 170, 170);
-    border:#2c9aff, ;
-    background-color: rgb(238, 238, 238);
+    background-color: rgb(246, 246, 246);
     width: 100%;
     position: fixed;
     display: flex;
