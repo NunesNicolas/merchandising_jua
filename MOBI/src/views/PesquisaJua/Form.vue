@@ -5,7 +5,6 @@
         <div class="add-but">
             <ActionRouter
             :route="{ name: 'pesquisa', params: { pesquisaid: id } }"
-            :color="''"
             >
             <slot><i
                 class="bi bi-arrow-left-square icon-right"
@@ -26,7 +25,7 @@
             :key="produto.id"/>
         </div>
 
-        <div style="position: relative;">
+        <div style="position: relative; ">
                 <div class="SaveCancel">
                     <ActionRouter 
                         @click="finalizar()" 
@@ -142,7 +141,8 @@ export default {
 .FormJua {
     padding-bottom: 24vh;
     background-color: rgb(246, 246, 246);
-    bottom: 14vh;
+    bottom: 8vh;
+    padding-bottom: 25vh;
     height: auto;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
@@ -158,7 +158,9 @@ export default {
   }
 
 .SaveCancel{
-    background-color: rgb(246, 246, 246);
+    border-top: 0.2vh solid rgb(170, 170, 170);
+    border:#2c9aff, ;
+    background-color: rgb(238, 238, 238);
     width: 100%;
     position: fixed;
     display: flex;
@@ -167,6 +169,8 @@ export default {
     bottom: 8vh;
     height: 12vh;
     flex-wrap: wrap;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
 }
 
 .SaveCancel a{

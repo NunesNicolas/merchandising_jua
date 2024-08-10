@@ -24,9 +24,9 @@ class competitor_surveyController extends Controller
             return response()->json(['error' => 'No promotor route found'], 404);
         }
 
-        $latestPromotorRoute->competitorsSurveys;
+        $latestPromotorRoute->competitorSurveys;
 
-        return response()->json($latestPromotorRoute->competitorsSurveys);
+        return response()->json($latestPromotorRoute->competitorSurveys);
     }
 
     public function store(Request $request)

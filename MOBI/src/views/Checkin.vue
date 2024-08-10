@@ -41,7 +41,7 @@ export default {
         navtrue(geoloc) {
             this.geoloc = geoloc;
             this.calculateDistance();   
-            if (this.distance <= 4) {
+            if (this.distance <= 20) {
                 console.log('distance', this.distance, 'Geolocation:', geoloc);
             const formatted = useDateFormat(useNow(), 'YYYY-MM-DD HH:mm:ss')
             this.iniPesquisa(formatted.value);

@@ -4,11 +4,15 @@
             <div>
                 <h6>Cliente:</h6>
 
+                {{ visita.checkout_datetime }}
+        
                 <p>{{ visita?.cliente?.nome }}</p>
                 <h6>Endereço:</h6>
                 <p>{{ visita?.cliente?.endereco }}</p>
                 <h6>Tempo de Pesquisa:</h6>
-                <p>{{ timeElapsedString }}</p>
+                <p v-if="visita.checkout_datetime">{{ tempoDePesquisa }}</p>
+                <p v-else>{{ timeElapsedString }}</p>
+                
             </div>
             <img src="../assets/nova-logo.png">
         </header>
@@ -27,17 +31,35 @@ export default {
     },
     data() {
         return {
-            timeElapsedString: ''
+            timeElapsedString: '',
+            checkoutEnd: '',
         }
     },
     
     computed: {
-        timeElapsed() {
+        tempoDePesquisa() {
             const checkinDateTime = new Date(this.visita.checkin_datetime);
+            const checkoutDateTime = new Date(this.visita.checkout_datetime);
+            const Dif = checkoutDateTime.getTime() - checkinDateTime.getTime();
+            const checkoutEnd = this.formatTimeElapsed(Dif);
+            return checkoutEnd;
+    },
+
+        timeElapsed() {
+            if (!this.visita.checkout_datetime) {
+                const checkinDateTime = new Date(this.visita.checkin_datetime);
             const now = new Date();
             const timeDiff = now.getTime() - checkinDateTime.getTime();
             const timeElapsedString = this.formatTimeElapsed(timeDiff);
             return timeElapsedString;
+            }else{
+                const checkinDateTime = new Date(this.visita.checkin_datetime);
+            const checkoutDateTime = new Date(this.visita.checkout_datetime);
+            const Dif = checkoutDateTime.getTime() - checkinDateTime.getTime();
+            const checkoutEnd = this.formatTimeElapsed(Dif);
+            return checkoutEnd;
+            }
+            
         }
     },
 
