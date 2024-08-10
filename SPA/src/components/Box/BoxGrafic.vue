@@ -1,5 +1,5 @@
 <template>
-    <div class="d-flex bg-white " style="
+    <div class=" bg-white " style="
     flex-wrap: wrap;
     width: 100%;
     height: 50vh;
@@ -10,8 +10,6 @@
       <p>{{title}}</p>
       <div class="d-flex" style="
       width: 23vw;
-      height: 50vh;
-      padding: 10vw;
   ">
         <p>{{content}}</p>
       </div>

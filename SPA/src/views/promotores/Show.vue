@@ -22,10 +22,10 @@ import axios from "axios";
       padding-right: 20px;
     ">
     <div class="d-flex" style="
-        gap: 10px;
         height: 100%;
         justify-content: space-between;
         padding: 15px;
+        width:100%;
         padding-top: 0;
       ">
       <div style="width: 25%;">
@@ -45,38 +45,28 @@ import axios from "axios";
       </CardList>
     </div>
 
-      <div class="d-flex" style="
+      <div class="" style="
           padding: 0;
           margin: 0;
-          width: 70%;
+          width: 30%;
           height: 50vh;
-          justify-content: space-evenly;
           flex-wrap: wrap;
+          padding-left: 2.5%;
         ">
         <BoxMedium title="tempo médio de atendimento" subtitle="ultimo atendimento">
           <template v-slot:icon="{ item }">
             <i class="bi bi-clock-history" style="color: green"></i>
           </template>
         </BoxMedium>
-        <BoxMedium title="Quantidade de atendimentos no mês">
+        <BoxMedium style="margin-top: 13%;" title="Quantidade de atendimentos no mês">
           <template v-slot:icon="{ item }">
             <i class="bi bi-calendar-date" style="color: blue"></i>
-          </template>
-        </BoxMedium>
-        <BoxMedium title="Pesquisas feitas" subtitle="ultima pesquisa">
-          <template v-slot:icon="{ item }">
-            <i class="bi bi-list-check" style="color: red"></i>
-          </template>
-        </BoxMedium>
-        <BoxMedium title="???">
-          <template v-slot:icon="{ item }">
-            <i class="bi bi-clock-history" style="color: blue"></i>
           </template>
         </BoxMedium>
       </div>
 
       <!-- card direita -->
-      <div style="display: grid; width: 30%">
+      <div style="display: grid; width: 50%">
         <TableGrafic title="Atendimento dos ultimos 30 dias" content="Grafico">
         </TableGrafic>
 
