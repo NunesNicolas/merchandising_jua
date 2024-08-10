@@ -29,7 +29,7 @@ import axios from "axios";
         padding-top: 0;
       ">
       <div style="width: 25%;">
-      <CardList :textBox="true" :item="promotor" :fields="{
+      <CardList :thisuser="true" :textBox="true" :item="promotor" :fields="{
         nome: 'Promotor',
         email: 'Email',
         status: 'status',
