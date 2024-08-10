@@ -23,7 +23,7 @@ import axios from "axios";
             <!-- Isso é o comportamento dinâmico que eu citei. Deste modo, podem adicionar mais coisas dentro do compontente -->
             <template v-slot:actions="{ item }">
                 <router-link :to="'clientes/' + item.id" class="d-flex flex-wrap">
-                    <i class="bi bi-file-earmark-text" style="font-size: 2rem;"></i>
+                    <i class="bi bi-file-earmark-text" style="font-size: 2rem; color: blue"></i>
                 </router-link>
 
                 <router-link :to="'clientes/' + item.id + '/update'" class="d-flex flex-wrap">

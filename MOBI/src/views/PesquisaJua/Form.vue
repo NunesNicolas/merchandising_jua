@@ -139,7 +139,7 @@ export default {
 </script>
 <style scoped>
 .FormJua {
-    padding-bottom: 13vh;
+    padding-bottom: 24vh;
     background-color: rgb(246, 246, 246);
     bottom: 8vh;
     padding-bottom: 25vh;
