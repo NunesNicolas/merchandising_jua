@@ -4,7 +4,6 @@
     <div class="add-but">
       <ActionRouter
         :route="{ name: 'pesquisa', params: { pesquisaid: id } }"
-        :color="''"
       >
         <slot
           ><i
@@ -152,7 +151,7 @@ export default {
 </script>
 <style scoped>
 .FormCompetitor {
-  padding-bottom: 13vh;
+  padding-bottom: 14vh;
   background-color: rgb(252, 252, 252);
   bottom: 8vh;
   width: 100%;
@@ -181,15 +180,19 @@ export default {
 
 
 .SaveCancel{
-background-color: rgb(252, 252, 252);
-width: 100%;
-position: fixed;
-display: flex;
-justify-content: center;
-align-items: center;
-bottom: 8vh;
-height: 12vh;
-flex-wrap: wrap;
+  border-top: 0.2vh solid rgb(170, 170, 170);
+  border:#2c9aff, ;
+  background-color: rgb(238, 238, 238);
+  width: 100%;
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  bottom: 8vh;
+  height: 12vh;
+  flex-wrap: wrap;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
 }
 
 .SaveCancel a {

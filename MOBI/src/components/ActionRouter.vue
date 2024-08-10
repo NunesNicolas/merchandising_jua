@@ -19,7 +19,7 @@
       },
       color: {
         type: String,
-        default: 'btn-primary' // cor padrão do botão
+        default: 'none' // cor padrão do botão
       },
       label: {
         type: String,
@@ -31,8 +31,11 @@
     },
     computed: {
       colorClass() {
+        if (color == 'none') {
+          return 'none';
+        }else{
         return `btn-${this.color}`; // concatena 'btn-' com a cor para definir a classe do botão
-      }
+      }}
     }
   };
   </script>
