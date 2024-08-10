@@ -9,7 +9,7 @@
         </div>
         <div v-else>
             <div v-for="item in items" :key="item.id" class="d-flex">
-                <div class="d-flex flex-wrap content-normal bg-light ml-4" id="infos" style="">
+                <div class="content-normal bg-light ml-4" id="infos" style="">
                     <table style="width: 80%;">
                         <thead>
                             <tr class="indicadores">
@@ -49,6 +49,8 @@ export default {
 <style scoped>
 /* Estilos opcionais para personalização */
 #infos {
+    display: flex;
+    flex-wrap: wrap;
     font-size: 2.2vh;
     justify-content: center;
     align-items: center;
@@ -59,7 +61,6 @@ export default {
     border-left: solid 0.3vw #2C9AFF;
     margin-top: 3vh;
     border-radius: 0.5vh;
-    align-items: center;
     justify-content: space-evenly;
     box-shadow: 0vh 0.1vh 0.3vh 0vh #858585;
 }
