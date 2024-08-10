@@ -11,70 +11,79 @@ import axios from "axios";
         <OptionButtons :id="this?.$route?.pesquisaid" />
     </div>
     <div class="boxcheck">
-        <ActionRouter
-        :disabled="isPromotorConcluido" 
-        @click="statusChekout();" class="check" route="/" label="Checkout" />
+        <ActionRouter :disabled="isPromotorConcluido" @click="statusChekout()" class="check" route="/"
+            label="Checkout" />
     </div>
-    
 </template>
 
 <script>
-import ActionRouter from '../../components/ActionRouter.vue'
-import OptionButtons from '../../components/OpitionButtons.vue'
+import ActionRouter from "../../components/ActionRouter.vue";
+import OptionButtons from "../../components/OpitionButtons.vue";
 import headerEmpresa from "../../components/headerEmpresa.vue";
-import axios from 'axios';
+import axios from "axios";
 
 export default {
     data() {
-
-        console.log('[home pesquisas] route',this?.$route)
+        console.log("[home pesquisas] route", this?.$route);
 
         return {
             id: this?.$route?.params?.pesquisaid,
             pesquisa: {},
-        }
+        };
     },
     methods: {
         async fetchPesquisa() {
-            let response = axios.get('/pesquisas/' + this.id)
+            let response = axios.get("/pesquisas/" + this.id);
             this.pesquisa = (await response).data;
-            console.log('Dados da pesquisa:', this.pesquisa);
+            console.log("Dados da pesquisa:", this.pesquisa);
         },
+
         async statusChekout() {
-            if (confirm(`Você tem certeza que deseja finalizar o atendimento?`)) {
-                let updateData = { status: 'CONCLUIDO'};
-                axios.put('/pesquisas/' +  this.id,  updateData);
-                alert('Atendimento Finalizado.')
-                this.$router.push({ path: '/' }); 
+            if (confirm("Você tem certeza que deseja finalizar o atendimento?")) {
+                try {
+                    const offset = new Date().getTimezoneOffset() * 60000; // Resolve as 3h de adiantamento
+                    this.datetime = new Date(Date.now() - offset).toISOString().slice(0, 19).replace('T', ' '); 
+                    let updateData = {
+                        checkout_datetime: this.datetime,
+                        status: "CONCLUIDO",
+                    };
+                    console.log("updateData:", updateData);
+
+                    await axios.put("/pesquisas/" + this.id, updateData);
+                    alert("Atendimento Finalizado.");
+                    this.$router.push({ path: "/" });
+
+                } catch (error) {
+                    console.error("Erro ao finalizar atendimento:", error);
+                    alert("Erro ao finalizar atendimento.");
+                }
+            } else {
+                this.$router.push({ path: "/pesquisas/" + this.id });
+                alert("Atendimento não Finalizado.");
             }
-            else{
-                alert('Atendimento não Finalizado.')
-            }
-        }
+        },
+
     },
     mounted() {
         this.fetchPesquisa();
     },
-
     components: {
         OptionButtons,
         headerEmpresa,
-        ActionRouter
+        ActionRouter,
     },
 
     computed: {
-    isPromotorConcluido() {
-        if(this.pesquisa.status == 'CONCLUIDO'){
-      return true;}else{
-        return false;
-      }
-      
-    }
-  }
-
-}
+        isPromotorConcluido() {
+            if (this.pesquisa.status == "CONCLUIDO") {
+                return true;
+            } else {
+                return false;
+            }
+        },
+    },
+};
 </script>
-
 
 <style>
 .info {
@@ -89,12 +98,12 @@ export default {
     margin-top: 30px;
 }
 
-.boxcheck button{
+.boxcheck button {
     background-color: #2c9aff;
-    color: white; 
-    height: 7vh; 
-    border: 1px solid; 
-    margin-top: 3vh; 
+    color: white;
+    height: 7vh;
+    border: 1px solid;
+    margin-top: 3vh;
     font-size: 2.5vh;
 }
 </style>

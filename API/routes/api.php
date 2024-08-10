@@ -13,6 +13,8 @@ use App\Http\Controllers\PromoterRouterController;
 use App\Http\Controllers\WorkRegisterController;
 use App\Http\Controllers\product_surveyController;
 use App\Http\Controllers\competitor_surveyController;
+// use App\Models\competitor_survey;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -45,6 +47,7 @@ Route::get('all/produtos', [ProdutosController::class, 'indexAll']);
 Route::resource('promotores', PromotoresController::class);
 
 Route::resource('competitors', CompetitorsController::class);
+Route::get('all/competitors', [CompetitorsController::class, 'indexAll']);
 
 Route::resource('clientes', ClientesController::class);
 
@@ -62,4 +65,6 @@ Route::get('product_survey/cliente_products/{cliente_id}', [product_surveyContro
 
 Route::resource('competitor_survey', competitor_surveyController::class);
 Route::get('competitor_survey/pesquisa/{routeId}', [competitor_surveyController::class, 'showByRoute']);
+Route::get('competitor_survey/cliente_competitors/{cliente_id}', [competitor_surveyController::class, 'showByCliente']);
+
 

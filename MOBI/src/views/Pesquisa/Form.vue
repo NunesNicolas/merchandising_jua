@@ -4,7 +4,7 @@
     <template v-slot="{ formValues, updateFormValue }">
       <h1>{{ title }}</h1>
       <hr>
-      <SelectInput label="ID do cliente" name="id_cli" :modelValue="formValues.cliente_id" :options="this.clientes"
+      <SelectInput label="Selecionar cliente" name="id_cli" :modelValue="formValues.cliente_id" :options="this.clientes"
         @update:modelValue="updateFormValue('cliente_id', $event)" />
       <!-- <SelectInput label="ID do promotor" name="id_pro" :modelValue="formValues.promotor_id" :options="this.promotores"
         @update:modelValue="updateFormValue('promotor_id', $event)" /> -->

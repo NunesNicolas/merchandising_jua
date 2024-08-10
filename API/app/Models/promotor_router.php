@@ -16,6 +16,7 @@ class promotor_router extends Model
         'route_date',
         'notes',
         'checkin_datetime',
+        'checkout_datetime',
         'latitude',
         'longitude',
         'status',
@@ -26,6 +27,11 @@ class promotor_router extends Model
     public function productSurveys()
 {
     return $this->hasMany(product_survey::class, 'promotor_route_id');
+}
+
+public function competitorSurveys()
+{
+    return $this->hasMany(competitor_survey::class, 'promotor_route_id');
 }
 
 }

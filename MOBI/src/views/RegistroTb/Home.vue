@@ -5,19 +5,19 @@
   <div class="add-but">
     <ActionRouter
       :route="{ name: 'pesquisa', params: { pesquisaid: id } }"
-      :color="'primary'"
+      :color="''"
     >
       <slot><i
           class="bi bi-arrow-left-square icon-right"
           title="Voltar"
-          style="font-size: 20px"
+          style="font-size: 20px; background-color:white;"
         ></i
       ></slot>
     </ActionRouter>
     <h5 class="name">Registro de Trabalho</h5>
   </div>
 
-  <div>
+  <div style="padding-bottom: 10vh;">
     <!-- {{ pesquisa }} -->
     <button @click="routebutton(this.$route.pesquisaid)" class="btn" :disabled="isPesquisaConcluida">
       Adicionar Registro
@@ -109,18 +109,20 @@ export default {
 .add-but {
   text-align: right;
   padding: 10px;
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
 }
 
 .buttondel {
   width: 54px;
   height: 54px;
-  background-color: rgba(255, 0, 0, 0);
+  background-color: rgb(255, 0, 0, 0);
   display: flex;
   border: none;
   align-items: center;
-  justify-content: center;
   text-align: right;
-  margin-left: 10%;
+  justify-content:center;
 }
 
 .bi-trash {

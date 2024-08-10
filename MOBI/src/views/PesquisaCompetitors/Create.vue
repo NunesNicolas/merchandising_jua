@@ -1,7 +1,7 @@
 <template>
-    <h1>Pesquisa Concorrentes</h1>
-    <FormPesquisaCompetitors :submitLabel="'Criar Pesquisa'" :onSave="savePesquisas" />
-    
+    <div class="SaveCancel">
+        <FormPesquisaCompetitors :submitLabel="'Criar Pesquisa'" :onSave="savePesquisas" />
+    </div>
 </template>
 
 <script>
@@ -36,3 +36,6 @@ export default {
     }
 };
 </script>
+
+<style scoped>
+</style>
