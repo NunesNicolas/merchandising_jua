@@ -3,38 +3,25 @@
         <headerEmpresa :visita="pesquisa" />
 
         <div class="add-but">
-            <ActionRouter
-            :route="{ name: 'pesquisa', params: { pesquisaid: id } }"
-            >
-            <slot><i
-                class="bi bi-arrow-left-square icon-right"
-                title="Voltar"
-                style="font-size: 25px; background-color:white;"
-                ></i
-            ></slot>
+            <ActionRouter :route="{ name: 'pesquisa', params: { pesquisaid: id } }">
+                <slot><i class="bi bi-arrow-left-square icon-right" title="Voltar"
+                        style="font-size: 25px; background-color:white;"></i></slot>
             </ActionRouter>
             <h5 class="name">Pesquisa Concorrentes</h5>
         </div>
 
         <div v-for="produto in produtos">
-            <researchField @preencher="adicionarProduto($event)"
-            @excluirModelValue="excluirModelValue" 
-            :item="produto" :label="'nome'" :label2="'weight'" :label3="'price'"
-            :clienteid="pesquisa.cliente_id"
-            :product_or_competitor="'product'"
-            :key="produto.id"/>
+            <researchField @preencher="adicionarProduto($event)" @excluirModelValue="excluirModelValue" :item="produto"
+                :label="'nome'" :label2="'weight'" :label3="'price'" :clienteid="pesquisa.cliente_id"
+                :product_or_competitor="'product'" :key="produto.id" />
         </div>
 
         <div style="position: relative; ">
-                <div class="SaveCancel">
-                    <ActionRouter 
-                        @click="finalizar()" 
-                        :color="'primary'" 
-                        :label="'Salvar'" 
-                        :route="{ name: 'pesquisa', params: { pesquisaid: $route.params.pesquisaid } }" 
-                        :disabled="isPesquisaConcluida"
-                    />
-                </div>
+            <div class="SaveCancel">
+                <ActionRouter @click="finalizar()" :color="'primary'" :label="'Salvar'"
+                    :route="{ name: 'pesquisa', params: { pesquisaid: $route.params.pesquisaid } }"
+                    :disabled="isPesquisaConcluida" />
+            </div>
 
         </div>
     </div>
@@ -78,17 +65,13 @@ export default {
 
         async fetchProdutos() {
             try {
-                // Primeiro fetch para obter os produtos
                 let response = await axios.get('/all/produtos');
                 this.produtos = response.data;
                 console.log(this.produtos);
 
-                // Segundo fetch para obter os preços dos produtos relacionados ao cliente
                 let response1 = await axios.get("product_survey/cliente_products/" + this.pesquisa.cliente_id);
                 const auxiliar = response1.data;
-                console.log('testando coisa de louco:' + auxiliar);
 
-                // Atualizar os produtos com os preços
                 this.produtos = this.produtos.map((produto) => {
                     const produtoAuxiliar = auxiliar.find((item) => item.product_id === produto.id);
                     return { ...produto, price: produtoAuxiliar ? produtoAuxiliar.price : null };
@@ -126,10 +109,10 @@ export default {
         },
     },
     computed: {
-    isPesquisaConcluida() {
-       return this.pesquisa.status == 'CONCLUIDO';
-    }
-  },
+        isPesquisaConcluida() {
+            return this.pesquisa.status == 'CONCLUIDO';
+        }
+    },
     mounted() {
         this.fetchPesquisa();
         this.fetchProdutos();
@@ -155,9 +138,9 @@ export default {
     display: flex;
     flex-direction: row-reverse;
     justify-content: space-between;
-  }
+}
 
-.SaveCancel{
+.SaveCancel {
     border-top: 0.2vh solid rgb(170, 170, 170);
     background-color: rgb(246, 246, 246);
     width: 100%;
@@ -172,12 +155,12 @@ export default {
     border-top-right-radius: 10px;
 }
 
-.SaveCancel a{
-    color:#2c9aff;
+.SaveCancel a {
+    color: #2c9aff;
     text-align: center;
     justify-content: space-evenly;
     align-items: center;
     font-weight: bold;
-    font-size:3vh;
+    font-size: 3vh;
 }
 </style>
