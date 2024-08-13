@@ -16,7 +16,7 @@ import axios from "axios";
 
         <nav id="main-container" style="text-align: center;">
            <div class="d-flex" style="padding: 20px;  gap:50px; flex-wrap: wrap;">
-            <div v-for="promotor in promotores" :key="promotor.id" class="card-container" style="display: flex; width: 13vw;">
+            <div v-for="promotor in promotores" :key="promotor.id" class="card-container" style="display: flex; width: 18vw;">
             <CardList :thisuser="true" :textBox="true" :item="promotor" :fields="{
                 nome: 'Promotor',
                 telefone: 'Telefone',
@@ -29,8 +29,8 @@ import axios from "axios";
                 </template>
 
                 <template v-slot:actions="{ item }">
-                    <router-link :to="'promotores/' + item.id" class="d-flex flex-wrap">
-                        <h5 class="dtbutton">DETALHES</h5>
+                    <router-link :to="'promotores/' + item.id" class="d-flex flex-wrap" id="dtbutton">
+                        DETALHES
                     </router-link>
                 </template>
             </CardList>
@@ -95,10 +95,11 @@ export default {
 </script>
 
 <style scoped>
-.dtbutton{
+#dtbutton{
     color: white;
-    background-color: rgb(13, 141, 214);
+    background-color: #2C9AFF;
     text-align: center;
+    justify-content: center;
     margin-bottom: 0;
     width: 100%;
     border-bottom-left-radius: 10px;

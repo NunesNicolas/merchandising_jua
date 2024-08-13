@@ -38,13 +38,13 @@
                         </div>
 
                     </div>
-                    <div class="divFooter" style="width: 100%">
+                    <div class="divFooter" style="width: 100%;">
 
                         <FooterButtons :id="id" :label="'weight'" :instance="produto" :items="variants"
                             :defaults="weights" />
 
-                        <b-button v-b-modal.modal-1 class="" style="padding: 5px; background-color: white; margin: 2px">
-                            <i class="bi bi-plus-circle" style="font-size:30px; color: black; border: none"></i>
+                        <b-button v-b-modal.modal-1 class="plusBut">
+                            <i class="bi bi-plus-circle" style="color: black; border: none"></i>
                         </b-button>
                         <b-modal id="modal-1" hide-footer title="Editar Tamanho do Produto">
                             <CheckBox @util="updateweights" :options="variants" :value="'id'" :label="'weight'"
@@ -79,12 +79,12 @@
                             id: this.$route.params.id,
                             compid: item.id,
                         },
-                    }" class="d-flex flex-wrap">
-                        <i class="bi bi-pencil-square" style="font-size: 2rem; color: grey"></i>
+                    }" class="buttonComp">
+                        <i class="bi bi-pencil-square" style="color: #858585;font-size: 4vh;"></i>
                     </router-link>
 
                     <button @click="toggleModal(item.id)" class="buttonComp">
-                        <i class="bi bi-file-earmark-text" style="font-size: 2rem; color: grey"></i>
+                        <i class="bi bi-file-earmark-text"></i>
                     </button>
 
                     <DetalhesModal @modificarEstilo="modificarEstilo" @toggleModal="toggleModal()"
@@ -304,14 +304,26 @@ table {
 .bi.bi-file-earmark-text {
     display: flex;
 }
-
+.plusBut{
+    background-color: transparent;
+    margin-bottom: 1vh;
+}
+.plusBut:hover, .plusBut i:hover{
+    color: #ffffff;
+    background-color: #2c9aff;
+}
 .buttonComp {
     display: flex;
     flex: wrap;
-    background-color: #f8f9fa;
-    height: 100%;
     text-align: center;
     outline: none;
+    padding: 0;
+    background-color: transparent;
+    color: #858585;
+}
+.buttonComp i{
+    font-size: 4vh;
+    color: #858585;
 }
 .btCompetitorAdd{
     margin-top: 4vh;
@@ -365,7 +377,6 @@ table {
     align-items: end;
     border-top: 0.2vh solid #d3d6db;
     margin-bottom: -25px;
-    margin-left: -25px;
 }
 
 .botao-ativo {
@@ -373,7 +384,7 @@ table {
 }
 
 .peso:hover {
-    color: solid #2c9aff;
+    color: none;
     border-bottom: solid #2c9aff;
 }
 </style>
