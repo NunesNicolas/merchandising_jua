@@ -313,19 +313,26 @@ table {
     text-align: center;
     outline: none;
 }
-
-.btCompetitorAdd {
+.btCompetitorAdd{
+    margin-top: 4vh;
+    margin-bottom: 2vh;
+    margin-right: 73vw;
+}
+.btCompetitorAdd a{
     text-align: center;
-    margin-top: 25px;
-    margin-left: 15px;
     border-radius: 10px;
     background-color: #2c9aff;
     color: white;
     font-size: 22px;
-    width: 17%;
-    height: auto;
+    width: 20vw;
+    height: 5vh;
+    font-size: 2.5vh;
+    padding-block: 2vh;
+    padding-inline: 1vw;
 }
-
+.btCompetitorAdd a:hover{
+    text-decoration: none;
+}
 .bi.bi-pencil-square {
     color: #2c9aff;
 }
@@ -336,7 +343,6 @@ table {
     border: none;
     text-align: left;
 }
-
 .peso {
     width: 5vw;
     height: 7vh;
