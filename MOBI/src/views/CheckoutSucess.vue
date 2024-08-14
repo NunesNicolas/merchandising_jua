@@ -4,7 +4,7 @@ import axios from "axios";
 
 <template>
     <div class="roteiro-info">
-        <h5 class="text-3xl font-bold underline">Roteiro Concluidos <i class="bi bi-bookmark-check"></i> </h5>
+        <h5 class="text-3xl font-bold">Roteiro Concluidos <i class="bi bi-bookmark-check"></i> </h5>
         <div class="containercards" v-for="visita in visitas">
           <VisitasCard :visita="visita" :cliente="visita.cliente">
             <slot>

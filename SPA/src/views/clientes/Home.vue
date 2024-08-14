@@ -15,9 +15,7 @@ import axios from "axios";
             cnpj: 'CNPJ',
             nome: 'Cliente',
             estado: 'Estado',
-            promotores: 'Promotores',
-            // ultima_pesquisa: 'ÚLTIMA PESQUISA',
-            // ultima_visita: 'ÚLTIMA VISITA'
+            promotor: 'Promotor',
         }">
 
             <!-- Isso é o comportamento dinâmico que eu citei. Deste modo, podem adicionar mais coisas dentro do compontente -->
@@ -53,13 +51,15 @@ export default {
     },
     data() {
         return {
-            clientes: []
+            clientes: [],
+            promotores: []
         };
     },
     created() {
         this.fetchClientes();
     },
     methods: {
+
         fetchClientes() {
             axios.get('/clientes')
                 .then(response => {
