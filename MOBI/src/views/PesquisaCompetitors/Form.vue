@@ -11,13 +11,12 @@
 
     <select v-model="selectedProduto">
       <option :value="null">Selecione um Produto</option>
-      <option v-for="produto in produtos" :key="produto.id" :value="produto.id">
+      <option v-for="produto in produtos" :key="produto.id" :value="produto.id" :class="produto.preenchido">
         {{ produto.nome }} {{ produto.weight }}
       </option>
     </select>
-
     <div v-for="competitor in competitors">
-      <researchField v-if="competitor.product_id == selectedProduto" @preencher="adicionarCompetitor($event)"
+      <researchField v-if="competitor.product_id == selectedProduto" @preencher="adicionarCompetitor($event, competitor)"
         :clienteid="pesquisa.cliente_id" :item="competitor" :label="'nome'" :label2="'brand'" :label3="'price'"
         :key="competitor.id" :product_or_competitor="'competitor'" v-model="researchFields[competitor.id]" />
     </div>
@@ -53,6 +52,7 @@ export default {
       selectedProduto: null,
       researchField: {},
       formValues: [],
+      researchFields: {},
     };
   },
   components: {
@@ -63,7 +63,9 @@ export default {
   },
 
   methods: {
-
+    competitorPreenchido(produto) {
+     produto.preenchido = 'selected';
+    },
 
     async fetchPesquisa() {
       let response = axios.get("/pesquisas/" + this.id);
@@ -72,7 +74,8 @@ export default {
     },
 
 
-    adicionarCompetitor(index) {
+    adicionarCompetitor(index, item) {
+
       if (this.formValues) {
         const existingIndex = this.formValues.findIndex(
           (item) => item.competitor_id === index.competitor_id
@@ -84,6 +87,14 @@ export default {
           // Adicionar um novo item
           this.formValues.push(index);
           this.researchFields[index.competitor_id] = index.researchField
+          const self = this;
+          this.produtos.forEach(tempProduto => {
+            if (tempProduto.id == item.product_id) {
+              self.competitorPreenchido(tempProduto);
+            }
+          });
+
+
         }
 
       } else {
@@ -106,7 +117,6 @@ export default {
 
   watch: {
     selectedProduto(newValue) {
-      this.researchFields = {}
       this.competitors.forEach(competitor => {
         if (competitor.product_id === newValue) {
           this.researchFields[competitor.id] = competitor.researchField
@@ -116,6 +126,7 @@ export default {
   },
 
   computed: {
+
     isPesquisaConcluida() {
       return this.pesquisa.status == "CONCLUIDO";
     },
@@ -135,6 +146,10 @@ select {
   font-size: 2vh;
   margin-top: 2vh;
   color: #8d8d8d;
+}
+
+.selected {
+  color: green;
 }
 
 .FormCompetitor {
