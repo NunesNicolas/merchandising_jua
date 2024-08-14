@@ -3,7 +3,7 @@
     <headerEmpresa :visita="pesquisa" />
   </div>
 
-  <h5 class="name">Registro de Trabalho</h5>
+  <h5 class="name">Registros de Trabalho</h5>
   <div>
     <button @click="routebutton(this.$route.pesquisaid)" class="btn">
       Adicionar Registro
