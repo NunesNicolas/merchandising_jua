@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\product_survey;
 use App\Models\promotor_router;
-use App\Http\Controllers\PromoterRouterController;
+
 
 class product_surveyController extends Controller
 {

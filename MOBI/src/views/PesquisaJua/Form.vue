@@ -7,7 +7,7 @@
                 <slot><i class="bi bi-arrow-left-square icon-right" title="Voltar"
                         style="font-size: 25px; background-color:white;"></i></slot>
             </ActionRouter>
-            <h5 class="name">Pesquisa Concorrentes</h5>
+            <h5 class="name">Pesquisa Juá</h5>
         </div>
 
         <div v-for="produto in produtos">

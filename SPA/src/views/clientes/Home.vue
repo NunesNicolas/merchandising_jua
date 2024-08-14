@@ -14,10 +14,8 @@ import axios from "axios";
         <CardList :items="clientes" :fields="{
             cnpj: 'CNPJ',
             nome: 'Cliente',
-            estado: 'Estado',
-            promotores: 'Promotores',
-            // ultima_pesquisa: 'ÚLTIMA PESQUISA',
-            // ultima_visita: 'ÚLTIMA VISITA'
+            endereco: 'Endereço',
+            promotor: 'Promotor',
         }">
 
             <!-- Isso é o comportamento dinâmico que eu citei. Deste modo, podem adicionar mais coisas dentro do compontente -->
@@ -53,13 +51,15 @@ export default {
     },
     data() {
         return {
-            clientes: []
+            clientes: [],
+            promotores: []
         };
     },
     created() {
         this.fetchClientes();
     },
     methods: {
+
         fetchClientes() {
             axios.get('/clientes')
                 .then(response => {
