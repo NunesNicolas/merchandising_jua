@@ -14,7 +14,7 @@ import axios from "axios";
         <CardList :items="clientes" :fields="{
             cnpj: 'CNPJ',
             nome: 'Cliente',
-            estado: 'Estado',
+            endereco: 'Endereço',
             promotor: 'Promotor',
         }">
 
