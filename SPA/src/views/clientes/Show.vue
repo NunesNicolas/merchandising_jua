@@ -6,16 +6,15 @@
             <ActionRouterBack />
         </ActionListWrapper>
 
+    <div class="d-flex">
         <BoxInfoWrapper>
             <slot>
                 <div class="box-line">
                     <BoxInfo title="Nome" :value="cliente.nome"></BoxInfo>
                     <BoxInfo title="CNPJ" :value="cliente.cnpj"></BoxInfo>
-                </div>
-
-                <div class="box-line">
                     <BoxInfo title="Endereço" :value="cliente.endereco"></BoxInfo>
                 </div>
+
                 <div class="box-line">
                     <img :src="cliente.imagem" height="300px" width="auto"/>
                 </div>
@@ -27,17 +26,18 @@
             date: 'Data da visita',
         }">
 
-            <template v-slot:actions="{ item }">
+            <!-- <template v-slot:actions="{ item }">
                 <router-link :to="'#'" class="d-flex flex-wrap">
                     <i class="bi bi-file-earmark-text" style="font-size: 2rem;"></i>
                 </router-link>
                 <router-link :to="'#'" class="d-flex flex-wrap">
                     <i class="bi bi-camera-fill" style="font-size: 2rem;"></i>
                 </router-link>
-            </template>
+            </template> -->
         </CardList>
         <br />
         <br />
+        </div>
     </div>
 </template>
 <script>
@@ -98,11 +98,25 @@ export default {
 </script>
 
 <style scoped>
+
+
+
 .box-line {
     display: flex;
+    flex-wrap: wrap;
     flex-direction: row;
     align-items: flex-start;
     width: 100%;
     gap: 1em;
 }
+
+.box-info-wrapper{
+    width: 47%;
+}
+
+.tabelas{
+    margin-left: -1vw;
+    width: 48vw;
+}
+
 </style>
