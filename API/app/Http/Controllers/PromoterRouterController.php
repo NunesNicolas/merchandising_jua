@@ -12,6 +12,12 @@ use App\Http\Controllers\product_surveyController;
 
 class PromoterRouterController extends Controller
 {
+    public function index()
+    {
+        $promotor_routers = promotor_router::all();
+        return response()->json($promotor_routers);
+    }
+
     public function show($id)
     {
         $PromoterRouter = promotor_router::find($id);
@@ -21,20 +27,13 @@ class PromoterRouterController extends Controller
         return response()->json($PromoterRouter);
     }
 
-    public function showByCliente(int $cliente_id)
+    public function showByCliente($cliente_id)
     {
-        $latestPromotorRoute = promotor_router::where('cliente_id', $cliente_id)
-            ->latest()
-            ->first();
-
-        if (!$latestPromotorRoute) {
-            // Handle the case where no promotor route is found
-            return response()->json(['error' => 'No promotor route found'], 404);
+        $PromoterRouters = promotor_router::where('cliente_id', $cliente_id)->get();
+        foreach ($PromoterRouters as $PromoterRouter) {
+            $PromoterRouter->promotor = Promotores::find($PromoterRouter->promotor_id)->value('nome');
         }
-
-        $latestPromotorRoute->productSurveys;
-
-        return response()->json($latestPromotorRoute->productSurveys);
+        return response()->json($PromoterRouters);
     }
 
     public function store(Request $request)

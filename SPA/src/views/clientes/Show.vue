@@ -27,17 +27,15 @@
                 <div class="ml-3 mt-4" style="text-align: left;">
                     <label>Últimas Visitas</label>
                 </div>
-                <CardList :items="visitas" :fields="{
-                    date: 'Data da visita',
+                <CardList :items="pesquisas" :fields="{
+                    route_date: 'Data da visita',
+                    promotor: 'Promotor'
                 }">
-                    <!-- <template v-slot:actions="{ item }">
-                <router-link :to="'#'" class="d-flex flex-wrap">
-                    <i class="bi bi-file-earmark-text" style="font-size: 2rem;"></i>
+               <template v-slot:actions="{ item }">
+                <router-link :to="''" class="d-flex flex-wrap">
+                    <i class="bi bi-file-earmark-text" style="font-size: 4vh; color: blue"></i>
                 </router-link>
-                <router-link :to="'#'" class="d-flex flex-wrap">
-                    <i class="bi bi-camera-fill" style="font-size: 2rem;"></i>
-                </router-link>
-            </template> -->
+               </template>
                 </CardList>
             </div>
             <br />
@@ -68,26 +66,18 @@ export default {
     },
     data() {
         return {
+            pesquisas:[],
+
             cliente: {
                 nome: '',
                 cnpj: '',
                 endereco: ''
             },
-            visitas: [
-                {
-                    date: '29/12/2024'
-                },
-                {
-                    date: '01/17/2024'
-                },
-                {
-                    date: '02/07/2024'
-                },
-            ]
         };
     },
     created() {
         this.fetchClientData();
+        this.fetchPesquisasData();
     },
     methods: {
         async fetchClientData() {
@@ -97,6 +87,11 @@ export default {
             } catch (error) {
                 console.error('Error fetching client data:', error);
             }
+        },
+
+        async fetchPesquisasData() {
+            const response2 = await axios.get(`pesquisas/cliente/${this.$route.params.id}`);
+            this.pesquisas = (await response2).data
         }
     }
 };
