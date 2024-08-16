@@ -16,7 +16,7 @@ import axios from "axios";
         <nav id="main-container" style="text-align: center; ">
             <div class="d-flex" style="padding: 20px; gap:50px; flex-wrap: wrap; ">
                 <div v-for="produto in produtos" :key="produto.id" class="card-container"
-                    style="display: flex; width: 13vw;">
+                    style="">
                 <CardList :textBox="true" :item="produto" :fields="{
                     nome: 'Produto',
                 }">

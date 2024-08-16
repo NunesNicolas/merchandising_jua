@@ -6,27 +6,31 @@
             <ActionRouterBack />
         </ActionListWrapper>
 
-    <div class="d-flex">
-        <BoxInfoWrapper>
-            <slot>
-                <div class="box-line">
-                    <BoxInfo title="Nome" :value="cliente.nome"></BoxInfo>
-                    <BoxInfo title="CNPJ" :value="cliente.cnpj"></BoxInfo>
-                    <BoxInfo title="Endereço" :value="cliente.endereco"></BoxInfo>
+        <div class="d-flex">
+            <BoxInfoWrapper>
+                <slot>
+                    <div class="box-line">
+                        <label>Informações do Cliente</label>
+                        <BoxInfo title="Nome" :value="cliente.nome"></BoxInfo>
+                        <BoxInfo title="CNPJ" :value="cliente.cnpj"></BoxInfo>
+                        <BoxInfo title="Endereço" :value="cliente.endereco"></BoxInfo>
+                    </div>
+
+                    <div class="box-line">
+                        <img :src="cliente.imagem" height="300px" width="auto" />
+                    </div>
+
+                </slot>
+            </BoxInfoWrapper>
+
+            <div class="scroll-visitas">
+                <div class="ml-3 mt-4" style="text-align: left;">
+                    <label>Últimas Visitas</label>
                 </div>
-
-                <div class="box-line">
-                    <img :src="cliente.imagem" height="300px" width="auto"/>
-                </div>
-
-            </slot>
-        </BoxInfoWrapper>
-
-        <CardList :items="visitas" :fields="{
-            date: 'Data da visita',
-        }">
-
-            <!-- <template v-slot:actions="{ item }">
+                <CardList :items="visitas" :fields="{
+                    date: 'Data da visita',
+                }">
+                    <!-- <template v-slot:actions="{ item }">
                 <router-link :to="'#'" class="d-flex flex-wrap">
                     <i class="bi bi-file-earmark-text" style="font-size: 2rem;"></i>
                 </router-link>
@@ -34,9 +38,10 @@
                     <i class="bi bi-camera-fill" style="font-size: 2rem;"></i>
                 </router-link>
             </template> -->
-        </CardList>
-        <br />
-        <br />
+                </CardList>
+            </div>
+            <br />
+            <br />
         </div>
     </div>
 </template>
@@ -99,8 +104,26 @@ export default {
 
 <style scoped>
 
-
-
+.scroll-visitas{
+    margin-top: 15px;
+    margin-right: 2vh;
+    margin-bottom: 2vh;
+    width: 50vw;
+    background-color: #ffffff;
+    border: solid 0.5px lightgray;
+    border-radius: 1vh;
+    overflow-y: scroll;
+    overflow-x: unset;
+}
+::-webkit-scrollbar{
+    width: 0.5vw;
+}
+::-webkit-scrollbar-track{
+    background-color:  #77bcfd;
+}
+::-webkit-scrollbar-thumb{
+    background-color: #2C9AFF;
+}
 .box-line {
     display: flex;
     flex-wrap: wrap;
@@ -110,13 +133,21 @@ export default {
     gap: 1em;
 }
 
-.box-info-wrapper{
-    width: 47%;
+.box-info-wrapper {
+    width: 55%;
+    margin-bottom: 2vh;
 }
 
-.tabelas{
+.tabelas {
     margin-left: -1vw;
-    width: 48vw;
+    width: 44vw;
 }
 
+label {
+    margin-top: 2vh; 
+    font-size: 17px;
+    color: #858585;
+    font-weight: bold;
+    margin-bottom: 0.5em;
+}
 </style>
