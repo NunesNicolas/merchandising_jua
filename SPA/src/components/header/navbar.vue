@@ -1,6 +1,6 @@
 <template>
 <nav class="fixed-left">
-    <div class="d-flex flex-row flex-wrap" style="width: 5vw; height:50vh; justify-content: center;" id="navbar">
+    <div class="icones" id="navbar">
         <!-- <a href="" class="btnav" class="border-collapse" style="display: flex; justify-content: center; width: 4vw;  height: 8vh; padding-top: 1vh; border-radius: 1vh;"> -->
           <router-link>
             <i class="bi bi-grid-1x2-fill icone"></i>
@@ -37,12 +37,10 @@
 
 <style scoped>
 nav{
-padding-top: 20vh;
-width: 5vw;
+width: 5vw; 
 height: 100vh;
 position: fixed;
 z-index: 2;
-justify-content: spacy-evenly;
 background-color: #2C9AFF;
 }
 .icone {
@@ -71,4 +69,16 @@ background-color: #2C9AFF;
   padding-left: 10px;
   padding-right: 10px;
 }
+
+.icones{
+  margin-top: 18vh;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.icones a{
+  margin-bottom: 6vh;
+}
+
 </style>

@@ -177,6 +177,7 @@ select {
 
 .selected {
   color: green;
+  font-weight: bold;
 }
 
 .FormCompetitor {
