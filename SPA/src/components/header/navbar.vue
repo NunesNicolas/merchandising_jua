@@ -65,7 +65,7 @@ background-color: #2C9AFF;
   color: #2C9AFF; 
   background-color: white;/* trocar a cor do ícone para rosa */
   border: 3px solid #ffffff; /* adicionar borda vermelha */
-  font-size: 240%;
+  font-size: 5vh;
   border-radius: 8px; 
   border-width: 2px;/* adicionar borda arredondada */
   padding-left: 10px;
