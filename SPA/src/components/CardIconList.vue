@@ -67,10 +67,11 @@ export default {
 
 <style scoped>
 .card{
-    width: 100%;
+    width: 18vw;
+    justify-content: center;
 }
 .card-body {
-    width: 100%;
+    width: 18vw;
     height: 100%;
     padding: 0;
     padding-top: 10px;
@@ -81,7 +82,7 @@ table {
     border-top-right-radius: 8px;
     font-size: 2vh;
     display: grid;
-    width: 100%;
+    width: 18vw;
     margin-top: auto;
 }
 

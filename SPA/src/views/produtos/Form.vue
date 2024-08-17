@@ -4,7 +4,7 @@
       <h1>{{ title }}</h1>
       <hr>
       <TextInput label="Nome" name="nome" :modelValue="formValues.nome"
-        @update:modelValue="updateFormValue('nome', $event)" />
+        @update:modelValue="updateFormValue('nome', $event)"/>
       <div v-if="this.created">
         <CheckBox label="Pesos" :items="weights" name="weights"
         :modelValue="formValues.weights" @update:modelValue="updateFormValue('weights', $event)" />

@@ -1,11 +1,9 @@
 <template>
-<nav class="fixed-left" style="
-   
-">
-    <div class="d-flex flex-row flex-wrap" style="width: 5vw; height:50vh; justify-content: center;">
+<nav class="fixed-left">
+    <div class="d-flex flex-row flex-wrap" style="width: 5vw; height:50vh; justify-content: center;" id="navbar">
         <!-- <a href="" class="btnav" class="border-collapse" style="display: flex; justify-content: center; width: 4vw;  height: 8vh; padding-top: 1vh; border-radius: 1vh;"> -->
-          <router-link >
-            <i class="bi bi-grid-1x2-fill icone"></i>   
+          <router-link>
+            <i class="bi bi-grid-1x2-fill icone"></i>
           </router-link>   
 <!-- </a> -->
         <!-- <a href="{{route('Produtos-index')}}" class="btnav" class="border-collapse-" style="display: flex;justify-content: center; width: 4vw;  height: 8vh; padding-top: 1vh; border-radius: 1vh;"> -->
@@ -47,9 +45,8 @@ z-index: 2;
 justify-content: spacy-evenly;
 background-color: #2C9AFF;
 }
-
 .icone {
-  font-size: 240%;
+  font-size: 5vh;
   border-radius: 8px;
   border: 2px solid transparent;
   padding-left: 10px;
@@ -59,6 +56,8 @@ background-color: #2C9AFF;
 
 .icone:hover{
   border-color: white;
+  color: #2C9AFF;
+  background-color: #ffffff;
 }
 
 .active-icon i {

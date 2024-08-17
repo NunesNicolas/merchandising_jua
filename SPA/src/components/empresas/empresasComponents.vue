@@ -56,8 +56,7 @@ export default {
     color: #858585;
     width: 95%;
     height: 8vh;
-    border-left:
-    solid 0.3vw #2C9AFF;
+    border-left: solid 0.3vw #2C9AFF;
     margin-top: 3vh;
     border-radius: 0.5vh;
     align-items: center;

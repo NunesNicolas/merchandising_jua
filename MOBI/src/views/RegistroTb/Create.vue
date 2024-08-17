@@ -41,7 +41,8 @@ export default {
                 console.error('Erro ao salvar registro:', error);
                 alert('Erro ao salvar registro', error);
             }
-        }
+        },
+       
     },
   components: {
     RegistroCamp,
@@ -49,6 +50,8 @@ export default {
     Form,
     ActionRouterBack,
   },
+
+ 
 };
 </script>
 

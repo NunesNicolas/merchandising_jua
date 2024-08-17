@@ -12,26 +12,24 @@ import axios from "axios";
         </ActionListWrapper>
 
         <CardList :items="clientes" :fields="{
-            cnpj: 'CNPJ',
             nome: 'Cliente',
-            estado: 'Estado',
-            promotores: 'Promotores',
-            // ultima_pesquisa: 'ÚLTIMA PESQUISA',
-            // ultima_visita: 'ÚLTIMA VISITA'
+            endereco: 'Endereço',
+            cnpj: 'CNPJ',
+            promotor: 'Promotor',
         }">
 
             <!-- Isso é o comportamento dinâmico que eu citei. Deste modo, podem adicionar mais coisas dentro do compontente -->
             <template v-slot:actions="{ item }">
                 <router-link :to="'clientes/' + item.id" class="d-flex flex-wrap">
-                    <i class="bi bi-file-earmark-text" style="font-size: 2rem; color: blue"></i>
+                    <i class="bi bi-file-earmark-text" style="font-size: 4vh; color: blue"></i>
                 </router-link>
 
                 <router-link :to="'clientes/' + item.id + '/update'" class="d-flex flex-wrap">
-                    <i class="bi bi-pencil-square" style="font-size: 2rem; color: #000"></i>
+                    <i class="bi bi-pencil-square" style="font-size: 4vh; color: #000"></i>
                 </router-link>
 
                 <button @click="confirmDelete(item)" class="d-flex flex-wrap btn btn-link p-0">
-                    <i class="bi bi-trash" style="font-size: 2rem; color: red"></i>
+                    <i class="bi bi-trash" style="font-size: 4vh; color: red"></i>
                 </button>
             </template>
         </CardList>
@@ -53,13 +51,15 @@ export default {
     },
     data() {
         return {
-            clientes: []
+            clientes: [],
+            promotores: []
         };
     },
     created() {
         this.fetchClientes();
     },
     methods: {
+
         fetchClientes() {
             axios.get('/clientes')
                 .then(response => {
