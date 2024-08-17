@@ -301,6 +301,11 @@ table {
     width: 62%;
 }
 
+.pageMod > .btCompetitorAdd {
+    margin-left: 5%;
+    text-align: left;
+  }
+
 .bi.bi-file-earmark-text {
     display: flex;
 }
@@ -325,11 +330,13 @@ table {
     font-size: 4vh;
     color: #858585;
 }
+
 .btCompetitorAdd{
-    min-width: 220px;
+    text-align: left;
+    text-wrap: nowrap;
     margin-top: 4vh;
     margin-bottom: 2vh;
-    margin-right: 73vw;
+    margin-left: 5%;
 }
 .btCompetitorAdd a{
     text-align: center;
