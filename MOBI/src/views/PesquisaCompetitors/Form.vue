@@ -42,13 +42,13 @@ export default {
     values: Object,
     submitLabel: String,
     onSave: Function,
-    competitors: Array,
     produtos: Array,
   },
   data() {
     return {
       id: this?.$route?.params?.pesquisaid,
       pesquisa: {},
+      competitors: [],
       selectedProduto: null,
       researchField: {},
       formValues: [],
@@ -73,6 +73,32 @@ export default {
       console.log("Dados da pesquisa:", this.pesquisa);
     },
 
+    async getPriceCompetitors() {
+            try {
+              let response = await axios.get("/all/competitors");
+                this.competitors = response.data;
+                console.log(this.competitors);
+                // Segundo fetch para obter os preços dos competitors relacionados ao cliente
+                let response1 = await axios.get(
+                    "competitor_survey/cliente_competitors/" + this.pesquisa.cliente_id
+                );
+                const auxiliar = response1.data;
+                console.log("Testando:" + auxiliar);
+
+                this.competitors = this.competitors.map((competitor) => {
+                    const competitorAuxiliar = auxiliar.find(
+                        (item) => item.competitor_id === competitor.id
+                    );
+                    return {
+                        ...competitor,
+                        price: competitorAuxiliar ? competitorAuxiliar.price : null,
+                    };
+                });
+
+            } catch (error) {
+                console.error(error);
+            }
+        },
 
     adicionarCompetitor(index, item) {
 
@@ -134,6 +160,7 @@ export default {
 
   mounted() {
     this.fetchPesquisa();
+    this.getPriceCompetitors();
 
   },
 };
