@@ -330,13 +330,12 @@ table {
     font-size: 4vh;
     color: #858585;
 }
-
 .btCompetitorAdd{
+    margin-left: 5%;
     text-align: left;
     text-wrap: nowrap;
     margin-top: 4vh;
     margin-bottom: 2vh;
-    margin-left: 5%;
 }
 .btCompetitorAdd a{
     text-align: center;
