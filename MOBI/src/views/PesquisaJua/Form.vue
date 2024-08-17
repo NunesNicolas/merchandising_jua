@@ -69,13 +69,14 @@ export default {
                 this.produtos = response.data;
                 console.log(this.produtos);
 
-                let response1 = await axios.get("product_survey/cliente_products/" + this.pesquisa.cliente_id);
+                let response1 = await axios.get('product_survey/cliente_products/' + this.pesquisa.cliente_id);
+                console.log(response1.data)
                 const auxiliar = response1.data;
-
                 this.produtos = this.produtos.map((produto) => {
                     const produtoAuxiliar = auxiliar.find((item) => item.product_id === produto.id);
                     return { ...produto, price: produtoAuxiliar ? produtoAuxiliar.price : null };
                 });
+                console.log(this.produtos);
             } catch (error) {
                 console.error(error);
             }
