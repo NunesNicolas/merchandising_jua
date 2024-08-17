@@ -28,10 +28,10 @@
                             height="200" clip-path="url(#clipCircle)" y="-20" />
                     </svg>
             
-                     <img  v-else class="" style="height: 80%; width: 100%; margin-top: auto; margin-bottom: 0px;" :src=item.img alt="imagem não encontrada" />
+                     <img  v-else class="" style="height: 80%; width: 90%; margin-top: auto; margin-bottom: 0px; border-radius: 3vh;" :src=item.img alt="imagem não encontrada" />
                       
                 </div>
-                <table v-if="textBox" class="mb-0" style="margin-top: auto;">
+                <table v-if="textBox" class="tablet" style="margin-top: auto;">
                     <tr v-for="(label, field) in fields" :key="field">
                       <th v-if="field != 'img'">{{ label }}:</th>
                       <td v-if="field != 'img'">{{ item[field] }}</td>
@@ -69,39 +69,33 @@ export default {
 .card{
     width: 18vw;
     justify-content: center;
+    border-radius: 2vh;
 }
 .card-body {
-    width: 18vw;
     height: 100%;
     padding: 0;
     padding-top: 10px;
 }
 
-table {
-    border-top-left-radius: 8px;
-    border-top-right-radius: 8px;
-    font-size: 2vh;
-    display: grid;
-    width: 18vw;
-    margin-top: auto;
-}
-
 .tablet {
-    text-align: start;
-    margin-top: 0;
-    height: 100%;
-}
-
-tr {
+    border-radius: 3vh;
+    font-size: 2.5vh;
     display: grid;
-    padding-left: 5px;
+    align-items: center;
+    justify-content: center;
 }
 
-th {
+.tablet tr {
+    display: grid;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.tablet th {
     color: rgb(71, 71, 71);
 }
 
-td {
+.tablet td {
     color: rgb(131, 130, 130);
 }
 </style>

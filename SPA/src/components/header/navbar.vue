@@ -38,11 +38,11 @@
 <style scoped>
 nav{
 padding-top: 20vh;
-width: 5vw;
+width: 5vw; 
 height: 100vh;
 position: fixed;
 z-index: 2;
-justify-content: spacy-evenly;
+justify-content: space-evenly;
 background-color: #2C9AFF;
 }
 .icone {
@@ -71,4 +71,5 @@ background-color: #2C9AFF;
   padding-left: 10px;
   padding-right: 10px;
 }
+
 </style>
