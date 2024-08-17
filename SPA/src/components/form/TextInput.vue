@@ -9,7 +9,7 @@
         </div>
         
         <input v-else type="text" class="form-control" :name="name" :value="modelValue"
-            @input="$emit('update:modelValue', $event.target.value)" :placeholder="'Digite um ' + label" />
+            @input="$emit('update:modelValue', $event.target.value)" :placeholder="'Digite um ' + label" style="width: 80vw;"/>
     </div>
 </template>
 

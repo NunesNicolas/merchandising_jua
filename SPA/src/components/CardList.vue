@@ -1,7 +1,7 @@
 <template>
-    <div>
+    <div class="tabelas">
         <div v-if="items.length === 0" class="no-data-message">
-            <div class="d-flex flex-wrap content-normal bg-light ml-4" id="infos" style="">
+            <div class="infos ml-4" style="">
                 <table style="width: 80%;">
                     <p>Não há dados disponíveis.</p>
                 </table>
@@ -9,7 +9,7 @@
         </div>
         <div v-else>
             <div v-for="item in items" :key="item.id" class="d-flex">
-                <div class="content-normal bg-light ml-4" id="infos" style="">
+                <div class="infos ml-4" style="">
                     <table style="width: 80%;">
                         <thead>
                             <tr class="indicadores">
@@ -48,13 +48,15 @@ export default {
 
 <style scoped>
 /* Estilos opcionais para personalização */
-#infos {
+.infos {
     display: flex;
     flex-wrap: wrap;
     font-size: 2.2vh;
+    content: normal;
     justify-content: center;
     align-items: center;
     text-decoration: none;
+    background-color: white;
     color: #858585;
     width: 95%;
     height: 8vh;

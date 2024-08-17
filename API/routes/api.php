@@ -54,7 +54,7 @@ Route::resource('clientes', ClientesController::class);
 Route::resource('pesquisas', PromoterRouterController::class);
 Route::get('pesquisas/promotor/{promotor_id}', [PromoterRouterController::class, 'opened']);
 Route::get('pesquisas/finals/{promotor_id}', [PromoterRouterController::class, 'finals']);
-
+Route::get('pesquisas/cliente/{cliente_id}', [PromoterRouterController::class, 'showByCliente']);
 
 Route::resource('workreg', WorkRegisterController::class);
 Route::get('workreg/pesquisa/{routeId}', [WorkRegisterController::class, 'showByRoute']);

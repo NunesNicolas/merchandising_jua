@@ -11,7 +11,7 @@ import axios from "axios";
       </ActionRouter>
     </div>
     <div class="ActionContainer">
-      <h5 class="font-bold underline">Roteiro de Clientes</h5>
+      <h5 class="font-bold">Roteiros de Clientes</h5>
     </div>
     <div class="containercards" v-for="visita in visitas">
       <VisitasCard :visita="visita" :cliente="visita.cliente">

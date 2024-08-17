@@ -42,9 +42,11 @@ export default {
 .form-check {
     margin-left: 10px;
     display: flex;
+    width: 8vw;
 }
 
 table {
-    display: grid;
+    display: flex;
+    flex-wrap: wrap;
 }
 </style>

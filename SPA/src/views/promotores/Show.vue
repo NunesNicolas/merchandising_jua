@@ -29,21 +29,21 @@ import axios from "axios";
         padding-top: 0;
       ">
       <div style="width: 25%;">
-      <CardList :thisuser="true" :textBox="true" :item="promotor" :fields="{
-        nome: 'Promotor',
-        email: 'Email',
-        status: 'status',
-      }">
-        <template v-slot:topactions="{ item }">
-          <RouterLink :to="{
-            name: 'UpdatePromotores',
-            params: { id: this.$route.params.id },
-          }">
-            <i class="bi bi-pencil-square" style="font-size: 3.5vh; margin-left:1vw;"></i>
-          </RouterLink>
-        </template>
-      </CardList>
-    </div>
+        <CardList :thisuser="true" :textBox="true" :item="promotor" :fields="{
+          nome: 'Promotor',
+          email: 'Email',
+          status: 'status',
+        }">
+          <template v-slot:topactions="{ item }">
+            <RouterLink :to="{
+              name: 'UpdatePromotores',
+              params: { id: this.$route.params.id },
+            }">
+              <i class="bi bi-pencil-square" style="font-size: 3.5vh; text-align: right;color:blue"></i>
+            </RouterLink>
+          </template>
+        </CardList>
+      </div>
 
       <div class="" style="
           padding: 0;
@@ -58,9 +58,13 @@ import axios from "axios";
             <i class="bi bi-clock-history" style="color: green"></i>
           </template>
         </BoxMedium>
+
         <BoxMedium style="margin-top: 13%;" title="Quantidade de atendimentos no mês">
           <template v-slot:icon="{ item }">
             <i class="bi bi-calendar-date" style="color: blue"></i>
+          </template>
+          <template v-slot:actions="{ item }">
+            <h2>{{ this.atendimentosNoMes }}</h2>
           </template>
         </BoxMedium>
       </div>
@@ -89,12 +93,13 @@ import axios from "axios";
       <TableInfo title="VISITAS DO PROMOTOR" :items="lastpesquisas" :fields="{
         nome: 'Promotor',
         checkin: 'Check-in',
+        checkout: 'Checkout',
       }"></TableInfo>
 
-      <TableInfo title="ROTEIRO DO PROMOTOR" :items="clientes" :fields="{
-        cnpj: 'CNPJ',
+      <TableInfo title="ROTEIRO DO PROMOTOR" :items="onlyClients()" :fields="{
         nome: 'CLIENTE',
-        ultima_visita: 'ÚLTIMA VISITA',
+        endereco: 'Endereço',
+        checkout: 'ÚLTIMA VISITA',
       }">
         <template v-slot:tableactions="{ table }">
           <i class="bi bi-pencil-square"
@@ -103,7 +108,7 @@ import axios from "axios";
         <template v-slot:itemactions="{ item }">
           <router-link :to="{
             name: 'ShowClientes',
-            params: { id: this.$route.params.id },
+            params: { id: item.clienteid },
           }" class="d-flex flex-wrap">
             <i class="bi bi-file-earmark-text" style="font-size: 25px;"></i>
           </router-link>
@@ -131,6 +136,7 @@ export default {
       promotor: "",
       promotores: [],
       lastpesquisas: [],
+      atendimentosNoMes: '',
       clientes: [
         {
           id: 1,
@@ -163,12 +169,25 @@ export default {
       this.lastpesquisas = cache.slice(0, 5).map(pesquisa => ({
         id: pesquisa.id,
         nome: pesquisa.cliente.nome,
-        checkin: pesquisa.checkin_datetime
+        checkin: pesquisa.checkin_datetime,
+        checkout: pesquisa.checkout_datetime,
+        endereco: pesquisa.cliente.endereco,
+        clienteid:  pesquisa.cliente.id
       }));
-      console.log(this.lastpesquisas)
-    }
-  },
+      const thirtyDaysAgo = new Date(Date.now() - 30 * 24 * 60 * 60 * 1000);
+      const recentCheckouts = this.lastpesquisas.filter(pesquisa => {
+        const checkoutDate = new Date(pesquisa.checkout);
+        return checkoutDate >= thirtyDaysAgo;
+      });
+      this.atendimentosNoMes = recentCheckouts.length;
+    },
 
+    onlyClients() {
+      return this.lastpesquisas.filter((pesquisa, index, self) => {
+        return self.findIndex((p) => p.cliente_id === pesquisa.cliente_id) === index;
+      });
+    },
+  },
 
   mounted() {
     this.getPromotores();
@@ -177,4 +196,11 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+i{
+  color: blue;
+}
+h1 {
+  margin-top: -30px;
+}
+</style>

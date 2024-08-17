@@ -4,12 +4,26 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Cliente;
+use App\Models\promotor_router;
+use App\Models\Promotores;
 
 class ClientesController extends Controller
 {
     public function index()
     {
         $clientes = Cliente::all();
+        foreach ($clientes as  $cliente) {
+            $latestPromotorRoute = promotor_router::where('cliente_id', $cliente->id)
+            ->latest()
+            ->first();
+
+            if ($latestPromotorRoute) {
+                $promotorId = $latestPromotorRoute->promotor_id;
+                $promotor = Promotores::find($promotorId);
+                $cliente->promotor = $promotor->nome;
+            }
+        }
+        
         return response()->json($clientes);
     }
 
