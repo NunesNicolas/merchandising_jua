@@ -31,8 +31,7 @@ class PromoterRouterController extends Controller
     {
         $PromoterRouters = promotor_router::where('cliente_id', $cliente_id)->get();
         foreach ($PromoterRouters as $PromoterRouter) {
-            $PromoterRouter->promotor = Promotores::find($PromoterRouter->promotor_id)->value('nome');
-        }
+            $PromoterRouter->promotor = Promotores::find($PromoterRouter->promotor_id);        }
         return response()->json($PromoterRouters);
     }
 

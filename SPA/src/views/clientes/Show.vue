@@ -28,14 +28,15 @@
                     <label>Últimas Visitas</label>
                 </div>
                 <CardList :items="pesquisas" :fields="{
-                    route_date: 'Data da visita',
-                    promotor: 'Promotor'
+                    nome: 'Promotor',
+                    checkout: 'Data da visita',
+
                 }">
-               <template v-slot:actions="{ item }">
-                <router-link :to="''" class="d-flex flex-wrap">
-                    <i class="bi bi-file-earmark-text" style="font-size: 4vh; color: blue"></i>
-                </router-link>
-               </template>
+                    <template v-slot:actions="{ item }">
+                        <router-link :to="{ name: `infoPromotores${item.promotorid}` }" class="d-flex flex-wrap">
+                            <i class="bi bi-file-earmark-text" style="font-size: 4vh; color: blue"></i>
+                        </router-link>
+                    </template>
                 </CardList>
             </div>
             <br />
@@ -66,7 +67,7 @@ export default {
     },
     data() {
         return {
-            pesquisas:[],
+            pesquisas: [],
 
             cliente: {
                 nome: '',
@@ -86,20 +87,28 @@ export default {
                 this.cliente = response.data;
             } catch (error) {
                 console.error('Error fetching client data:', error);
+                // You can also display an error message to the user here
             }
         },
 
         async fetchPesquisasData() {
             const response2 = await axios.get(`pesquisas/cliente/${this.$route.params.id}`);
-            this.pesquisas = (await response2).data
+            const cache = response2.data
+            console.log(cache)
+            this.pesquisas = cache.slice(0, 5).map(pesquisa => ({
+                id: pesquisa.id,
+                nome: pesquisa.promotor.nome,
+                checkin: pesquisa.checkin_datetime,
+                checkout: pesquisa.checkout_datetime,
+                promotorid: pesquisa.promotor.id
+            }));
         }
     }
 };
 </script>
 
 <style scoped>
-
-.scroll-visitas{
+.scroll-visitas {
     margin-top: 15px;
     margin-right: 2vh;
     margin-bottom: 2vh;
@@ -110,15 +119,19 @@ export default {
     overflow-y: scroll;
     overflow-x: unset;
 }
-::-webkit-scrollbar{
+
+::-webkit-scrollbar {
     width: 0.5vw;
 }
-::-webkit-scrollbar-track{
-    background-color:  #77bcfd;
+
+::-webkit-scrollbar-track {
+    background-color: #77bcfd;
 }
-::-webkit-scrollbar-thumb{
+
+::-webkit-scrollbar-thumb {
     background-color: #2C9AFF;
 }
+
 .box-line {
     display: flex;
     flex-wrap: wrap;
@@ -139,7 +152,7 @@ export default {
 }
 
 label {
-    margin-top: 2vh; 
+    margin-top: 2vh;
     font-size: 17px;
     color: #858585;
     font-weight: bold;
