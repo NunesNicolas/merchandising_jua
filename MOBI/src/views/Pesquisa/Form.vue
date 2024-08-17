@@ -2,6 +2,7 @@
   <DefaultForm :values="formValues" :validations="validations" :onSave="handleSave" :submitLabel="submitLabel">
 
     <template v-slot="{ formValues, updateFormValue }">
+      <div class="atendimentoform">
       <h1>{{ title }}</h1>
       <hr>
       <SelectInput label="Selecionar cliente" name="id_cli" :modelValue="formValues.cliente_id" :options="this.clientes"
@@ -10,9 +11,34 @@
         @update:modelValue="updateFormValue('promotor_id', $event)" /> -->
       <DateInput label="Data:" name="data" :modelValue="formValues.route_date"
         @update:modelValue="updateFormValue('route_date', $event)" />
+      </div>
     </template>
   </DefaultForm>
 </template>
+
+<style scoped>
+
+.atendimentoform{
+    width: 100%;
+    font-size: 2.5vh;
+    color: black;
+    background-color: rgb(246, 246, 246);
+    font-weight: 500;
+}
+
+.atendimentoform h1{
+  font-size: 4vh;
+  padding-top: 3vh;
+  padding-bottom: 1.5vh;
+}
+.atendimentoform hr{
+  border-width: 0.3vh;
+  padding-bottom: 0.3vh;
+  opacity: 100;
+}
+
+
+</style>
 
 <script>
 import axios from "axios";
