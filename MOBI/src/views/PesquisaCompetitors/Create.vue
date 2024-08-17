@@ -28,7 +28,7 @@ export default {
                 const response = await axios.post('/competitor_survey', formData);
                 if (response.status === 201) {
                     alert('Pesquisas Salvas')
-                    this.$router.push('/');
+                    // this.$router.push('/');
                 }
             } catch (error) {
 
@@ -84,7 +84,6 @@ export default {
     mounted() {
         this.fetchProdutos();
         this.fetchCompetitors().then(() => {
-    this.compInProduct();
   });
     },
     computed() {

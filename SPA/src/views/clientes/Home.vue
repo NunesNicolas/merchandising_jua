@@ -12,9 +12,9 @@ import axios from "axios";
         </ActionListWrapper>
 
         <CardList :items="clientes" :fields="{
-            cnpj: 'CNPJ',
             nome: 'Cliente',
             endereco: 'Endereço',
+            cnpj: 'CNPJ',
             promotor: 'Promotor',
         }">
 
