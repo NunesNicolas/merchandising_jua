@@ -33,7 +33,10 @@
 
                 }">
                     <template v-slot:actions="{ item }">
-                        <router-link :to="{ name: `infoPromotores${item.promotorid}` }" class="d-flex flex-wrap">
+                        <router-link :to="{
+                            name: 'infoPromotores',
+                            params: { id: item.promotorid },
+                          }" class="d-flex flex-wrap">
                             <i class="bi bi-file-earmark-text" style="font-size: 4vh; color: blue"></i>
                         </router-link>
                     </template>
@@ -93,14 +96,14 @@ export default {
 
         async fetchPesquisasData() {
             const response2 = await axios.get(`pesquisas/cliente/${this.$route.params.id}`);
-            const cache = response2.data
+            const cache = (await response2).data
             console.log(cache)
             this.pesquisas = cache.slice(0, 5).map(pesquisa => ({
                 id: pesquisa.id,
                 nome: pesquisa.promotor.nome,
                 checkin: pesquisa.checkin_datetime,
                 checkout: pesquisa.checkout_datetime,
-                promotorid: pesquisa.promotor.id
+                promotorid: pesquisa.promotor.id,
             }));
         }
     }
