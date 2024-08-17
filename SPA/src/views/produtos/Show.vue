@@ -326,6 +326,7 @@ table {
     color: #858585;
 }
 .btCompetitorAdd{
+    min-width: 220px;
     margin-top: 4vh;
     margin-bottom: 2vh;
     margin-right: 73vw;
