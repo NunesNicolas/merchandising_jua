@@ -51,9 +51,9 @@
       return {
         formValues: { ...this.values },
         tiposOptions: [
-          { value: '1', text: 'Gôndolas' },
-          { value: '2', text: 'Fachada antes' },
-          { value: '3', text: 'Fachada depois' }
+          { value: '1', text: 'Gôndolas antes' },
+          { value: '2', text: 'Gôndolas depois' },
+          { value: '3', text: 'Fachada' }
         ],
         validations: {
           title: value => (!value ? 'Um titulo é obrigatório' : ''),
