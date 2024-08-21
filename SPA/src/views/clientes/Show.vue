@@ -144,6 +144,10 @@ export default {
     gap: 1em;
 }
 
+.box-line img{
+    border-radius: 3vh;
+}
+
 .box-info-wrapper {
     width: 55%;
     margin-bottom: 2vh;
