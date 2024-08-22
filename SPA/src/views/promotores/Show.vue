@@ -4,7 +4,7 @@ import axios from "axios";
 </script>
 
 <template>
-  <Breadcrumb pageTitle="Detalhes Promotor" routeInfo="Info / Promotor / Detalhes" />
+  <Breadcrumb pageTitle="Detalhes Promotor(a)" routeInfo="Info / Promotores / Detalhes" />
   <ActionListWrapper>
     <ActionRouterBack />
   </ActionListWrapper>
@@ -30,7 +30,7 @@ import axios from "axios";
       ">
       <div class="cardpromotor">
         <CardList :thisuser="true" :textBox="true" :item="promotor" :fields="{
-          nome: 'Promotor',
+          nome: 'Promotor(a)',
           email: 'Email',
         }">
         
@@ -51,13 +51,13 @@ import axios from "axios";
       <!-- card direita -->
       <div style="display: flex; width: 85%">
        
-        <TableInfo title="Visitas do Promotor" :items="lastpesquisas" :fields="{
+        <TableInfo title="Visitas do(a) Promotor(a)" :items="lastpesquisas" :fields="{
           nome: 'Promotor',
           checkin: 'Check-in',
           checkout: 'Checkout',
         }"></TableInfo>
   
-        <TableInfo title="Roteiro do Promotor" :items="onlyClients()" :fields="{
+        <TableInfo title="Roteiro do(a) Promotor(a)" :items="onlyClients()" :fields="{
           nome: 'Cliente',
           endereco: 'Endereço',
           checkout: 'Última Visita',

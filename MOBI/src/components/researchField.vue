@@ -1,6 +1,6 @@
 <template>
-    <div id="separator" class="animate-fade-up">
-        <label>{{ item[label] }} {{ item[label2] }}</label>
+    <div id="separator" class="animate-fade-up" style="display: flex; flex-wrap: wrap;">
+        <label style="display: flex; flex-wrap: wrap;">{{ item[label] }} {{ item[label2] }}</label>
         <input class="desc" type="text" :id="item.id" name="description" :placeholder="placeholder(item[label3])"
             @input="updateValue" :disabled="isDisabled" :value="modelValue.price" />
         <p>Não Consta</p>

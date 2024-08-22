@@ -15,10 +15,10 @@ import axios from "axios";
 
 
         <nav id="main-container" style="text-align: center;">
-           <div class="d-flex" style="padding: 20px;  gap:50px; flex-wrap: wrap;">
+           <div class="d-flex" style="padding: 20px;  gap:85px; flex-wrap: wrap;">
             <div v-for="promotor in promotores" :key="promotor.id" class="card-container" style="display: flex; width: 18vw;">
             <CardList :thisuser="true" :textBox="true" :item="promotor" :fields="{
-                nome: 'Promotor',
+                nome: 'Promotor(a)',
                 telefone: 'Telefone',
             }">
 

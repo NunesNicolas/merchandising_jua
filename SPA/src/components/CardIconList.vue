@@ -12,20 +12,20 @@
                         <clipPath id="clipCircle">
                             <circle cx="100" cy="80" r="75" />
                         </clipPath>
-                        <circle cx="100" cy="81" r="75" fill="none" stroke="grey" stroke-width="3" />
+                        <circle cx="100" cy="81" r="75" fill="none" stroke="grey" stroke-width="2" />
                         <image xlink:href="https://www.pngall.com/wp-content/uploads/5/Profile-PNG-Pic.png" width="200"
                             height="200" clip-path="url(#clipCircle)" y="-20" />
                     </svg>
 
                 </div>
-                <div style="" v-else>
+                <div v-else>
                     <svg v-if="thisuser" viewBox="0 0 200 200">
                         <clipPath id="clipCircle">
-                            <circle cx="100" cy="80" r="75" />
+                            <circle cx="100" cy="81" r="75" />
                         </clipPath>
-                        <circle cx="100" cy="81" r="75" fill="none" stroke="grey" stroke-width="3" />
+                        <circle cx="100" cy="81" r="75" fill="none" stroke="grey" stroke-width="2" />
                         <image :xlink:href=item.img width="200"
-                            height="200" clip-path="url(#clipCircle)" y="-20" />
+                            height="160" clip-path="url(#clipCircle)" y="0" />
                     </svg>
             
                      <img  v-else class="" style="height: 80%; width: 90%; margin-top: auto; margin-bottom: 0px; border-radius: 3vh;" :src=item.img alt="imagem não encontrada" />

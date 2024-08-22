@@ -5,7 +5,7 @@
         <div class="add-but">
             <ActionRouter :route="{ name: 'pesquisa', params: { pesquisaid: id } }">
                 <slot><i class="bi bi-arrow-left-square icon-right" title="Voltar"
-                        style="font-size: 25px; background-color:white;"></i></slot>
+                        style="font-size: 25px; background-color:transparent;"></i></slot>
             </ActionRouter>
             <h5 class="name">Pesquisa Juá</h5>
         </div>
