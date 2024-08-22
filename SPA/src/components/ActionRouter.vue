@@ -1,8 +1,8 @@
 <template>
   <router-link :to="route">
     <button :class="['btn', colorClass]"
-      style="background-color: #2c9aff; border-radius: 30px; margin-right: 20px; border: none;">
-      <span style="color: #ffffff;">{{ label }}</span>
+      style="background-color: #2c9aff; border-radius: 30px; border: none; align-items: center;">
+      {{ label }}
     </button>
   </router-link>
 </template>
@@ -34,4 +34,12 @@ export default {
 
 <style scoped>
 /* Estilos opcionais específicos do componente */
+
+.btn{
+  height: 5.5vh;
+  margin-right: 2vh;
+  padding-top: 0;
+  padding-bottom: 0;
+  font-weight: bold;
+}
 </style>

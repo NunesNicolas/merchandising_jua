@@ -331,7 +331,7 @@ table {
     color: #858585;
 }
 .btCompetitorAdd{
-    margin-left: 5%;
+    margin-left: 2%;
     text-align: left;
     text-wrap: nowrap;
     margin-top: 4vh;
@@ -357,7 +357,7 @@ table {
 }
 
 .btnPeso {
-    width: 30vw;
+    width: 40vw;
     height: 11vh;
     border: none;
     text-align: left;

@@ -49,6 +49,7 @@ export default {
     color: #858585;
     border-bottom: 0.1vh solid;
     text-decoration: none;
+    font-size: 3vh;
 }
 .botao-ativo {
     width: 5vw;
