@@ -67,6 +67,11 @@ export default {
     box-shadow: 0vh 0.1vh 0.3vh 0vh #858585;
 }
 
+.infos th{
+    width: 20%;
+
+}
+
 .indicadores {
     color: black;
 }
