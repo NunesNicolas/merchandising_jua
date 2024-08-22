@@ -1,6 +1,6 @@
 <template>
     <div class="page">
-        <Breadcrumb pageTitle="Clientes" routeInfo="Dashboard / Clientes" />
+        <Breadcrumb pageTitle="Detalhes Cliente" routeInfo="Dashboard / Clientes / Detalhes" />
 
         <ActionListWrapper>
             <ActionRouterBack />

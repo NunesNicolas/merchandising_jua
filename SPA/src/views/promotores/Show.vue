@@ -4,7 +4,7 @@ import axios from "axios";
 </script>
 
 <template>
-  <Breadcrumb pageTitle="Promotor" routeInfo="Info / Promotor" />
+  <Breadcrumb pageTitle="Detalhes Promotor" routeInfo="Info / Promotor / Detalhes" />
   <ActionListWrapper>
     <ActionRouterBack />
   </ActionListWrapper>
