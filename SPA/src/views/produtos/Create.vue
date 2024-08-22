@@ -1,7 +1,7 @@
 <template>
 
     <div class="page">
-        <Breadcrumb pageTitle="Cadastrar Produto" routeInfo="Dashboard / Produtos / Cadastro" />
+        <Breadcrumb pageTitle="Produto" routeInfo="Dashboard / Produtos / Cadastro" />
         <Form :created="true" :title="'Cadastrar Produto'" :values="values" :submitLabel="'Criar Produto'" :onSave="saveProduto" />
     </div>
 </template>
