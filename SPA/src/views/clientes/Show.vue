@@ -29,7 +29,7 @@
                 </div>
                 <CardList :items="pesquisas" :fields="{
                     nome: 'Promotor',
-                    checkout: 'Data da visita',
+                    checkout: 'Data da Visita',
 
                 }">
                     <template v-slot:actions="{ item }">

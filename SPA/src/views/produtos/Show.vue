@@ -28,11 +28,11 @@
                             </div>
                             <div class="d-flex" style="width: 100%; gap:10px; justify-content:space-between">
                                 <div class="box-line" style="width: 50%">
-                                    <BoxInfo title="Preço médio:" :value="'R$' + precoMedio(this.precos).toFixed(2)">
+                                    <BoxInfo title="Preço Médio" :value="'R$' + precoMedio(this.precos).toFixed(2)">
                                     </BoxInfo>
                                 </div>
                                 <div class="box-line" style="width: 50%">
-                                    <BoxInfo title="Quantidade de concorrentes:" :value="competitors.length"></BoxInfo>
+                                    <BoxInfo title="Quantidade de Concorrentes" :value="competitors.length"></BoxInfo>
                                 </div>
                             </div>
                         </div>
@@ -60,6 +60,9 @@
             </BoxInfoWrapper>
 
             <div class="btCompetitorAdd">
+
+                <h4>Concorrentes</h4>
+
                 <router-link :to="{
                     name: 'CreateCompetitors',
                     params: { id: this.$route.params.id },
@@ -69,8 +72,8 @@
             </div>
 
             <CardList :items="competitors" :fields="{
-                nome: 'PRODUTOS',
-                brand: 'CONCORRENTES',
+                nome: 'Produtos',
+                brand: 'Concorrentes',
             }">
                 <template v-slot:actions="{ item }">
                     <router-link :to="{
@@ -331,23 +334,31 @@ table {
     color: #858585;
 }
 .btCompetitorAdd{
+    display: flex;
     margin-left: 3.2vh;
     text-align: left;
     text-wrap: nowrap;
     margin-top: 4vh;
-    margin-bottom: 2vh;
+    margin-bottom: 1vh;
+
 }
+
+.btCompetitorAdd h4{
+    color: #858585;
+    font-weight: bold;
+}
+
 .btCompetitorAdd a{
+    margin-left: 3vh;
     text-align: center;
     border-radius: 10px;
     background-color: #2c9aff;
     color: white;
     font-size: 22px;
-    width: 20vw;
+    width: 15vw;
     height: 5vh;
     font-size: 2.5vh;
-    padding-block: 2vh;
-    padding-inline: 1vw;
+    padding-top: 0.5vh;
 }
 .btCompetitorAdd a:hover{
     text-decoration: none;

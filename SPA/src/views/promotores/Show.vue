@@ -28,7 +28,7 @@ import axios from "axios";
         width:100%;
         padding-top: 0;
       ">
-      <div style="width: 25%;">
+      <div class="cardpromotor">
         <CardList :thisuser="true" :textBox="true" :item="promotor" :fields="{
           nome: 'Promotor',
           email: 'Email',
@@ -164,6 +164,10 @@ export default {
 </script>
 
 <style scoped>
+
+.cardpromotor{
+  margin-right: 4vh;
+}
 
 .iconeed{
   color: blue;

@@ -1,38 +1,43 @@
 <template>
-<nav class="fixed-left">
+  <nav class="fixed-left">
     <div class="icones" id="navbar">
-        <!-- <a href="" class="btnav" class="border-collapse" style="display: flex; justify-content: center; width: 4vw;  height: 8vh; padding-top: 1vh; border-radius: 1vh;"> -->
-          <router-link>
-            <i class="bi bi-grid-1x2-fill icone"></i>
-          </router-link>   
-<!-- </a> -->
-        <!-- <a href="{{route('Produtos-index')}}" class="btnav" class="border-collapse-" style="display: flex;justify-content: center; width: 4vw;  height: 8vh; padding-top: 1vh; border-radius: 1vh;"> -->
-          <router-link to="/produtos" active-class="active-icon">
-            <i class="bi bi-basket2-fill icone"></i>
-          </router-link>
-        <!-- </a> -->
-        <!-- <a href="{{route('Empresas-index')}}" class="btnav" class="border-collapse-" style="display: flex;justify-content: center; width: 4vw;  height: 8vh; padding-top: 1vh; border-radius: 1vh;"> -->
-          <router-link to="/clientes" active-class="active-icon"> 
-            <i class="bi bi-building-fill icone"></i>
-          </router-link>
-        <!-- </a> -->
-        <!-- <a href="{{route('Promotores-home')}}" class="border-collapse-" class="btnav" style="display: flex;justify-content: center; width: 4vw;  height: 8vh; padding-top: 1vh; border-radius: 1vh;"> -->
-          <router-link to="/promotores" active-class="active-icon">
-            <i class="bi bi-person-fill icone"></i>
-          </router-link>
+      <router-link to="/">
+        <i class="bi bi-grid-1x2-fill icone"></i>
+      </router-link>
 
-        <!-- </a> -->
+      <router-link to="/produtos" active-class="active-icon" :class="{ 'active-icon': isProductRoute }">
+        <i class="bi bi-basket2-fill icone"></i>
+      </router-link>
 
-        <!-- <a href="" class="border-collapse-" style="display: flex;justify-content: center; width: 4vw;  height: 8vh; padding-top: 1vh; border-radius: 1vh;"> -->
-          <router-link>
-            <i class="bi bi-gear-fill icone"></i>
-          </router-link>
-        <!-- </a> -->
+      <router-link to="/clientes" active-class="active-icon" :class="{ 'active-icon': isClientRoute }">
+        <i class="bi bi-building-fill icone"></i>
+      </router-link>
+
+      <router-link to="/promotores" active-class="active-icon" :class="{ 'active-icon': isPromotorsRoute }">
+        <i class="bi bi-person-fill icone"></i>
+      </router-link>
+
+      <router-link>
+        <i class="bi bi-gear-fill icone"></i>
+      </router-link>
     </div>
-</nav>
+  </nav>
 </template>
 
 <script>
+export default {
+  computed: {
+    isProductRoute() {
+      return this.$route.path.startsWith('/produtos');
+    },
+    isClientRoute() {
+      return this.$route.path.startsWith('/clientes');
+    },
+    isPromotorsRoute() {
+      return this.$route.path.startsWith('/promotores');
+    }
+  }
+}
 </script>
 
 <style scoped>
