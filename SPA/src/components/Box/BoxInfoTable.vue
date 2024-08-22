@@ -53,7 +53,7 @@ export default {
 
 <style scoped>
 #infos {
-    font-size: 1.6vh;
+    font-size: 1.7vh;
     justify-content: center;
     align-items: center;
     text-decoration: none;
@@ -67,7 +67,7 @@ export default {
 }
 
 .indicadores {
-    font-size: 2.0vh;
+    font-size: 1.8vh;
     color: rgb(59, 59, 59);
 }
 

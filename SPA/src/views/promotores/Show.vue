@@ -32,7 +32,6 @@ import axios from "axios";
         <CardList :thisuser="true" :textBox="true" :item="promotor" :fields="{
           nome: 'Promotor',
           email: 'Email',
-          status: 'status',
         }">
           <template v-slot:topactions="{ item }">
             <RouterLink :to="{
@@ -45,75 +44,39 @@ import axios from "axios";
         </CardList>
       </div>
 
-      <div class="" style="
-          padding: 0;
-          margin: 0;
-          width: 30%;
-          height: 50vh;
-          flex-wrap: wrap;
-          padding-left: 2.5%;
-        ">
-        <BoxMedium title="tempo médio de atendimento" subtitle="ultimo atendimento">
-          <template v-slot:icon="{ item }">
-            <i class="bi bi-clock-history" style="color: green"></i>
-          </template>
-        </BoxMedium>
-
-        <BoxMedium style="margin-top: 13%;" title="Quantidade de atendimentos no mês">
-          <template v-slot:icon="{ item }">
-            <i class="bi bi-calendar-date" style="color: blue"></i>
-          </template>
-          <template v-slot:actions="{ item }">
-            <h2>{{ this.atendimentosNoMes }}</h2>
-          </template>
-        </BoxMedium>
-      </div>
-
       <!-- card direita -->
-      <div style="display: grid; width: 50%">
-        <TableGrafic title="Atendimento dos ultimos 30 dias" content="Grafico">
-        </TableGrafic>
+      <div style="display: flex; width: 85%">
+       
+        <TableInfo title="VISITAS DO PROMOTOR" :items="lastpesquisas" :fields="{
+          nome: 'Promotor',
+          checkin: 'Check-in',
+          checkout: 'Checkout',
+        }"></TableInfo>
+  
+        <TableInfo title="ROTEIRO DO PROMOTOR" :items="onlyClients()" :fields="{
+          nome: 'CLIENTE',
+          endereco: 'Endereço',
+          checkout: 'ÚLTIMA VISITA',
+        }">
+          <template v-slot:tableactions="{ table }">
+            <i class="bi bi-pencil-square"
+              style="font-size: 3.5vh; color: blue; padding-inline: 0.5vw; cursor: pointer;"></i>
+          </template>
+          <template v-slot:itemactions="{ item }">
+            <router-link :to="{
+              name: 'ShowClientes',
+              params: { id: item.clienteid },
+            }" class="d-flex flex-wrap">
+              <i class="bi bi-file-earmark-text" style="font-size: 25px;"></i>
+            </router-link>
+          </template>
+        </TableInfo>
 
-        <div style="width: 100%; text-align: end; padding-top: 10px">
-          <ActionRouter route="/clientes/create" color="primary" label="Adicionar Cliente" />
-        </div>
       </div>
+      
     </div>
-
-    <!-- teste figma -->
-
-    <div class="d-flex" style="
-        width: 100%;
-        height: 58vh;
-        justify-content: space-evenly;
-        flex-wrap: wrap;
-        color: #858585;
-        font-weight: bold;
-      ">
-      <TableInfo title="VISITAS DO PROMOTOR" :items="lastpesquisas" :fields="{
-        nome: 'Promotor',
-        checkin: 'Check-in',
-        checkout: 'Checkout',
-      }"></TableInfo>
-
-      <TableInfo title="ROTEIRO DO PROMOTOR" :items="onlyClients()" :fields="{
-        nome: 'CLIENTE',
-        endereco: 'Endereço',
-        checkout: 'ÚLTIMA VISITA',
-      }">
-        <template v-slot:tableactions="{ table }">
-          <i class="bi bi-pencil-square"
-            style="font-size: 3.5vh; color: blue; padding-inline: 0.5vw; cursor: pointer;"></i>
-        </template>
-        <template v-slot:itemactions="{ item }">
-          <router-link :to="{
-            name: 'ShowClientes',
-            params: { id: item.clienteid },
-          }" class="d-flex flex-wrap">
-            <i class="bi bi-file-earmark-text" style="font-size: 25px;"></i>
-          </router-link>
-        </template>
-      </TableInfo>
+    <div style="width: 100%; text-align: end;margin-top: -45px">
+      <ActionRouter route="/clientes/create" color="primary" label="Adicionar Cliente" />
     </div>
   </section>
 </template>

@@ -52,6 +52,10 @@ export default {
 </script>
 
 <style scoped>
+.close-modal-button{
+  margin-top:-13px;
+  font-size: 20px;
+}
 .boxAll {
   padding: 15px;
 }

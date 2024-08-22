@@ -2,7 +2,7 @@
   <router-link :to="route">
     <button :class="['btn', colorClass]"
       style="background-color: #2c9aff; border-radius: 30px; margin-right: 20px; border: none;">
-      <span style="color: #ffffff;">{{ label }}</span>
+      <span style="color: #ffffff;font-size: 24px">{{ label }}</span>
     </button>
   </router-link>
 </template>
