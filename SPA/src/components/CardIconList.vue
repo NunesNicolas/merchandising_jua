@@ -18,7 +18,7 @@
                     </svg>
 
                 </div>
-                <div style="text-align: center;" v-else>
+                <div style="" v-else>
                     <svg v-if="thisuser" viewBox="0 0 200 200">
                         <clipPath id="clipCircle">
                             <circle cx="100" cy="80" r="75" />
@@ -68,7 +68,6 @@ export default {
 <style scoped>
 .card{
     width: 18vw;
-    justify-content: center;
     border-radius: 2vh;
 }
 .card-body {

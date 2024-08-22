@@ -3,7 +3,7 @@
         style="width: 48%; height:50vh; background:#ffffff; border-radius:10px; border:darkgray solid 1.2px; text-align:left;">
         <ul class="list" style="list-style-type:none; padding:5px">
             <li class="list-item d-flex" style="justify-content: space-between">
-                <p style="text-align:initial"> {{ title }}: </p>
+                <p style="text-align:initial"> {{ title }} </p>
                 <slot name="tableactions" :table="table"></slot>
             </li>
             <div v-for="item in items" :key="item.id" class="d-flex">

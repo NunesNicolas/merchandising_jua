@@ -302,7 +302,7 @@ table {
 }
 
 .pageMod > .btCompetitorAdd {
-    margin-left: 5%;
+    margin-left: 3.2vh;
     text-align: left;
   }
 
@@ -331,7 +331,7 @@ table {
     color: #858585;
 }
 .btCompetitorAdd{
-    margin-left: 2%;
+    margin-left: 3.2vh;
     text-align: left;
     text-wrap: nowrap;
     margin-top: 4vh;

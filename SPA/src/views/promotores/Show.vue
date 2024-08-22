@@ -15,7 +15,7 @@ import axios from "axios";
       flex-wrap: wrap;
       width: 100%;
       justify-content: space-evenly;
-      padding-top: 1vh;
+      padding-top: 1.2vh;
       color: #858585;
       font-weight: bold;
       padding-left: 20px;
@@ -33,30 +33,34 @@ import axios from "axios";
           nome: 'Promotor',
           email: 'Email',
         }">
+        
           <template v-slot:topactions="{ item }">
             <RouterLink :to="{
               name: 'UpdatePromotores',
               params: { id: this.$route.params.id },
             }">
-              <i class="bi bi-pencil-square" style="font-size: 3.5vh; text-align: right;color:blue"></i>
+            <div class="iconeed">
+              <i class="bi bi-pencil-square"></i>
+            </div>
             </RouterLink>
           </template>
+        
         </CardList>
       </div>
 
       <!-- card direita -->
       <div style="display: flex; width: 85%">
        
-        <TableInfo title="VISITAS DO PROMOTOR" :items="lastpesquisas" :fields="{
+        <TableInfo title="Visitas do Promotor" :items="lastpesquisas" :fields="{
           nome: 'Promotor',
           checkin: 'Check-in',
           checkout: 'Checkout',
         }"></TableInfo>
   
-        <TableInfo title="ROTEIRO DO PROMOTOR" :items="onlyClients()" :fields="{
-          nome: 'CLIENTE',
+        <TableInfo title="Roteiro do Promotor" :items="onlyClients()" :fields="{
+          nome: 'Cliente',
           endereco: 'Endereço',
-          checkout: 'ÚLTIMA VISITA',
+          checkout: 'Última Visita',
         }">
           <template v-slot:tableactions="{ table }">
             <i class="bi bi-pencil-square"
@@ -160,10 +164,11 @@ export default {
 </script>
 
 <style scoped>
-i{
+
+.iconeed{
   color: blue;
-}
-h1 {
-  margin-top: -30px;
+  font-size: 3.5vh;
+  text-align: right;
+  margin-right: 2vh;
 }
 </style>
