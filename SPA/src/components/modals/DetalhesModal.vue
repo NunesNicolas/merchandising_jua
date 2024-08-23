@@ -58,7 +58,7 @@ export default {
 }
 .boxAll {
   padding: 15px;
-  top: 20.75vh;
+  top: 23%;
   min-height: 47.3%;
 }
 

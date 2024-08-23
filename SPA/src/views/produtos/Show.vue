@@ -50,7 +50,7 @@
                             <CheckBox @util="updateweights" :options="variants" :value="'id'" :label="'weight'"
                                 :instance="produto" :defaults="weights">
                                 <slot>
-                                    <b-button style="height:6vh;margin-top:10px" v-b-modal.modal-1>Cancelar</b-button>
+                                    <b-button style="height:8vh;margin-top:10px" v-b-modal.modal-1>Cancelar</b-button>
                                 </slot>
                             </CheckBox>
                         </b-modal>
@@ -356,9 +356,9 @@ table {
     color: white;
     font-size: 22px;
     width: 15vw;
-    height: 5vh;
+    height: 6vh;
     font-size: 2.5vh;
-    padding-top: 0.5vh;
+    padding-top: 1.3vh;
 }
 .btCompetitorAdd a:hover{
     text-decoration: none;
