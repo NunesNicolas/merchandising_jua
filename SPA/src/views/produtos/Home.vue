@@ -14,7 +14,7 @@ import axios from "axios";
         </ActionListWrapper>
 
         <nav id="main-container" style="text-align: center; ">
-            <div class="d-flex" style="padding: 20px; gap:35px; flex-wrap: wrap; ">
+            <div class="d-flex" style="padding: 20px; gap:30px; flex-wrap: wrap; ">
                 <div v-for="produto in produtos" :key="produto.id" class="card-container"
                     style="display: flex; width: 13vw;">
                 <CardList :textBox="true" :item="produto" :fields="{
