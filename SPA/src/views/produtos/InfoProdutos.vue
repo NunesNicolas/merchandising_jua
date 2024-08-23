@@ -173,7 +173,7 @@ export default {
     //   },
 
     async getProdutos() {
-      let response = axios.get('http://127.0.0.1:8000/api/produtos/' + this.id);
+      let response = axios.get('/produtos/' + this.id);
       this.competitors = (await response).data.competitorsthis;
       this.variants = (await response).data.produtovariants;
       this.produto = (await response).data.produto;

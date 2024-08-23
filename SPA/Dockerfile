@@ -19,13 +19,11 @@ RUN [ -f .env ] && rm .env || true
 # Declare the build argument
 ARG VITE_API_DOMAIN
 
-# Create the .env.production file with the VITE_API_DOMAIN variable
-RUN echo "VITE_API_DOMAIN=${VITE_API_DOMAIN}" > .env.production
+# Create the .env file with the VITE_API_DOMAIN variable
+RUN echo "VITE_API_DOMAIN=${VITE_API_DOMAIN}" > .env
 
-# Build the Vue.js application
-RUN npm run build
+# Expose the port the app runs on
+EXPOSE 5173
 
-# Move built files to /var/www
-RUN mkdir -p /var/www && cp -r dist/* /var/www
-
-# This image will only be used to generate the build
+# Command to run the application in development mode
+CMD ["npm", "run", "dev"]
