@@ -1,7 +1,7 @@
 <template>
   <div class="container">
-    <div v-for="(camp, field) in defaults" :key="field" class="round">
-      <input type="checkbox" :id="field" :value="camp[label]" :checked="checkin(camp[label])"
+    <div v-for="(camp, field) in defaults" :key="field" class="form-check form-switch mr-2">
+      <input class="form-check-input" type="checkbox" :id="field" :value="camp[label]" :checked="checkin(camp[label])"
         @change="update(camp, field)" />
       <label :for="field" class="circle">
         {{ camp[label] }}
@@ -51,6 +51,7 @@ export default {
     checkin(object) {
       return this.selectedOptions.includes(object);
     },
+
     update(camp, field) {
       const value = camp[this.label];
       const index = this.selectedOptions.findIndex(option => option === value);
@@ -62,8 +63,6 @@ export default {
       }
       console.log(this.selectedOptions);
     },
-
-
   },
 };
 </script>
@@ -75,22 +74,17 @@ button{
 .container {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+
 }
 .containerBt{
   display: flex;
   flex-wrap: wrap;
-  justify-content: end;
   margin-top: 10px;
 }
 
 .round {
   display: flex;
   align-items: center;
-}
-
-input {
-  height: 40px;
 }
 
 .selected {

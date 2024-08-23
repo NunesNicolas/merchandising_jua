@@ -1,10 +1,15 @@
 <template>
     <div id="separator" class="animate-fade-up" style="display: flex; flex-wrap: wrap;">
-        <label style="display: flex; flex-wrap: wrap;">{{ item[label] }} {{ item[label2] }}</label>
+        <div>
+            <label style="">{{ item[label] }} {{ item[label2] }}</label>
+        </div>
+
         <input class="desc" type="text" :id="item.id" name="description" :placeholder="placeholder(item[label3])"
             @input="updateValue" :disabled="isDisabled" :value="modelValue.price" />
-        <p>Não Consta</p>
-        <input type="checkbox" id="check" name="Check" @change="toggleDisabled" />
+        <div style="display: flex; flex-wrap: wrap; width: 100%; justify-content: end;">
+            <p>Não Consta</p>
+            <input type="checkbox" id="check" name="Check" @change="toggleDisabled" />
+        </div>
     </div>
 </template>
 
@@ -72,7 +77,7 @@ export default {
                 this.modelValue.promotor_route_id = this.$route.params.pesquisaid;
                 this.modelValue.product_id = this.item.id;
                 this.$emit('preencher', this.modelValue);
-            }else if(this.product_or_competitor == 'competitor'){
+            } else if (this.product_or_competitor == 'competitor') {
                 this.modelValue.price = event.target.value;
                 this.modelValue.cliente_id = this.clienteid;
                 this.modelValue.promotor_route_id = this.$route.params.pesquisaid;
@@ -94,10 +99,9 @@ export default {
 #separator {
     display: flex;
     flex-wrap: wrap;
-    justify-content: end;
+    justify-content: start;
     align-items: center;
     width: 80vw;
-    height: 12vh;
     margin-inline: 10vw;
     margin-top: 3vh;
     animation-name: animationStart;
@@ -117,9 +121,9 @@ export default {
 }
 
 #separator label {
+    justify-content: start;
     text-align: start;
     width: 100%;
-    height: 3vh;
     color: #b0b0b0;
     font-weight: bold;
     font-size: 2.5vh;
