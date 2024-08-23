@@ -2,7 +2,7 @@
     <table>
         <h5>{{ label }}</h5>
 
-        <div class="form-check" v-for="item in items">
+        <div class="form-check form-switch" v-for="item in items">
             <label class="form-check-label">
                 <input :id="item" :name="item" :value="item" class="form-check-input" type="checkbox"
                     @change="updateObjects(item, $event)">
@@ -40,12 +40,16 @@ export default {
 
 <style scoped>
 .form-check {
+    display: flex;
+    flex-wrap: wrap;
     margin-left: 10px;
     display: flex;
     width: 8vw;
 }
 
 table {
+    margin-bottom: 2vh;
+    width: 10%;
     display: flex;
     flex-wrap: wrap;
 }

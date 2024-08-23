@@ -1,6 +1,6 @@
 <template>
     <div class="page">
-        <Breadcrumb pageTitle="Clientes" routeInfo="Dashboard / Clientes" />
+        <Breadcrumb pageTitle="Detalhes Cliente" routeInfo="Dashboard / Clientes / Detalhes" />
 
         <ActionListWrapper>
             <ActionRouterBack />
@@ -29,7 +29,7 @@
                 </div>
                 <CardList :items="pesquisas" :fields="{
                     nome: 'Promotor',
-                    checkout: 'Data da visita',
+                    checkout: 'Data da Visita',
 
                 }">
                     <template v-slot:actions="{ item }">
@@ -142,6 +142,10 @@ export default {
     align-items: flex-start;
     width: 100%;
     gap: 1em;
+}
+
+.box-line img{
+    border-radius: 3vh;
 }
 
 .box-info-wrapper {

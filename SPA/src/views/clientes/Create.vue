@@ -1,8 +1,8 @@
 <template>
 
     <div class="page">
-        <Breadcrumb pageTitle="Clientes" routeInfo="Dashboard / Clientes" />
-        <Form :title="'Cadastrar cliente'" :values="values" :submitLabel="'Criar Cliente'" :onSave="saveClient" />
+        <Breadcrumb pageTitle="Cliente" routeInfo="Dashboard / Clientes / Cadastro" />
+        <Form :title="'Cadastrar Cliente'" :values="values" :submitLabel="'Criar Cliente'" :onSave="saveClient" />
     </div>
 </template>
 

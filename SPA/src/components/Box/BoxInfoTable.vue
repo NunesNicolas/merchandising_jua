@@ -3,7 +3,7 @@
         style="width: 48%; height:50vh; background:#ffffff; border-radius:10px; border:darkgray solid 1.2px; text-align:left;">
         <ul class="list" style="list-style-type:none; padding:5px">
             <li class="list-item d-flex" style="justify-content: space-between">
-                <p style="text-align:initial"> {{ title }}: </p>
+                <p style="text-align:initial"> {{ title }} </p>
                 <slot name="tableactions" :table="table"></slot>
             </li>
             <div v-for="item in items" :key="item.id" class="d-flex">
@@ -52,8 +52,21 @@ export default {
 </script>
 
 <style scoped>
+::-webkit-scrollbar{
+    width: 0.8vw;
+}
+::-webkit-scrollbar-thumb{
+    background-color: #2a9aff;
+
+}
+::-webkit-scrollbar-track{
+    background-color: #93cafb;
+}
+.container{
+    overflow-y: scroll;
+}
 #infos {
-    font-size: 1.6vh;
+    font-size: 1.7vh;
     justify-content: center;
     align-items: center;
     text-decoration: none;
@@ -67,7 +80,7 @@ export default {
 }
 
 .indicadores {
-    font-size: 2.0vh;
+    font-size: 1.8vh;
     color: rgb(59, 59, 59);
 }
 

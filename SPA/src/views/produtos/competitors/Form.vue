@@ -5,9 +5,9 @@
       <h1>{{ title }}</h1>
       <hr>
       <label>Produto referente: {{ produto.nome }} {{ produto.weight }}</label>
-      <TextInput label="Nome" name="nome" :modelValue="formValues.nome"
+      <TextInput label="Nome do Produto" name="nome" :modelValue="formValues.nome"
         @update:modelValue="updateFormValue('nome', $event)" />
-      <TextInput label="Marca" name="brand" :modelValue="formValues.brand"
+      <TextInput label="Marca Concorrente" name="brand" :modelValue="formValues.brand"
         @update:modelValue="updateFormValue('brand', $event)" />
     </template>
   </DefaultForm>

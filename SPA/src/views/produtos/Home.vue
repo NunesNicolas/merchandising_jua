@@ -14,9 +14,9 @@ import axios from "axios";
         </ActionListWrapper>
 
         <nav id="main-container" style="text-align: center; ">
-            <div class="d-flex" style="padding: 20px; gap:50px; flex-wrap: wrap; ">
+            <div class="d-flex" style="padding: 20px; gap:35px; flex-wrap: wrap; ">
                 <div v-for="produto in produtos" :key="produto.id" class="card-container"
-                    style="">
+                    style="display: flex; width: 13vw;">
                 <CardList :textBox="true" :item="produto" :fields="{
                     nome: 'Produto',
                 }">
@@ -74,11 +74,12 @@ export default {
 <style scoped>
 .tp {
     margin-bottom: 15px;
+
 }
 
 .dtbutton {
     color: white;
-    background-color: rgb(13, 141, 214);
+    background-color: #2c9aff;
     text-align: center;
     margin-bottom: 0;
     width: 100%;

@@ -5,8 +5,8 @@ import axios from "axios";
 <template>
 
     <div class="page">
-        <Breadcrumb pageTitle="Promotor" routeInfo="Dashboard / Promotores" />
-        <Form :title="'Cadastrar promotor'" :values="values" :submitLabel="'Criar Promotor'" :onSave="savePromotor" />
+        <Breadcrumb pageTitle="Promotores" routeInfo="Dashboard / Promotores / Cadastro" />
+        <Form :title="'Cadastrar Promotor(a)'" :values="values" :submitLabel="'Criar Promotor(a)'" :onSave="savePromotor" />
     </div>
 </template>
 

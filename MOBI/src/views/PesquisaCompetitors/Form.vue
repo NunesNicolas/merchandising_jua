@@ -4,12 +4,12 @@
     <div class="add-but">
       <ActionRouter :route="{ name: 'pesquisa', params: { pesquisaid: id } }">
         <slot><i class="bi bi-arrow-left-square icon-right" title="Voltar"
-            style="font-size: 25px; background-color: white"></i></slot>
+            style="font-size: 25px; background-color: transparent"></i></slot>
       </ActionRouter>
       <h5 class="name">Pesquisa Concorrentes</h5>
     </div>
 
-    <select v-model="selectedProduto">
+    <select v-model="selectedProduto" style="margin-top: 4vh;">
       <option :value="null">Selecione um Produto</option>
       <option v-for="produto in produtos" :key="produto.id" :value="produto.id" :class="produto.preenchido">
         {{ produto.nome }} {{ produto.weight }}
@@ -42,13 +42,13 @@ export default {
     values: Object,
     submitLabel: String,
     onSave: Function,
-    competitors: Array,
     produtos: Array,
   },
   data() {
     return {
       id: this?.$route?.params?.pesquisaid,
       pesquisa: {},
+      competitors: [],
       selectedProduto: null,
       researchField: {},
       formValues: [],
@@ -73,6 +73,32 @@ export default {
       console.log("Dados da pesquisa:", this.pesquisa);
     },
 
+    async getPriceCompetitors() {
+            try {
+              let response = await axios.get("/all/competitors");
+                this.competitors = response.data;
+                console.log(this.competitors);
+                // Segundo fetch para obter os preços dos competitors relacionados ao cliente
+                let response1 = await axios.get(
+                    "competitor_survey/cliente_competitors/" + this.pesquisa.cliente_id
+                );
+                const auxiliar = response1.data;
+                console.log("Testando:" + auxiliar);
+
+                this.competitors = this.competitors.map((competitor) => {
+                    const competitorAuxiliar = auxiliar.find(
+                        (item) => item.competitor_id === competitor.id
+                    );
+                    return {
+                        ...competitor,
+                        price: competitorAuxiliar ? competitorAuxiliar.price : null,
+                    };
+                });
+
+            } catch (error) {
+                console.error(error);
+            }
+        },
 
     adicionarCompetitor(index, item) {
 
@@ -134,6 +160,7 @@ export default {
 
   mounted() {
     this.fetchPesquisa();
+    this.getPriceCompetitors();
 
   },
 };
@@ -150,6 +177,7 @@ select {
 
 .selected {
   color: green;
+  font-weight: bold;
 }
 
 .FormCompetitor {

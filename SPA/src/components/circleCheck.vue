@@ -1,7 +1,7 @@
 <template>
   <div class="container">
-    <div v-for="(camp, field) in defaults" :key="field" class="round">
-      <input type="checkbox" :id="field" :value="camp[label]" :checked="checkin(camp[label])"
+    <div v-for="(camp, field) in defaults" :key="field" class="form-check form-switch mr-2">
+      <input class="form-check-input" type="checkbox" :id="field" :value="camp[label]" :disabled="disableInit(camp[label])" :checked="checkin(camp[label])"
         @change="update(camp, field)" />
       <label :for="field" class="circle">
         {{ camp[label] }}
@@ -30,6 +30,7 @@ export default {
   data() {
     return {
       selectedOptions: [],
+      initialOptions: [],
     };
   },
   created() {
@@ -48,9 +49,17 @@ export default {
     initializeSelectedOptions() {
       this.selectedOptions = this.options.map(option => option[this.label]);
     },
-    checkin(object) {
+    checkin(object) { 
       return this.selectedOptions.includes(object);
     },
+
+    disableInit(object){
+      if (this.initialOptions.length === 0) {
+        this.initialOptions = [...this.selectedOptions];
+    }
+    return this.initialOptions.includes(object);
+  },
+
     update(camp, field) {
       const value = camp[this.label];
       const index = this.selectedOptions.findIndex(option => option === value);
@@ -60,10 +69,7 @@ export default {
       } else {
         this.selectedOptions.splice(index, 1);
       }
-      console.log(this.selectedOptions);
     },
-
-
   },
 };
 </script>
@@ -75,22 +81,17 @@ button{
 .container {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+
 }
 .containerBt{
   display: flex;
   flex-wrap: wrap;
-  justify-content: end;
   margin-top: 10px;
 }
 
 .round {
   display: flex;
   align-items: center;
-}
-
-input {
-  height: 40px;
 }
 
 .selected {

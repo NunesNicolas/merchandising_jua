@@ -1,6 +1,6 @@
 <template>
     <div class="SaveCancel">
-        <FormPesquisaCompetitors :produtos="produtos" :competitors="competitors" :submitLabel="'Criar Pesquisa'" :onSave="savePesquisas" />
+        <FormPesquisaCompetitors :produtos="produtos" :submitLabel="'Criar Pesquisa'" :onSave="savePesquisas" />
     </div>
 </template>
 
@@ -16,7 +16,6 @@ export default {
     },
     data() {
         return {
-            competitors: [],
             produtos: [],
         };
     },
@@ -51,44 +50,11 @@ export default {
                 console.error(error);
             }
         },
-        async fetchCompetitors() {
-            try {
-                // Primeiro fetch para obter os competitors
-                let response = await axios.get("/all/competitors");
-                this.competitors = response.data;
-                console.log(this.competitors);
-
-                // Segundo fetch para obter os preços dos competitors relacionados ao cliente
-                let response1 = await axios.get(
-                    "competitor_survey/cliente_competitors/" + this.pesquisa.cliente_id
-                );
-                const auxiliar = response1.data;
-                console.log("Testando:" + auxiliar);
-
-                this.competitors = this.competitors.map((competitor) => {
-                    const competitorAuxiliar = auxiliar.find(
-                        (item) => item.competitor_id === competitor.id
-                    );
-                    return {
-                        ...competitor,
-                        price: competitorAuxiliar ? competitorAuxiliar.price : null,
-                    };
-                });
-
-            } catch (error) {
-                console.error(error);
-            }
-        },
-
     },
     mounted() {
         this.fetchProdutos();
-        this.fetchCompetitors().then(() => {
-  });
     },
-    computed() {
-
-    }
+   
 };
 </script>
 
